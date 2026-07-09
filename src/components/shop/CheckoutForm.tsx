@@ -1,7 +1,6 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { usePaystackPayment } from 'react-paystack';
 import { useCartStore } from '@/store/useCartStore';
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
@@ -23,44 +22,23 @@ export function CheckoutForm() {
 
   useEffect(() => {
     setMounted(true);
+    // Inject Paystack inline popup script dynamically to bypass server-rendering warnings
+    const script = document.createElement("script");
+    script.src = "https://js.paystack.co/v1/inline.js";
+    script.async = true;
+    document.body.appendChild(script);
+    return () => {
+      document.body.removeChild(script);
+    };
   }, []);
 
   const subtotal = getTotalPrice();
   const shipping = subtotal > 150000 ? 0 : 5000; // Free shipping over 150k Naira
   const total = subtotal + shipping;
 
-  // Paystack Config
-  const config = {
-    reference: `FS-${Date.now()}`,
-    email: email,
-    amount: total * 100, // Paystack expects amount in kobo
-    publicKey: process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY || '',
-    metadata: {
-      custom_fields: [
-        {
-          display_name: "Customer Name",
-          variable_name: "customer_name",
-          value: name
-        },
-        {
-          display_name: "Customer Phone",
-          variable_name: "customer_phone",
-          value: phone
-        },
-        {
-          display_name: "Delivery Address",
-          variable_name: "delivery_address",
-          value: `${address}, ${city}, ${state} State`
-        }
-      ]
-    }
-  };
-
-  const initializePayment = usePaystackPayment(config);
-
-  const handlePaystackSuccessAction = (reference: any) => {
+  const handlePaystackSuccessAction = (refCode: string) => {
     clearCart();
-    router.push(`/checkout/success?reference=${reference.reference}`);
+    router.push(`/checkout/success?reference=${refCode}`);
   };
 
   const handlePaystackCloseAction = () => {
@@ -74,15 +52,50 @@ export function CheckoutForm() {
       return;
     }
 
-    if (!config.publicKey) {
+    const publicKey = process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY;
+    if (!publicKey) {
       alert("Paystack Public Key is missing. Check your environment settings.");
       return;
     }
 
-    initializePayment({
-      onSuccess: handlePaystackSuccessAction,
-      onClose: handlePaystackCloseAction
-    });
+    // Initialize Paystack popup directly and securely only when form is submitted
+    const paystack = (window as any).PaystackPop;
+    if (paystack) {
+      const handler = paystack.setup({
+        key: publicKey,
+        email: email,
+        amount: total * 100,
+        ref: `FS-${Date.now()}`,
+        metadata: {
+          custom_fields: [
+            {
+              display_name: "Customer Name",
+              variable_name: "customer_name",
+              value: name
+            },
+            {
+              display_name: "Customer Phone",
+              variable_name: "customer_phone",
+              value: phone
+            },
+            {
+              display_name: "Delivery Address",
+              variable_name: "delivery_address",
+              value: `${address}, ${city}, ${state} State`
+            }
+          ]
+        },
+        callback: function(response: any) {
+          handlePaystackSuccessAction(response.reference);
+        },
+        onClose: function() {
+          handlePaystackCloseAction();
+        }
+      });
+      handler.openIframe();
+    } else {
+      alert("Paystack SDK failed to load. Please verify your internet connection.");
+    }
   };
 
   if (!mounted) return null;
