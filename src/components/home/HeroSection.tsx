@@ -1,29 +1,17 @@
 "use client";
-import React, { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import React from 'react';
+import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/Button';
 import { fadeUpVariant } from '@/lib/animations';
 import Link from 'next/link';
 
 export function HeroSection() {
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start start", "end start"]
-  });
-  
-  // Parallax transitions
-  const yText = useTransform(scrollYProgress, [0, 1], ["0%", "15%"]);
-  const opacityText = useTransform(scrollYProgress, [0, 1], [1, 0]);
-
   return (
     <section 
-      ref={ref} 
       className="relative h-screen min-h-[750px] flex items-center justify-center bg-white overflow-hidden"
     >
       {/* Top Tagline (Repositioned slightly lower) */}
       <motion.div
-        style={{ y: yText, opacity: opacityText }}
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1.2, delay: 0.1 }}
@@ -36,7 +24,6 @@ export function HeroSection() {
 
       {/* Foreground Centered Content Overlay (Text and Buttons) */}
       <motion.div 
-        style={{ y: yText, opacity: opacityText }}
         initial="hidden"
         animate="visible"
         variants={{
