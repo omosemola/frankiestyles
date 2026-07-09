@@ -22,7 +22,23 @@ export function HeroSection() {
       ref={ref} 
       className="relative h-screen min-h-[750px] flex items-center justify-center bg-white overflow-hidden"
     >
-      {/* Background Centered Model (Massive Scale) */}
+      {/* Top Tagline (Above the head of the massive model) */}
+      <motion.div
+        style={{ y: yText, opacity: opacityText }}
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1.2, delay: 0.1 }}
+        className="absolute top-28 md:top-32 left-0 right-0 z-20 text-center pointer-events-none select-none"
+      >
+        <p 
+          className="text-xs font-bold uppercase tracking-widest text-[#0a0a0a]"
+          style={{ textShadow: '0 0 12px rgba(255,255,255,0.9), 0 0 20px rgba(255,255,255,0.7)' }}
+        >
+          Frankie Styles • Custom Tailoring
+        </p>
+      </motion.div>
+
+      {/* Background Centered Model (Massive Scale - 95% of page) */}
       <motion.div
         style={{ y: yImage, opacity: opacityText }}
         initial={{ opacity: 0, scale: 0.95 }}
@@ -33,7 +49,7 @@ export function HeroSection() {
         <img 
           src="/images/product-6-black.png" 
           alt="Frankie Styles Elite Model" 
-          className="h-[120vh] md:h-[135vh] w-auto object-contain scale-[1.2] md:scale-[1.35] translate-y-[2%] filter contrast-[1.03] brightness-[1.01] drop-shadow-[0_25px_60px_rgba(0,0,0,0.08)]"
+          className="h-[130vh] md:h-[150vh] w-auto object-contain scale-[1.35] md:scale-[1.6] translate-y-[2%] filter contrast-[1.03] brightness-[1.01] drop-shadow-[0_25px_60px_rgba(0,0,0,0.08)]"
         />
         {/* Soft ground shadow under model */}
         <div className="absolute bottom-[1vh] left-1/2 -translate-x-1/2 w-[30%] h-[15px] bg-black/5 rounded-full blur-[10px]" />
@@ -48,17 +64,9 @@ export function HeroSection() {
           hidden: { opacity: 0 },
           visible: { opacity: 1, transition: { staggerChildren: 0.15 } }
         }}
-        className="relative z-10 container mx-auto px-6 text-center flex flex-col items-center justify-center h-full max-w-3xl"
+        className="relative z-10 container mx-auto px-6 text-center flex flex-col items-center justify-center h-full max-w-3xl pt-24"
       >
         <div className="space-y-6 md:space-y-8 select-none">
-          {/* Subtle white text glow shadow class applied for absolute readability over the black model */}
-          <motion.p 
-            variants={fadeUpVariant} 
-            className="text-xs font-bold uppercase tracking-widest text-[#0a0a0a]"
-            style={{ textShadow: '0 0 12px rgba(255,255,255,0.9), 0 0 20px rgba(255,255,255,0.7)' }}
-          >
-            Frankie Styles • Custom Tailoring
-          </motion.p>
           <motion.h1 
             variants={fadeUpVariant} 
             className="text-5xl md:text-8xl font-bold tracking-tight leading-[1.1] uppercase font-bodoni text-[#0a0a0a]"
