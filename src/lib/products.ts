@@ -129,20 +129,20 @@ export const DUMMY_PRODUCTS: Product[] = [
   },
   {
     id: "5",
-    name: "Classic White Kaftan",
-    price: 180000,
+    name: "Royal Blue Cord Lace Kaftan",
+    price: 390000,
     category: "Kaftans",
-    image: "https://images.unsplash.com/photo-1607990283143-e81e7a2c93ab?q=80&w=2000&auto=format&fit=crop",
-    description: "A pristine, all-white Kaftan tailored with absolute precision. Features a subtle textured finish and micro-engraved metallic collar buttons. Designed for formal and traditional occasions.",
+    image: "/images/product-6-blue.png",
+    description: "An exceptional royal blue Kaftan set crafted from premium cord lace. Featuring an eyelet patterned structure, structured shoulders, relaxed fit, wide sleeves, and matching trousers for a majestic traditional entry.",
     details: [
-      "High-grade polished cotton, soft-touch fabric",
-      "Subtle geometric weave texture",
-      "Metallic button detail at collar closure",
-      "Slightly tapered trousers",
+      "Premium hand-cut cord lace fabric",
+      "Tailored comfort-fit Sokoto trousers included",
+      "Intricate eyelet pattern detailing",
+      "Mandarin collar with matching buttons",
       "Dry clean only"
     ],
     images: [
-      "https://images.unsplash.com/photo-1607990283143-e81e7a2c93ab?q=80&w=2000&auto=format&fit=crop"
+      "/images/product-6-blue.png"
     ],
     sizes: [
       "M (Chest 38-40\")",
@@ -185,20 +185,20 @@ export const DUMMY_PRODUCTS: Product[] = [
   },
   {
     id: "7",
-    name: "Double-Breasted Senator",
-    price: 175000,
-    category: "Senator Wears",
-    image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=2071&auto=format&fit=crop",
-    description: "A bold, modern interpretation of the Senator wear featuring a double-breasted button configuration and sharp peak lapels. A crossover styling that blends traditional native and modern suiting.",
+    name: "Classic White Cord Lace Kaftan",
+    price: 390000,
+    category: "Kaftans",
+    image: "/images/product-6-white.png",
+    description: "A pristine all-white Kaftan set crafted from premium cord lace. Featuring an intricate eyelet patterned structure, structured shoulders, relaxed fit, wide sleeves, and matching trousers for a majestic traditional entry.",
     details: [
-      "Innovative double-breasted native wear design",
-      "Made of stretch-infused tropical wool",
-      "Includes matching slim-tapered trousers",
-      "Polished resin horn buttons",
+      "Premium hand-cut cord lace fabric",
+      "Tailored comfort-fit Sokoto trousers included",
+      "Intricate eyelet pattern detailing",
+      "Mandarin collar with matching buttons",
       "Dry clean only"
     ],
     images: [
-      "https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=2071&auto=format&fit=crop"
+      "/images/product-6-white.png"
     ],
     sizes: [
       "M (Chest 38-40\")",
@@ -211,20 +211,20 @@ export const DUMMY_PRODUCTS: Product[] = [
   },
   {
     id: "8",
-    name: "Midnight Black Agbada",
-    price: 360000,
-    category: "Agbadas",
-    image: "https://images.unsplash.com/photo-1516257984-b1b4d707412e?q=80&w=1974&auto=format&fit=crop",
-    description: "Exude mystery and power with the Midnight Black Agbada. A tone-on-tone masterpiece utilizing matte black embroidery on a lustrous satin-crepe body.",
+    name: "Midnight Black Cord Lace Kaftan",
+    price: 390000,
+    category: "Kaftans",
+    image: "/images/product-6-black.png",
+    description: "A prestigious midnight black Kaftan set crafted from premium cord lace. Featuring an intricate eyelet patterned structure, structured shoulders, relaxed fit, wide sleeves, and matching trousers for a majestic traditional entry.",
     details: [
-      "Rich satin-crepe premium base",
-      "Intricate matte black embroidery pattern",
-      "3-piece prestigious traditional wear set",
-      "Flowing, regal structure",
+      "Premium hand-cut cord lace fabric",
+      "Tailored comfort-fit Sokoto trousers included",
+      "Intricate eyelet pattern detailing",
+      "Mandarin collar with matching buttons",
       "Dry clean only"
     ],
     images: [
-      "https://images.unsplash.com/photo-1516257984-b1b4d707412e?q=80&w=1974&auto=format&fit=crop"
+      "/images/product-6-black.png"
     ],
     sizes: [
       "M (Chest 38-40\")",
