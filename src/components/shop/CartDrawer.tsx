@@ -4,9 +4,11 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X, Plus, Minus, Trash2, ShoppingBag } from 'lucide-react';
 import { useCartStore } from '@/store/useCartStore';
 import { Button } from '@/components/ui/Button';
+import { useRouter } from 'next/navigation';
 
 export function CartDrawer() {
   const { items, isOpen, setIsOpen, updateQuantity, removeItem, getTotalPrice } = useCartStore();
+  const router = useRouter();
   const [mounted, setMounted] = useState(false);
 
   // Prevent hydration mismatch
@@ -123,7 +125,13 @@ export function CartDrawer() {
                   <span className="text-lg font-bold">₦{getTotalPrice().toLocaleString()}</span>
                 </div>
                 <p className="text-xs text-gray-400">Shipping and taxes calculated at checkout.</p>
-                <Button className="w-full py-4 text-sm font-semibold uppercase tracking-widest">
+                <Button 
+                  onClick={() => {
+                    setIsOpen(false);
+                    router.push('/checkout');
+                  }}
+                  className="w-full py-4 text-sm font-semibold uppercase tracking-widest"
+                >
                   Proceed to Checkout
                 </Button>
               </div>

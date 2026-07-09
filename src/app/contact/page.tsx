@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Mail, Phone, MapPin, Calendar, Clock, ChevronDown, CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
+import { cn } from '@/lib/utils';
 
 interface FAQItem {
   q: string;
