@@ -1,17 +1,20 @@
 "use client";
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ShoppingBag, ChevronRight, Ruler, ShieldCheck, Truck, RefreshCw } from 'lucide-react';
+import { ShoppingBag, ChevronRight, Ruler, ShieldCheck, Truck, RefreshCw, ArrowLeft } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Product } from '@/lib/products';
 import { useCartStore } from '@/store/useCartStore';
 import { Button } from '@/components/ui/Button';
+import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 interface ProductDetailClientProps {
   product: Product;
 }
 
 export function ProductDetailClient({ product }: ProductDetailClientProps) {
+  const router = useRouter();
   const [selectedImage, setSelectedImage] = useState(0);
   const [selectedSize, setSelectedSize] = useState(product.sizes[0]);
   const [isAdding, setIsAdding] = useState(false);
@@ -39,13 +42,24 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
 
   return (
     <div className="container mx-auto px-6 py-32">
-      {/* Breadcrumbs */}
-      <div className="flex items-center gap-2 text-xs text-gray-500 uppercase tracking-widest mb-12">
-        <a href="/" className="hover:text-black transition-colors">Home</a>
-        <ChevronRight className="w-3.5 h-3.5" />
-        <span className="hover:text-black transition-colors cursor-pointer">{product.category}</span>
-        <ChevronRight className="w-3.5 h-3.5" />
-        <span className="text-[#0a0a0a] font-semibold">{product.name}</span>
+      {/* Back Button & Breadcrumbs row */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-12 border-b border-gray-100 pb-6">
+        <button 
+          onClick={() => router.back()} 
+          className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-gray-500 hover:text-black transition-colors group w-fit"
+        >
+          <ArrowLeft className="w-4 h-4 transition-transform duration-300 group-hover:-translate-x-1" />
+          Back to previous
+        </button>
+        
+        {/* Breadcrumbs */}
+        <div className="flex items-center gap-2 text-xs text-gray-500 uppercase tracking-widest">
+          <Link href="/" className="hover:text-black transition-colors">Home</Link>
+          <ChevronRight className="w-3.5 h-3.5" />
+          <Link href={`/shop?category=${product.category}`} className="hover:text-black transition-colors">{product.category}</Link>
+          <ChevronRight className="w-3.5 h-3.5" />
+          <span className="text-[#0a0a0a] font-semibold">{product.name}</span>
+        </div>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
