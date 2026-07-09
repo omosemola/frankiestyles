@@ -54,7 +54,7 @@ export function HeroSection() {
       </motion.div>
 
       {/* Centered Model Image */}
-      <div className="flex-grow flex items-center justify-center w-full max-w-[380px] md:max-w-[420px] aspect-[3/4] select-none my-6 relative">
+      <div className="flex-grow flex items-center justify-center w-full max-w-[520px] md:max-w-[650px] aspect-[3/4] select-none my-2 relative">
         <motion.div
           style={{ y: yImage, opacity }}
           initial={{ opacity: 0, y: 50 }}
@@ -63,12 +63,12 @@ export function HeroSection() {
           className="w-full h-full flex items-end justify-center relative"
         >
           {/* Subtle ground shadow */}
-          <div className="absolute bottom-[-10px] left-1/2 -translate-x-1/2 w-[70%] h-[15px] bg-black/5 rounded-full blur-[8px] z-0" />
+          <div className="absolute bottom-[-15px] left-1/2 -translate-x-1/2 w-[80%] h-[20px] bg-black/5 rounded-full blur-[10px] z-0" />
           
           <img 
             src="/images/product-6-black.png" 
             alt="Frankie Styles Elite Model" 
-            className="h-full w-auto max-h-[50vh] object-contain relative z-10"
+            className="h-full w-auto max-h-[65vh] md:max-h-[75vh] object-contain relative z-10 filter contrast-[1.03] brightness-[1.01] drop-shadow-[0_15px_30px_rgba(0,0,0,0.06)]"
           />
         </motion.div>
       </div>
