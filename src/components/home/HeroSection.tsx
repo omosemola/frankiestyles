@@ -14,7 +14,6 @@ export function HeroSection() {
   
   // Parallax transitions
   const yText = useTransform(scrollYProgress, [0, 1], ["0%", "15%"]);
-  const yImage = useTransform(scrollYProgress, [0, 1], ["0%", "5%"]);
   const opacityText = useTransform(scrollYProgress, [0, 1], [1, 0]);
 
   return (
@@ -22,37 +21,17 @@ export function HeroSection() {
       ref={ref} 
       className="relative h-screen min-h-[750px] flex items-center justify-center bg-white overflow-hidden"
     >
-      {/* Top Tagline (Above the head of the massive model) */}
+      {/* Top Tagline (Repositioned slightly lower) */}
       <motion.div
         style={{ y: yText, opacity: opacityText }}
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1.2, delay: 0.1 }}
-        className="absolute top-28 md:top-32 left-0 right-0 z-20 text-center pointer-events-none select-none"
+        className="absolute top-36 md:top-40 left-0 right-0 z-20 text-center pointer-events-none select-none"
       >
-        <p 
-          className="text-xs font-bold uppercase tracking-widest text-[#0a0a0a]"
-          style={{ textShadow: '0 0 12px rgba(255,255,255,0.9), 0 0 20px rgba(255,255,255,0.7)' }}
-        >
+        <p className="text-xs font-bold uppercase tracking-widest text-[#0a0a0a]">
           Frankie Styles • Custom Tailoring
         </p>
-      </motion.div>
-
-      {/* Background Centered Model (Massive Scale - 95% of page) */}
-      <motion.div
-        style={{ y: yImage, opacity: opacityText }}
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
-        className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none select-none"
-      >
-        <img 
-          src="/images/product-6-black.png" 
-          alt="Frankie Styles Elite Model" 
-          className="h-[130vh] md:h-[150vh] w-auto object-contain scale-[1.35] md:scale-[1.6] translate-y-[2%] filter contrast-[1.03] brightness-[1.01] drop-shadow-[0_25px_60px_rgba(0,0,0,0.08)]"
-        />
-        {/* Soft ground shadow under model */}
-        <div className="absolute bottom-[1vh] left-1/2 -translate-x-1/2 w-[30%] h-[15px] bg-black/5 rounded-full blur-[10px]" />
       </motion.div>
 
       {/* Foreground Centered Content Overlay (Text and Buttons) */}
@@ -70,7 +49,6 @@ export function HeroSection() {
           <motion.h1 
             variants={fadeUpVariant} 
             className="text-5xl md:text-8xl font-bold tracking-tight leading-[1.1] uppercase font-bodoni text-[#0a0a0a]"
-            style={{ textShadow: '0 0 15px rgba(255,255,255,0.95), 0 0 30px rgba(255,255,255,0.8)' }}
           >
             PRESTIGE <br />
             REDEFINED
@@ -78,7 +56,6 @@ export function HeroSection() {
           <motion.p 
             variants={fadeUpVariant} 
             className="text-sm md:text-base text-[#0a0a0a] font-medium tracking-wide max-w-md mx-auto leading-relaxed"
-            style={{ textShadow: '0 0 12px rgba(255,255,255,0.9), 0 0 20px rgba(255,255,255,0.7)' }}
           >
             Experience native wear at its absolute peak. Impeccable cuts, artisan embroidery, and bespoke silhouettes handcrafted for the modern gentleman.
           </motion.p>
