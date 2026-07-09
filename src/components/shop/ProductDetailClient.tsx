@@ -42,10 +42,10 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
 
   return (
     <div className="container mx-auto px-6 py-32 relative">
-      {/* Floating Back Button: fixed top-4 left-6, z-60 (above the logo level) */}
+      {/* Floating Back Button: fixed top-2.5 left-6, z-60 (above the logo level, transparent background) */}
       <button 
         onClick={() => router.back()} 
-        className="fixed top-4 left-6 z-[60] inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-gray-500 hover:text-black transition-all duration-300 group bg-white/70 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-gray-100 shadow-sm"
+        className="fixed top-2.5 left-6 z-[60] inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-gray-500 hover:text-black transition-all duration-300 group"
       >
         <ArrowLeft className="w-3 h-3 transition-transform duration-300 group-hover:-translate-x-0.5" />
         <span>BACK</span>
@@ -100,7 +100,12 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
           <div className="space-y-8">
             {/* Header / Meta */}
             <div>
-              <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">{product.category}</p>
+              <Link 
+                href={`/shop?category=${product.category}`} 
+                className="text-xs font-bold text-gray-455 hover:text-black uppercase tracking-widest mb-2 transition-colors inline-block"
+              >
+                {product.category}
+              </Link>
               <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-[#0a0a0a] mb-4">
                 {product.name}
               </h1>
