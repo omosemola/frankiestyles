@@ -51,15 +51,17 @@ function SuccessContent() {
 
       {/* CTAs */}
       <div className="flex flex-col sm:flex-row gap-4 pt-4">
-        <Link href="/shop" className="flex-grow">
-          <Button variant="default" className="w-full py-4 text-xs font-bold uppercase tracking-widest h-14 rounded-xl flex items-center justify-center gap-2">
-            <ShoppingBag className="w-4 h-4" /> Continue Shopping
-          </Button>
+        <Link 
+          href="/shop" 
+          className="flex-grow flex items-center justify-center gap-2 bg-[#0a0a0a] text-white hover:bg-black/90 text-xs font-bold uppercase tracking-widest h-14 rounded-xl shadow-md transition-colors duration-300"
+        >
+          <ShoppingBag className="w-4 h-4" /> Continue Shopping
         </Link>
-        <Link href="/contact" className="flex-grow">
-          <Button variant="outline" className="w-full py-4 text-xs font-bold uppercase tracking-widest h-14 rounded-xl">
-            Book Fitting Studio
-          </Button>
+        <Link 
+          href="/contact" 
+          className="flex-grow flex items-center justify-center border border-black/20 text-[#0a0a0a] hover:bg-[#0a0a0a] hover:text-white text-xs font-bold uppercase tracking-widest h-14 rounded-xl transition-all duration-300"
+        >
+          Book Fitting Studio
         </Link>
       </div>
 

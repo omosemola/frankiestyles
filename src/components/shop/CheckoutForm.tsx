@@ -106,10 +106,11 @@ export function CheckoutForm() {
         <ShoppingBag className="w-16 h-16 text-gray-300 animate-bounce" />
         <h1 className="text-3xl font-bold uppercase tracking-widest font-bodoni">Your Cart is Empty</h1>
         <p className="text-gray-500 max-w-sm text-sm">Add some custom native wears to your cart before proceeding to checkout.</p>
-        <Link href="/shop">
-          <Button variant="default" size="sm" className="mt-4 py-3 rounded-lg uppercase tracking-wider font-semibold">
-            Browse Catalogue
-          </Button>
+        <Link 
+          href="/shop"
+          className="mt-4 px-6 py-3 bg-[#0a0a0a] text-white hover:bg-black/90 rounded-lg uppercase tracking-wider font-semibold text-xs inline-block transition-colors duration-300"
+        >
+          Browse Catalogue
         </Link>
       </div>
     );
