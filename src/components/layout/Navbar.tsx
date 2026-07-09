@@ -38,13 +38,14 @@ export function Navbar() {
 
   return (
     <>
-      <motion.header
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+      <header
         className={cn(
-          "fixed top-0 left-0 right-0 z-50 transition-colors duration-[1000ms] ease-in-out",
-          isDarkTheme ? "bg-transparent text-white" : "bg-transparent text-[#0a0a0a]"
+          "fixed top-0 left-0 right-0 z-50 transition-all duration-[600ms] ease-in-out",
+          isDarkTheme 
+            ? "bg-transparent text-white" 
+            : scrolled 
+              ? "bg-white/90 backdrop-blur-md text-[#0a0a0a] border-b border-gray-100 shadow-sm" 
+              : "bg-transparent text-[#0a0a0a]"
         )}
       >
         <div className="container mx-auto px-6 py-6 flex items-center justify-between">
@@ -99,7 +100,7 @@ export function Navbar() {
             </button>
           </div>
         </div>
-      </motion.header>
+      </header>
 
       {/* Mobile Fullscreen Navigation Overlay */}
       <AnimatePresence>

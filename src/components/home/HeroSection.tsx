@@ -8,20 +8,8 @@ import Link from 'next/link';
 export function HeroSection() {
   return (
     <section 
-      className="relative h-screen min-h-[750px] flex items-center justify-center bg-white overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center bg-white pt-40 pb-20 overflow-hidden"
     >
-      {/* Top Tagline (Repositioned slightly lower) */}
-      <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1.2, delay: 0.1 }}
-        className="absolute top-36 md:top-40 left-0 right-0 z-20 text-center pointer-events-none select-none"
-      >
-        <p className="text-xs font-bold uppercase tracking-widest text-[#0a0a0a]">
-          Frankie Styles • Custom Tailoring
-        </p>
-      </motion.div>
-
       {/* Foreground Centered Content Overlay (Text and Buttons) */}
       <motion.div 
         initial="hidden"
@@ -30,9 +18,15 @@ export function HeroSection() {
           hidden: { opacity: 0 },
           visible: { opacity: 1, transition: { staggerChildren: 0.15 } }
         }}
-        className="relative z-10 container mx-auto px-6 text-center flex flex-col items-center justify-center h-full max-w-3xl pt-24"
+        className="relative z-10 container mx-auto px-6 text-center flex flex-col items-center justify-center max-w-3xl"
       >
         <div className="space-y-6 md:space-y-8 select-none">
+          <motion.p 
+            variants={fadeUpVariant}
+            className="text-xs font-bold uppercase tracking-widest text-gray-400"
+          >
+            Frankie Styles • Custom Tailoring
+          </motion.p>
           <motion.h1 
             variants={fadeUpVariant} 
             className="text-5xl md:text-8xl font-bold tracking-tight leading-[1.1] uppercase font-bodoni text-[#0a0a0a]"
@@ -42,7 +36,7 @@ export function HeroSection() {
           </motion.h1>
           <motion.p 
             variants={fadeUpVariant} 
-            className="text-sm md:text-base text-[#0a0a0a] font-medium tracking-wide max-w-md mx-auto leading-relaxed"
+            className="text-sm md:text-base text-gray-500 font-light tracking-wide max-w-md mx-auto leading-relaxed"
           >
             Experience native wear at its absolute peak. Impeccable cuts, artisan embroidery, and bespoke silhouettes handcrafted for the modern gentleman.
           </motion.p>
@@ -53,12 +47,12 @@ export function HeroSection() {
           className="flex flex-col sm:flex-row justify-center items-center gap-4 px-6 w-full max-w-md mx-auto pt-10"
         >
           <Link href="/shop" className="w-full sm:w-auto">
-            <Button size="lg" className="w-full sm:w-auto bg-black text-white hover:bg-black/90 uppercase tracking-widest text-xs font-semibold py-4 px-8 rounded-lg shadow-lg shadow-black/10">
+            <Button size="lg" className="w-full sm:w-auto bg-black text-white hover:bg-black/90 uppercase tracking-widest text-xs font-semibold py-4 px-8 rounded-lg shadow-md shadow-black/10">
               Shop Collection
             </Button>
           </Link>
           <Link href="/contact" className="w-full sm:w-auto">
-            <Button size="lg" variant="outline" className="w-full sm:w-auto border-black text-black bg-white/80 backdrop-blur-sm hover:bg-black hover:text-white uppercase tracking-widest text-xs font-semibold py-4 px-8 rounded-lg">
+            <Button size="lg" variant="outline" className="w-full sm:w-auto border-black/20 text-black hover:bg-black hover:text-white uppercase tracking-widest text-xs font-semibold py-4 px-8 rounded-lg">
               Book Fitting
             </Button>
           </Link>
