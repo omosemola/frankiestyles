@@ -34,7 +34,7 @@ export function Navbar() {
   // About page has a dark hero section at the top
   const hasDarkHero = pathname === '/about';
   // Use light text/logo (dark theme) ONLY if page has a dark hero AND user hasn't scrolled down
-  const isDarkTheme = hasDarkHero && !scrolled;
+  const isDarkTheme = mounted && hasDarkHero && !scrolled;
 
   return (
     <>
@@ -43,7 +43,7 @@ export function Navbar() {
           "fixed top-0 left-0 right-0 z-50 transition-all duration-[600ms] ease-in-out",
           isDarkTheme 
             ? "bg-transparent text-white" 
-            : scrolled 
+            : (mounted && scrolled)
               ? "bg-white/90 backdrop-blur-md text-[#0a0a0a] border-b border-gray-100 shadow-sm" 
               : "bg-transparent text-[#0a0a0a]"
         )}

@@ -72,6 +72,9 @@ export default function CategoriesPage() {
               key={cat.name}
               className="relative aspect-[4/3] rounded-xl overflow-hidden group cursor-pointer smooth-shadow bg-white"
             >
+              {/* Entire Card Link Overlay */}
+              <Link href={cat.href} className="absolute inset-0 z-20 block" />
+
               {/* Image */}
               <img 
                 src={cat.image} 
@@ -80,10 +83,10 @@ export default function CategoriesPage() {
               />
               
               {/* Dark Overlay */}
-              <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-colors duration-500" />
+              <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-colors duration-500 z-0" />
 
               {/* Text content */}
-              <div className="absolute inset-0 p-8 flex flex-col justify-end text-white">
+              <div className="absolute inset-0 p-8 flex flex-col justify-end text-white z-10">
                 <p className="text-xs font-bold uppercase tracking-widest text-gray-300 mb-2">
                   {cat.count} Items
                 </p>

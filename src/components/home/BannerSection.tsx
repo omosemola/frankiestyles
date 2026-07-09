@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from '@/components/ui/Button';
+import Link from 'next/link';
 
 interface BannerSectionProps {
   title: string;
@@ -7,9 +7,10 @@ interface BannerSectionProps {
   image: string;
   buttonText: string;
   align?: 'left' | 'right' | 'center';
+  href?: string;
 }
 
-export function BannerSection({ title, description, image, buttonText, align = 'center' }: BannerSectionProps) {
+export function BannerSection({ title, description, image, buttonText, align = 'center', href }: BannerSectionProps) {
   return (
     <section className="relative h-[70vh] min-h-[500px] flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0 z-0">
@@ -24,7 +25,12 @@ export function BannerSection({ title, description, image, buttonText, align = '
         <div className="max-w-xl space-y-6 bg-[#0a0a0a]/20 backdrop-blur-sm p-10 rounded-xl border border-white/10">
           <h2 className="text-3xl md:text-5xl font-bold tracking-wider uppercase">{title}</h2>
           <p className="text-white/80 leading-relaxed font-light">{description}</p>
-          <Button className="bg-white text-black hover:bg-white/90 px-8 py-3 h-auto">{buttonText}</Button>
+          <Link 
+            href={href || '/shop'} 
+            className="inline-block bg-white text-black hover:bg-gray-100 px-8 py-4 rounded-lg text-xs font-bold uppercase tracking-widest transition-all duration-300 shadow-md active:scale-95"
+          >
+            {buttonText}
+          </Link>
         </div>
       </div>
     </section>
