@@ -41,18 +41,18 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
   };
 
   return (
-    <div className="container mx-auto px-6 py-32">
-      {/* Back Button & Breadcrumbs row */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-12 border-b border-gray-100 pb-6">
-        <button 
-          onClick={() => router.back()} 
-          className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-gray-500 hover:text-black transition-colors group w-fit"
-        >
-          <ArrowLeft className="w-4 h-4 transition-transform duration-300 group-hover:-translate-x-1" />
-          Back to previous
-        </button>
-        
-        {/* Breadcrumbs */}
+    <div className="container mx-auto px-6 py-32 relative">
+      {/* Floating Back Button: fixed top-4 left-6, z-60 (above the logo level) */}
+      <button 
+        onClick={() => router.back()} 
+        className="fixed top-4 left-6 z-[60] inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-gray-500 hover:text-black transition-all duration-300 group bg-white/70 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-gray-100 shadow-sm"
+      >
+        <ArrowLeft className="w-3 h-3 transition-transform duration-300 group-hover:-translate-x-0.5" />
+        <span>BACK</span>
+      </button>
+
+      {/* Breadcrumbs row */}
+      <div className="flex items-center justify-end mb-12 border-b border-gray-100 pb-6">
         <div className="flex items-center gap-2 text-xs text-gray-500 uppercase tracking-widest">
           <Link href="/" className="hover:text-black transition-colors">Home</Link>
           <ChevronRight className="w-3.5 h-3.5" />
