@@ -1,0 +1,161 @@
+"use client";
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { Search, ShoppingBag, Heart, Menu, X } from 'lucide-react';
+import { cn } from '@/lib/utils';
+import { useCartStore } from '@/store/useCartStore';
+
+export function Navbar() {
+  const pathname = usePathname();
+  const { scrollY } = useScroll();
+  const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { setIsOpen: setCartOpen, getTotalItems } = useCartStore();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    setScrolled(latest > 50);
+  });
+
+  const navLinks = [
+    { name: 'Home', href: '/' },
+    { name: 'Shop', href: '/shop' },
+    { name: 'Categories', href: '/categories' },
+    { name: 'About', href: '/about' },
+    { name: 'Contact', href: '/contact' },
+  ];
+
+  // Homepage and About page have dark hero section at the top
+  const hasDarkHero = pathname === '/' || pathname === '/about';
+  // Use light text/logo (dark theme) ONLY if page has a dark hero AND user hasn't scrolled down
+  const isDarkTheme = hasDarkHero && !scrolled;
+
+  return (
+    <>
+      <motion.header
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+        className={cn(
+          "fixed top-0 left-0 right-0 z-50 transition-colors duration-[1000ms] ease-in-out",
+          isDarkTheme ? "bg-transparent text-white" : "bg-transparent text-[#0a0a0a]"
+        )}
+      >
+        <div className="container mx-auto px-6 py-6 flex items-center justify-between">
+          <Link href="/" className="flex items-center">
+            {/* Logo scales up and switches color based on scroll */}
+            <img 
+              src="/images/logo.png" 
+              alt="Frankie Styles Logo" 
+              className={cn(
+                "h-28 w-auto object-contain transition-all duration-[1000ms]",
+                isDarkTheme ? "invert brightness-0" : ""
+              )} 
+            />
+          </Link>
+          
+          <nav className="hidden md:flex items-center space-x-8">
+            {navLinks.map((item) => (
+              <Link key={item.name} href={item.href} className="text-sm font-semibold hover:opacity-70 transition-opacity tracking-wide uppercase">
+                {item.name}
+              </Link>
+            ))}
+          </nav>
+          
+          <div className="flex items-center space-x-6">
+            <button aria-label="Search" className="hover:opacity-70 transition-opacity">
+              <Search className="w-6 h-6" />
+            </button>
+            <button aria-label="Wishlist" className="hover:opacity-70 transition-opacity hidden sm:block">
+              <Heart className="w-6 h-6" />
+            </button>
+            <button 
+              aria-label="Cart" 
+              onClick={() => setCartOpen(true)}
+              className="hover:opacity-70 transition-opacity relative"
+            >
+              <ShoppingBag className="w-6 h-6" />
+              {mounted && getTotalItems() > 0 && (
+                <span className={cn(
+                  "absolute -top-1.5 -right-2 text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center transition-colors duration-500",
+                  !isDarkTheme ? "bg-[#0a0a0a] text-white" : "bg-white text-[#0a0a0a]"
+                )}>
+                  {getTotalItems()}
+                </span>
+              )}
+            </button>
+            <button 
+              aria-label="Menu" 
+              onClick={() => setMobileMenuOpen(true)}
+              className="md:hidden hover:opacity-70 transition-opacity"
+            >
+              <Menu className="w-6 h-6" />
+            </button>
+          </div>
+        </div>
+      </motion.header>
+
+      {/* Mobile Fullscreen Navigation Overlay */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: '-100%' }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: '-100%' }}
+            transition={{ type: 'tween', duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            className="fixed inset-0 z-50 bg-[#0a0a0a] text-white flex flex-col justify-between p-8"
+          >
+            {/* Mobile Menu Header */}
+            <div className="flex justify-between items-center h-20">
+              <Link href="/" onClick={() => setMobileMenuOpen(false)}>
+                <img 
+                  src="/images/logo.png" 
+                  alt="Frankie Styles Logo" 
+                  className="h-28 w-auto object-contain invert brightness-0" 
+                />
+              </Link>
+              <button 
+                onClick={() => setMobileMenuOpen(false)}
+                className="p-2 hover:bg-white/10 rounded-full transition-colors"
+                aria-label="Close menu"
+              >
+                <X className="w-6 h-6" />
+              </button>
+            </div>
+
+            {/* Mobile Nav Links */}
+            <nav className="flex flex-col space-y-6 text-center my-auto">
+              {navLinks.map((item, idx) => (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: idx * 0.05 + 0.1 }}
+                  key={item.name}
+                >
+                  <Link 
+                    href={item.href} 
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="text-3xl font-bold tracking-widest uppercase hover:text-gray-400 transition-colors"
+                  >
+                    {item.name}
+                  </Link>
+                </motion.div>
+              ))}
+            </nav>
+
+            {/* Footer / Extra info in mobile drawer */}
+            <div className="text-center text-xs text-gray-500 tracking-widest uppercase">
+              © {new Date().getFullYear()} Frankie Styles. Kaftan Et Al.
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
+  );
+}

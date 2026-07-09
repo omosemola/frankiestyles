@@ -1,1 +1,44 @@
 @import "tailwindcss";
+
+@theme {
+  --color-glossy-black: #0a0a0a;
+  --color-pure-white: #ffffff;
+  --color-silver: #c0c0c0;
+  --color-light-gray: #e5e7eb;
+  
+  --font-manrope: var(--font-manrope), sans-serif;
+  --font-poppins: var(--font-poppins), sans-serif;
+  --font-sf: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
+  --font-bodoni: var(--font-bodoni), serif;
+}
+
+@layer base {
+  :root {
+    --background: var(--color-pure-white);
+    --foreground: var(--color-glossy-black);
+  }
+  
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-manrope);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-bodoni);
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-black/40 backdrop-blur-md border border-white/10;
+  }
+  .glass-white {
+    @apply bg-white/40 backdrop-blur-md border border-black/10;
+  }
+  .smooth-shadow {
+    box-shadow: 0 10px 40px -10px rgba(0,0,0,0.08);
+  }
+}
