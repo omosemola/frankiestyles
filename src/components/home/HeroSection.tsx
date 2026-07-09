@@ -33,10 +33,10 @@ export function HeroSection() {
         <img 
           src="/images/product-6-black.png" 
           alt="Frankie Styles Elite Model" 
-          className="h-[85vh] md:h-screen w-auto object-contain filter contrast-[1.03] brightness-[1.01] drop-shadow-[0_20px_50px_rgba(0,0,0,0.08)]"
+          className="h-[120vh] md:h-[135vh] w-auto object-contain scale-[1.2] md:scale-[1.35] translate-y-[2%] filter contrast-[1.03] brightness-[1.01] drop-shadow-[0_25px_60px_rgba(0,0,0,0.08)]"
         />
         {/* Soft ground shadow under model */}
-        <div className="absolute bottom-[2vh] left-1/2 -translate-x-1/2 w-[40%] h-[20px] bg-black/5 rounded-full blur-[12px]" />
+        <div className="absolute bottom-[1vh] left-1/2 -translate-x-1/2 w-[30%] h-[15px] bg-black/5 rounded-full blur-[10px]" />
       </motion.div>
 
       {/* Foreground Centered Content Overlay (Text and Buttons) */}
