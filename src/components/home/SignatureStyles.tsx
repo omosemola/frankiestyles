@@ -10,8 +10,8 @@ export function SignatureStyles() {
       <motion.div
         initial={{ opacity: 0, x: -60 }}
         whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true, margin: "-80px" }}
-        transition={{ duration: 1.0, ease: [0.25, 1, 0.5, 1] }}
+        viewport={{ once: false, margin: "-80px" }}
+        transition={{ duration: 1.8, ease: [0.25, 1, 0.5, 1] }}
         className="w-full"
       >
         <Link 
@@ -33,8 +33,8 @@ export function SignatureStyles() {
       <motion.div
         initial={{ opacity: 0, x: 60 }}
         whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true, margin: "-80px" }}
-        transition={{ duration: 1.0, ease: [0.25, 1, 0.5, 1] }}
+        viewport={{ once: false, margin: "-80px" }}
+        transition={{ duration: 1.8, ease: [0.25, 1, 0.5, 1] }}
         className="w-full"
       >
         <Link 
