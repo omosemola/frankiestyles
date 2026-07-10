@@ -42,7 +42,7 @@ export function SignatureStyles() {
           className="relative aspect-[16/9] overflow-hidden group rounded-lg cursor-pointer block smooth-shadow"
         >
           <img
-            src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?q=80&w=2000&auto=format&fit=crop"
+            src="/images/senator-banner.jpg"
             className="object-cover w-full h-full transition-transform duration-1000 group-hover:scale-105"
             alt="Senator Wears Category"
           />
