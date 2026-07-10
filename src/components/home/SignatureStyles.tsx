@@ -19,7 +19,7 @@ export function SignatureStyles() {
           className="relative aspect-[16/9] overflow-hidden group rounded-lg cursor-pointer block smooth-shadow"
         >
           <img 
-            src="https://images.unsplash.com/photo-1617137968427-85924c800a22?q=80&w=1974&auto=format&fit=crop" 
+            src="/images/kaftans-banner.jpg" 
             className="object-cover w-full h-full transition-transform duration-1000 group-hover:scale-105" 
             alt="Kaftans Category" 
           />
