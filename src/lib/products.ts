@@ -99,14 +99,14 @@ export const DUMMY_PRODUCTS: Product[] = [
   },
   {
     id: "4",
-    name: "Prestige Black Lace Kaftan Set",
+    name: "Prestige Black Dry Lace Kaftan Set",
     price: 390000,
     category: "Kaftans",
     image: "/images/product-4-front.png",
-    description: "Make a statement in this prestige black lace Kaftan. Artfully tailored from premium eyelet cord lace, it features a semi-translucent structure, matching buba under-shirt, and tailored trousers.",
+    description: "Make a statement in this prestige black dry lace Kaftan. Artfully tailored from premium dry lace fabric, it features a structured semi-translucent layout, matching buba under-shirt, and tailored trousers.",
     details: [
-      "Two-piece luxury cord lace Kaftan set",
-      "Semi-translucent eyelet cord lace premium fabric",
+      "Two-piece luxury dry lace Kaftan set",
+      "Semi-translucent premium dry lace fabric",
       "Round neck collar with front button layout",
       "Includes tailored trousers and black under-lining fabric",
       "Dry clean only"
