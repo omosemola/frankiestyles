@@ -126,20 +126,21 @@ export const DUMMY_PRODUCTS: Product[] = [
   },
   {
     id: "5",
-    name: "Royal Blue Cord Lace Kaftan",
-    price: 390000,
+    name: "Turquoise Textured Kaftan Set",
+    price: 220000,
     category: "Kaftans",
-    image: "/images/product-6-blue.png",
-    description: "An exceptional royal blue Kaftan set crafted from premium cord lace. Featuring an eyelet patterned structure, structured shoulders, relaxed fit, wide sleeves, and matching trousers for a majestic traditional entry.",
+    image: "/images/product-5-front.png",
+    description: "Stand out in this vibrant turquoise Kaftan set, meticulously tailored from premium textured cotton. Features a sleek round neck, tailored mid-length drape, and matching trousers for a modern look.",
     details: [
-      "Premium hand-cut cord lace fabric",
-      "Tailored comfort-fit Sokoto trousers included",
-      "Intricate eyelet pattern detailing",
-      "Mandarin collar with matching buttons",
-      "Dry clean only"
+      "Two-piece bespoke Kaftan set",
+      "Vibrant turquoise textured premium fabric",
+      "Hidden button neck placket",
+      "Tailored trousers included",
+      "Dry clean or delicate hand wash"
     ],
     images: [
-      "/images/product-6-blue.png"
+      "/images/product-5-front.png",
+      "/images/product-5-back.png"
     ],
     sizes: [
       "M (Chest 38-40\")",
