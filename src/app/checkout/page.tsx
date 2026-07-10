@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 
 // Dynamically load the checkout form component to disable SSR (server-side rendering) 
-// since react-paystack evaluations require the browser's "window" object.
+// since Paystack's inline SDK popup evaluations require the browser's "window" object.
 const CheckoutForm = dynamic(
   () => import('@/components/shop/CheckoutForm').then((mod) => mod.CheckoutForm),
   {
