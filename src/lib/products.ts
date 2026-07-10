@@ -153,24 +153,21 @@ export const DUMMY_PRODUCTS: Product[] = [
   },
   {
     id: "6",
-    name: "Olive Cord Lace Kaftan",
+    name: "Prestige Olive Dry Lace Kaftan Set",
     price: 390000,
     category: "Kaftans",
-    image: "/images/product-6.png",
-    description: "Turn heads at any ceremony with this ultra-luxurious chartreuse olive Kaftan set crafted from premium cord lace. Features a highly intricate eyelet patterned structure, structured shoulders, relaxed fit, wide sleeves, and matching trousers for a majestic traditional entry.",
+    image: "/images/product-6-front.png",
+    description: "Make a statement in this prestige olive green dry lace Kaftan. Artfully tailored from premium dry lace fabric, it features a structured semi-translucent layout, matching buba under-shirt, and tailored trousers.",
     details: [
-      "Premium hand-cut cord lace fabric",
-      "Tailored comfort-fit Sokoto trousers included",
-      "Intricate eyelet pattern detailing",
-      "Mandarin collar with matching buttons",
+      "Two-piece luxury dry lace Kaftan set",
+      "Semi-translucent premium dry lace fabric",
+      "Round neck collar with front button layout",
+      "Includes tailored trousers and olive under-lining fabric",
       "Dry clean only"
     ],
     images: [
-      "/images/product-6.png",
-      "/images/product-6-blue.png",
-      "/images/product-6-black.png",
-      "/images/product-6-red.png",
-      "/images/product-6-white.png"
+      "/images/product-6-front.png",
+      "/images/product-6-back.png"
     ],
     sizes: [
       "M (Chest 38-40\")",
