@@ -88,7 +88,7 @@ export default function AboutPage() {
           {/* Image */}
           <ScrollAnimate direction="left" className="aspect-[4/3] lg:aspect-auto min-h-[500px] relative">
             <img 
-              src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?q=80&w=2000&auto=format&fit=crop" 
+              src="/images/about-showcase.jpg" 
               alt="Bespoke embroidery" 
               className="absolute inset-0 w-full h-full object-cover"
             />
