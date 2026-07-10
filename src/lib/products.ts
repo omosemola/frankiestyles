@@ -261,20 +261,21 @@ export const DUMMY_PRODUCTS: Product[] = [
   },
   {
     id: "10",
-    name: "Bespoke Royal Blue Kaftan",
-    price: 210000,
-    category: "Kaftans",
-    image: "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?q=80&w=2048&auto=format&fit=crop",
-    description: "Drape yourself in the color of royalty. This deep Royal Blue Kaftan offers classic tailoring with modern minimal wrist-cuff embroidery and side pockets.",
+    name: "Off-White Geometric Senator Suit",
+    price: 155000,
+    category: "Senator Wears",
+    image: "/images/product-10-front.png",
+    description: "An exquisite off-white cream Senator suit tailored from textured premium fabric. Features a clean round neckline, a pocket detailed with custom geometric embroidery, and matching tailored trousers.",
     details: [
-      "Polished cotton-sateen material with soft luster",
-      "Minimalist cuff and collar embroidery",
-      "Discreet side seam pockets",
-      "Ergonomic cuts for everyday movement",
+      "Two-piece bespoke Senator suit",
+      "Textured premium cotton-blend fabric",
+      "Chest pocket with custom geometric embroidery",
+      "Tailored trousers included",
       "Dry clean only"
     ],
     images: [
-      "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?q=80&w=2048&auto=format&fit=crop"
+      "/images/product-10-front.png",
+      "/images/product-10-back.png"
     ],
     sizes: [
       "M (Chest 38-40\")",
