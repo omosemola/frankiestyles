@@ -82,25 +82,28 @@ export default function AboutPage() {
         </ScrollAnimate>
       </section>
 
-      {/* Fabric Showcase (Split Panel) */}
-      <section className="bg-[#f8f8f8] overflow-hidden">
-        <div className="grid grid-cols-1 lg:grid-cols-2">
-          {/* Image */}
-          <ScrollAnimate direction="left" className="aspect-[4/3] lg:aspect-auto min-h-[500px] bg-white flex items-center justify-center overflow-hidden p-6">
-            <img 
-              src="/images/about-showcase.jpg" 
-              alt="Bespoke embroidery" 
-              className="max-h-[480px] w-auto object-contain mx-auto"
-            />
+      {/* Fabric Showcase (Centered Panel) */}
+      <section className="py-24 bg-[#f8f8f8] overflow-hidden text-center text-[#0a0a0a]">
+        <div className="container mx-auto px-6 max-w-4xl space-y-10">
+          <ScrollAnimate>
+            <div className="space-y-4">
+              <span className="text-xs font-bold uppercase tracking-widest text-gray-400 block">Master Craftsmanship</span>
+              <h3 className="text-3xl font-bold uppercase tracking-wider font-bodoni">Intricate Hand Embroidery</h3>
+              <p className="text-gray-500 font-light leading-relaxed max-w-2xl mx-auto">
+                True luxury lies in the details. Our tailors spend hours hand-stitching geometric patterns and organic line-work across necklines, cuffs, and pocket fronts. We use premium thread-work that does not fade, ensuring your native attire remains a timeless heirloom.
+              </p>
+              <div className="w-12 h-0.5 bg-[#0a0a0a] mx-auto mt-6" />
+            </div>
           </ScrollAnimate>
-          {/* Text */}
-          <ScrollAnimate direction="right" className="p-12 md:p-24 flex flex-col justify-center space-y-8 bg-white h-full">
-            <span className="text-xs font-bold uppercase tracking-widest text-gray-400">Master Craftsmanship</span>
-            <h3 className="text-3xl font-bold uppercase tracking-wider font-bodoni">Intricate Hand Embroidery</h3>
-            <p className="text-gray-500 font-light leading-relaxed">
-              True luxury lies in the details. Our tailors spend hours hand-stitching geometric patterns and organic line-work across necklines, cuffs, and pocket fronts. We use premium thread-work that does not fade, ensuring your native attire remains a timeless heirloom.
-            </p>
-            <div className="w-12 h-0.5 bg-[#0a0a0a]" />
+
+          <ScrollAnimate direction="up" delay={0.15}>
+            <div className="flex justify-center items-center bg-white p-8 rounded-2xl smooth-shadow max-w-md mx-auto mt-8">
+              <img 
+                src="/images/about-showcase.jpg" 
+                alt="Bespoke embroidery" 
+                className="max-h-[550px] w-auto object-contain mx-auto rounded-lg"
+              />
+            </div>
           </ScrollAnimate>
         </div>
       </section>
