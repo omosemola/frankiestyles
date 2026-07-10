@@ -180,20 +180,21 @@ export const DUMMY_PRODUCTS: Product[] = [
   },
   {
     id: "7",
-    name: "Classic White Cord Lace Kaftan",
+    name: "Prestige Purple Dry Lace Kaftan Set",
     price: 390000,
     category: "Kaftans",
-    image: "/images/product-6-white.png",
-    description: "A pristine all-white Kaftan set crafted from premium cord lace. Featuring an intricate eyelet patterned structure, structured shoulders, relaxed fit, wide sleeves, and matching trousers for a majestic traditional entry.",
+    image: "/images/product-7-front.png",
+    description: "Make a statement in this prestige purple dry lace Kaftan. Artfully tailored from premium dry lace fabric, it features a structured semi-translucent layout, matching buba under-shirt, and tailored trousers.",
     details: [
-      "Premium hand-cut cord lace fabric",
-      "Tailored comfort-fit Sokoto trousers included",
-      "Intricate eyelet pattern detailing",
-      "Mandarin collar with matching buttons",
+      "Two-piece luxury dry lace Kaftan set",
+      "Semi-translucent premium dry lace fabric",
+      "Round neck collar with front button layout",
+      "Includes tailored trousers and purple under-lining fabric",
       "Dry clean only"
     ],
     images: [
-      "/images/product-6-white.png"
+      "/images/product-7-front.png",
+      "/images/product-7-back.png"
     ],
     sizes: [
       "M (Chest 38-40\")",
