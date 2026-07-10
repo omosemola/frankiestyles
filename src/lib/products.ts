@@ -288,20 +288,21 @@ export const DUMMY_PRODUCTS: Product[] = [
   },
   {
     id: "11",
-    name: "Wine Red Agbada Set",
-    price: 340000,
-    category: "Agbadas",
-    image: "https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?q=80&w=2071&auto=format&fit=crop",
-    description: "An opulent Wine Red Agbada featuring hand-drawn custom floral embroidery. Tailored from a premium structural damask that holds its majestic shape perfectly.",
+    name: "Cream Prestige Jalabiya Set",
+    price: 250000,
+    category: "Kaftans",
+    image: "/images/product-11-front.png",
+    description: "Experience majestic elegance in this cream Jalabiya set. Masterfully tailored from premium flowy fabric, featuring rich V-shaped chest embroidery and standard tassels. Includes shemagh headscarf.",
     details: [
-      "Bespoke structural damask base",
-      "Artisan-crafted Wine Red tone-on-tone embroidery",
-      "Complete 3-piece attire set",
-      "Traditional wide-sleeve design",
-      "Professional dry clean only"
+      "Premium full-length Jalabiya robe",
+      "Soft, breathable flowy fabric",
+      "V-shaped detailed chest embroidery",
+      "Includes shemagh headscarf and tassels",
+      "Dry clean only"
     ],
     images: [
-      "https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?q=80&w=2071&auto=format&fit=crop"
+      "/images/product-11-front.png",
+      "/images/product-11-back.png"
     ],
     sizes: [
       "M (Chest 38-40\")",
