@@ -86,11 +86,11 @@ export default function AboutPage() {
       <section className="bg-[#f8f8f8] overflow-hidden">
         <div className="grid grid-cols-1 lg:grid-cols-2">
           {/* Image */}
-          <ScrollAnimate direction="left" className="aspect-[4/3] lg:aspect-auto min-h-[500px] relative">
+          <ScrollAnimate direction="left" className="aspect-[4/3] lg:aspect-auto min-h-[500px] relative bg-white flex items-center justify-center overflow-hidden">
             <img 
               src="/images/about-showcase.jpg" 
               alt="Bespoke embroidery" 
-              className="absolute inset-0 w-full h-full object-cover"
+              className="absolute inset-0 w-full h-full object-contain p-4"
             />
           </ScrollAnimate>
           {/* Text */}
