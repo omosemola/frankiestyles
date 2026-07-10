@@ -23,7 +23,7 @@ export function SignatureStyles() {
             className="object-cover w-full h-full transition-transform duration-[2000ms] group-hover:scale-105"
             alt="Agbadas Category"
           />
-          <div className="absolute inset-0 bg-[#0a0a0a]/50 transition-colors duration-1000 group-hover:bg-[#0a0a0a]/70 flex items-center justify-center">
+          <div className="absolute inset-0 bg-[#0a0a0a]/70 transition-colors duration-1000 group-hover:bg-[#0a0a0a]/90 flex items-center justify-center">
             <h3 className="text-2xl md:text-3xl font-bold text-white uppercase tracking-widest font-bodoni">Agbadas</h3>
           </div>
         </Link>
@@ -46,7 +46,7 @@ export function SignatureStyles() {
             className="object-cover w-full h-full transition-transform duration-[2000ms] group-hover:scale-105"
             alt="Senator Wears Category"
           />
-          <div className="absolute inset-0 bg-[#0a0a0a]/50 transition-colors duration-1000 group-hover:bg-[#0a0a0a]/70 flex items-center justify-center">
+          <div className="absolute inset-0 bg-[#0a0a0a]/70 transition-colors duration-1000 group-hover:bg-[#0a0a0a]/90 flex items-center justify-center">
             <h3 className="text-2xl md:text-3xl font-bold text-white uppercase tracking-widest font-bodoni">Senator Wears</h3>
           </div>
         </Link>
