@@ -15,18 +15,20 @@ export function Footer() {
         <div>
           <h3 className="text-sm font-semibold tracking-wider uppercase mb-6">Quick Links</h3>
           <ul className="space-y-4 text-sm text-white/60">
-            {['Shop', 'Categories', 'About Us', 'Contact'].map(link => (
-              <li key={link}><Link href="#" className="hover:text-white transition-colors">{link}</Link></li>
-            ))}
+            <li><Link href="/shop" className="hover:text-white transition-colors">Shop</Link></li>
+            <li><Link href="/categories" className="hover:text-white transition-colors">Categories</Link></li>
+            <li><Link href="/about" className="hover:text-white transition-colors">About Us</Link></li>
+            <li><Link href="/contact" className="hover:text-white transition-colors">Contact</Link></li>
           </ul>
         </div>
         
         <div>
           <h3 className="text-sm font-semibold tracking-wider uppercase mb-6">Customer Care</h3>
           <ul className="space-y-4 text-sm text-white/60">
-            {['Shipping Policy', 'Refund Policy', 'FAQ', 'Terms & Conditions'].map(link => (
-              <li key={link}><Link href="#" className="hover:text-white transition-colors">{link}</Link></li>
-            ))}
+            <li><Link href="/policies?tab=shipping" className="hover:text-white transition-colors">Shipping Policy</Link></li>
+            <li><Link href="/policies?tab=refunds" className="hover:text-white transition-colors">Refund Policy</Link></li>
+            <li><Link href="/contact" className="hover:text-white transition-colors">FAQ</Link></li>
+            <li><Link href="/policies?tab=terms" className="hover:text-white transition-colors">Terms & Conditions</Link></li>
           </ul>
         </div>
 
@@ -43,8 +45,8 @@ export function Footer() {
       <div className="container mx-auto px-6 mt-20 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between text-xs text-white/40">
         <p>&copy; {new Date().getFullYear()} Frankiestyles. All rights reserved.</p>
         <div className="flex space-x-6 mt-4 md:mt-0">
-          <Link href="#" className="hover:text-white transition-colors">Privacy Policy</Link>
-          <Link href="#" className="hover:text-white transition-colors">Terms of Service</Link>
+          <Link href="/policies?tab=privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
+          <Link href="/policies?tab=terms" className="hover:text-white transition-colors">Terms of Service</Link>
         </div>
       </div>
     </footer>
