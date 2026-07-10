@@ -67,8 +67,9 @@ export default function CategoriesPage() {
           {CATEGORIES.map((cat, idx) => (
             <motion.div
               initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: idx * 0.1 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, amount: 0.1 }}
+              transition={{ duration: 0.8, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
               key={cat.name}
               className="relative aspect-[4/3] rounded-xl overflow-hidden group cursor-pointer smooth-shadow bg-white"
             >

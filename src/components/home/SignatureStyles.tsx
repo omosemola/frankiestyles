@@ -8,10 +8,10 @@ export function SignatureStyles() {
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 overflow-hidden py-2">
       {/* Left Card: Slide in from Left */}
       <motion.div
-        initial={{ opacity: 0, x: -60 }}
+        initial={{ opacity: 0, x: -30 }}
         whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: false, margin: "-80px" }}
-        transition={{ duration: 1.8, ease: [0.25, 1, 0.5, 1] }}
+        viewport={{ once: false, margin: "-40px" }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         className="w-full"
       >
         <Link 
@@ -31,10 +31,10 @@ export function SignatureStyles() {
 
       {/* Right Card: Slide in from Right */}
       <motion.div
-        initial={{ opacity: 0, x: 60 }}
+        initial={{ opacity: 0, x: 30 }}
         whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: false, margin: "-80px" }}
-        transition={{ duration: 1.8, ease: [0.25, 1, 0.5, 1] }}
+        viewport={{ once: false, margin: "-40px" }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         className="w-full"
       >
         <Link 

@@ -1,6 +1,7 @@
 "use client";
 import React from 'react';
 import { motion } from 'framer-motion';
+import { ScrollAnimate } from '@/components/ui/ScrollAnimate';
 
 export default function AboutPage() {
   const steps = [
@@ -67,57 +68,63 @@ export default function AboutPage() {
       </section>
 
       {/* Brand Philosophy Segment */}
-      <section className="py-32 bg-white text-[#0a0a0a]">
-        <div className="container mx-auto px-6 max-w-4xl text-center space-y-12">
-          <h2 className="text-3xl font-bold uppercase tracking-widest font-bodoni">The Frankie Styles Philosophy</h2>
-          <p className="text-lg md:text-xl text-gray-500 leading-relaxed font-light">
-            Founded with the singular purpose of dressing classy Nigerian men in elite, bespoke native wears, Frankie Styles combines time-honored traditional tailoring with clean, minimalist modern structures. 
-          </p>
-          <p className="text-base text-gray-500 leading-relaxed font-light">
-            We source only the finest fabrics globally—from breathable Italian linens and structured cashmere-wool blends to authentic Swiss brocades and textured Aso-Oke. Every robe, Senator suit, and Agbada is handcrafted in Lagos, capturing prestige, authority, and modern refinement.
-          </p>
-        </div>
+      <section className="py-32 bg-white text-[#0a0a0a] overflow-hidden">
+        <ScrollAnimate>
+          <div className="container mx-auto px-6 max-w-4xl text-center space-y-12">
+            <h2 className="text-3xl font-bold uppercase tracking-widest font-bodoni">The Frankie Styles Philosophy</h2>
+            <p className="text-lg md:text-xl text-gray-500 leading-relaxed font-light">
+              Founded with the singular purpose of dressing classy Nigerian men in elite, bespoke native wears, Frankie Styles combines time-honored traditional tailoring with clean, minimalist modern structures. 
+            </p>
+            <p className="text-base text-gray-500 leading-relaxed font-light">
+              We source only the finest fabrics globally—from breathable Italian linens and structured cashmere-wool blends to authentic Swiss brocades and textured Aso-Oke. Every robe, Senator suit, and Agbada is handcrafted in Lagos, capturing prestige, authority, and modern refinement.
+            </p>
+          </div>
+        </ScrollAnimate>
       </section>
 
       {/* Fabric Showcase (Split Panel) */}
-      <section className="bg-[#f8f8f8]">
+      <section className="bg-[#f8f8f8] overflow-hidden">
         <div className="grid grid-cols-1 lg:grid-cols-2">
           {/* Image */}
-          <div className="aspect-[4/3] lg:aspect-auto min-h-[500px] relative">
+          <ScrollAnimate direction="left" className="aspect-[4/3] lg:aspect-auto min-h-[500px] relative">
             <img 
               src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?q=80&w=2000&auto=format&fit=crop" 
               alt="Bespoke embroidery" 
               className="absolute inset-0 w-full h-full object-cover"
             />
-          </div>
+          </ScrollAnimate>
           {/* Text */}
-          <div className="p-12 md:p-24 flex flex-col justify-center space-y-8 bg-white">
+          <ScrollAnimate direction="right" className="p-12 md:p-24 flex flex-col justify-center space-y-8 bg-white h-full">
             <span className="text-xs font-bold uppercase tracking-widest text-gray-400">Master Craftsmanship</span>
             <h3 className="text-3xl font-bold uppercase tracking-wider font-bodoni">Intricate Hand Embroidery</h3>
             <p className="text-gray-500 font-light leading-relaxed">
               True luxury lies in the details. Our tailors spend hours hand-stitching geometric patterns and organic line-work across necklines, cuffs, and pocket fronts. We use premium thread-work that does not fade, ensuring your native attire remains a timeless heirloom.
             </p>
             <div className="w-12 h-0.5 bg-[#0a0a0a]" />
-          </div>
+          </ScrollAnimate>
         </div>
       </section>
 
       {/* Bespoke Measurement Steps */}
-      <section className="py-32 bg-white text-[#0a0a0a]">
+      <section className="py-32 bg-white text-[#0a0a0a] overflow-hidden">
         <div className="container mx-auto px-6">
-          <div className="text-center mb-24">
-            <h2 className="text-3xl font-bold uppercase tracking-widest font-bodoni mb-4">THE BESPOKE EXPERIENCE</h2>
-            <p className="text-sm text-gray-500 uppercase tracking-widest font-semibold">How we craft your perfect fit</p>
-            <div className="w-12 h-0.5 bg-[#0a0a0a] mx-auto mt-6" />
-          </div>
+          <ScrollAnimate>
+            <div className="text-center mb-24">
+              <h2 className="text-3xl font-bold uppercase tracking-widest font-bodoni mb-4">THE BESPOKE EXPERIENCE</h2>
+              <p className="text-sm text-gray-500 uppercase tracking-widest font-semibold">How we craft your perfect fit</p>
+              <div className="w-12 h-0.5 bg-[#0a0a0a] mx-auto mt-6" />
+            </div>
+          </ScrollAnimate>
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12 max-w-6xl mx-auto">
-            {steps.map((step) => (
-              <div key={step.num} className="space-y-4">
-                <span className="text-4xl font-extrabold text-gray-200 block font-bodoni">{step.num}</span>
-                <h3 className="text-lg font-bold uppercase tracking-wider">{step.title}</h3>
-                <p className="text-sm text-gray-500 leading-relaxed font-light">{step.description}</p>
-              </div>
+            {steps.map((step, idx) => (
+              <ScrollAnimate key={step.num} delay={idx * 0.1} amount={0.05}>
+                <div className="space-y-4 text-left">
+                  <span className="text-4xl font-extrabold text-gray-200 block font-bodoni">{step.num}</span>
+                  <h3 className="text-lg font-bold uppercase tracking-wider">{step.title}</h3>
+                  <p className="text-sm text-gray-500 leading-relaxed font-light">{step.description}</p>
+                </div>
+              </ScrollAnimate>
             ))}
           </div>
         </div>

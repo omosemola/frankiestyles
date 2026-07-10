@@ -3,6 +3,7 @@ import { BannerSection } from "@/components/home/BannerSection";
 import { ProductCard } from "@/components/shop/ProductCard";
 import { DUMMY_PRODUCTS } from "@/lib/products";
 import { SignatureStyles } from "@/components/home/SignatureStyles";
+import { ScrollAnimate } from "@/components/ui/ScrollAnimate";
 import Link from 'next/link';
 
 export default function Home() {
@@ -11,24 +12,30 @@ export default function Home() {
       <HeroSection />
       
       {/* Featured Categories */}
-      <section className="py-24 bg-white">
+      <section className="py-24 bg-white overflow-hidden">
         <div className="container mx-auto px-6 text-center">
-          <h2 className="text-3xl font-bold tracking-widest uppercase mb-4 text-[#0a0a0a]">Signature Styles</h2>
-          <div className="w-12 h-0.5 bg-[#0a0a0a] mx-auto mb-16"></div>
+          <ScrollAnimate direction="up">
+            <h2 className="text-3xl font-bold tracking-widest uppercase mb-4 text-[#0a0a0a]">Signature Styles</h2>
+            <div className="w-12 h-0.5 bg-[#0a0a0a] mx-auto mb-16"></div>
+          </ScrollAnimate>
           
           <SignatureStyles />
         </div>
       </section>
 
       {/* Featured Products Grid */}
-      <section className="py-24 bg-white border-t border-gray-100">
+      <section className="py-24 bg-white border-t border-gray-100 overflow-hidden">
         <div className="container mx-auto px-6 text-center">
-          <h2 className="text-3xl font-bold tracking-widest uppercase mb-4 text-[#0a0a0a]">Featured Products</h2>
-          <div className="w-12 h-0.5 bg-[#0a0a0a] mx-auto mb-16"></div>
+          <ScrollAnimate direction="up">
+            <h2 className="text-3xl font-bold tracking-widest uppercase mb-4 text-[#0a0a0a]">Featured Products</h2>
+            <div className="w-12 h-0.5 bg-[#0a0a0a] mx-auto mb-16"></div>
+          </ScrollAnimate>
           
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
-            {DUMMY_PRODUCTS.slice(4, 8).map(product => (
-              <ProductCard key={product.id} product={product} />
+            {DUMMY_PRODUCTS.slice(4, 8).map((product, idx) => (
+              <ScrollAnimate key={product.id} delay={idx * 0.1} amount={0.05}>
+                <ProductCard product={product} />
+              </ScrollAnimate>
             ))}
           </div>
         </div>
@@ -44,19 +51,23 @@ export default function Home() {
       />
 
       {/* New Arrivals (Horizontal Swipe on Mobile) */}
-      <section className="py-24 bg-[#f8f8f8]">
+      <section className="py-24 bg-[#f8f8f8] overflow-hidden">
         <div className="container mx-auto px-6 text-center">
-          <h2 className="text-3xl font-bold tracking-widest uppercase mb-4 text-[#0a0a0a]">New Arrivals</h2>
-          <div className="w-12 h-0.5 bg-[#0a0a0a] mx-auto mb-16"></div>
+          <ScrollAnimate direction="up">
+            <h2 className="text-3xl font-bold tracking-widest uppercase mb-4 text-[#0a0a0a]">New Arrivals</h2>
+            <div className="w-12 h-0.5 bg-[#0a0a0a] mx-auto mb-16"></div>
+          </ScrollAnimate>
           
           {/* Horizontal scroll container for mobile, standard grid for desktop */}
-          <div className="flex overflow-x-auto pb-8 -mx-6 px-6 md:grid md:grid-cols-4 md:overflow-visible md:pb-0 md:mx-0 md:px-0 gap-6 snap-x snap-mandatory hide-scrollbar">
-            {DUMMY_PRODUCTS.map(product => (
-              <div key={product.id} className="w-[75vw] sm:w-[45vw] md:w-auto flex-none snap-center">
-                <ProductCard product={product} />
-              </div>
-            ))}
-          </div>
+          <ScrollAnimate direction="up" amount={0.05}>
+            <div className="flex overflow-x-auto pb-8 -mx-6 px-6 md:grid md:grid-cols-4 md:overflow-visible md:pb-0 md:mx-0 md:px-0 gap-6 snap-x snap-mandatory hide-scrollbar">
+              {DUMMY_PRODUCTS.map(product => (
+                <div key={product.id} className="w-[75vw] sm:w-[45vw] md:w-auto flex-none snap-center">
+                  <ProductCard product={product} />
+                </div>
+              ))}
+            </div>
+          </ScrollAnimate>
         </div>
       </section>
 

@@ -1,5 +1,7 @@
+"use client";
 import React from 'react';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 
 interface BannerSectionProps {
   title: string;
@@ -22,7 +24,13 @@ export function BannerSection({ title, description, image, buttonText, align = '
         />
       </div>
       <div className={`relative z-10 container mx-auto px-6 flex ${align === 'left' ? 'justify-start text-left' : align === 'right' ? 'justify-end text-right' : 'justify-center text-center'} text-white`}>
-        <div className="max-w-xl space-y-6 bg-[#0a0a0a]/20 backdrop-blur-sm p-10 rounded-xl border border-white/10">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.15 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="max-w-xl space-y-6 bg-[#0a0a0a]/20 backdrop-blur-sm p-10 rounded-xl border border-white/10"
+        >
           <h2 className="text-3xl md:text-5xl font-bold tracking-wider uppercase">{title}</h2>
           <p className="text-white/80 leading-relaxed font-light">{description}</p>
           <Link 
@@ -31,7 +39,7 @@ export function BannerSection({ title, description, image, buttonText, align = '
           >
             {buttonText}
           </Link>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
