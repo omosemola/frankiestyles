@@ -34,9 +34,9 @@ export default function AboutPage() {
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://images.unsplash.com/photo-1506634572416-48cdfe530110?q=80&w=1970&auto=format&fit=crop" 
+            src="/images/about-banner.jpg" 
             alt="About Frankie Styles" 
-            className="w-full h-full object-cover filter brightness-[0.35]"
+            className="w-full h-full object-cover filter brightness-[0.25]"
           />
         </div>
 
