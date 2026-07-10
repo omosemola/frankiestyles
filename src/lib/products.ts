@@ -209,20 +209,21 @@ export const DUMMY_PRODUCTS: Product[] = [
   },
   {
     id: "8",
-    name: "Midnight Black Cord Lace Kaftan",
-    price: 390000,
-    category: "Kaftans",
-    image: "/images/product-6-black.png",
-    description: "A prestigious midnight black Kaftan set crafted from premium cord lace. Featuring an intricate eyelet patterned structure, structured shoulders, relaxed fit, wide sleeves, and matching trousers for a majestic traditional entry.",
+    name: "Grey Premium Linen Short Set",
+    price: 120000,
+    category: "Senator Wears",
+    image: "/images/product-8-front.png",
+    description: "Experience relaxed luxury in this premium grey linen two-piece short set. Expertly crafted from lightweight, breathable pure linen, featuring a short-sleeve button-down shirt and matching tailored shorts.",
     details: [
-      "Premium hand-cut cord lace fabric",
-      "Tailored comfort-fit Sokoto trousers included",
-      "Intricate eyelet pattern detailing",
-      "Mandarin collar with matching buttons",
-      "Dry clean only"
+      "Two-piece casual linen set",
+      "100% premium lightweight breathable linen",
+      "Short-sleeve button-up shirt with classic collar",
+      "Tailored shorts with comfortable drawstring waist",
+      "Machine wash cold or dry clean"
     ],
     images: [
-      "/images/product-6-black.png"
+      "/images/product-8-front.png",
+      "/images/product-8-back.png"
     ],
     sizes: [
       "M (Chest 38-40\")",
