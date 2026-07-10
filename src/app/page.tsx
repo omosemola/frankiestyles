@@ -45,7 +45,7 @@ export default function Home() {
       <BannerSection 
         title="The Royal Collection"
         description="Experience native tailoring at its absolute peak. Impeccable cuts, premium fabrics, and handcrafted embroidery designed for the modern gentleman."
-        image="https://images.unsplash.com/photo-1506634572416-48cdfe530110?q=80&w=1970&auto=format&fit=crop"
+        image="/images/royal-banner.jpg"
         buttonText="Discover Now"
         align="left"
       />
