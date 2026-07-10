@@ -44,22 +44,21 @@ export const DUMMY_PRODUCTS: Product[] = [
   },
   {
     id: "2",
-    name: "Embroidered Luxury Kaftan",
+    name: "Olive Textured Luxury Kaftan",
     price: 220000,
     category: "Kaftans",
-    image: "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?q=80&w=2000&auto=format&fit=crop",
-    description: "A show-stopping, luxury Kaftan boasting intricate hand-stitched Nigerian embroidery along the collar and chest. Cut from breathable, premium cotton-linen to keep you cool and classy under any climate.",
+    image: "/images/product-2-front.png",
+    description: "An exquisite olive-mustard yellow Kaftan suit tailored from textured premium fabric. Features a clean round neckline, structured mid-length drape, and matching trousers for a modern, sophisticated style.",
     details: [
-      "Lightweight, breathable linen-cotton blend",
-      "Signature hand-embroidered neckline",
-      "Side slits for easy movement",
-      "Relaxed yet structured silhouette",
-      "Hand wash or dry clean recommended"
+      "Two-piece bespoke Kaftan set",
+      "Textured premium cotton-blend fabric",
+      "Classic round neckline with hidden placket",
+      "Tailored trousers included",
+      "Dry clean or delicate hand wash"
     ],
     images: [
-      "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?q=80&w=2000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1593032465175-481ac7f401a0?q=80&w=2080&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1506634572416-48cdfe530110?q=80&w=1970&auto=format&fit=crop"
+      "/images/product-2-front.png",
+      "/images/product-2-back.png"
     ],
     sizes: [
       "M (Chest 38-40\")",
