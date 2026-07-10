@@ -234,21 +234,21 @@ export const DUMMY_PRODUCTS: Product[] = [
   },
   {
     id: "9",
-    name: "Emerald Green Senator",
-    price: 160000,
-    category: "Senator Wears",
-    image: "https://images.unsplash.com/photo-1505022610485-0249ba5b3675?q=80&w=2070&auto=format&fit=crop",
-    isNew: true,
-    description: "Stand out in a rich Emerald Green Senator wear. Masterfully tailored with asymmetrical chest piping and a modern Mandarin collar. Constructed from high-end Italian crepe.",
+    name: "Prestige White Dry Lace Kaftan Set",
+    price: 390000,
+    category: "Kaftans",
+    image: "/images/product-9-front.png",
+    description: "Make a statement in this prestige white dry lace Kaftan. Artfully tailored from premium dry lace fabric, it features a structured semi-translucent layout, matching buba under-shirt, and tailored trousers.",
     details: [
-      "Breathable Italian crepe premium fabric",
-      "Distinctive asymmetrical chest detailing",
-      " Mandarin collar with hidden snaps",
-      "Tapered Sokoto trousers included",
-      "Hand wash or dry clean"
+      "Two-piece luxury dry lace Kaftan set",
+      "Semi-translucent premium dry lace fabric",
+      "Round neck collar with front button layout",
+      "Includes tailored trousers and white under-lining fabric",
+      "Dry clean only"
     ],
     images: [
-      "https://images.unsplash.com/photo-1505022610485-0249ba5b3675?q=80&w=2070&auto=format&fit=crop"
+      "/images/product-9-front.png",
+      "/images/product-9-back.png"
     ],
     sizes: [
       "M (Chest 38-40\")",
