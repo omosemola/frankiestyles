@@ -72,23 +72,22 @@ export const DUMMY_PRODUCTS: Product[] = [
   },
   {
     id: "3",
-    name: "Royal Agbada Set",
+    name: "Sky Blue Prestige Senator",
     price: 350000,
     originalPrice: 400000,
-    category: "Agbadas",
-    image: "https://images.unsplash.com/photo-1617137968427-85924c800a22?q=80&w=1974&auto=format&fit=crop",
-    description: "Command attention in the ultimate symbol of Nigerian prestige. This 3-piece Royal Agbada features a heavily embroidered outer robe, a matching under-shirt (buba), and tailored trousers (sokoto). Designed for the modern VIP.",
+    category: "Senator Wears",
+    image: "/images/product-3-front.png",
+    description: "Elevate your wardrobe with this prestigious sky blue short-sleeve Senator suit. Features a custom hand-embroidered neckline, flared trousers, and premium structured fabric designed for a commanding presence.",
     details: [
-      "Complete 3-piece traditional attire",
-      "Heavy-duty premium Aso-Oke inspired fabric texture",
-      "Intricate, custom geometric embroidery",
-      "Tailored sokoto trousers included",
-      "Professional dry clean only"
+      "Two-piece premium Senator set",
+      "Soft, structured wool-blend fabric",
+      "Short-sleeve top with custom neckline embroidery",
+      "Includes flared, tailored trousers",
+      "Dry clean only"
     ],
     images: [
-      "https://images.unsplash.com/photo-1617137968427-85924c800a22?q=80&w=1974&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1506634572416-48cdfe530110?q=80&w=1970&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1620247656911-c917244a2df3?q=80&w=1974&auto=format&fit=crop"
+      "/images/product-3-front.png",
+      "/images/product-3-back.png"
     ],
     sizes: [
       "M (Chest 38-40\")",
