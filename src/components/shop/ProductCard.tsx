@@ -17,12 +17,12 @@ export function ProductCard({ product, className }: ProductCardProps) {
       {/* Image Container wrapped in Link to enable image clicks on mobile */}
       <Link 
         href={`/product/${product.id}`} 
-        className="relative aspect-[3/4] bg-[#f8f8f8] rounded-xl overflow-hidden mb-4 smooth-shadow block"
+        className="relative aspect-[3/4] bg-white border border-gray-150 rounded-xl overflow-hidden mb-4 smooth-shadow block"
       >
         <img 
           src={product.image} 
           alt={product.name} 
-          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+          className="w-full h-full object-contain p-2 transition-transform duration-700 group-hover:scale-105"
         />
         
         {/* Badges */}

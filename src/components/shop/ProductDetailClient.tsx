@@ -67,22 +67,22 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
         <div className="lg:col-span-7 flex flex-col-reverse md:flex-row gap-4">
           {/* Thumbnails */}
           <div className="flex md:flex-col gap-4 overflow-x-auto md:overflow-visible">
-            {product.images.map((img, idx) => (
+             {product.images.map((img, idx) => (
               <button
                 key={idx}
                 onClick={() => setSelectedImage(idx)}
                 className={cn(
-                  "w-20 aspect-[3/4] bg-gray-50 rounded-lg overflow-hidden border transition-all flex-shrink-0",
+                  "w-20 aspect-[3/4] bg-white rounded-lg overflow-hidden border transition-all flex-shrink-0",
                   selectedImage === idx ? "border-[#0a0a0a] ring-1 ring-[#0a0a0a]" : "border-transparent opacity-60 hover:opacity-100"
                 )}
               >
-                <img src={img} alt={`${product.name} thumbnail ${idx + 1}`} className="w-full h-full object-cover" />
+                <img src={img} alt={`${product.name} thumbnail ${idx + 1}`} className="w-full h-full object-contain p-1" />
               </button>
             ))}
           </div>
 
           {/* Featured Image */}
-          <div className="flex-grow aspect-[3/4] bg-gray-50 rounded-xl overflow-hidden smooth-shadow relative">
+          <div className="flex-grow aspect-[3/4] bg-white rounded-xl overflow-hidden smooth-shadow relative border border-gray-100">
             <motion.img
               key={selectedImage}
               initial={{ opacity: 0 }}
@@ -90,7 +90,7 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
               transition={{ duration: 0.4 }}
               src={product.images[selectedImage]}
               alt={product.name}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-contain p-2"
             />
           </div>
         </div>
