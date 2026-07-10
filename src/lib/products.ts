@@ -99,22 +99,21 @@ export const DUMMY_PRODUCTS: Product[] = [
   },
   {
     id: "4",
-    name: "Minimalist Two-Piece",
-    price: 120000,
-    category: "Native Wears",
-    image: "https://images.unsplash.com/photo-1593032465175-481ac7f401a0?q=80&w=2080&auto=format&fit=crop",
-    description: "An understated, minimalist two-piece native wear designed for comfort and everyday versatility. Styled with a hidden button layout and dynamic side vents.",
+    name: "Prestige Black Lace Kaftan Set",
+    price: 390000,
+    category: "Kaftans",
+    image: "/images/product-4-front.png",
+    description: "Make a statement in this prestige black lace Kaftan. Artfully tailored from premium eyelet cord lace, it features a semi-translucent structure, matching buba under-shirt, and tailored trousers.",
     details: [
-      "Premium poly-viscose comfort blend",
-      "Slightly tailored cut for sharp framing",
-      "Hidden button placket",
-      "Includes slim-fit trousers",
-      "Machine washable on delicate cycle"
+      "Two-piece luxury cord lace Kaftan set",
+      "Semi-translucent eyelet cord lace premium fabric",
+      "Round neck collar with front button layout",
+      "Includes tailored trousers and black under-lining fabric",
+      "Dry clean only"
     ],
     images: [
-      "https://images.unsplash.com/photo-1593032465175-481ac7f401a0?q=80&w=2080&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1620247656911-c917244a2df3?q=80&w=1974&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?q=80&w=2000&auto=format&fit=crop"
+      "/images/product-4-front.png",
+      "/images/product-4-back.png"
     ],
     sizes: [
       "M (Chest 38-40\")",
