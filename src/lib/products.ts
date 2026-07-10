@@ -15,23 +15,23 @@ export interface Product {
 export const DUMMY_PRODUCTS: Product[] = [
   {
     id: "1",
-    name: "Classic Senator Suit",
-    price: 150000,
-    category: "Senator Wears",
-    image: "https://images.unsplash.com/photo-1620247656911-c917244a2df3?q=80&w=1974&auto=format&fit=crop",
+    name: "Emerald Prestige Agbada Set",
+    price: 280000,
+    category: "Agbadas",
+    image: "/images/product-1-front.png",
     isNew: true,
-    description: "An elegant, bespoke Senator suit crafted from premium cashmere-wool blend. Features a clean, sharp cut, hidden placket, and minimal stitching for a sleek, modern look. Perfect for corporate events, weddings, or formal gatherings.",
+    description: "Make a statement in this luxury emerald green Agbada set. Handcrafted from premium structured cotton, featuring custom ivory embroidery, tailored trousers (sokoto), and matching under-shirt. Perfect for prestige celebrations.",
     details: [
-      "Bespoke tailoring, true to size",
-      "Cashmere-wool blend premium fabric",
-      "Includes structured trousers with adjustable waist",
-      "Minimalist chest embroidery detailing",
+      "Complete 3-piece traditional Agbada set",
+      "Premium structured cotton-linen blend fabric",
+      "Ivory geometric embroidery detailing",
+      "Tailored trousers and matching fila cap included",
       "Dry clean only"
     ],
     images: [
-      "https://images.unsplash.com/photo-1620247656911-c917244a2df3?q=80&w=1974&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1617137968427-85924c800a22?q=80&w=1974&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?q=80&w=2000&auto=format&fit=crop"
+      "/images/product-1-front.png",
+      "/images/product-1-back.png",
+      "/images/product-1-detail.png"
     ],
     sizes: [
       "M (Chest 38-40\")",
