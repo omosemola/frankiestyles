@@ -22,14 +22,14 @@ const CATEGORIES: CategoryCard[] = [
   {
     name: "Senator Wears",
     count: 5,
-    image: "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?q=80&w=2000&auto=format&fit=crop",
+    image: "/images/senator-banner.jpg",
     href: "/shop?category=Senator+Wears",
     description: "Sharp, bespoke two-piece suits conveying corporate elegance and traditional values."
   },
   {
     name: "Agbadas",
     count: 6,
-    image: "https://images.unsplash.com/photo-1506634572416-48cdfe530110?q=80&w=1970&auto=format&fit=crop",
+    image: "/images/kaftans-banner.jpg",
     href: "/shop?category=Agbadas",
     description: "Grand 3-piece traditional robes reserved for ceremonies and royal entries."
   },
