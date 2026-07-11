@@ -48,7 +48,7 @@ export function Navbar() {
               : "bg-transparent text-[#0a0a0a]"
         )}
       >
-        <div className="container mx-auto px-6 py-6 flex items-center justify-between">
+        <div className="max-w-[1700px] mx-auto px-6 md:px-12 py-6 flex items-center justify-between">
           <Link href="/" className="flex items-center">
             {/* Logo scales up and switches color based on scroll */}
             <img 
