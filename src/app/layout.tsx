@@ -4,7 +4,6 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { CartDrawer } from "@/components/shop/CartDrawer";
 import { WishlistDrawer } from "@/components/shop/WishlistDrawer";
-import { Toast } from "@/components/ui/Toast";
 import "./globals.css";
 
 const manrope = Manrope({
@@ -70,7 +69,6 @@ export default function RootLayout({
         </main>
         <CartDrawer />
         <WishlistDrawer />
-        <Toast />
         <Footer />
       </body>
     </html>
