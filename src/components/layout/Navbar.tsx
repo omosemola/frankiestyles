@@ -43,34 +43,34 @@ export function Navbar() {
       <header
         className={cn(
           "fixed top-0 left-0 right-0 z-50 transition-all duration-[600ms] ease-in-out",
-          isDarkTheme 
-            ? "bg-transparent text-white" 
+          isDarkTheme
+            ? "bg-transparent text-white"
             : (mounted && scrolled)
-              ? "bg-white/90 backdrop-blur-md text-[#0a0a0a] border-b border-gray-100 shadow-sm" 
+              ? "bg-white/90 backdrop-blur-md text-[#0a0a0a] border-b border-gray-100 shadow-sm"
               : "bg-transparent text-[#0a0a0a]"
         )}
       >
         <div className="w-full relative">
           {/* Container for navigation items and right toolbar icons */}
-          <div className="container mx-auto px-6 py-6 md:py-0 md:h-28 flex items-center justify-between relative">
+          <div className="container mx-auto pl-3 pr-6 py-6 md:py-0 md:h-28 flex items-center justify-between relative">
             {/* Logo: In normal flow on mobile, absolute positioned on desktop */}
-            <div className="md:absolute md:left-8 top-1/2 md:-translate-y-1/2 flex items-center z-10">
+            <div className="md:absolute md:left-3 top-1/2 md:-translate-y-1/2 flex items-center z-10">
               <Link href="/" className="flex items-center">
                 {/* Logo scales up and switches color based on scroll */}
-                <img 
-                  src="/images/logo.png" 
-                  alt="Frankie Styles Logo" 
+                <img
+                  src="/images/logo.png"
+                  alt="Frankie Styles Logo"
                   className={cn(
                     "h-28 w-auto object-contain transition-all duration-[1000ms]",
                     isDarkTheme ? "invert brightness-0" : ""
-                  )} 
+                  )}
                 />
               </Link>
             </div>
 
             {/* Left side empty spacer (balances the layout for centering the nav menu on desktop) */}
             <div className="w-32 hidden md:block flex-shrink-0" />
-            
+
             <nav className="hidden md:flex items-center space-x-8">
               {navLinks.map((item) => (
                 <Link key={item.name} href={item.href} className="text-sm font-semibold hover:opacity-70 transition-opacity tracking-wide uppercase">
@@ -78,10 +78,10 @@ export function Navbar() {
                 </Link>
               ))}
             </nav>
-            
+
             <div className="flex items-center space-x-6 z-10">
-              <button 
-                aria-label="Wishlist" 
+              <button
+                aria-label="Wishlist"
                 onClick={() => setWishlistOpen(true)}
                 className="hover:opacity-70 transition-opacity relative"
               >
@@ -95,8 +95,8 @@ export function Navbar() {
                   </span>
                 )}
               </button>
-              <button 
-                aria-label="Cart" 
+              <button
+                aria-label="Cart"
                 onClick={() => setCartOpen(true)}
                 className="hover:opacity-70 transition-opacity relative"
               >
@@ -110,8 +110,8 @@ export function Navbar() {
                   </span>
                 )}
               </button>
-              <button 
-                aria-label="Menu" 
+              <button
+                aria-label="Menu"
                 onClick={() => setMobileMenuOpen(true)}
                 className="md:hidden hover:opacity-70 transition-opacity"
               >
@@ -135,13 +135,13 @@ export function Navbar() {
             {/* Mobile Menu Header */}
             <div className="flex justify-between items-center h-20">
               <Link href="/" onClick={() => setMobileMenuOpen(false)}>
-                <img 
-                  src="/images/logo.png" 
-                  alt="Frankie Styles Logo" 
-                  className="h-28 w-auto object-contain invert brightness-0" 
+                <img
+                  src="/images/logo.png"
+                  alt="Frankie Styles Logo"
+                  className="h-28 w-auto object-contain invert brightness-0"
                 />
               </Link>
-              <button 
+              <button
                 onClick={() => setMobileMenuOpen(false)}
                 className="p-2 hover:bg-white/10 rounded-full transition-colors"
                 aria-label="Close menu"
@@ -159,8 +159,8 @@ export function Navbar() {
                   transition={{ delay: idx * 0.05 + 0.1 }}
                   key={item.name}
                 >
-                  <Link 
-                    href={item.href} 
+                  <Link
+                    href={item.href}
                     onClick={() => setMobileMenuOpen(false)}
                     className="text-3xl font-bold tracking-widest uppercase hover:text-gray-400 transition-colors"
                   >
