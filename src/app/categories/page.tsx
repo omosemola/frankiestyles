@@ -35,6 +35,12 @@ const CATEGORIES: CategoryCard[] = [
     image: "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?q=80&w=2000&auto=format&fit=crop",
     href: "/shop?category=Accessories",
     description: "Hand-crafted caps and traditional items to complete your majestic outfit."
+  },
+  {
+    name: "IGBO",
+    image: "/images/product-22-front.png",
+    href: "/shop?category=IGBO",
+    description: "Traditional Isiagu heritage garments celebrating Igbo cultural royalty and prestige."
   }
 ];
 

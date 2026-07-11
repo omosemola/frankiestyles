@@ -542,5 +542,33 @@ export const DUMMY_PRODUCTS: Product[] = [
       "XXXL (Chest 50-52\")",
       "Custom Measure"
     ]
+  },
+  {
+    id: "22",
+    name: "Luxury Isiagu Deer Motif Set",
+    price: 220000,
+    category: "IGBO",
+    image: "/images/product-22-front.png",
+    isNew: true,
+    description: "Honor heritage with this exceptional Ivory and Red Isiagu set. Designed with a custom deer motif print, matching trousers, and a traditional red chieftaincy cap with an authentic feather. Absolute prestige for traditional ceremonies.",
+    details: [
+      "Complete traditional Igbo Isiagu set",
+      "Premium soft-brushed heritage cotton fabric",
+      "Vibrant custom deer-head pattern print",
+      "Includes dark brown trousers and red chieftaincy cap with feather",
+      "Dry clean only"
+    ],
+    images: [
+      "/images/product-22-front.png",
+      "/images/product-22-back.png"
+    ],
+    sizes: [
+      "M (Chest 38-40\")",
+      "L (Chest 41-43\")",
+      "XL (Chest 44-46\")",
+      "XXL (Chest 47-49\")",
+      "XXXL (Chest 50-52\")",
+      "Custom Measure"
+    ]
   }
 ];
