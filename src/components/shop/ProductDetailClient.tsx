@@ -1,10 +1,11 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { ShoppingBag, ChevronRight, Ruler, ShieldCheck, Truck, RefreshCw } from 'lucide-react';
+import { ShoppingBag, ChevronRight, Ruler, ShieldCheck, Truck, RefreshCw, Heart } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Product } from '@/lib/products';
 import { useCartStore } from '@/store/useCartStore';
+import { useWishlistStore } from '@/store/useWishlistStore';
 import { Button } from '@/components/ui/Button';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
@@ -19,6 +20,14 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
   const [selectedSize, setSelectedSize] = useState(product.sizes[0]);
   const [isAdding, setIsAdding] = useState(false);
   const { addItem, setIsOpen } = useCartStore();
+  const { toggleItem, hasItem } = useWishlistStore();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const isWishlisted = mounted && hasItem(product.id);
 
   const handleAddToCart = () => {
     setIsAdding(true);
@@ -145,15 +154,29 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
               )}
             </div>
 
-            {/* Add to Cart CTA */}
-            <Button
-              onClick={handleAddToCart}
-              disabled={isAdding}
-              className="w-full py-5 text-sm uppercase tracking-widest font-semibold flex items-center justify-center gap-2.5 h-16 rounded-xl"
-            >
-              <ShoppingBag className="w-5 h-5" />
-              {isAdding ? "Adding to Bag..." : "Add to Bag"}
-            </Button>
+            {/* Add to Cart CTA & Wishlist */}
+            <div className="flex gap-4">
+              <Button
+                onClick={handleAddToCart}
+                disabled={isAdding}
+                className="flex-grow py-5 text-sm uppercase tracking-widest font-semibold flex items-center justify-center gap-2.5 h-16 rounded-xl"
+              >
+                <ShoppingBag className="w-5 h-5" />
+                {isAdding ? "Adding to Bag..." : "Add to Bag"}
+              </Button>
+              <button
+                onClick={() => toggleItem(product)}
+                className={cn(
+                  "w-16 h-16 rounded-xl border flex items-center justify-center transition-all duration-300 hover:scale-105 active:scale-95 flex-shrink-0 shadow-sm",
+                  isWishlisted
+                    ? "border-red-500 bg-red-50 text-red-500"
+                    : "border-gray-250 text-gray-500 hover:border-black hover:text-black"
+                )}
+                aria-label={isWishlisted ? "Remove from wishlist" : "Add to wishlist"}
+              >
+                <Heart className={cn("w-5 h-5", isWishlisted && "fill-red-500")} />
+              </button>
+            </div>
           </div>
 
           {/* Premium Badges */}

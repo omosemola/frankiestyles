@@ -3,9 +3,10 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Search, ShoppingBag, Heart, Menu, X } from 'lucide-react';
+import { ShoppingBag, Heart, Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useCartStore } from '@/store/useCartStore';
+import { useWishlistStore } from '@/store/useWishlistStore';
 
 export function Navbar() {
   const pathname = usePathname();
@@ -13,6 +14,7 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { setIsOpen: setCartOpen, getTotalItems } = useCartStore();
+  const { items: wishlistItems, setIsOpen: setWishlistOpen } = useWishlistStore();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -70,11 +72,20 @@ export function Navbar() {
           </nav>
           
           <div className="flex items-center space-x-6">
-            <button aria-label="Search" className="hover:opacity-70 transition-opacity">
-              <Search className="w-6 h-6" />
-            </button>
-            <button aria-label="Wishlist" className="hover:opacity-70 transition-opacity hidden sm:block">
+            <button 
+              aria-label="Wishlist" 
+              onClick={() => setWishlistOpen(true)}
+              className="hover:opacity-70 transition-opacity relative"
+            >
               <Heart className="w-6 h-6" />
+              {mounted && wishlistItems.length > 0 && (
+                <span className={cn(
+                  "absolute -top-1.5 -right-2 text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center transition-colors duration-500",
+                  !isDarkTheme ? "bg-[#0a0a0a] text-white" : "bg-white text-[#0a0a0a]"
+                )}>
+                  {wishlistItems.length}
+                </span>
+              )}
             </button>
             <button 
               aria-label="Cart" 

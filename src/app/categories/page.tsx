@@ -31,12 +31,6 @@ const CATEGORIES: CategoryCard[] = [
     description: "Grand 3-piece traditional robes reserved for ceremonies and royal entries."
   },
   {
-    name: "Accessories",
-    image: "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?q=80&w=2000&auto=format&fit=crop",
-    href: "/shop?category=Accessories",
-    description: "Hand-crafted caps and traditional items to complete your majestic outfit."
-  },
-  {
     name: "IGBO",
     image: "/images/product-22-front.png",
     href: "/shop?category=IGBO",

@@ -161,7 +161,7 @@ export default function ContactPage() {
                           <option>Bespoke Kaftan</option>
                           <option>Bespoke Senator Suit</option>
                           <option>Bespoke Agbada Set</option>
-                          <option>Accessories consultation</option>
+                          <option>IGBO traditional attire</option>
                         </select>
                       </div>
                     </div>

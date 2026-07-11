@@ -1,10 +1,11 @@
 "use client";
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Heart, Search, ShoppingBag } from 'lucide-react';
+import { Heart } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
 import { Product } from '@/lib/products';
+import { useWishlistStore } from '@/store/useWishlistStore';
 
 interface ProductCardProps {
   product: Product;
@@ -12,8 +13,23 @@ interface ProductCardProps {
 }
 
 export function ProductCard({ product, className }: ProductCardProps) {
+  const { toggleItem, hasItem } = useWishlistStore();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const isWishlisted = mounted && hasItem(product.id);
+
+  const handleWishlistClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    toggleItem(product);
+  };
+
   return (
-    <div className={cn("group flex flex-col", className)}>
+    <div className={cn("group flex flex-col relative", className)}>
       {/* Image Container wrapped in Link to enable image clicks on mobile */}
       <Link 
         href={`/product/${product.id}`} 
@@ -25,6 +41,20 @@ export function ProductCard({ product, className }: ProductCardProps) {
           className="w-full h-full object-contain p-2 transition-transform duration-700 group-hover:scale-105"
         />
         
+        {/* Floating Heart Button */}
+        <button
+          onClick={handleWishlistClick}
+          className="absolute top-3 right-3 z-10 w-8 h-8 rounded-full bg-white/95 border border-gray-100 flex items-center justify-center shadow-sm text-gray-400 hover:text-red-500 hover:scale-110 active:scale-95 transition-all duration-300 group/heart"
+          aria-label={isWishlisted ? "Remove from wishlist" : "Add to wishlist"}
+        >
+          <Heart 
+            className={cn(
+              "w-4 h-4 transition-transform duration-300", 
+              isWishlisted ? "text-red-500 fill-red-500 scale-105" : "group-hover/heart:scale-105"
+            )} 
+          />
+        </button>
+
         {/* Badges */}
         <div className="absolute top-3 left-3 flex flex-col gap-2">
           {product.isNew && (

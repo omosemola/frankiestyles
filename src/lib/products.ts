@@ -367,75 +367,7 @@ export const DUMMY_PRODUCTS: Product[] = [
       "Custom Measure"
     ]
   },
-  {
-    id: "14",
-    name: "Classic Fila Cap - Red",
-    price: 25000,
-    category: "Accessories",
-    image: "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?q=80&w=2000&auto=format&fit=crop",
-    description: "A premium, hand-woven cotton Fila cap (Aso-Oke style). Features soft, foldable sides that allow you to style it to your preference. An essential finish to any native wear.",
-    details: [
-      "100% hand-woven cotton Aso-Oke",
-      "Flexible, foldable structure",
-      "Traditional Nigerian cap styling",
-      "Spot clean only"
-    ],
-    images: [
-      "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?q=80&w=2000&auto=format&fit=crop"
-    ],
-    sizes: [
-      "M (22.5\" Head)",
-      "L (23.5\" Head)",
-      "XL (24.5\" Head)",
-      "Custom Measure"
-    ]
-  },
-  {
-    id: "15",
-    name: "Hand-Carved Walking Stick",
-    price: 75000,
-    category: "Accessories",
-    image: "https://images.unsplash.com/photo-1537151172096-74b34ba859ee?q=80&w=2000&auto=format&fit=crop",
-    description: "An elegant, hand-carved walking stick made of premium solid mahogany wood. Accented with a polished silver brass handle, perfect for completion of a regal Agbada look.",
-    details: [
-      "Bespoke solid Mahogany wood shaft",
-      "Polished solid brass handle",
-      "Durable rubber safety tip",
-      "Hand-polished wax finish"
-    ],
-    images: [
-      "https://images.unsplash.com/photo-1537151172096-74b34ba859ee?q=80&w=2000&auto=format&fit=crop"
-    ],
-    sizes: [
-      "M (34\" Length)",
-      "L (36\" Length)",
-      "XL (38\" Length)",
-      "Custom Measure"
-    ]
-  },
-  {
-    id: "16",
-    name: "Brocade Cap - Gold",
-    price: 30000,
-    category: "Accessories",
-    image: "https://images.unsplash.com/photo-1534215754734-18e55d13e346?q=80&w=2000&auto=format&fit=crop",
-    description: "Elevate your Senator or Kaftan look with this premium gold brocade Fila cap. Features high rigidity structure that stays upright.",
-    details: [
-      "Rigid luxury gold brocade fabric",
-      "Traditional crown structure",
-      "Inside lining for scalp comfort",
-      "Dry clean only"
-    ],
-    images: [
-      "https://images.unsplash.com/photo-1534215754734-18e55d13e346?q=80&w=2000&auto=format&fit=crop"
-    ],
-    sizes: [
-      "M (22.5\" Head)",
-      "L (23.5\" Head)",
-      "XL (24.5\" Head)",
-      "Custom Measure"
-    ]
-  },
+
 
   {
     id: "18",
@@ -492,29 +424,7 @@ export const DUMMY_PRODUCTS: Product[] = [
       "Custom Measure"
     ]
   },
-  {
-    id: "20",
-    name: "Classic Fila Cap - Blue",
-    price: 25000,
-    category: "Accessories",
-    image: "https://images.unsplash.com/photo-1576566588028-4147f3842f27?q=80&w=2000&auto=format&fit=crop",
-    description: "A premium Royal Blue hand-woven Fila cap in traditional Aso-Oke style. Completes any native wear look with distinction.",
-    details: [
-      "100% hand-woven cotton Aso-Oke",
-      "Flexible structure for custom folding shapes",
-      "Inside lining for longevity",
-      "Spot clean only"
-    ],
-    images: [
-      "https://images.unsplash.com/photo-1576566588028-4147f3842f27?q=80&w=2000&auto=format&fit=crop"
-    ],
-    sizes: [
-      "M (22.5\" Head)",
-      "L (23.5\" Head)",
-      "XL (24.5\" Head)",
-      "Custom Measure"
-    ]
-  },
+
   {
     id: "17",
     name: "Navy Blue Royal Agbada Set",

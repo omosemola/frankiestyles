@@ -3,6 +3,7 @@ import { Manrope, Poppins, Bodoni_Moda } from "next/font/google";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { CartDrawer } from "@/components/shop/CartDrawer";
+import { WishlistDrawer } from "@/components/shop/WishlistDrawer";
 import "./globals.css";
 
 const manrope = Manrope({
@@ -31,7 +32,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+  }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
@@ -42,6 +43,7 @@ export default function RootLayout({
           {children}
         </main>
         <CartDrawer />
+        <WishlistDrawer />
         <Footer />
       </body>
     </html>
