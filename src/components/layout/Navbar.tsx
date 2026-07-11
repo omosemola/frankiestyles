@@ -52,7 +52,7 @@ export function Navbar() {
       >
         <div className="w-full relative">
           {/* Container for navigation items and right toolbar icons */}
-          <div className="container mx-auto pl-0 pr-6 py-6 md:py-0 md:h-32 flex items-center justify-between relative">
+          <div className="container mx-auto pl-0 pr-6 py-3 flex items-center justify-between relative my-2">
             {/* Logo: In normal flow on mobile, absolute positioned on desktop */}
             <div className="md:absolute md:left-0 top-1/2 md:-translate-y-1/2 flex items-center z-10">
               <Link href="/" className="flex items-center">
@@ -61,7 +61,7 @@ export function Navbar() {
                   src="/images/logo.png"
                   alt="Frankie Styles Logo"
                   className={cn(
-                    "h-36 md:h-44 w-auto object-contain transition-all duration-[1000ms]",
+                    "h-28 md:h-44 w-auto object-contain transition-all duration-[1000ms]",
                     isDarkTheme ? "invert brightness-0" : ""
                   )}
                 />
@@ -133,12 +133,12 @@ export function Navbar() {
             className="fixed inset-0 z-50 bg-[#0a0a0a] text-white flex flex-col justify-between p-8"
           >
             {/* Mobile Menu Header */}
-            <div className="flex justify-between items-center h-24">
+            <div className="flex justify-between items-center h-20">
               <Link href="/" onClick={() => setMobileMenuOpen(false)}>
                 <img
                   src="/images/logo.png"
                   alt="Frankie Styles Logo"
-                  className="h-36 w-auto object-contain invert brightness-0"
+                  className="h-28 w-auto object-contain invert brightness-0"
                 />
               </Link>
               <button
