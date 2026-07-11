@@ -4,8 +4,9 @@ import { useRouter } from 'next/navigation';
 import { useCartStore } from '@/store/useCartStore';
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
-import { ShoppingBag, ArrowLeft, ShieldCheck, CreditCard } from 'lucide-react';
+import { ShoppingBag, ArrowLeft, ShieldCheck, CreditCard, MessageCircle } from 'lucide-react';
 import Link from 'next/link';
+import { cn } from '@/lib/utils';
 
 export function CheckoutForm() {
   const router = useRouter();
@@ -19,6 +20,7 @@ export function CheckoutForm() {
   const [address, setAddress] = useState('');
   const [city, setCity] = useState('');
   const [state, setState] = useState('Lagos');
+  const [paymentMethod, setPaymentMethod] = useState<'paystack' | 'whatsapp'>('paystack');
 
   useEffect(() => {
     setMounted(true);
@@ -45,13 +47,40 @@ export function CheckoutForm() {
     alert("Transaction cancelled. If you experienced any issue, please contact support.");
   };
 
-  const handleCheckoutSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!name || !email || !phone || !address || !city) {
-      alert("Please fill in all shipping details.");
-      return;
-    }
+  const handleWhatsAppCheckout = () => {
+    // Compile order message text
+    const orderItemsText = items
+      .map((item) => `• ${item.name} (Size: ${item.size}) x ${item.quantity} - ₦${(item.price * item.quantity).toLocaleString()}`)
+      .join('\n');
+      
+    const message = `*FRANKIE STYLES - NEW ORDER*
+---------------------------------------
+*Client Details:*
+• Name: ${name}
+• Email: ${email}
+• Phone: ${phone}
+• Delivery: ${address}, ${city}, ${state} State
 
+*Order Summary:*
+${orderItemsText}
+
+*Shipping:* ${shipping === 0 ? "FREE" : `₦${shipping.toLocaleString()}`}
+*Total Amount:* ₦${total.toLocaleString()}
+---------------------------------------
+Please confirm my order and contact me regarding fabric/measurement details. Thank you!`;
+
+    // Clear cart
+    clearCart();
+    
+    // Open WhatsApp in a new window/tab
+    const whatsappUrl = `https://wa.me/2348091234567?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+    
+    // Redirect to checkout success page
+    router.push(`/checkout/success?reference=WA-${Date.now()}`);
+  };
+
+  const handlePaystackCheckout = () => {
     const publicKey = process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY;
     if (!publicKey) {
       alert("Paystack Public Key is missing. Check your environment settings.");
@@ -98,6 +127,20 @@ export function CheckoutForm() {
     }
   };
 
+  const handleCheckoutSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!name || !email || !phone || !address || !city) {
+      alert("Please fill in all shipping details.");
+      return;
+    }
+
+    if (paymentMethod === 'whatsapp') {
+      handleWhatsAppCheckout();
+    } else {
+      handlePaystackCheckout();
+    }
+  };
+
   if (!mounted) return null;
 
   if (items.length === 0) {
@@ -121,8 +164,46 @@ export function CheckoutForm() {
       
       {/* Shipping Form Panel */}
       <div className="lg:col-span-7 bg-white p-8 rounded-2xl smooth-shadow">
-        <h2 className="text-2xl font-bold uppercase tracking-wider mb-6 font-bodoni">Delivery & Fitting Address</h2>
+        <h2 className="text-2xl font-bold uppercase tracking-wider mb-6 font-bodoni border-b border-gray-100 pb-4">Checkout Details</h2>
         
+        {/* Payment Method Selector */}
+        <div className="grid grid-cols-2 gap-4 mb-8">
+          <button
+            type="button"
+            onClick={() => setPaymentMethod('paystack')}
+            className={cn(
+              "p-4 rounded-xl border-2 text-left transition-all duration-300 flex items-center gap-3",
+              paymentMethod === 'paystack'
+                ? "border-black bg-gray-50 text-black shadow-sm"
+                : "border-gray-150 bg-white text-gray-500 hover:border-gray-300 hover:text-black"
+            )}
+          >
+            <CreditCard className="w-5 h-5 flex-shrink-0" />
+            <div>
+              <p className="text-xs font-bold uppercase tracking-wider">Pay Online</p>
+              <p className="text-[10px] text-gray-400 mt-0.5">Card / Transfer (Paystack)</p>
+            </div>
+          </button>
+          <button
+            type="button"
+            onClick={() => setPaymentMethod('whatsapp')}
+            className={cn(
+              "p-4 rounded-xl border-2 text-left transition-all duration-300 flex items-center gap-3",
+              paymentMethod === 'whatsapp'
+                ? "border-black bg-gray-50 text-black shadow-sm"
+                : "border-gray-150 bg-white text-gray-500 hover:border-gray-300 hover:text-black"
+            )}
+          >
+            <MessageCircle className="w-5 h-5 flex-shrink-0" />
+            <div>
+              <p className="text-xs font-bold uppercase tracking-wider">Order on WhatsApp</p>
+              <p className="text-[10px] text-gray-400 mt-0.5">Chat with Tailoring Team</p>
+            </div>
+          </button>
+        </div>
+
+        <h3 className="text-base font-bold uppercase tracking-wider mb-6 font-bodoni">Delivery & Fitting Address</h3>
+
         <form onSubmit={handleCheckoutSubmit} className="space-y-6">
           <div className="space-y-2">
             <label className="text-xs font-bold uppercase tracking-wider text-gray-400">Full Name</label>
@@ -203,14 +284,29 @@ export function CheckoutForm() {
             </div>
           </div>
 
-          <Button type="submit" className="w-full py-4 text-sm font-semibold uppercase tracking-widest h-14 rounded-xl flex items-center justify-center gap-2 mt-4">
-            <CreditCard className="w-4 h-4" /> Secure Payment with Paystack
-          </Button>
+          {paymentMethod === 'paystack' ? (
+            <Button type="submit" className="w-full py-4 text-sm font-semibold uppercase tracking-widest h-14 rounded-xl flex items-center justify-center gap-2 mt-4">
+              <CreditCard className="w-4 h-4" /> Secure Payment with Paystack
+            </Button>
+          ) : (
+            <Button type="submit" className="w-full py-4 text-sm font-semibold uppercase tracking-widest h-14 rounded-xl flex items-center justify-center gap-2 mt-4 bg-green-600 hover:bg-green-700 border-none text-white transition-colors duration-300">
+              <MessageCircle className="w-4 h-4 fill-white" /> Place Order via WhatsApp
+            </Button>
+          )}
         </form>
 
         <div className="flex items-center gap-2 justify-center mt-6 text-xs text-gray-400">
-          <ShieldCheck className="w-4 h-4 text-green-500" />
-          <span>Payments are processed securely via Paystack. Your details are safe.</span>
+          {paymentMethod === 'paystack' ? (
+            <>
+              <ShieldCheck className="w-4 h-4 text-green-500" />
+              <span>Payments are processed securely via Paystack. Your details are safe.</span>
+            </>
+          ) : (
+            <>
+              <ShieldCheck className="w-4 h-4 text-green-500" />
+              <span>Your order will be compiled and sent to our tailoring team on WhatsApp.</span>
+            </>
+          )}
         </div>
       </div>
 
