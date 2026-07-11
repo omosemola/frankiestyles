@@ -9,6 +9,7 @@ import { useWishlistStore } from '@/store/useWishlistStore';
 import { Button } from '@/components/ui/Button';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { MeasurementModal } from '@/components/shop/MeasurementModal';
 
 interface ProductDetailClientProps {
   product: Product;
@@ -22,6 +23,18 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
   const { addItem, setIsOpen } = useCartStore();
   const { toggleItem, hasItem } = useWishlistStore();
   const [mounted, setMounted] = useState(false);
+
+  // Sizing Modal States
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalTab, setModalTab] = useState<'standard' | 'custom'>('standard');
+  const [customMeasurements, setCustomMeasurements] = useState<{
+    chest: string;
+    shoulder: string;
+    sleeve: string;
+    waist: string;
+    trouserLength: string;
+    topLength: string;
+  } | null>(null);
 
   useEffect(() => {
     setMounted(true);
@@ -124,34 +137,65 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
             </p>
 
             {/* Size Selector */}
-            <div className="space-y-4">
-              <div className="flex items-center justify-between">
-                <label className="text-sm font-semibold uppercase tracking-wider text-[#0a0a0a]">Select Size</label>
-                <button className="flex items-center gap-1.5 text-xs text-gray-500 hover:text-black transition-colors uppercase tracking-wider font-semibold">
+            <div className="space-y-4 text-left">
+              <div className="flex justify-between items-center">
+                <span className="text-xs font-bold uppercase tracking-wider text-gray-400">Select Size</span>
+                <button 
+                  onClick={() => { setModalTab('standard'); setIsModalOpen(true); }}
+                  className="flex items-center gap-1.5 text-xs text-gray-500 hover:text-black transition-colors uppercase tracking-wider font-semibold"
+                >
                   <Ruler className="w-4 h-4" /> Size Guide
                 </button>
               </div>
               <div className="flex flex-wrap gap-3">
-                {product.sizes.map((size) => (
-                  <button
-                    key={size}
-                    onClick={() => setSelectedSize(size)}
-                    className={cn(
-                      "min-w-[60px] h-12 px-4 rounded-lg text-sm font-medium border flex items-center justify-center transition-all",
-                      selectedSize === size
-                        ? "border-[#0a0a0a] bg-[#0a0a0a] text-white"
-                        : "border-gray-200 text-[#0a0a0a] hover:border-[#0a0a0a]"
-                    )}
-                  >
-                    {size}
-                  </button>
-                ))}
+                {product.sizes.map((size) => {
+                  const isActive = selectedSize === size || (size === "Custom Measure" && selectedSize.startsWith("Custom"));
+                  return (
+                    <button
+                      key={size}
+                      onClick={() => {
+                        if (size === "Custom Measure") {
+                          setModalTab('custom');
+                          setIsModalOpen(true);
+                        } else {
+                          setSelectedSize(size);
+                          setCustomMeasurements(null);
+                        }
+                      }}
+                      className={cn(
+                        "min-w-[60px] h-12 px-4 rounded-lg text-sm font-medium border flex items-center justify-center transition-all",
+                        isActive
+                          ? "border-[#0a0a0a] bg-[#0a0a0a] text-white"
+                          : "border-gray-200 text-[#0a0a0a] hover:border-[#0a0a0a]"
+                      )}
+                    >
+                      {size}
+                    </button>
+                  );
+                })}
               </div>
-              {selectedSize === "Custom Measure" && (
+              
+              {/* Custom Sizing Fit Summary */}
+              {customMeasurements && selectedSize.startsWith("Custom") ? (
+                <div className="bg-gray-50 border border-gray-150 p-4 rounded-xl text-left mt-4 flex justify-between items-center">
+                  <div className="space-y-1">
+                    <p className="text-[10px] font-bold uppercase tracking-wider text-gray-400">Custom Applied Fit</p>
+                    <p className="text-xs font-semibold text-[#0a0a0a] leading-relaxed">
+                      Chest: {customMeasurements.chest}" • Shoulder: {customMeasurements.shoulder}" • Sleeve: {customMeasurements.sleeve}" • Waist: {customMeasurements.waist}" • Trouser: {customMeasurements.trouserLength}" • Top: {customMeasurements.topLength}"
+                    </p>
+                  </div>
+                  <button
+                    onClick={() => { setModalTab('custom'); setIsModalOpen(true); }}
+                    className="text-[10px] font-bold uppercase tracking-widest text-[#0a0a0a] hover:underline underline-offset-4 flex-shrink-0 ml-4"
+                  >
+                    Edit Fit
+                  </button>
+                </div>
+              ) : selectedSize === "Custom Measure" ? (
                 <p className="text-xs text-amber-600 font-medium mt-2">
                   *Our team will contact you for custom shoulder, chest, and height measurements.
                 </p>
-              )}
+              ) : null}
             </div>
 
             {/* Add to Cart CTA & Wishlist */}
@@ -199,6 +243,16 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
           </div>
         </div>
       </div>
+      <MeasurementModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        initialTab={modalTab}
+        onApplyCustom={(measurements) => {
+          setCustomMeasurements(measurements);
+          const sizeString = `Custom (C:${measurements.chest}" S:${measurements.shoulder}" Sl:${measurements.sleeve}" W:${measurements.waist}" TL:${measurements.trouserLength}" L:${measurements.topLength}")`;
+          setSelectedSize(sizeString);
+        }}
+      />
     </div>
   );
 }
