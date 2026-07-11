@@ -57,7 +57,7 @@ export default function Home() {
           {/* Horizontal scroll container for mobile, standard grid for desktop */}
           <ScrollAnimate direction="up" amount={0.05}>
             <div className="flex overflow-x-auto pb-8 -mx-6 px-6 md:grid md:grid-cols-4 md:overflow-visible md:pb-0 md:mx-0 md:px-0 gap-6 snap-x snap-mandatory hide-scrollbar">
-              {DUMMY_PRODUCTS.map(product => (
+              {DUMMY_PRODUCTS.filter(product => product.isNew).map(product => (
                 <div key={product.id} className="w-[75vw] sm:w-[45vw] md:w-auto flex-none snap-center">
                   <ProductCard product={product} />
                 </div>

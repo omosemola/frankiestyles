@@ -8,6 +8,14 @@ import { ShoppingBag, ArrowLeft, ShieldCheck, CreditCard, MessageCircle } from '
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
 
+const NIGERIAN_STATES = [
+  "Lagos", "Abuja (FCT)", "Abia", "Adamawa", "Akwa Ibom", "Anambra", "Bauchi", "Bayelsa", 
+  "Benue", "Borno", "Cross River", "Delta", "Ebonyi", "Edo", "Ekiti", "Enugu", "Gombe", 
+  "Imo", "Jigawa", "Kaduna", "Kano", "Katsina", "Kebbi", "Kogi", "Kwara", "Nasarawa", 
+  "Niger", "Ogun", "Ondo", "Osun", "Oyo", "Plateau", "Rivers", "Sokoto", "Taraba", 
+  "Yobe", "Zamfara"
+];
+
 export function CheckoutForm() {
   const router = useRouter();
   const { items, getTotalPrice, clearCart } = useCartStore();
@@ -273,13 +281,9 @@ Please confirm my order and contact me regarding fabric/measurement details. Tha
                 onChange={e => setState(e.target.value)}
                 className="w-full h-12 px-4 rounded-lg border border-transparent bg-[#f8f8f8] text-sm font-semibold uppercase tracking-wider hover:border-black focus:outline-none focus:border-black transition-colors"
               >
-                <option>Lagos</option>
-                <option>Abuja (FCT)</option>
-                <option>Rivers (Port Harcourt)</option>
-                <option>Oyo (Ibadan)</option>
-                <option>Delta</option>
-                <option>Edo</option>
-                <option>Other State</option>
+                {NIGERIAN_STATES.map((st) => (
+                  <option key={st} value={st}>{st}</option>
+                ))}
               </select>
             </div>
           </div>

@@ -48,6 +48,7 @@ export const DUMMY_PRODUCTS: Product[] = [
     price: 220000,
     category: "Kaftans",
     image: "/images/product-2-front.png",
+    isNew: true,
     description: "An exquisite olive-mustard yellow Kaftan suit tailored from textured premium fabric. Features a clean round neckline, structured mid-length drape, and matching trousers for a modern, sophisticated style.",
     details: [
       "Two-piece bespoke Kaftan set",
@@ -76,6 +77,7 @@ export const DUMMY_PRODUCTS: Product[] = [
     originalPrice: 400000,
     category: "Kaftans",
     image: "/images/product-3-front.png",
+    isNew: true,
     description: "Elevate your wardrobe with this prestigious sky blue short-sleeve Senator suit. Features a custom hand-embroidered neckline, flared trousers, and premium structured fabric designed for a commanding presence.",
     details: [
       "Two-piece premium Senator set",
@@ -103,6 +105,7 @@ export const DUMMY_PRODUCTS: Product[] = [
     price: 390000,
     category: "Kaftans",
     image: "/images/product-4-front.png",
+    isNew: true,
     description: "Make a statement in this prestige black dry lace Kaftan. Artfully tailored from premium dry lace fabric, it features a structured semi-translucent layout, matching buba under-shirt, and tailored trousers.",
     details: [
       "Two-piece luxury dry lace Kaftan set",
@@ -157,6 +160,7 @@ export const DUMMY_PRODUCTS: Product[] = [
     price: 390000,
     category: "Kaftans",
     image: "/images/product-6-front.png",
+    isNew: true,
     description: "Make a statement in this prestige olive green dry lace Kaftan. Artfully tailored from premium dry lace fabric, it features a structured semi-translucent layout, matching buba under-shirt, and tailored trousers.",
     details: [
       "Two-piece luxury dry lace Kaftan set",
@@ -292,6 +296,7 @@ export const DUMMY_PRODUCTS: Product[] = [
     price: 250000,
     category: "Jalabiya",
     image: "/images/product-11-front.png",
+    isNew: true,
     description: "Experience majestic elegance in this cream Jalabiya set. Masterfully tailored from premium flowy fabric, featuring rich V-shaped chest embroidery and standard tassels. Includes shemagh headscarf.",
     details: [
       "Premium full-length Jalabiya robe",
@@ -319,6 +324,7 @@ export const DUMMY_PRODUCTS: Product[] = [
     price: 195000,
     category: "Kaftans",
     image: "/images/product-12-front.png",
+    isNew: true,
     description: "Command attention in this clean Sky Blue traditional Kaftan set. Expertly tailored with subtle white floral chest embroidery, complete with tailored trousers and matching fila cap. Designed for light, prestige summer wear.",
     details: [
       "Complete 3-piece traditional Kaftan set",
