@@ -434,32 +434,7 @@ export const DUMMY_PRODUCTS: Product[] = [
       "Custom Measure"
     ]
   },
-  {
-    id: "17",
-    name: "Imperial White Agbada",
-    price: 380000,
-    category: "Agbadas",
-    image: "https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?q=80&w=1934&auto=format&fit=crop",
-    description: "The peak of traditional luxury. An all-white Imperial Agbada set showcasing intricate silver and white embroidery. Cut from structured heavy cotton.",
-    details: [
-      "Premium heavy-weave structured cotton",
-      "Bespoke silver and white embroidery",
-      "Includes Buba inner shirt and Sokoto pants",
-      "Generous side drape design",
-      "Professional dry clean only"
-    ],
-    images: [
-      "https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?q=80&w=1934&auto=format&fit=crop"
-    ],
-    sizes: [
-      "M (Chest 38-40\")",
-      "L (Chest 41-43\")",
-      "XL (Chest 44-46\")",
-      "XXL (Chest 47-49\")",
-      "XXXL (Chest 50-52\")",
-      "Custom Measure"
-    ]
-  },
+
   {
     id: "18",
     name: "Navy Blue Senator Wear",
@@ -537,11 +512,11 @@ export const DUMMY_PRODUCTS: Product[] = [
     ]
   },
   {
-    id: "21",
+    id: "17",
     name: "Navy Blue Royal Agbada Set",
     price: 295000,
     category: "Agbadas",
-    image: "/images/product-21-front.png",
+    image: "/images/product-17-front.png",
     isNew: true,
     description: "Command the room in this majestic navy blue traditional Agbada set. Exquisitely tailored with custom chest embroidery, paired with matching pants, an inner shirt, and a traditional cap. Impeccable drape for elite celebrations.",
     details: [
@@ -552,8 +527,8 @@ export const DUMMY_PRODUCTS: Product[] = [
       "Dry clean only"
     ],
     images: [
-      "/images/product-21-front.png",
-      "/images/product-21-back.png"
+      "/images/product-17-front.png",
+      "/images/product-17-back.png"
     ],
     sizes: [
       "M (Chest 38-40\")",
