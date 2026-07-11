@@ -5,6 +5,7 @@ import { DUMMY_PRODUCTS } from "@/lib/products";
 import { SignatureStyles } from "@/components/home/SignatureStyles";
 import { ScrollAnimate } from "@/components/ui/ScrollAnimate";
 import { ContactSection } from "@/components/home/ContactSection";
+import { FeaturedProductsSection } from "@/components/home/FeaturedProductsSection";
 import Link from 'next/link';
 
 export default function Home() {
@@ -32,13 +33,7 @@ export default function Home() {
             <div className="w-12 h-0.5 bg-[#0a0a0a] mx-auto mb-16"></div>
           </ScrollAnimate>
           
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
-            {DUMMY_PRODUCTS.slice(4, 8).map((product, idx) => (
-              <ScrollAnimate key={product.id} delay={idx * 0.1} amount={0.05}>
-                <ProductCard product={product} />
-              </ScrollAnimate>
-            ))}
-          </div>
+          <FeaturedProductsSection />
         </div>
       </section>
 

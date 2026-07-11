@@ -14,15 +14,9 @@ interface CategoryCard {
 const CATEGORIES: CategoryCard[] = [
   {
     name: "Kaftans",
-    image: "https://images.unsplash.com/photo-1617137968427-85924c800a22?q=80&w=1974&auto=format&fit=crop",
-    href: "/shop?category=Kaftans",
-    description: "Intricately embroidered loose robes designed for comfortable prestige."
-  },
-  {
-    name: "Senator Wears",
     image: "/images/senator-banner.jpg",
-    href: "/shop?category=Senator+Wears",
-    description: "Sharp, bespoke two-piece suits conveying corporate elegance and traditional values."
+    href: "/shop?category=Kaftans",
+    description: "Intricately embroidered loose robes and sharp two-piece suits designed for comfortable prestige."
   },
   {
     name: "Agbadas",

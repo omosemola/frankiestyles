@@ -159,7 +159,6 @@ export default function ContactPage() {
                           className="w-full h-12 px-4 rounded-lg border border-transparent bg-white text-sm font-semibold uppercase tracking-wider hover:border-black focus:outline-none focus:border-black transition-colors"
                         >
                           <option>Bespoke Kaftan</option>
-                          <option>Bespoke Senator Suit</option>
                           <option>Bespoke Agbada Set</option>
                           <option>IGBO traditional attire</option>
                           <option>Bespoke Jalabiya Set</option>

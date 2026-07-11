@@ -41,7 +41,12 @@ export function ProductCard({ product, className }: ProductCardProps) {
 
       {/* Details */}
       <div className="text-center px-2">
-        <p className="text-xs text-gray-500 uppercase tracking-widest mb-1">{product.category}</p>
+        <Link 
+          href={`/shop?category=${encodeURIComponent(product.category)}`} 
+          className="text-xs text-gray-500 hover:text-black uppercase tracking-widest mb-1 transition-colors block"
+        >
+          {product.category}
+        </Link>
         <Link href={`/product/${product.id}`} className="block text-sm font-semibold text-[#0a0a0a] uppercase tracking-wide hover:underline underline-offset-4 mb-2">
           {product.name}
         </Link>

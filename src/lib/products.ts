@@ -74,7 +74,7 @@ export const DUMMY_PRODUCTS: Product[] = [
     name: "Sky Blue Prestige Senator",
     price: 350000,
     originalPrice: 400000,
-    category: "Senator Wears",
+    category: "Kaftans",
     image: "/images/product-3-front.png",
     description: "Elevate your wardrobe with this prestigious sky blue short-sleeve Senator suit. Features a custom hand-embroidered neckline, flared trousers, and premium structured fabric designed for a commanding presence.",
     details: [
@@ -209,7 +209,7 @@ export const DUMMY_PRODUCTS: Product[] = [
     id: "8",
     name: "Grey Premium Linen Short Set",
     price: 120000,
-    category: "Senator Wears",
+    category: "Kaftans",
     image: "/images/product-8-front.png",
     description: "Experience relaxed luxury in this premium grey linen two-piece short set. Expertly crafted from lightweight, breathable pure linen, featuring a short-sleeve button-down shirt and matching tailored shorts.",
     details: [
@@ -263,7 +263,7 @@ export const DUMMY_PRODUCTS: Product[] = [
     id: "10",
     name: "Off-White Geometric Senator Suit",
     price: 155000,
-    category: "Senator Wears",
+    category: "Kaftans",
     image: "/images/product-10-front.png",
     description: "An exquisite off-white cream Senator suit tailored from textured premium fabric. Features a clean round neckline, a pocket detailed with custom geometric embroidery, and matching tailored trousers.",
     details: [
@@ -344,7 +344,7 @@ export const DUMMY_PRODUCTS: Product[] = [
     id: "13",
     name: "Prestige Oatmeal Linen Set",
     price: 165000,
-    category: "Senator Wears",
+    category: "Kaftans",
     image: "/images/product-13-front.png",
     description: "Relax in absolute distinction. This Prestige Oatmeal Linen Set features a premium short-sleeve button-up shirt and matching tailored trousers. Handcrafted from luxury, breathable linen for unmatched comfort.",
     details: [
@@ -373,7 +373,7 @@ export const DUMMY_PRODUCTS: Product[] = [
     id: "18",
     name: "Prestige Black Jacquard Senator Suit",
     price: 175000,
-    category: "Senator Wears",
+    category: "Kaftans",
     image: "/images/product-18-front.png",
     description: "Command elegance in this premium Textured Black Onyx Senator suit. Expertly cut from luxury textured damask/jacquard wool-blend fabric, featuring a signature gold crest back neck embroidery, and complete with tailored trousers and matching Fila cap. The absolute pinnacle of modern traditional wear.",
     details: [
@@ -400,7 +400,7 @@ export const DUMMY_PRODUCTS: Product[] = [
     id: "19",
     name: "Classic Navy Senator Suit",
     price: 155000,
-    category: "Senator Wears",
+    category: "Kaftans",
     image: "/images/product-19-front.png",
     isNew: true,
     description: "Command elegance in this classic Navy Blue Senator suit. Designed with elbow-length sleeves, a minimalist chest panel, a signature pocket accent, and tailored trousers. Perfect for prestigious gatherings and events.",
