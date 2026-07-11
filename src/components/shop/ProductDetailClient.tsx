@@ -10,6 +10,8 @@ import { Button } from '@/components/ui/Button';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { MeasurementModal } from '@/components/shop/MeasurementModal';
+import { useToastStore } from '@/store/useToastStore';
+import { AnimatePresence } from 'framer-motion';
 
 interface ProductDetailClientProps {
   product: Product;
@@ -36,6 +38,17 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
     topLength: string;
   } | null>(null);
 
+  // Flying Image Animation States
+  const [flyingImage, setFlyingImage] = useState<{
+    src: string;
+    startX: number;
+    startY: number;
+    endX: number;
+    endY: number;
+  } | null>(null);
+
+  const { showToast } = useToastStore();
+
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -55,11 +68,30 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
       size: selectedSize,
     });
 
-    // Simulate luxury tactile feedback delay, then open CartDrawer
-    setTimeout(() => {
+    const imgElement = document.getElementById("product-main-image");
+    const cartElement = document.getElementById("navbar-cart-button");
+
+    if (imgElement && cartElement) {
+      const imgRect = imgElement.getBoundingClientRect();
+      const cartRect = cartElement.getBoundingClientRect();
+
+      setFlyingImage({
+        src: product.images[selectedImage],
+        startX: imgRect.left,
+        startY: imgRect.top,
+        endX: cartRect.left,
+        endY: cartRect.top
+      });
       setIsAdding(false);
-      setIsOpen(true);
-    }, 800);
+    } else {
+      // Fallback: trigger toast immediately if coordinates aren't queryable
+      setIsAdding(false);
+      showToast({
+        name: product.name,
+        image: product.image,
+        size: selectedSize
+      });
+    }
   };
 
   return (
@@ -98,6 +130,7 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
           {/* Featured Image */}
           <div className="flex-grow aspect-[3/4] bg-white rounded-xl overflow-hidden smooth-shadow relative border border-gray-100">
             <motion.img
+              id="product-main-image"
               key={selectedImage}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -243,6 +276,51 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
           </div>
         </div>
       </div>
+      {/* Fly-to-Cart clone animation element */}
+      <AnimatePresence>
+        {flyingImage && (
+          <motion.img
+            src={flyingImage.src}
+            initial={{
+              position: 'fixed',
+              top: flyingImage.startY,
+              left: flyingImage.startX,
+              width: 120,
+              height: 160,
+              opacity: 0.8,
+              borderRadius: '12px',
+              zIndex: 9999,
+            }}
+            animate={{
+              top: flyingImage.endY,
+              left: flyingImage.endX,
+              width: 24,
+              height: 24,
+              opacity: 0.1,
+              scale: 0.2,
+            }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
+            onAnimationComplete={() => {
+              setFlyingImage(null);
+              // Trigger cart bounce effect
+              const cartIcon = document.getElementById("navbar-cart-icon");
+              if (cartIcon) {
+                cartIcon.classList.add("scale-125");
+                setTimeout(() => cartIcon.classList.remove("scale-125"), 300);
+              }
+              // Trigger toast
+              showToast({
+                name: product.name,
+                image: product.image,
+                size: selectedSize
+              });
+            }}
+            className="pointer-events-none object-cover border border-white shadow-xl"
+          />
+        )}
+      </AnimatePresence>
+
       <MeasurementModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}

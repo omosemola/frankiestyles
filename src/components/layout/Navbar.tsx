@@ -96,11 +96,12 @@ export function Navbar() {
                 )}
               </button>
               <button
+                id="navbar-cart-button"
                 aria-label="Cart"
                 onClick={() => setCartOpen(true)}
                 className="hover:opacity-70 transition-opacity relative"
               >
-                <ShoppingBag className="w-6 h-6" />
+                <ShoppingBag id="navbar-cart-icon" className="w-6 h-6 transition-transform duration-300" />
                 {mounted && getTotalItems() > 0 && (
                   <span className={cn(
                     "absolute -top-1.5 -right-2 text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center transition-colors duration-500",
