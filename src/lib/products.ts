@@ -19,7 +19,6 @@ export const DUMMY_PRODUCTS: Product[] = [
     price: 280000,
     category: "Agbadas",
     image: "/images/product-1-front.png",
-    isNew: true,
     description: "Make a statement in this luxury emerald green Agbada set. Handcrafted from premium structured cotton, featuring custom ivory embroidery, tailored trousers (sokoto), and matching under-shirt. Perfect for prestige celebrations.",
     details: [
       "Complete 3-piece traditional Agbada set",
@@ -74,7 +73,6 @@ export const DUMMY_PRODUCTS: Product[] = [
     id: "3",
     name: "Sky Blue Prestige Senator",
     price: 350000,
-    originalPrice: 400000,
     category: "Kaftans",
     image: "/images/product-3-front.png",
     isNew: true,
@@ -324,7 +322,6 @@ export const DUMMY_PRODUCTS: Product[] = [
     price: 195000,
     category: "Kaftans",
     image: "/images/product-12-front.png",
-    isNew: true,
     description: "Command attention in this clean Sky Blue traditional Kaftan set. Expertly tailored with subtle white floral chest embroidery, complete with tailored trousers and matching fila cap. Designed for light, prestige summer wear.",
     details: [
       "Complete 3-piece traditional Kaftan set",
