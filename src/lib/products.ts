@@ -342,20 +342,21 @@ export const DUMMY_PRODUCTS: Product[] = [
   },
   {
     id: "13",
-    name: "Textured Cream Senator",
-    price: 155000,
+    name: "Prestige Oatmeal Linen Set",
+    price: 165000,
     category: "Senator Wears",
-    image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=1974&auto=format&fit=crop",
-    description: "Crafted from highly textured linen, this Cream Senator suit boasts a modern diagonal button closure and premium bone buttons.",
+    image: "/images/product-13-front.png",
+    description: "Relax in absolute distinction. This Prestige Oatmeal Linen Set features a premium short-sleeve button-up shirt and matching tailored trousers. Handcrafted from luxury, breathable linen for unmatched comfort.",
     details: [
-      "Diagonal button placket detailing",
-      "Handmade bone buttons",
-      "Highly breathable linen texture fabric",
-      "Custom comfort waist trousers included",
-      "Hand wash cold"
+      "Complete 2-piece linen shirt and trouser set",
+      "Premium structured Italian oatmeal linen",
+      "Minimalist hidden button-down front with pocket detailing",
+      "Includes tailored comfort-fit trousers",
+      "Dry clean recommended"
     ],
     images: [
-      "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=1974&auto=format&fit=crop"
+      "/images/product-13-front.png",
+      "/images/product-13-back.png"
     ],
     sizes: [
       "M (Chest 38-40\")",
