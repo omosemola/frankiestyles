@@ -27,8 +27,33 @@ const bodoni = Bodoni_Moda({
 });
 
 export const metadata: Metadata = {
-  title: "Frankiestyles | Premium Luxury Fashion",
-  description: "Experience the epitome of luxury fashion with Frankiestyles.",
+  title: {
+    default: "Frankie Styles | Premium Luxury Bespoke Fashion",
+    template: "%s | Frankie Styles"
+  },
+  description: "Experience the epitome of luxury native fashion with Frankie Styles. Handcrafted Kaftans, Agbadas, and Two-Piece sets tailored to perfection.",
+  openGraph: {
+    title: "Frankie Styles | Premium Luxury Bespoke Fashion",
+    description: "Experience the epitome of luxury native fashion with Frankie Styles. Handcrafted Kaftans, Agbadas, and Two-Piece sets tailored to perfection.",
+    type: "website",
+    url: "https://frankiestyles.com",
+    siteName: "Frankie Styles",
+    images: [
+      {
+        url: "/images/royal-banner.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Frankie Styles Luxury Traditional Wear",
+      }
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Frankie Styles | Premium Luxury Bespoke Fashion",
+    description: "Experience the epitome of luxury native fashion with Frankie Styles. Handcrafted Kaftans, Agbadas, and Two-Piece sets tailored to perfection.",
+    images: ["/images/royal-banner.jpg"],
+  },
+  metadataBase: new URL("https://frankiestyles.com"),
 };
 
 export default function RootLayout({

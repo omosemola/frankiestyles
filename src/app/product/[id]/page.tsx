@@ -26,6 +26,32 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
   return {
     title: `${product.name} | Frankie Styles`,
     description: product.description,
+    openGraph: {
+      title: `${product.name} | Frankie Styles - Bespoke Traditional Luxury`,
+      description: product.description,
+      type: 'website',
+      url: `/product/${product.id}`,
+      images: [
+        {
+          url: product.image,
+          width: 800,
+          height: 1067,
+          alt: product.name,
+        }
+      ],
+      siteName: 'Frankie Styles',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${product.name} | Frankie Styles`,
+      description: product.description,
+      images: [product.image],
+    },
+    other: {
+      'product:price:amount': product.price.toString(),
+      'product:price:currency': 'NGN',
+      'product:category': product.category,
+    }
   };
 }
 
