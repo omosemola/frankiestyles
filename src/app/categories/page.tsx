@@ -35,6 +35,12 @@ const CATEGORIES: CategoryCard[] = [
     image: "/images/product-22-front.png",
     href: "/shop?category=IGBO",
     description: "Traditional Isiagu heritage garments celebrating Igbo cultural royalty and prestige."
+  },
+  {
+    name: "Jalabiya",
+    image: "/images/product-11-front.png",
+    href: "/shop?category=Jalabiya",
+    description: "Majestic full-length traditional robes with rich artisan embroidery and shemagh details."
   }
 ];
 

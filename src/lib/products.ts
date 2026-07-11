@@ -290,7 +290,7 @@ export const DUMMY_PRODUCTS: Product[] = [
     id: "11",
     name: "Cream Prestige Jalabiya Set",
     price: 250000,
-    category: "Kaftans",
+    category: "Jalabiya",
     image: "/images/product-11-front.png",
     description: "Experience majestic elegance in this cream Jalabiya set. Masterfully tailored from premium flowy fabric, featuring rich V-shaped chest embroidery and standard tassels. Includes shemagh headscarf.",
     details: [
