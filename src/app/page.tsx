@@ -4,6 +4,7 @@ import { ProductCard } from "@/components/shop/ProductCard";
 import { DUMMY_PRODUCTS } from "@/lib/products";
 import { SignatureStyles } from "@/components/home/SignatureStyles";
 import { ScrollAnimate } from "@/components/ui/ScrollAnimate";
+import { ContactSection } from "@/components/home/ContactSection";
 import Link from 'next/link';
 
 export default function Home() {
@@ -70,6 +71,9 @@ export default function Home() {
           </ScrollAnimate>
         </div>
       </section>
+
+      {/* Booking / Contact Consultation Form */}
+      <ContactSection />
 
       {/* Newsletter Banner */}
       <BannerSection 
