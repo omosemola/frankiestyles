@@ -169,12 +169,12 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
                 className={cn(
                   "w-16 h-16 rounded-xl border flex items-center justify-center transition-all duration-300 hover:scale-105 active:scale-95 flex-shrink-0 shadow-sm",
                   isWishlisted
-                    ? "border-red-500 bg-red-50 text-red-500"
-                    : "border-gray-250 text-gray-500 hover:border-black hover:text-black"
+                    ? "border-[#0a0a0a] bg-gray-50 text-[#0a0a0a]"
+                    : "border-gray-200 text-gray-500 hover:border-black hover:text-black"
                 )}
                 aria-label={isWishlisted ? "Remove from wishlist" : "Add to wishlist"}
               >
-                <Heart className={cn("w-5 h-5", isWishlisted && "fill-red-500")} />
+                <Heart className={cn("w-5 h-5", isWishlisted && "fill-[#0a0a0a]")} />
               </button>
             </div>
           </div>

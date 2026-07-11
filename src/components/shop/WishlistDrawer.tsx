@@ -42,7 +42,7 @@ export function WishlistDrawer() {
             {/* Header */}
             <div className="p-6 border-b border-gray-100 flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <Heart className="w-5 h-5 text-red-500 fill-red-500" />
+                <Heart className="w-5 h-5 text-[#0a0a0a] fill-[#0a0a0a]" />
                 <h2 className="text-lg font-bold uppercase tracking-wider">Your Wishlist</h2>
               </div>
               <button 
@@ -79,7 +79,7 @@ export function WishlistDrawer() {
                           <h3 className="text-sm font-semibold uppercase tracking-wide">{item.name}</h3>
                           <button 
                             onClick={() => removeItem(item.id)}
-                            className="text-gray-400 hover:text-red-500 transition-colors p-1"
+                            className="text-gray-400 hover:text-[#0a0a0a] transition-colors p-1"
                             aria-label="Remove item"
                           >
                             <Trash2 className="w-4 h-4" />

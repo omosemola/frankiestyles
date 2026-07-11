@@ -50,65 +50,74 @@ export function Navbar() {
               : "bg-transparent text-[#0a0a0a]"
         )}
       >
-        <div className="max-w-[1700px] mx-auto px-3 md:px-12 py-6 flex items-center justify-between">
-          <Link href="/" className="flex items-center">
-            {/* Logo scales up and switches color based on scroll */}
-            <img 
-              src="/images/logo.png" 
-              alt="Frankie Styles Logo" 
-              className={cn(
-                "h-28 w-auto object-contain transition-all duration-[1000ms]",
-                isDarkTheme ? "invert brightness-0" : ""
-              )} 
-            />
-          </Link>
-          
-          <nav className="hidden md:flex items-center space-x-8">
-            {navLinks.map((item) => (
-              <Link key={item.name} href={item.href} className="text-sm font-semibold hover:opacity-70 transition-opacity tracking-wide uppercase">
-                {item.name}
-              </Link>
-            ))}
-          </nav>
-          
-          <div className="flex items-center space-x-6">
-            <button 
-              aria-label="Wishlist" 
-              onClick={() => setWishlistOpen(true)}
-              className="hover:opacity-70 transition-opacity relative"
-            >
-              <Heart className="w-6 h-6" />
-              {mounted && wishlistItems.length > 0 && (
-                <span className={cn(
-                  "absolute -top-1.5 -right-2 text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center transition-colors duration-500",
-                  !isDarkTheme ? "bg-[#0a0a0a] text-white" : "bg-white text-[#0a0a0a]"
-                )}>
-                  {wishlistItems.length}
-                </span>
-              )}
-            </button>
-            <button 
-              aria-label="Cart" 
-              onClick={() => setCartOpen(true)}
-              className="hover:opacity-70 transition-opacity relative"
-            >
-              <ShoppingBag className="w-6 h-6" />
-              {mounted && getTotalItems() > 0 && (
-                <span className={cn(
-                  "absolute -top-1.5 -right-2 text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center transition-colors duration-500",
-                  !isDarkTheme ? "bg-[#0a0a0a] text-white" : "bg-white text-[#0a0a0a]"
-                )}>
-                  {getTotalItems()}
-                </span>
-              )}
-            </button>
-            <button 
-              aria-label="Menu" 
-              onClick={() => setMobileMenuOpen(true)}
-              className="md:hidden hover:opacity-70 transition-opacity"
-            >
-              <Menu className="w-6 h-6" />
-            </button>
+        <div className="w-full relative py-6">
+          {/* Logo floating on the absolute left edge */}
+          <div className="absolute left-3 md:left-8 top-1/2 -translate-y-1/2 flex items-center">
+            <Link href="/" className="flex items-center">
+              {/* Logo scales up and switches color based on scroll */}
+              <img 
+                src="/images/logo.png" 
+                alt="Frankie Styles Logo" 
+                className={cn(
+                  "h-28 w-auto object-contain transition-all duration-[1000ms]",
+                  isDarkTheme ? "invert brightness-0" : ""
+                )} 
+              />
+            </Link>
+          </div>
+
+          {/* Standard container for navigation items and right toolbar icons */}
+          <div className="container mx-auto px-6 flex items-center justify-between">
+            {/* Left side empty spacer (balances the layout for centering the nav menu) */}
+            <div className="w-32 hidden md:block flex-shrink-0" />
+            
+            <nav className="hidden md:flex items-center space-x-8">
+              {navLinks.map((item) => (
+                <Link key={item.name} href={item.href} className="text-sm font-semibold hover:opacity-70 transition-opacity tracking-wide uppercase">
+                  {item.name}
+                </Link>
+              ))}
+            </nav>
+            
+            <div className="flex items-center space-x-6 z-10">
+              <button 
+                aria-label="Wishlist" 
+                onClick={() => setWishlistOpen(true)}
+                className="hover:opacity-70 transition-opacity relative"
+              >
+                <Heart className="w-6 h-6" />
+                {mounted && wishlistItems.length > 0 && (
+                  <span className={cn(
+                    "absolute -top-1.5 -right-2 text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center transition-colors duration-500",
+                    !isDarkTheme ? "bg-[#0a0a0a] text-white" : "bg-white text-[#0a0a0a]"
+                  )}>
+                    {wishlistItems.length}
+                  </span>
+                )}
+              </button>
+              <button 
+                aria-label="Cart" 
+                onClick={() => setCartOpen(true)}
+                className="hover:opacity-70 transition-opacity relative"
+              >
+                <ShoppingBag className="w-6 h-6" />
+                {mounted && getTotalItems() > 0 && (
+                  <span className={cn(
+                    "absolute -top-1.5 -right-2 text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center transition-colors duration-500",
+                    !isDarkTheme ? "bg-[#0a0a0a] text-white" : "bg-white text-[#0a0a0a]"
+                  )}>
+                    {getTotalItems()}
+                  </span>
+                )}
+              </button>
+              <button 
+                aria-label="Menu" 
+                onClick={() => setMobileMenuOpen(true)}
+                className="md:hidden hover:opacity-70 transition-opacity"
+              >
+                <Menu className="w-6 h-6" />
+              </button>
+            </div>
           </div>
         </div>
       </header>
