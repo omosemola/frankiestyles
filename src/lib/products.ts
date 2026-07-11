@@ -465,21 +465,22 @@ export const DUMMY_PRODUCTS: Product[] = [
   },
   {
     id: "19",
-    name: "Pastel Pink Luxury Kaftan",
-    price: 195000,
-    category: "Kaftans",
-    image: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=2020&auto=format&fit=crop",
+    name: "Classic Navy Senator Suit",
+    price: 155000,
+    category: "Senator Wears",
+    image: "/images/product-19-front.png",
     isNew: true,
-    description: "Make a soft statement. This Pastel Pink Kaftan features structured shoulders, clean cuffs, and highly minimalist hand-done white chest embroidery.",
+    description: "Command elegance in this classic Navy Blue Senator suit. Designed with elbow-length sleeves, a minimalist chest panel, a signature pocket accent, and tailored trousers. Perfect for prestigious gatherings and events.",
     details: [
-      "Premium cotton-polyester polished blend",
-      "White hand-embroidered minimalist chest detail",
-      "Hidden front button closure",
-      "Comfort-fit sokoto pants included",
-      "Hand wash cold"
+      "Complete 2-piece traditional Senator suit",
+      "Premium wool-blend crepe fabric",
+      "Elbow-length sleeve cut with clean cuff stitch",
+      "Includes custom comfort-fit tailored trousers",
+      "Dry clean recommended"
     ],
     images: [
-      "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=2020&auto=format&fit=crop"
+      "/images/product-19-front.png",
+      "/images/product-19-back.png"
     ],
     sizes: [
       "M (Chest 38-40\")",
