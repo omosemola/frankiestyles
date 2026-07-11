@@ -38,7 +38,7 @@ export function SignatureStyles() {
         className="w-full"
       >
         <Link
-          href="/shop?category=Senator+Wears"
+          href="/shop?category=Kaftans"
           className="relative aspect-[16/9] overflow-hidden group rounded-lg cursor-pointer block smooth-shadow"
         >
           <img
@@ -47,7 +47,7 @@ export function SignatureStyles() {
             alt="Senator Wears Category"
           />
           <div className="absolute inset-0 bg-[#0a0a0a]/70 transition-colors duration-1000 group-hover:bg-[#0a0a0a]/90 flex items-center justify-center">
-            <h3 className="text-2xl md:text-3xl font-bold text-white uppercase tracking-widest font-bodoni">Senator Wears</h3>
+            <h3 className="text-2xl md:text-3xl font-bold text-white uppercase tracking-widest font-bodoni">KAFTANS</h3>
           </div>
         </Link>
       </motion.div>

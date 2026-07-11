@@ -162,6 +162,7 @@ export default function ContactPage() {
                           <option>Bespoke Agbada Set</option>
                           <option>IGBO traditional attire</option>
                           <option>Bespoke Jalabiya Set</option>
+                          <option>Bespoke Two Pieces</option>
                         </select>
                       </div>
                     </div>

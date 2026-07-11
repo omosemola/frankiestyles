@@ -42,7 +42,7 @@ export function Navbar() {
     <>
       <header
         className={cn(
-          "fixed top-0 left-0 right-0 z-50 transition-all duration-[600ms] ease-in-out",
+          "fixed top-0 left-0 right-0 z-50 transition-all duration-[600ms] ease-in-out pointer-events-none",
           isDarkTheme
             ? "bg-transparent text-white"
             : (mounted && scrolled)
@@ -50,7 +50,7 @@ export function Navbar() {
               : "bg-transparent text-[#0a0a0a]"
         )}
       >
-        <div className="w-full relative">
+        <div className="w-full relative pointer-events-auto">
           {/* Container for navigation items and right toolbar icons */}
           <div className="container mx-auto pl-0 pr-6 py-3 flex items-center justify-between relative my-2">
             {/* Logo: In normal flow on mobile, absolute positioned on desktop */}

@@ -35,6 +35,12 @@ const CATEGORIES: CategoryCard[] = [
     image: "/images/product-11-front.png",
     href: "/shop?category=Jalabiya",
     description: "Majestic full-length traditional robes with rich artisan embroidery and shemagh details."
+  },
+  {
+    name: "Two Pieces",
+    image: "/images/product-8-front.png",
+    href: "/shop?category=Two+Pieces",
+    description: "Coordinated two-piece linen and structured sets designed for sleek, modern leisure."
   }
 ];
 

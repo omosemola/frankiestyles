@@ -50,7 +50,7 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
   };
 
   return (
-    <div className="container mx-auto px-6 py-32 relative">
+    <div className="container mx-auto px-6 pt-40 pb-32 relative">
 
       {/* Breadcrumbs row */}
       <div className="flex items-center justify-end mb-12 border-b border-gray-100 pb-6">
@@ -102,8 +102,8 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
             {/* Header / Meta */}
             <div>
               <Link 
-                href={`/shop?category=${product.category}`} 
-                className="text-xs font-bold text-gray-455 hover:text-black uppercase tracking-widest mb-2 transition-colors inline-block"
+                href={`/shop?category=${encodeURIComponent(product.category)}`} 
+                className="text-xs font-bold text-gray-500 hover:text-black uppercase tracking-widest mb-2 transition-colors duration-300 cursor-pointer hover:underline inline-block"
               >
                 {product.category}
               </Link>

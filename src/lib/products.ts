@@ -209,7 +209,7 @@ export const DUMMY_PRODUCTS: Product[] = [
     id: "8",
     name: "Grey Premium Linen Short Set",
     price: 120000,
-    category: "Kaftans",
+    category: "Two Pieces",
     image: "/images/product-8-front.png",
     description: "Experience relaxed luxury in this premium grey linen two-piece short set. Expertly crafted from lightweight, breathable pure linen, featuring a short-sleeve button-down shirt and matching tailored shorts.",
     details: [
@@ -344,7 +344,7 @@ export const DUMMY_PRODUCTS: Product[] = [
     id: "13",
     name: "Prestige Oatmeal Linen Set",
     price: 165000,
-    category: "Kaftans",
+    category: "Two Pieces",
     image: "/images/product-13-front.png",
     description: "Relax in absolute distinction. This Prestige Oatmeal Linen Set features a premium short-sleeve button-up shirt and matching tailored trousers. Handcrafted from luxury, breathable linen for unmatched comfort.",
     details: [
