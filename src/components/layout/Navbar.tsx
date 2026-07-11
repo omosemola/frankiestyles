@@ -50,25 +50,25 @@ export function Navbar() {
               : "bg-transparent text-[#0a0a0a]"
         )}
       >
-        <div className="w-full relative py-6">
-          {/* Logo floating on the absolute left edge */}
-          <div className="absolute left-3 md:left-8 top-1/2 -translate-y-1/2 flex items-center">
-            <Link href="/" className="flex items-center">
-              {/* Logo scales up and switches color based on scroll */}
-              <img 
-                src="/images/logo.png" 
-                alt="Frankie Styles Logo" 
-                className={cn(
-                  "h-28 w-auto object-contain transition-all duration-[1000ms]",
-                  isDarkTheme ? "invert brightness-0" : ""
-                )} 
-              />
-            </Link>
-          </div>
+        <div className="w-full relative">
+          {/* Container for navigation items and right toolbar icons */}
+          <div className="container mx-auto px-6 py-6 md:py-0 md:h-28 flex items-center justify-between relative">
+            {/* Logo: In normal flow on mobile, absolute positioned on desktop */}
+            <div className="md:absolute md:left-8 top-1/2 md:-translate-y-1/2 flex items-center z-10">
+              <Link href="/" className="flex items-center">
+                {/* Logo scales up and switches color based on scroll */}
+                <img 
+                  src="/images/logo.png" 
+                  alt="Frankie Styles Logo" 
+                  className={cn(
+                    "h-28 w-auto object-contain transition-all duration-[1000ms]",
+                    isDarkTheme ? "invert brightness-0" : ""
+                  )} 
+                />
+              </Link>
+            </div>
 
-          {/* Standard container for navigation items and right toolbar icons */}
-          <div className="container mx-auto px-6 flex items-center justify-between">
-            {/* Left side empty spacer (balances the layout for centering the nav menu) */}
+            {/* Left side empty spacer (balances the layout for centering the nav menu on desktop) */}
             <div className="w-32 hidden md:block flex-shrink-0" />
             
             <nav className="hidden md:flex items-center space-x-8">
