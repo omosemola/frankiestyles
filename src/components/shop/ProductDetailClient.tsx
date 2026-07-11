@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ShoppingBag, ChevronRight, Ruler, ShieldCheck, Truck, RefreshCw, ArrowLeft } from 'lucide-react';
+import { ShoppingBag, ChevronRight, Ruler, ShieldCheck, Truck, RefreshCw } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Product } from '@/lib/products';
 import { useCartStore } from '@/store/useCartStore';
@@ -42,14 +42,6 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
 
   return (
     <div className="container mx-auto px-6 py-32 relative">
-      {/* Floating Back Button: fixed top-2.5 left-6, z-60 (above the logo level, transparent background) */}
-      <button 
-        onClick={() => router.back()} 
-        className="fixed top-2.5 left-6 z-[60] inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-gray-500 hover:text-black transition-all duration-300 group"
-      >
-        <ArrowLeft className="w-3 h-3 transition-transform duration-300 group-hover:-translate-x-0.5" />
-        <span>BACK</span>
-      </button>
 
       {/* Breadcrumbs row */}
       <div className="flex items-center justify-end mb-12 border-b border-gray-100 pb-6">
