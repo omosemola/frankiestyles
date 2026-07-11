@@ -315,20 +315,21 @@ export const DUMMY_PRODUCTS: Product[] = [
   },
   {
     id: "12",
-    name: "Modern Charcoal Kaftan",
-    price: 185000,
+    name: "Sky Blue Embroidered Kaftan Set",
+    price: 195000,
     category: "Kaftans",
-    image: "https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?q=80&w=2070&auto=format&fit=crop",
-    description: "A dark charcoal gray Kaftan featuring an ultra-modern geometric zipper collar instead of buttons. Ideal for tech-forward modern gentlemen.",
+    image: "/images/product-12-front.png",
+    description: "Command attention in this clean Sky Blue traditional Kaftan set. Expertly tailored with subtle white floral chest embroidery, complete with tailored trousers and matching fila cap. Designed for light, prestige summer wear.",
     details: [
-      "Polyester-rayon heavy stretch blend",
-      "Gunmetal zipper neckline detail",
-      "Structured shoulder profile",
-      "Includes tailored pants",
-      "Machine wash safe"
+      "Complete 3-piece traditional Kaftan set",
+      "Premium lightweight cotton-linen blend",
+      "Artisan white chain-stitch chest embroidery",
+      "Includes comfort-fit trousers and matching fila cap",
+      "Dry clean only"
     ],
     images: [
-      "https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?q=80&w=2070&auto=format&fit=crop"
+      "/images/product-12-front.png",
+      "/images/product-12-back.png"
     ],
     sizes: [
       "M (Chest 38-40\")",
