@@ -52,9 +52,9 @@ export function Navbar() {
       >
         <div className="w-full relative">
           {/* Container for navigation items and right toolbar icons */}
-          <div className="container mx-auto pl-3 pr-6 py-6 md:py-0 md:h-28 flex items-center justify-between relative">
+          <div className="container mx-auto pl-0 pr-6 py-6 md:py-0 md:h-28 flex items-center justify-between relative">
             {/* Logo: In normal flow on mobile, absolute positioned on desktop */}
-            <div className="md:absolute md:left-3 top-1/2 md:-translate-y-1/2 flex items-center z-10">
+            <div className="md:absolute md:left-0 top-1/2 md:-translate-y-1/2 flex items-center z-10">
               <Link href="/" className="flex items-center">
                 {/* Logo scales up and switches color based on scroll */}
                 <img
