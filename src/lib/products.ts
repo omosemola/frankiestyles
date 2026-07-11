@@ -439,20 +439,21 @@ export const DUMMY_PRODUCTS: Product[] = [
 
   {
     id: "18",
-    name: "Navy Blue Senator Wear",
-    price: 145000,
+    name: "Prestige Black Jacquard Senator Suit",
+    price: 175000,
     category: "Senator Wears",
-    image: "https://images.unsplash.com/photo-1520333789090-1afc82db536a?q=80&w=2069&auto=format&fit=crop",
-    description: "A dark Navy Blue Senator suit featuring clean lines and a modern zip closure on the shoulder for comfortable wear. Cut from luxury crepe.",
+    image: "/images/product-18-front.png",
+    description: "Command elegance in this premium Textured Black Onyx Senator suit. Expertly cut from luxury textured damask/jacquard wool-blend fabric, featuring a signature gold crest back neck embroidery, and complete with tailored trousers and matching Fila cap. The absolute pinnacle of modern traditional wear.",
     details: [
-      "Premium Italian wool-crepe base",
-      "Invisible zipper shoulder closure",
-      "Tonal piping along chest panel",
-      "Includes tailored sokoto trousers",
+      "Complete 2-piece traditional Senator suit with custom Fila cap",
+      "Premium textured jacquard wool-blend base fabric",
+      "Signature gold FS crest embroidery on the back of the neck",
+      "Includes tailored comfort-fit trousers and matching Fila cap",
       "Dry clean only"
     ],
     images: [
-      "https://images.unsplash.com/photo-1520333789090-1afc82db536a?q=80&w=2069&auto=format&fit=crop"
+      "/images/product-18-front.png",
+      "/images/product-18-back.png"
     ],
     sizes: [
       "M (Chest 38-40\")",
