@@ -535,5 +535,33 @@ export const DUMMY_PRODUCTS: Product[] = [
       "XL (24.5\" Head)",
       "Custom Measure"
     ]
+  },
+  {
+    id: "21",
+    name: "Navy Blue Royal Agbada Set",
+    price: 295000,
+    category: "Agbadas",
+    image: "/images/product-21-front.png",
+    isNew: true,
+    description: "Command the room in this majestic navy blue traditional Agbada set. Exquisitely tailored with custom chest embroidery, paired with matching pants, an inner shirt, and a traditional cap. Impeccable drape for elite celebrations.",
+    details: [
+      "Complete 3-piece traditional Agbada set",
+      "Premium heavy-weave cotton-crepe fabric",
+      "Tonal custom embroidery detailing",
+      "Includes custom-tailored sokoto and matching under-shirt",
+      "Dry clean only"
+    ],
+    images: [
+      "/images/product-21-front.png",
+      "/images/product-21-back.png"
+    ],
+    sizes: [
+      "M (Chest 38-40\")",
+      "L (Chest 41-43\")",
+      "XL (Chest 44-46\")",
+      "XXL (Chest 47-49\")",
+      "XXXL (Chest 50-52\")",
+      "Custom Measure"
+    ]
   }
 ];

@@ -2,10 +2,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import { DUMMY_PRODUCTS } from '@/lib/products';
 
 interface CategoryCard {
   name: string;
-  count: number;
   image: string;
   href: string;
   description: string;
@@ -14,28 +14,24 @@ interface CategoryCard {
 const CATEGORIES: CategoryCard[] = [
   {
     name: "Kaftans",
-    count: 5,
     image: "https://images.unsplash.com/photo-1617137968427-85924c800a22?q=80&w=1974&auto=format&fit=crop",
     href: "/shop?category=Kaftans",
     description: "Intricately embroidered loose robes designed for comfortable prestige."
   },
   {
     name: "Senator Wears",
-    count: 5,
     image: "/images/senator-banner.jpg",
     href: "/shop?category=Senator+Wears",
     description: "Sharp, bespoke two-piece suits conveying corporate elegance and traditional values."
   },
   {
     name: "Agbadas",
-    count: 6,
     image: "/images/kaftans-banner.jpg",
     href: "/shop?category=Agbadas",
     description: "Grand 3-piece traditional robes reserved for ceremonies and royal entries."
   },
   {
     name: "Accessories",
-    count: 4,
     image: "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?q=80&w=2000&auto=format&fit=crop",
     href: "/shop?category=Accessories",
     description: "Hand-crafted caps and traditional items to complete your majestic outfit."
@@ -87,11 +83,11 @@ export default function CategoriesPage() {
               <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-colors duration-500 z-0" />
 
               {/* Text content */}
-              <div className="absolute inset-0 p-8 flex flex-col justify-end text-white z-10">
+              <div className="absolute inset-0 p-8 flex flex-col justify-end text-white z-10 text-left">
                 <p className="text-xs font-bold uppercase tracking-widest text-gray-300 mb-2">
-                  {cat.count} Items
+                  {DUMMY_PRODUCTS.filter(p => p.category === cat.name).length} Items
                 </p>
-                <h2 className="text-3xl font-bold uppercase tracking-wider mb-2 font-bodoni">
+                <h2 className="text-3xl font-bold uppercase tracking-wider mb-2 font-bodoni text-left">
                   {cat.name}
                 </h2>
                 <p className="text-sm font-light text-gray-200 max-w-sm mb-6 leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500">
