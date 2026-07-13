@@ -1,10 +1,41 @@
 "use client";
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ArrowRight, Sparkles } from 'lucide-react';
 
 export function HeroSection() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (video) {
+      // Force play if browser autoplay was blocked
+      video.play().catch((err) => {
+        console.warn("Autoplay failed, retrying on user interaction/scroll", err);
+      });
+      
+      // If it still hasn't started playing, listen to the first user action on the document
+      const forcePlay = () => {
+        if (video.paused) {
+          video.play().catch(e => console.warn(e));
+        }
+        document.removeEventListener('click', forcePlay);
+        document.removeEventListener('scroll', forcePlay);
+        document.removeEventListener('touchstart', forcePlay);
+      };
+      
+      document.addEventListener('click', forcePlay);
+      document.addEventListener('scroll', forcePlay);
+      document.addEventListener('touchstart', forcePlay);
+      
+      return () => {
+        document.removeEventListener('click', forcePlay);
+        document.removeEventListener('scroll', forcePlay);
+        document.removeEventListener('touchstart', forcePlay);
+      };
+    }
+  }, []);
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -34,10 +65,13 @@ export function HeroSection() {
     >
       {/* Background Video */}
       <video
+        ref={videoRef}
         autoPlay
         loop
         muted
         playsInline
+        preload="auto"
+        poster="/images/royal-banner.jpg"
         className="absolute inset-0 w-full h-full object-cover z-0 opacity-70"
       >
         <source src="/videos/herosection-vid.mp4" type="video/mp4" />
