@@ -66,21 +66,20 @@ export function HeroSection() {
         </motion.div>
 
         {/* Brand Name Header */}
-        <motion.p 
-          variants={itemVariants}
-          className="text-amber-400 font-bold uppercase tracking-[0.3em] text-lg md:text-2xl font-bodoni mb-3 leading-none select-none"
-        >
-          FRANKIE STYLES
-        </motion.p>
-
-        {/* Main Serif Header */}
         <motion.h1 
           variants={itemVariants}
-          className="text-5xl md:text-8xl font-bold tracking-tight leading-[1.08] uppercase font-bodoni text-white mb-8 select-none"
+          className="text-white font-black uppercase tracking-[0.3em] text-3xl md:text-5xl lg:text-6xl font-bodoni mb-4 leading-none select-none"
         >
-          TAILORED FOR <br />
-          DISTINCTION
+          FRANKIE STYLES
         </motion.h1>
+
+        {/* Sub-header */}
+        <motion.h2 
+          variants={itemVariants}
+          className="text-amber-400 font-semibold uppercase tracking-[0.25em] text-xs md:text-sm lg:text-base font-bodoni mb-8 select-none"
+        >
+          KAFTAN ET ALL
+        </motion.h2>
 
         {/* Subtitle Description */}
         <motion.p 
