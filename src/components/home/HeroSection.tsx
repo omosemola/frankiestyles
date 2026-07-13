@@ -10,20 +10,20 @@ export function HeroSection() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.2
+        staggerChildren: 0.2,
+        delayChildren: 0.3
       }
     }
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0, y: 45 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.8,
-        ease: [0.16, 1, 0.3, 1] as any
+        duration: 1.2,
+        ease: [0.19, 1, 0.22, 1] as any
       }
     }
   };
@@ -32,13 +32,13 @@ export function HeroSection() {
     <section 
       className="relative min-h-screen w-full flex items-center justify-center bg-black overflow-hidden"
     >
-      {/* Background Video */}
+      {/* Background Video (Scaled to crop the top-right watermark off-screen) */}
       <video
         autoPlay
         loop
         muted
         playsInline
-        className="absolute inset-0 w-full h-full object-cover z-0 opacity-70"
+        className="absolute inset-0 w-full h-full object-cover z-0 opacity-70 scale-[1.08] origin-bottom-left"
       >
         <source src="/videos/herosection-vid.mp4" type="video/mp4" />
       </video>
@@ -84,7 +84,7 @@ export function HeroSection() {
         {/* Subtitle Description */}
         <motion.p 
           variants={itemVariants}
-          className="text-gray-300 text-sm md:text-base font-light tracking-wide max-w-lg mx-auto leading-relaxed mb-12"
+          className="text-gray-300 text-sm md:text-base font-light tracking-wide max-w-lg mx-auto leading-relaxed mt-8 mb-12"
         >
           Experience African native wear at its absolute peak. Impeccable cuts, custom premium embroidery, and bespoke silhouettes handcrafted for the modern gentleman.
         </motion.p>
@@ -110,11 +110,6 @@ export function HeroSection() {
         </motion.div>
       </motion.div>
 
-      {/* Animated Scroll Down Indicator */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2.5 text-[9px] uppercase tracking-[0.25em] text-gray-400 font-bold z-20 select-none">
-        <span>Scroll Down</span>
-        <div className="w-[1px] h-12 bg-gradient-to-b from-gray-400 to-transparent animate-pulse" />
-      </div>
     </section>
   );
 }
