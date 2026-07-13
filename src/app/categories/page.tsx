@@ -25,10 +25,10 @@ const CATEGORIES: CategoryCard[] = [
     description: "Grand 3-piece traditional robes reserved for ceremonies and royal entries."
   },
   {
-    name: "IGBO",
+    name: "ISI AGWU",
     image: "/images/product-22-front.png",
-    href: "/shop?category=IGBO",
-    description: "Traditional Isiagu heritage garments celebrating Igbo cultural royalty and prestige."
+    href: "/shop?category=ISI+AGWU",
+    description: "Traditional Isiagu heritage garments celebrating Isi Agwu cultural royalty and prestige."
   },
   {
     name: "Jalabiya",
