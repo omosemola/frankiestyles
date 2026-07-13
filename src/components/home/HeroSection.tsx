@@ -32,13 +32,13 @@ export function HeroSection() {
     <section 
       className="relative min-h-screen w-full flex items-center justify-center bg-black overflow-hidden"
     >
-      {/* Background Video (Scaled to crop the top-right watermark off-screen) */}
+      {/* Background Video */}
       <video
         autoPlay
         loop
         muted
         playsInline
-        className="absolute inset-0 w-full h-full object-cover z-0 opacity-70 scale-[1.08] origin-bottom-left"
+        className="absolute inset-0 w-full h-full object-cover z-0 opacity-70"
       >
         <source src="/videos/herosection-vid.mp4" type="video/mp4" />
       </video>
@@ -52,7 +52,7 @@ export function HeroSection() {
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="relative z-20 container mx-auto px-6 text-center flex flex-col items-center justify-center max-w-4xl"
+        className="relative z-20 container mx-auto px-6 text-center flex flex-col items-center justify-center max-w-4xl pt-24"
       >
         {/* Brand Pre-header */}
         <motion.div 
@@ -68,7 +68,7 @@ export function HeroSection() {
         {/* Brand Name Header */}
         <motion.h1 
           variants={itemVariants}
-          className="text-white font-black uppercase tracking-[0.3em] text-3xl md:text-5xl lg:text-6xl font-bodoni mb-4 leading-none select-none"
+          className="text-white font-black uppercase tracking-[0.3em] text-3xl md:text-5xl lg:text-6xl font-bodoni mb-[5px] leading-none select-none"
         >
           FRANKIE STYLES
         </motion.h1>
@@ -76,7 +76,7 @@ export function HeroSection() {
         {/* Sub-header */}
         <motion.h2 
           variants={itemVariants}
-          className="text-amber-400 font-semibold uppercase tracking-[0.25em] text-xs md:text-sm lg:text-base font-bodoni mb-16 select-none"
+          className="text-amber-400 font-semibold uppercase tracking-[0.25em] text-xs md:text-sm lg:text-base mb-16 select-none"
         >
           KAFTAN ET ALL
         </motion.h2>
