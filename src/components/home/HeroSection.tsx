@@ -94,13 +94,18 @@ export function HeroSection() {
           variants={itemVariants}
           className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto px-6"
         >
-          <Link 
-            href="/shop" 
-            className="w-full sm:w-auto bg-white text-black hover:bg-white/95 uppercase tracking-widest text-xs font-bold py-4 px-8 rounded-xl shadow-xl shadow-black/30 text-center flex items-center justify-center gap-2 min-h-[56px] transition-all duration-300 active:scale-95 group"
-          >
-            Shop Collection 
-            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-          </Link>
+          <div className="animated-link-wrapper-demo w-full sm:w-auto h-[56px]">
+            <div className="animated-link-effect-demo">
+              <div />
+            </div>
+            <Link 
+              href="/shop" 
+              className="animated-link-demo w-full h-full uppercase tracking-widest text-xs font-bold flex items-center justify-center gap-2 min-w-[200px] transition-all duration-300 active:scale-95 group"
+            >
+              Shop Collection 
+              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+            </Link>
+          </div>
           <Link 
             href="/contact" 
             className="w-full sm:w-auto border border-white/30 hover:border-white text-white hover:bg-white hover:text-black uppercase tracking-widest text-xs font-bold py-4 px-8 rounded-xl text-center flex items-center justify-center min-h-[56px] transition-all duration-300 active:scale-95"
