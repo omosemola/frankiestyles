@@ -104,3 +104,12 @@
         transform: translate(-50%, -50%) scale(1.4) rotate(1turn);
     }
 }
+
+.animated-link-hero {
+    background: #ffffff !important;
+    color: #000000 !important;
+}
+
+.animated-link-effect-gold div {
+    background-image: conic-gradient(from 0 at 50% 50%, rgba(217, 119, 6, .9) 0deg, rgba(217, 119, 6, 0) 60deg, rgba(217, 119, 6, 0) 310deg, rgba(217, 119, 6, .9) 360deg) !important;
+}

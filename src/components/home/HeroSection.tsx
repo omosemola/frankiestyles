@@ -76,7 +76,7 @@ export function HeroSection() {
         {/* Sub-header */}
         <motion.h2 
           variants={itemVariants}
-          className="text-amber-400 font-semibold uppercase tracking-[0.25em] text-xs md:text-sm lg:text-base mb-16 select-none"
+          className="text-amber-400 font-semibold uppercase tracking-[0.25em] text-xs md:text-sm lg:text-base mb-16 select-none font-manrope"
         >
           KAFTAN ET ALL
         </motion.h2>
@@ -95,12 +95,12 @@ export function HeroSection() {
           className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto px-6"
         >
           <div className="animated-link-wrapper-demo w-full sm:w-auto h-[56px]">
-            <div className="animated-link-effect-demo">
+            <div className="animated-link-effect-demo animated-link-effect-gold">
               <div />
             </div>
             <Link 
               href="/shop" 
-              className="animated-link-demo w-full h-full uppercase tracking-widest text-xs font-bold flex items-center justify-center gap-2 min-w-[200px] transition-all duration-300 active:scale-95 group"
+              className="animated-link-demo animated-link-hero w-full h-full uppercase tracking-widest text-xs font-bold flex items-center justify-center gap-2 min-w-[200px] transition-all duration-300 active:scale-95 group"
             >
               Shop Collection 
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
