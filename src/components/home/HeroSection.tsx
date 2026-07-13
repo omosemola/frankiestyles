@@ -86,7 +86,7 @@ export function HeroSection() {
           variants={itemVariants}
           className="text-gray-300 text-sm md:text-base font-light tracking-wide max-w-lg mx-auto leading-relaxed mt-8 mb-12"
         >
-          Experience African native wear at its absolute peak. Impeccable cuts, custom premium embroidery, and bespoke silhouettes handcrafted for the modern gentleman.
+          Step into the epitome of premium traditional fashion. Impeccable cuts, masterfully structured Agbadas, and refined Kaftans handcrafted for the modern African gentleman who values prestige.
         </motion.p>
 
         {/* Call to Actions */}
