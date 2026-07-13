@@ -33,8 +33,8 @@ export function Navbar() {
     { name: 'Contact', href: '/contact' },
   ];
 
-  // About page has a dark hero section at the top
-  const hasDarkHero = pathname === '/about';
+  // Home and About pages have dark hero sections at the top
+  const hasDarkHero = pathname === '/' || pathname === '/about';
   // Use light text/logo (dark theme) ONLY if page has a dark hero AND user hasn't scrolled down
   const isDarkTheme = mounted && hasDarkHero && !scrolled;
 

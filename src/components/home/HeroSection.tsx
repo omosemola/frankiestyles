@@ -76,7 +76,7 @@ export function HeroSection() {
         {/* Sub-header */}
         <motion.h2 
           variants={itemVariants}
-          className="text-amber-400 font-semibold uppercase tracking-[0.25em] text-xs md:text-sm lg:text-base font-bodoni mb-8 select-none"
+          className="text-amber-400 font-semibold uppercase tracking-[0.25em] text-xs md:text-sm lg:text-base font-bodoni mb-16 select-none"
         >
           KAFTAN ET ALL
         </motion.h2>
