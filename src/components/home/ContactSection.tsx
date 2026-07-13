@@ -5,6 +5,7 @@ import { Mail, Phone, MapPin, Clock, CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
 import { ScrollAnimate } from '@/components/ui/ScrollAnimate';
+import { SectionHeader } from '@/components/ui/SectionHeader';
 import { cn } from '@/lib/utils';
 
 export function ContactSection() {
@@ -36,13 +37,11 @@ export function ContactSection() {
   return (
     <section className="py-24 bg-white border-t border-gray-150 overflow-hidden text-[#0a0a0a]">
       <div className="container mx-auto px-6 max-w-6xl">
-        <ScrollAnimate direction="up" className="text-center mb-16">
-          <h2 className="text-3xl font-bold tracking-widest uppercase mb-4 text-[#0a0a0a] font-bodoni">Book a Consultation</h2>
-          <div className="w-12 h-0.5 bg-[#0a0a0a] mx-auto mb-6"></div>
-          <p className="text-sm text-gray-500 max-w-lg mx-auto">
-            Experience our premium tailoring. Fill out the request form below to schedule a private fitting or virtual consultation.
-          </p>
-        </ScrollAnimate>
+        <SectionHeader 
+          title="Book a Consultation" 
+          description="Experience our premium tailoring. Fill out the request form below to schedule a private fitting or virtual consultation."
+          useSerif={true}
+        />
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           {/* Left Side: Showroom & Contacts */}

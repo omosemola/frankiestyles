@@ -6,6 +6,7 @@ import { SignatureStyles } from "@/components/home/SignatureStyles";
 import { ScrollAnimate } from "@/components/ui/ScrollAnimate";
 import { ContactSection } from "@/components/home/ContactSection";
 import { FeaturedProductsSection } from "@/components/home/FeaturedProductsSection";
+import { SectionHeader } from "@/components/ui/SectionHeader";
 import Link from 'next/link';
 
 export default function Home() {
@@ -16,22 +17,16 @@ export default function Home() {
       {/* Featured Categories */}
       <section className="py-24 bg-white overflow-hidden">
         <div className="container mx-auto px-6 text-center">
-          <ScrollAnimate direction="up">
-            <h2 className="text-3xl font-bold tracking-widest uppercase mb-4 text-[#0a0a0a]">Signature Styles</h2>
-            <div className="w-12 h-0.5 bg-[#0a0a0a] mx-auto mb-16"></div>
-          </ScrollAnimate>
+          <SectionHeader title="Signature Styles" />
           
           <SignatureStyles />
         </div>
       </section>
 
       {/* Featured Products Grid */}
-      <section className="py-24 bg-white border-t border-gray-100 overflow-hidden">
+      <section className="pt-10 pb-24 bg-white border-t border-gray-100 overflow-hidden">
         <div className="container mx-auto px-6 text-center">
-          <ScrollAnimate direction="up">
-            <h2 className="text-3xl font-bold tracking-widest uppercase mb-4 text-[#0a0a0a]">Featured Products</h2>
-            <div className="w-12 h-0.5 bg-[#0a0a0a] mx-auto mb-16"></div>
-          </ScrollAnimate>
+          <SectionHeader title="Featured Products" />
           
           <FeaturedProductsSection />
         </div>
@@ -49,10 +44,7 @@ export default function Home() {
       {/* New Arrivals (Horizontal Swipe on Mobile) */}
       <section className="py-24 bg-[#f8f8f8] overflow-hidden">
         <div className="container mx-auto px-6 text-center">
-          <ScrollAnimate direction="up">
-            <h2 className="text-3xl font-bold tracking-widest uppercase mb-4 text-[#0a0a0a]">New Arrivals</h2>
-            <div className="w-12 h-0.5 bg-[#0a0a0a] mx-auto mb-16"></div>
-          </ScrollAnimate>
+          <SectionHeader title="New Arrivals" />
           
           {/* Horizontal scroll container for mobile, standard grid for desktop */}
           <ScrollAnimate direction="up" amount={0.05}>
