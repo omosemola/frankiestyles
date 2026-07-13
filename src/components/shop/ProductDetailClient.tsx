@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { ShoppingBag, ChevronRight, Ruler, ShieldCheck, Truck, RefreshCw, Heart, Mail } from 'lucide-react';
+import { ShoppingBag, ChevronRight, Ruler, ShieldCheck, Truck, RefreshCw, Heart } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Product } from '@/lib/products';
 import { useCartStore } from '@/store/useCartStore';
@@ -15,14 +15,6 @@ interface ProductDetailClientProps {
   product: Product;
 }
 
-interface FlyingJet {
-  id: number;
-  startX: number;
-  startY: number;
-  endX: number;
-  endY: number;
-}
-
 export function ProductDetailClient({ product }: ProductDetailClientProps) {
   const router = useRouter();
   const [selectedImage, setSelectedImage] = useState(0);
@@ -31,8 +23,6 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
   const { addItem, setIsOpen } = useCartStore();
   const { toggleItem, hasItem } = useWishlistStore();
   const [mounted, setMounted] = useState(false);
-  const [flyingJets, setFlyingJets] = useState<FlyingJet[]>([]);
-
   // Sizing Modal States
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalTab, setModalTab] = useState<'standard' | 'custom'>('standard');
@@ -51,31 +41,8 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
 
   const isWishlisted = mounted && hasItem(product.id);
 
-  const handleAddToCart = (e: React.MouseEvent<HTMLButtonElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const cartButton = document.querySelector('[aria-label="Cart"]');
-    
-    // Find absolute coordinates relative to viewport
-    let endX = window.innerWidth - 80;
-    let endY = 40;
-    if (cartButton) {
-      const cartRect = cartButton.getBoundingClientRect();
-      endX = cartRect.left + cartRect.width / 2;
-      endY = cartRect.top + cartRect.height / 2;
-    }
-    const startX = rect.left + rect.width / 2;
-    const startY = rect.top + rect.height / 2;
-
-    const newJet = {
-      id: Date.now(),
-      startX,
-      startY,
-      endX,
-      endY
-    };
-
+  const handleAddToCart = () => {
     setIsAdding(true);
-    setFlyingJets(prev => [...prev, newJet]);
     
     // Add item to Zustand cart store
     addItem({
@@ -86,12 +53,12 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
       category: product.category,
       size: selectedSize,
     });
-  };
 
-  const handleJetComplete = (jetId: number) => {
-    setFlyingJets(prev => prev.filter(j => j.id !== jetId));
-    setIsAdding(false);
-    setIsOpen(true);
+    // Simulate luxury tactile feedback delay, then open CartDrawer
+    setTimeout(() => {
+      setIsAdding(false);
+      setIsOpen(true);
+    }, 800);
   };
 
   return (
@@ -231,15 +198,21 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
             </div>
 
             {/* Add to Cart CTA & Wishlist */}
-            <div className="flex gap-4">
-              <Button
-                onClick={handleAddToCart}
-                disabled={isAdding}
-                className="flex-grow py-5 text-sm uppercase tracking-widest font-semibold flex items-center justify-center gap-2.5 h-16 rounded-xl"
-              >
-                <ShoppingBag className="w-5 h-5" />
-                {isAdding ? "Adding to Bag..." : "Add to Bag"}
-              </Button>
+            <div className="flex gap-4 items-center flex-grow">
+              <div className="animated-link-wrapper-demo flex-grow h-16">
+                <div className="animated-link-effect-demo">
+                  <div />
+                </div>
+                <button
+                  onClick={handleAddToCart}
+                  disabled={isAdding}
+                  className="animated-link-demo w-full h-full text-xs uppercase tracking-widest font-bold flex items-center justify-center gap-2.5 transition-all duration-300 active:scale-95 disabled:opacity-80"
+                >
+                  <ShoppingBag className="w-5 h-5" />
+                  {isAdding ? "Adding to Bag..." : "Add to Bag"}
+                </button>
+              </div>
+              
               <button
                 onClick={() => toggleItem(product)}
                 className={cn(
@@ -288,49 +261,7 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
         }}
       />
 
-      {/* Jet flying envelope overlay */}
-      {mounted && flyingJets.map((jet) => (
-        <motion.div
-          key={jet.id}
-          initial={{
-            position: "fixed",
-            left: jet.startX,
-            top: jet.startY,
-            x: "-50%",
-            y: "-50%",
-            scale: 0.1,
-            rotate: -35,
-            opacity: 1,
-            zIndex: 9999
-          }}
-          animate={{
-            left: [jet.startX, (jet.startX + jet.endX) / 2, jet.endX],
-            top: [jet.startY, Math.min(jet.startY, jet.endY) - 220, jet.endY],
-            scale: [0.1, 1.3, 0.25],
-            rotate: [-35, -75, 45, 90],
-            opacity: [1, 1, 1, 0]
-          }}
-          transition={{
-            duration: 0.9,
-            ease: [0.25, 1, 0.50, 1]
-          }}
-          onAnimationComplete={() => handleJetComplete(jet.id)}
-          className="fixed pointer-events-none w-12 h-12 flex items-center justify-center"
-        >
-          <div className="relative bg-amber-800 text-white rounded-xl p-2.5 shadow-2xl border border-amber-600 flex items-center justify-center animate-pulse">
-            <Mail className="w-5 h-5" />
-            {/* Jet engine visual flare */}
-            <span className="absolute -left-1.5 w-3 h-3 rounded-full bg-orange-500 blur-sm animate-ping" />
-            <span className="absolute -left-3 w-2 h-2 rounded-full bg-yellow-400 blur-[1px] animate-ping" />
-            
-            {/* Contrail / Sparkle particles trailing behind */}
-            <div className="absolute right-full top-1/2 -translate-y-1/2 flex items-center gap-1.5 pr-2 pointer-events-none">
-              <span className="w-2 h-2 rounded-full bg-amber-400 opacity-60 animate-ping" />
-              <span className="w-1.5 h-1.5 rounded-full bg-white opacity-40 animate-pulse" />
-            </div>
-          </div>
-        </motion.div>
-      ))}
+
     </div>
   );
 }
