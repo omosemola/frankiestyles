@@ -210,7 +210,7 @@ export function ContactSection() {
                 className="transition-transform hover:scale-110 active:scale-95 text-[#e1306c]"
                 title="Follow us on Instagram"
               >
-                <FontAwesomeIcon icon={"fa-brands fa-instagram" as any} className="w-10 h-10" />
+                <FontAwesomeIcon icon={"fa-brands fa-instagram" as any} className="w-12 h-12" />
               </a>
               {/* TikTok */}
               <a 
@@ -220,7 +220,7 @@ export function ContactSection() {
                 className="transition-transform hover:scale-110 active:scale-95 text-[#000000]"
                 title="Follow us on TikTok"
               >
-                <FontAwesomeIcon icon={"fa-brands fa-tiktok" as any} className="w-10 h-10" />
+                <FontAwesomeIcon icon={"fa-brands fa-tiktok" as any} className="w-12 h-12" />
               </a>
               {/* WhatsApp */}
               <a 
@@ -230,7 +230,7 @@ export function ContactSection() {
                 className="transition-transform hover:scale-110 active:scale-95 text-[#25d366]"
                 title="Message us on WhatsApp"
               >
-                <FontAwesomeIcon icon={"fa-brands fa-whatsapp" as any} className="w-10 h-10" />
+                <FontAwesomeIcon icon={"fa-brands fa-whatsapp" as any} className="w-12 h-12" />
               </a>
             </div>
           </ScrollAnimate>
