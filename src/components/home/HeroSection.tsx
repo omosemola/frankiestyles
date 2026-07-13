@@ -52,7 +52,7 @@ export function HeroSection() {
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="relative z-20 container mx-auto px-6 text-center flex flex-col items-center justify-center max-w-4xl pt-24"
+        className="relative z-20 container mx-auto px-6 text-center flex flex-col items-center justify-center max-w-4xl"
       >
         {/* Brand Pre-header */}
         <motion.div 
