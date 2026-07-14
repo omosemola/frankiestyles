@@ -3,7 +3,7 @@
 import { prisma } from "@/lib/db";
 import { Product } from "@/lib/products";
 
-async function queryWithRetry<T>(fn: () => Promise<T>, retries = 3, delay = 500): Promise<T> {
+async function queryWithRetry<T>(fn: () => Promise<T>, retries = 5, delay = 1000): Promise<T> {
   let lastError: any;
   for (let i = 0; i < retries; i++) {
     try {
