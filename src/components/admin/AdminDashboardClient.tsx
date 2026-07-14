@@ -79,7 +79,7 @@ export default function AdminDashboardClient({
     id: "",
     name: "",
     price: "",
-    category: "KAFTAN",
+    category: "Kaftans",
     image: "",
     isNew: false,
     description: "",
@@ -145,7 +145,7 @@ export default function AdminDashboardClient({
       id: "",
       name: "",
       price: "",
-      category: "KAFTAN",
+      category: "Kaftans",
       image: "",
       isNew: true,
       description: "",
@@ -697,11 +697,11 @@ export default function AdminDashboardClient({
                   className="bg-gray-50 border border-gray-200 text-black rounded-lg px-4 py-2.5 text-xs font-bold uppercase tracking-wider outline-none focus:border-black focus:bg-white"
                 >
                   <option value="all">All Categories</option>
-                  <option value="KAFTAN">Kaftan</option>
-                  <option value="AGBADA">Agbada</option>
+                  <option value="Kaftans">Kaftans</option>
+                  <option value="Agbadas">Agbadas</option>
                   <option value="ISI AGWU">Isi Agwu</option>
-                  <option value="JALABIYA">Jalabiya</option>
-                  <option value="TWO PIECES">Two Pieces</option>
+                  <option value="Jalabiya">Jalabiya</option>
+                  <option value="Two Pieces">Two Pieces</option>
                 </select>
               </div>
             </div>
@@ -1006,11 +1006,11 @@ export default function AdminDashboardClient({
                       onChange={(e) => setProductForm({ ...productForm, category: e.target.value })}
                       className="w-full bg-gray-50 border border-gray-200 text-black rounded-lg px-4 py-2.5 text-xs outline-none focus:border-black"
                     >
-                      <option value="KAFTAN">Kaftan</option>
-                      <option value="AGBADA">Agbada</option>
+                      <option value="Kaftans">Kaftans</option>
+                      <option value="Agbadas">Agbadas</option>
                       <option value="ISI AGWU">Isi Agwu</option>
-                      <option value="JALABIYA">Jalabiya</option>
-                      <option value="TWO PIECES">Two Pieces</option>
+                      <option value="Jalabiya">Jalabiya</option>
+                      <option value="Two Pieces">Two Pieces</option>
                     </select>
                   </div>
                 </div>
