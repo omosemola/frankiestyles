@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import NewsletterForm from './NewsletterForm';
 
 export function Footer() {
   return (
@@ -35,10 +36,7 @@ export function Footer() {
         <div>
           <h3 className="text-sm font-semibold tracking-wider uppercase mb-6">Newsletter</h3>
           <p className="text-sm text-white/60 mb-4">Subscribe for exclusive offers and updates.</p>
-          <form className="flex border-b border-white/20 pb-2">
-            <input type="email" placeholder="Email Address" className="bg-transparent w-full text-sm outline-none placeholder:text-white/40 focus:placeholder:text-white/20" />
-            <button type="submit" className="text-sm font-medium uppercase hover:text-white/70 transition-colors">Join</button>
-          </form>
+          <NewsletterForm />
         </div>
       </div>
       

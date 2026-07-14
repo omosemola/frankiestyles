@@ -14,6 +14,7 @@ import {
   updateProductAction, 
   deleteProductAction 
 } from "@/actions/products";
+import { deleteSubscriberAction } from "@/actions/newsletter";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { 
@@ -43,26 +44,30 @@ interface AdminDashboardClientProps {
   initialProducts: Product[];
   initialOrders: any[];
   initialConsultations: any[];
+  initialSubscribers: any[];
 }
 
-type TabType = "overview" | "orders" | "consultations" | "products";
+type TabType = "overview" | "orders" | "consultations" | "products" | "subscribers";
 
 export default function AdminDashboardClient({
   initialProducts,
   initialOrders,
   initialConsultations,
+  initialSubscribers,
 }: AdminDashboardClientProps) {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState<TabType>("overview");
   const [products, setProducts] = useState<Product[]>(initialProducts);
   const [orders, setOrders] = useState<any[]>(initialOrders);
   const [consultations, setConsultations] = useState<any[]>(initialConsultations);
+  const [subscribers, setSubscribers] = useState<any[]>(initialSubscribers);
 
   // Search & Filter States
   const [orderSearch, setOrderSearch] = useState("");
   const [orderFilter, setOrderFilter] = useState<string>("all");
   const [productSearch, setProductSearch] = useState("");
   const [productFilter, setProductFilter] = useState<string>("all");
+  const [subscriberSearch, setSubscriberSearch] = useState("");
 
   // Selection states for detail modals
   const [selectedOrder, setSelectedOrder] = useState<any | null>(null);
@@ -119,6 +124,16 @@ export default function AdminDashboardClient({
       const res = await deleteConsultationAction(consultationId);
       if (res.success) {
         setConsultations(consultations.filter(c => c.id !== consultationId));
+      }
+    }
+  };
+
+  // Subscriber Actions
+  const handleDeleteSubscriber = async (subscriberId: string) => {
+    if (confirm("Are you sure you want to delete this subscriber from the mailing list?")) {
+      const res = await deleteSubscriberAction(subscriberId);
+      if (res.success) {
+        setSubscribers(subscribers.filter(s => s.id !== subscriberId));
       }
     }
   };
@@ -324,6 +339,22 @@ export default function AdminDashboardClient({
             <Shirt className="w-4 h-4" />
             <span>Products</span>
           </button>
+          <button
+            onClick={() => setActiveTab("subscribers")}
+            className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-xs font-bold uppercase tracking-wider transition-all whitespace-nowrap ${
+              activeTab === "subscribers" 
+                ? "bg-black text-white" 
+                : "text-gray-500 hover:text-black hover:bg-gray-100"
+            }`}
+          >
+            <Mail className="w-4 h-4" />
+            <span>Subscribers</span>
+            {subscribers.length > 0 && (
+              <span className={`ml-auto text-[10px] font-extrabold px-2 py-0.5 rounded ${activeTab === "subscribers" ? "bg-white text-black" : "bg-gray-100 text-gray-700"}`}>
+                {subscribers.length}
+              </span>
+            )}
+          </button>
         </nav>
 
         {/* Logout session */}
@@ -350,7 +381,7 @@ export default function AdminDashboardClient({
             </div>
 
             {/* Metrics Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
               <div className="bg-white border border-gray-200 p-6 rounded-2xl flex items-center gap-4 smooth-shadow-sm">
                 <div className="w-12 h-12 rounded-xl bg-gray-50 border border-gray-100 flex items-center justify-center text-gray-500">
                   <DollarSign className="w-6 h-6" />
@@ -385,6 +416,15 @@ export default function AdminDashboardClient({
                 <div>
                   <h3 className="text-xs font-bold uppercase tracking-wider text-gray-400">Active Catalog</h3>
                   <p className="text-xl font-black mt-1 text-black">{products.length} Items</p>
+                </div>
+              </div>
+              <div className="bg-white border border-gray-200 p-6 rounded-2xl flex items-center gap-4 smooth-shadow-sm">
+                <div className="w-12 h-12 rounded-xl bg-gray-50 border border-gray-100 flex items-center justify-center text-gray-500">
+                  <Mail className="w-6 h-6" />
+                </div>
+                <div>
+                  <h3 className="text-xs font-bold uppercase tracking-wider text-gray-400">Newsletter</h3>
+                  <p className="text-xl font-black mt-1 text-black">{subscribers.length} Emails</p>
                 </div>
               </div>
             </div>
@@ -716,6 +756,71 @@ export default function AdminDashboardClient({
                       <tr>
                         <td colSpan={7} className="p-8 text-center text-gray-400">
                           No matching products found in database.
+                        </td>
+                      </tr>
+                    )}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Subscribers Tab */}
+        {activeTab === "subscribers" && (
+          <div className="space-y-6 animate-fade-in">
+            <div>
+              <h1 className="text-2xl font-black uppercase tracking-wider">Newsletter Subscribers</h1>
+              <p className="text-xs text-gray-400 mt-1">Review registered client emails and download newsletter subscriber lists</p>
+            </div>
+
+            {/* Filter and Search Controls */}
+            <div className="flex flex-col sm:flex-row gap-4 bg-white border border-gray-200 p-4 rounded-xl smooth-shadow-sm">
+              <div className="relative flex-1">
+                <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+                <Input
+                  placeholder="Search subscribers by email..."
+                  value={subscriberSearch}
+                  onChange={(e) => setSubscriberSearch(e.target.value)}
+                  className="bg-gray-50 border-gray-200 text-black pl-10 focus:border-black focus:bg-white"
+                />
+              </div>
+            </div>
+
+            {/* Subscribers Table Container */}
+            <div className="bg-white border border-gray-200 rounded-xl overflow-hidden smooth-shadow-sm">
+              <div className="overflow-x-auto">
+                <table className="w-full text-left border-collapse text-xs">
+                  <thead>
+                    <tr className="border-b border-gray-200 bg-gray-50 uppercase tracking-wider text-gray-500 font-bold">
+                      <th className="p-4">Email Address</th>
+                      <th className="p-4">Subscribed Date</th>
+                      <th className="p-4 text-right">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-gray-100">
+                    {subscribers
+                      .filter(s => s.email.toLowerCase().includes(subscriberSearch.toLowerCase()))
+                      .map((s) => (
+                        <tr key={s.id} className="hover:bg-gray-50/50 transition-colors">
+                          <td className="p-4 font-bold text-black">{s.email}</td>
+                          <td className="p-4 text-gray-500">
+                            {new Date(s.createdAt).toLocaleDateString()} at {new Date(s.createdAt).toLocaleTimeString()}
+                          </td>
+                          <td className="p-4 text-right">
+                            <button
+                              onClick={() => handleDeleteSubscriber(s.id)}
+                              className="p-1.5 bg-white border border-gray-200 hover:border-red-500 text-gray-400 hover:text-red-600 rounded-lg transition-colors inline-block"
+                            >
+                              <Trash2 className="w-4 h-4" />
+                            </button>
+                          </td>
+                        </tr>
+                      ))}
+                    {subscribers.filter(s => s.email.toLowerCase().includes(subscriberSearch.toLowerCase())).length === 0 && (
+                      <tr>
+                        <td colSpan={3} className="p-8 text-center text-gray-400">
+                          No matching subscribers found in database.
                         </td>
                       </tr>
                     )}

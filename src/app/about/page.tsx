@@ -1,5 +1,6 @@
 "use client";
 import React from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { ScrollAnimate } from '@/components/ui/ScrollAnimate';
 
@@ -33,10 +34,13 @@ export default function AboutPage() {
       <section className="relative h-[80vh] flex items-center justify-center overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
-          <img 
+          <Image 
             src="/images/about-banner.jpg" 
             alt="About Frankie Styles" 
-            className="w-full h-full object-cover filter brightness-[0.25]"
+            fill
+            priority
+            className="object-cover filter brightness-[0.25]"
+            sizes="100vw"
           />
         </div>
 
@@ -66,7 +70,7 @@ export default function AboutPage() {
           />
         </div>
       </section>
-
+ 
       {/* Brand Philosophy Segment */}
       <section className="py-32 bg-white text-[#0a0a0a] overflow-hidden">
         <ScrollAnimate>
@@ -81,17 +85,21 @@ export default function AboutPage() {
           </div>
         </ScrollAnimate>
       </section>
-
+ 
       {/* Fabric Showcase (Split Panel) */}
       <section className="bg-[#f8f8f8] overflow-hidden text-[#0a0a0a]">
         <div className="grid grid-cols-1 lg:grid-cols-2 items-center">
           {/* Image */}
           <ScrollAnimate direction="left" className="w-full bg-[#f8f8f8] flex items-center justify-center p-0 lg:p-12 min-h-0 lg:min-h-[650px] overflow-hidden">
-            <img 
-              src="/images/about-showcase.jpg" 
-              alt="Bespoke embroidery" 
-              className="w-full h-auto lg:h-full max-h-[650px] object-contain mx-auto"
-            />
+            <div className="relative w-full h-[650px] max-h-[650px] overflow-hidden">
+              <Image 
+                src="/images/about-showcase.jpg" 
+                alt="Bespoke embroidery" 
+                fill
+                className="object-contain mx-auto"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+            </div>
           </ScrollAnimate>
           {/* Text */}
           <ScrollAnimate direction="right" className="p-12 md:p-24 flex flex-col justify-center space-y-8 bg-white h-full lg:min-h-[650px]">

@@ -5,6 +5,8 @@ import { cn } from '@/lib/utils';
 import Link from 'next/link';
 import { Product } from '@/lib/products';
 
+import Image from 'next/image';
+
 interface ProductCardProps {
   product: Product;
   className?: string;
@@ -18,10 +20,12 @@ export function ProductCard({ product, className }: ProductCardProps) {
         href={`/product/${product.id}`} 
         className="relative aspect-[3/4] bg-white border border-gray-150 rounded-xl overflow-hidden mb-4 smooth-shadow block"
       >
-        <img 
+        <Image 
           src={product.image} 
           alt={product.name} 
-          className="w-full h-full object-contain p-2 transition-transform duration-700 group-hover:scale-105"
+          fill
+          className="object-contain p-2 transition-transform duration-700 group-hover:scale-105"
+          sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
         />
         
         {/* Badges */}

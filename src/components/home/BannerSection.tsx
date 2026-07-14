@@ -3,6 +3,8 @@ import React from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 
+import Image from 'next/image';
+
 interface BannerSectionProps {
   title: string;
   description: string;
@@ -17,10 +19,13 @@ export function BannerSection({ title, description, image, buttonText, align = '
     <section className="relative h-[70vh] min-h-[500px] flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-[#0a0a0a]/30 z-10" />
-        <img 
+        <Image 
           src={image} 
           alt={title} 
-          className="w-full h-full object-cover transition-transform duration-1000 hover:scale-105"
+          fill
+          priority
+          className="object-cover transition-transform duration-1000 hover:scale-105"
+          sizes="100vw"
         />
       </div>
       <div className={`relative z-10 container mx-auto px-6 flex ${align === 'left' ? 'justify-start text-left' : align === 'right' ? 'justify-end text-right' : 'justify-center text-center'} text-white`}>
