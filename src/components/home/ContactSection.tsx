@@ -82,14 +82,18 @@ export function ContactSection() {
                   <Phone className="w-5 h-5 text-gray-400 flex-shrink-0 mt-0.5" />
                   <div>
                     <h4 className="text-xs font-bold uppercase tracking-wider text-gray-400">WhatsApp / Call</h4>
-                    <p className="text-sm font-medium mt-1">+234 (0) 809 123 4567</p>
+                    <a href="https://wa.me/2348066913548" target="_blank" rel="noopener noreferrer" className="text-sm font-medium mt-1 hover:underline text-black">
+                      +234 (0) 806 691 3548
+                    </a>
                   </div>
                 </div>
                 <div className="flex gap-4 items-start text-left">
                   <Mail className="w-5 h-5 text-gray-400 flex-shrink-0 mt-0.5" />
                   <div>
                     <h4 className="text-xs font-bold uppercase tracking-wider text-gray-400">Email Relations</h4>
-                    <p className="text-sm font-medium mt-1">tailoring@frankiestyles.com</p>
+                    <a href="mailto:Frankiestyles4u@gmail.com" className="text-sm font-medium mt-1 hover:underline text-black">
+                      Frankiestyles4u@gmail.com
+                    </a>
                   </div>
                 </div>
                 <div className="flex gap-4 items-start text-left">
@@ -246,7 +250,7 @@ export function ContactSection() {
               </a>
               {/* WhatsApp */}
               <a 
-                href="https://wa.me/2348000000000" 
+                href="https://wa.me/2348066913548" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="transition-transform hover:scale-110 active:scale-95 text-[#25d366]"

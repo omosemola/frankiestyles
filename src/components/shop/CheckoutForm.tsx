@@ -130,7 +130,7 @@ Please confirm my order and contact me regarding fabric/measurement details. Tha
     clearCart();
     
     // Open WhatsApp in a new window/tab
-    const whatsappUrl = `https://wa.me/2348091234567?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/2348066913548?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
     
     // Redirect to checkout success page
@@ -291,7 +291,7 @@ Please confirm my order and contact me regarding fabric/measurement details. Tha
               <Input 
                 type="tel" 
                 required 
-                placeholder="E.g., 08091234567" 
+                placeholder="E.g., 08066913548" 
                 value={phone}
                 onChange={e => setPhone(e.target.value)}
                 className="bg-[#f8f8f8] border-transparent focus:border-black h-12"
