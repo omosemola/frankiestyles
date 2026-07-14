@@ -32,7 +32,7 @@ const connectionString = getDirectConnectionString();
 const pool = new Pool({ 
   connectionString,
   max: 1,                  // Limit to 1 connection per worker to prevent exceeding postgres proxy limit of 10
-  idleTimeoutMillis: 500,  // Quickly release idle connections
+  idleTimeoutMillis: 30000, // Keep connection open for 30s to enable reuse and avoid handshake churn
   connectionTimeoutMillis: 5000 // Reject hung connections after 5 seconds
 });
 

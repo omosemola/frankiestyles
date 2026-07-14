@@ -11,6 +11,11 @@ async function queryWithRetry<T>(fn: () => Promise<T>, retries = 5, delay = 1000
     } catch (err: any) {
       lastError = err;
       console.warn(`Database query failed (attempt ${i + 1}/${retries}). Retrying...`, err.message || err);
+      try {
+        await prisma.$disconnect();
+      } catch (disconnectErr) {
+        console.error("Failed to disconnect prisma client on error:", disconnectErr);
+      }
       if (i < retries - 1) {
         await new Promise(resolve => setTimeout(resolve, delay));
       }
