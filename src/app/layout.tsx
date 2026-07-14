@@ -1,9 +1,6 @@
 import type { Metadata } from "next";
 import { Manrope, Poppins, Bodoni_Moda } from "next/font/google";
-import { Navbar } from "@/components/layout/Navbar";
-import { Footer } from "@/components/layout/Footer";
-import { CartDrawer } from "@/components/shop/CartDrawer";
-import { WishlistDrawer } from "@/components/shop/WishlistDrawer";
+import { ClientLayoutWrapper } from "@/components/layout/ClientLayoutWrapper";
 import "./globals.css";
 
 const manrope = Manrope({
@@ -57,19 +54,15 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-  }: Readonly<{
+}: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
     <html lang="en" className={`${manrope.variable} ${poppins.variable} ${bodoni.variable}`}>
       <body className="antialiased min-h-screen flex flex-col bg-[var(--background)]">
-        <Navbar />
-        <main className="flex-grow">
+        <ClientLayoutWrapper>
           {children}
-        </main>
-        <CartDrawer />
-        <WishlistDrawer />
-        <Footer />
+        </ClientLayoutWrapper>
       </body>
     </html>
   );
