@@ -10,6 +10,7 @@ import { cn } from '@/lib/utils';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faInstagram, faTiktok, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
+import { createConsultationAction } from '@/actions/consultation';
 
 library.add(faInstagram, faTiktok, faWhatsapp);
 
@@ -23,20 +24,33 @@ export function ContactSection() {
     notes: ''
   });
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => {
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        service: 'Bespoke Kaftan',
-        date: '',
-        notes: ''
-      });
-    }, 2000);
+    setIsSubmitting(true);
+    setError(null);
+    try {
+      const result = await createConsultationAction(formData);
+      if (result.success) {
+        setSubmitted(true);
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          service: 'Bespoke Kaftan',
+          date: '',
+          notes: ''
+        });
+      } else {
+        setError(result.error || "Submission failed. Please try again.");
+      }
+    } catch (err) {
+      setError("An unexpected error occurred. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -192,8 +206,16 @@ export function ContactSection() {
                       />
                     </div>
 
-                    <Button type="submit" className="w-full py-4 text-xs font-semibold uppercase tracking-widest h-12 rounded-xl">
-                      Request Consultation
+                    {error && (
+                      <p className="text-red-500 text-xs font-semibold text-left">{error}</p>
+                    )}
+
+                    <Button 
+                      type="submit" 
+                      disabled={isSubmitting}
+                      className="w-full py-4 text-xs font-semibold uppercase tracking-widest h-12 rounded-xl"
+                    >
+                      {isSubmitting ? "Submitting..." : "Request Consultation"}
                     </Button>
                   </motion.form>
                 )}

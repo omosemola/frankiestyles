@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation';
-import { DUMMY_PRODUCTS } from '@/lib/products';
+import { getProducts, getProductById } from '@/actions/products';
 import { ProductDetailClient } from '@/components/shop/ProductDetailClient';
 import { Metadata } from 'next';
 
@@ -8,14 +8,15 @@ interface ProductPageProps {
 }
 
 export async function generateStaticParams() {
-  return DUMMY_PRODUCTS.map((product) => ({
+  const products = await getProducts();
+  return products.map((product) => ({
     id: product.id,
   }));
 }
 
 export async function generateMetadata({ params }: ProductPageProps): Promise<Metadata> {
   const { id } = await params;
-  const product = DUMMY_PRODUCTS.find((p) => p.id === id);
+  const product = await getProductById(id);
   
   if (!product) {
     return {
@@ -57,7 +58,7 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
 
 export default async function ProductPage({ params }: ProductPageProps) {
   const { id } = await params;
-  const product = DUMMY_PRODUCTS.find((p) => p.id === id);
+  const product = await getProductById(id);
 
   if (!product) {
     notFound();

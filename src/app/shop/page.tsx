@@ -3,8 +3,9 @@ import React, { useState, useMemo, useEffect, Suspense } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { SlidersHorizontal, ChevronDown } from 'lucide-react';
 import { useSearchParams } from 'next/navigation';
-import { DUMMY_PRODUCTS, Product } from '@/lib/products';
+import { Product } from '@/lib/products';
 import { ProductCard } from '@/components/shop/ProductCard';
+import { getProducts } from '@/actions/products';
 
 type SortOption = 'default' | 'price-asc' | 'price-desc';
 
@@ -12,9 +13,26 @@ function ShopContent() {
   const searchParams = useSearchParams();
   const categoryParam = searchParams.get('category');
 
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [sortBy, setSortBy] = useState<SortOption>('default');
   const [isSortOpen, setIsSortOpen] = useState(false);
+
+  // Load products from database
+  useEffect(() => {
+    async function loadProducts() {
+      try {
+        const data = await getProducts();
+        setProducts(data);
+      } catch (err) {
+        console.error("Failed to load products:", err);
+      } finally {
+        setLoading(false);
+      }
+    }
+    loadProducts();
+  }, []);
 
   // Sync state if category changes in URL
   useEffect(() => {
@@ -27,13 +45,13 @@ function ShopContent() {
 
   // Categories list extracted from product catalog + 'All'
   const categories = useMemo(() => {
-    const cats = new Set(DUMMY_PRODUCTS.map(p => p.category));
+    const cats = new Set(products.map(p => p.category));
     return ['All', ...Array.from(cats)];
-  }, []);
+  }, [products]);
 
   // Filtered and sorted products
   const filteredProducts = useMemo(() => {
-    let result = [...DUMMY_PRODUCTS];
+    let result = [...products];
 
     // Filter
     if (selectedCategory !== 'All') {
@@ -48,7 +66,16 @@ function ShopContent() {
     }
 
     return result;
-  }, [selectedCategory, sortBy]);
+  }, [products, selectedCategory, sortBy]);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-white flex flex-col items-center justify-center space-y-4">
+        <div className="w-12 h-12 rounded-full border-2 border-gray-100 border-t-black animate-spin" />
+        <p className="text-xs uppercase tracking-widest text-gray-400 font-semibold animate-pulse">Loading items...</p>
+      </div>
+    );
+  }
 
   const sortLabel = {
     'default': 'Newest',

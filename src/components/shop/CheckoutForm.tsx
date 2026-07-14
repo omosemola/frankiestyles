@@ -7,6 +7,7 @@ import { Input } from '@/components/ui/Input';
 import { ShoppingBag, ArrowLeft, ShieldCheck, CreditCard, MessageCircle } from 'lucide-react';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
+import { createOrderAction } from '@/actions/orders';
 
 const NIGERIAN_STATES = [
   "Lagos", "Abuja (FCT)", "Abia", "Adamawa", "Akwa Ibom", "Anambra", "Bauchi", "Bayelsa", 
@@ -46,7 +47,30 @@ export function CheckoutForm() {
   const shipping = subtotal > 150000 ? 0 : 5000; // Free shipping over 150k Naira
   const total = subtotal + shipping;
 
-  const handlePaystackSuccessAction = (refCode: string) => {
+  const handlePaystackSuccessAction = async (refCode: string) => {
+    try {
+      await createOrderAction({
+        name,
+        email,
+        phone,
+        address,
+        city,
+        state,
+        paymentMethod: 'paystack',
+        paymentReference: refCode,
+        totalAmount: total,
+        shippingFee: shipping,
+        items: items.map(item => ({
+          id: item.id,
+          name: item.name,
+          price: item.price,
+          size: item.size,
+          quantity: item.quantity
+        }))
+      });
+    } catch (err) {
+      console.error("Failed to save Paystack order details:", err);
+    }
     clearCart();
     router.push(`/checkout/success?reference=${refCode}`);
   };
@@ -55,7 +79,32 @@ export function CheckoutForm() {
     alert("Transaction cancelled. If you experienced any issue, please contact support.");
   };
 
-  const handleWhatsAppCheckout = () => {
+  const handleWhatsAppCheckout = async () => {
+    const referenceCode = `WA-${Date.now()}`;
+    try {
+      await createOrderAction({
+        name,
+        email,
+        phone,
+        address,
+        city,
+        state,
+        paymentMethod: 'whatsapp',
+        paymentReference: referenceCode,
+        totalAmount: total,
+        shippingFee: shipping,
+        items: items.map(item => ({
+          id: item.id,
+          name: item.name,
+          price: item.price,
+          size: item.size,
+          quantity: item.quantity
+        }))
+      });
+    } catch (err) {
+      console.error("Failed to save WhatsApp order details:", err);
+    }
+
     // Compile order message text
     const orderItemsText = items
       .map((item) => `• ${item.name} (Size: ${item.size}) x ${item.quantity} - ₦${(item.price * item.quantity).toLocaleString()}`)
@@ -85,7 +134,7 @@ Please confirm my order and contact me regarding fabric/measurement details. Tha
     window.open(whatsappUrl, '_blank');
     
     // Redirect to checkout success page
-    router.push(`/checkout/success?reference=WA-${Date.now()}`);
+    router.push(`/checkout/success?reference=${referenceCode}`);
   };
 
   const handlePaystackCheckout = () => {
