@@ -27,7 +27,15 @@ function getDirectConnectionString(): string {
 }
 
 const connectionString = getDirectConnectionString();
-const pool = new Pool({ connectionString });
+
+// Optimize connection pool for Next.js worker processes and concurrent SSG builds
+const pool = new Pool({ 
+  connectionString,
+  max: 2,                  // Limit connections per worker to prevent pool exhaustion
+  idleTimeoutMillis: 1000, // Quickly release idle connections
+  connectionTimeoutMillis: 5000 // Reject hung connections after 5 seconds
+});
+
 const adapter = new PrismaPg(pool);
 
 const globalForPrisma = global as unknown as { prisma: PrismaClient };
