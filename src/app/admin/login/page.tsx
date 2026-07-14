@@ -3,7 +3,6 @@
 import AdminLoginForm from "@/components/admin/AdminLoginForm";
 import { checkAdminAuthAction } from "@/actions/admin";
 import { redirect } from "next/navigation";
-import Image from "next/image";
 
 export default async function AdminLoginPage() {
   const isAuth = await checkAdminAuthAction();
@@ -12,26 +11,24 @@ export default async function AdminLoginPage() {
   }
 
   return (
-    <main className="min-h-screen bg-black text-white flex flex-col justify-center items-center relative overflow-hidden px-4">
-      {/* Decorative luxury gradient background */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(197,160,89,0.08)_0%,transparent_70%)] pointer-events-none" />
-      <div className="absolute top-0 left-0 w-full h-full bg-cover bg-center opacity-[0.03] mix-blend-overlay pointer-events-none" style={{ backgroundImage: "url('/images/hero-bg.jpg')" }} />
+    <main className="min-h-screen bg-[#fafafa] text-black flex flex-col justify-center items-center px-4 relative">
+      {/* Subtle grid pattern or light gradient */}
+      <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] opacity-40 pointer-events-none" />
 
       <div className="w-full max-w-md relative z-10 text-center space-y-8">
         {/* Branding header */}
-        <div className="space-y-3">
-          <h1 className="text-3xl font-extrabold tracking-[0.25em] uppercase text-white">
-            FRANKIE <span className="text-[#c5a059]">STYLES</span>
+        <div className="space-y-2">
+          <h1 className="text-3xl font-black tracking-[0.2em] uppercase text-black">
+            FRANKIE <span className="text-gray-500 font-medium">STYLES</span>
           </h1>
-          <p className="text-xs uppercase tracking-[0.2em] text-gray-400 font-medium">
+          <p className="text-[10px] uppercase tracking-[0.25em] text-gray-400 font-bold">
             Tailoring Portal • Administration
           </p>
         </div>
 
         {/* Login Form Container */}
-        <div className="bg-[#111111]/80 backdrop-blur-xl border border-white/10 p-8 rounded-2xl smooth-shadow relative group">
-          <div className="absolute -inset-px bg-gradient-to-r from-transparent via-[#c5a059]/20 to-transparent rounded-2xl opacity-50 blur-sm pointer-events-none" />
-          <h2 className="text-lg font-bold uppercase tracking-wider mb-6">Enter Admin Passcode</h2>
+        <div className="bg-white border border-gray-200/80 p-8 rounded-2xl smooth-shadow relative">
+          <h2 className="text-sm font-bold uppercase tracking-wider text-gray-800 mb-6">Enter Admin Passcode</h2>
           <AdminLoginForm />
         </div>
       </div>

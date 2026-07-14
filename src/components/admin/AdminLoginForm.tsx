@@ -35,7 +35,7 @@ export default function AdminLoginForm() {
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       {error && (
-        <div className="bg-red-950/50 border border-red-500/30 text-red-200 text-xs px-4 py-3 rounded-lg text-center uppercase tracking-wide">
+        <div className="bg-red-50 border border-red-200 text-red-700 text-xs px-4 py-3 rounded-lg text-center uppercase tracking-wide">
           {error}
         </div>
       )}
@@ -45,7 +45,7 @@ export default function AdminLoginForm() {
           placeholder="••••••••••••"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="bg-black/50 border-white/10 text-white placeholder-gray-600 focus:border-[#c5a059] text-center text-lg tracking-widest py-3"
+          className="bg-gray-50 border-gray-200 text-black placeholder-gray-400 focus:border-black focus:bg-white text-center text-lg tracking-widest py-3"
           required
           autoFocus
         />
@@ -53,7 +53,7 @@ export default function AdminLoginForm() {
       <Button
         type="submit"
         disabled={loading}
-        className="w-full bg-[#c5a059] hover:bg-[#b08e4f] text-black font-bold uppercase tracking-wider py-3"
+        className="w-full bg-black hover:bg-zinc-800 text-white font-bold uppercase tracking-wider py-3"
       >
         {loading ? "Verifying Access..." : "Grant Access"}
       </Button>

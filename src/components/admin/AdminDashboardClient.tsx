@@ -255,27 +255,27 @@ export default function AdminDashboardClient({
   });
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white flex flex-col md:flex-row">
+    <div className="min-h-screen bg-[#fafafa] text-black flex flex-col md:flex-row font-sans">
       {/* Sidebar Navigation */}
-      <aside className="w-full md:w-64 bg-black border-b md:border-b-0 md:border-r border-white/10 flex flex-col flex-shrink-0">
+      <aside className="w-full md:w-64 bg-white border-b md:border-b-0 md:border-r border-gray-200 flex flex-col flex-shrink-0">
         {/* Brand header */}
-        <div className="p-6 border-b border-white/10 text-center md:text-left">
-          <h2 className="text-xl font-black tracking-widest uppercase text-white">
-            FRANKIE <span className="text-[#c5a059]">STYLES</span>
+        <div className="p-6 border-b border-gray-200 text-center md:text-left">
+          <h2 className="text-xl font-black tracking-widest uppercase text-black">
+            FRANKIE <span className="text-gray-500 font-medium">STYLES</span>
           </h2>
-          <p className="text-[10px] uppercase tracking-wider text-gray-500 mt-1 font-bold">
+          <p className="text-[10px] uppercase tracking-widest text-gray-400 mt-1 font-bold">
             Portal Control
           </p>
         </div>
 
         {/* Tab switcher */}
-        <nav className="flex-1 p-4 space-y-1.5 flex flex-row md:flex-col overflow-x-auto md:overflow-x-visible gap-2 md:gap-0">
+        <nav className="flex-1 p-4 space-y-1 flex flex-row md:flex-col overflow-x-auto md:overflow-x-visible gap-1 md:gap-0">
           <button
             onClick={() => setActiveTab("overview")}
             className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-xs font-bold uppercase tracking-wider transition-all whitespace-nowrap ${
               activeTab === "overview" 
-                ? "bg-[#c5a059] text-black" 
-                : "text-gray-400 hover:text-white hover:bg-white/5"
+                ? "bg-black text-white" 
+                : "text-gray-500 hover:text-black hover:bg-gray-100"
             }`}
           >
             <LayoutDashboard className="w-4 h-4" />
@@ -285,14 +285,14 @@ export default function AdminDashboardClient({
             onClick={() => setActiveTab("orders")}
             className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-xs font-bold uppercase tracking-wider transition-all whitespace-nowrap ${
               activeTab === "orders" 
-                ? "bg-[#c5a059] text-black" 
-                : "text-gray-400 hover:text-white hover:bg-white/5"
+                ? "bg-black text-white" 
+                : "text-gray-500 hover:text-black hover:bg-gray-100"
             }`}
           >
             <ShoppingBag className="w-4 h-4" />
             <span>Orders</span>
             {orders.filter(o => o.status === "pending").length > 0 && (
-              <span className={`ml-auto text-[10px] font-extrabold px-1.5 py-0.5 rounded-full ${activeTab === "orders" ? "bg-black text-[#c5a059]" : "bg-[#c5a059] text-black"}`}>
+              <span className={`ml-auto text-[10px] font-extrabold px-2 py-0.5 rounded ${activeTab === "orders" ? "bg-white text-black" : "bg-black text-white"}`}>
                 {orders.filter(o => o.status === "pending").length}
               </span>
             )}
@@ -301,14 +301,14 @@ export default function AdminDashboardClient({
             onClick={() => setActiveTab("consultations")}
             className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-xs font-bold uppercase tracking-wider transition-all whitespace-nowrap ${
               activeTab === "consultations" 
-                ? "bg-[#c5a059] text-black" 
-                : "text-gray-400 hover:text-white hover:bg-white/5"
+                ? "bg-black text-white" 
+                : "text-gray-500 hover:text-black hover:bg-gray-100"
             }`}
           >
             <Calendar className="w-4 h-4" />
             <span>Bookings</span>
             {consultations.length > 0 && (
-              <span className={`ml-auto text-[10px] font-extrabold px-1.5 py-0.5 rounded-full ${activeTab === "consultations" ? "bg-black text-[#c5a059]" : "bg-white/10 text-white"}`}>
+              <span className={`ml-auto text-[10px] font-extrabold px-2 py-0.5 rounded ${activeTab === "consultations" ? "bg-white text-black" : "bg-gray-100 text-gray-700"}`}>
                 {consultations.length}
               </span>
             )}
@@ -317,8 +317,8 @@ export default function AdminDashboardClient({
             onClick={() => setActiveTab("products")}
             className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-xs font-bold uppercase tracking-wider transition-all whitespace-nowrap ${
               activeTab === "products" 
-                ? "bg-[#c5a059] text-black" 
-                : "text-gray-400 hover:text-white hover:bg-white/5"
+                ? "bg-black text-white" 
+                : "text-gray-500 hover:text-black hover:bg-gray-100"
             }`}
           >
             <Shirt className="w-4 h-4" />
@@ -327,10 +327,10 @@ export default function AdminDashboardClient({
         </nav>
 
         {/* Logout session */}
-        <div className="p-4 border-t border-white/10">
+        <div className="p-4 border-t border-gray-200">
           <button 
             onClick={handleLogout}
-            className="w-full flex items-center justify-center gap-2 px-4 py-2.5 bg-red-950/20 hover:bg-red-950/40 border border-red-900/30 text-red-400 rounded-lg text-xs font-bold uppercase tracking-wider transition-all"
+            className="w-full flex items-center justify-center gap-2 px-4 py-2.5 border border-red-200 hover:bg-red-50 text-red-600 rounded-lg text-xs font-bold uppercase tracking-wider transition-all"
           >
             <LogOut className="w-4 h-4" />
             <span>Logout</span>
@@ -342,51 +342,49 @@ export default function AdminDashboardClient({
       <main className="flex-1 p-6 md:p-8 overflow-y-auto">
         {/* Overview Tab */}
         {activeTab === "overview" && (
-          <div className="space-y-8 animate-fade-in">
+          <div className="space-y-8">
             {/* Topbar title */}
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-              <div>
-                <h1 className="text-2xl font-black uppercase tracking-wider">Dashboard Overview</h1>
-                <p className="text-xs text-gray-400 mt-1">Realtime tailoring business analytics</p>
-              </div>
+            <div>
+              <h1 className="text-2xl font-black uppercase tracking-wider">Dashboard Overview</h1>
+              <p className="text-xs text-gray-400 mt-1">Realtime tailoring business analytics</p>
             </div>
 
             {/* Metrics Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              <div className="bg-[#111] border border-white/5 p-6 rounded-2xl flex items-center gap-4">
-                <div className="w-12 h-12 rounded-xl bg-[#c5a059]/10 flex items-center justify-center text-[#c5a059]">
+              <div className="bg-white border border-gray-200 p-6 rounded-2xl flex items-center gap-4 smooth-shadow-sm">
+                <div className="w-12 h-12 rounded-xl bg-gray-50 border border-gray-100 flex items-center justify-center text-gray-500">
                   <DollarSign className="w-6 h-6" />
                 </div>
                 <div>
-                  <h3 className="text-xs font-bold uppercase tracking-wider text-gray-500">Total Revenue</h3>
-                  <p className="text-xl font-extrabold mt-1 text-white">₦{totalRevenue.toLocaleString()}</p>
+                  <h3 className="text-xs font-bold uppercase tracking-wider text-gray-400">Total Revenue</h3>
+                  <p className="text-xl font-black mt-1 text-black">₦{totalRevenue.toLocaleString()}</p>
                 </div>
               </div>
-              <div className="bg-[#111] border border-white/5 p-6 rounded-2xl flex items-center gap-4">
-                <div className="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-400">
+              <div className="bg-white border border-gray-200 p-6 rounded-2xl flex items-center gap-4 smooth-shadow-sm">
+                <div className="w-12 h-12 rounded-xl bg-gray-50 border border-gray-100 flex items-center justify-center text-gray-500">
                   <ShoppingBag className="w-6 h-6" />
                 </div>
                 <div>
-                  <h3 className="text-xs font-bold uppercase tracking-wider text-gray-500">Orders Placed</h3>
-                  <p className="text-xl font-extrabold mt-1 text-white">{orders.length}</p>
+                  <h3 className="text-xs font-bold uppercase tracking-wider text-gray-400">Orders Placed</h3>
+                  <p className="text-xl font-black mt-1 text-black">{orders.length}</p>
                 </div>
               </div>
-              <div className="bg-[#111] border border-white/5 p-6 rounded-2xl flex items-center gap-4">
-                <div className="w-12 h-12 rounded-xl bg-green-500/10 flex items-center justify-center text-green-400">
+              <div className="bg-white border border-gray-200 p-6 rounded-2xl flex items-center gap-4 smooth-shadow-sm">
+                <div className="w-12 h-12 rounded-xl bg-gray-50 border border-gray-100 flex items-center justify-center text-gray-500">
                   <Calendar className="w-6 h-6" />
                 </div>
                 <div>
-                  <h3 className="text-xs font-bold uppercase tracking-wider text-gray-500">Pending Bookings</h3>
-                  <p className="text-xl font-extrabold mt-1 text-white">{pendingBookings}</p>
+                  <h3 className="text-xs font-bold uppercase tracking-wider text-gray-400">Pending Bookings</h3>
+                  <p className="text-xl font-black mt-1 text-black">{pendingBookings}</p>
                 </div>
               </div>
-              <div className="bg-[#111] border border-white/5 p-6 rounded-2xl flex items-center gap-4">
-                <div className="w-12 h-12 rounded-xl bg-purple-500/10 flex items-center justify-center text-purple-400">
+              <div className="bg-white border border-gray-200 p-6 rounded-2xl flex items-center gap-4 smooth-shadow-sm">
+                <div className="w-12 h-12 rounded-xl bg-gray-50 border border-gray-100 flex items-center justify-center text-gray-500">
                   <Shirt className="w-6 h-6" />
                 </div>
                 <div>
-                  <h3 className="text-xs font-bold uppercase tracking-wider text-gray-500">Active Catalog</h3>
-                  <p className="text-xl font-extrabold mt-1 text-white">{products.length} Items</p>
+                  <h3 className="text-xs font-bold uppercase tracking-wider text-gray-400">Active Catalog</h3>
+                  <p className="text-xl font-black mt-1 text-black">{products.length} Items</p>
                 </div>
               </div>
             </div>
@@ -394,25 +392,25 @@ export default function AdminDashboardClient({
             {/* Split layout: Recent Orders & Recent Bookings */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               {/* Recent Orders List */}
-              <div className="bg-[#111] border border-white/5 p-6 rounded-2xl space-y-4">
-                <div className="flex justify-between items-center">
-                  <h2 className="text-sm font-black uppercase tracking-wider">Recent Orders</h2>
-                  <button onClick={() => setActiveTab("orders")} className="text-xs text-[#c5a059] hover:underline font-bold uppercase tracking-wider">View All</button>
+              <div className="bg-white border border-gray-200 p-6 rounded-2xl space-y-4 smooth-shadow-sm">
+                <div className="flex justify-between items-center pb-2 border-b border-gray-100">
+                  <h2 className="text-xs font-black uppercase tracking-wider text-gray-800">Recent Orders</h2>
+                  <button onClick={() => setActiveTab("orders")} className="text-xs text-gray-500 hover:text-black font-bold uppercase tracking-wider">View All</button>
                 </div>
                 <div className="space-y-3">
                   {orders.slice(0, 5).map((o) => (
-                    <div key={o.id} className="flex justify-between items-center p-3.5 bg-black/40 border border-white/5 rounded-xl text-xs">
+                    <div key={o.id} className="flex justify-between items-center p-3.5 bg-gray-50/50 border border-gray-100 rounded-xl text-xs">
                       <div>
-                        <p className="font-bold text-white">{o.name}</p>
-                        <p className="text-[10px] text-gray-500 mt-0.5">{new Date(o.createdAt).toLocaleDateString()} • {o.items.length} items</p>
+                        <p className="font-bold text-black">{o.name}</p>
+                        <p className="text-[10px] text-gray-400 mt-0.5">{new Date(o.createdAt).toLocaleDateString()} • {o.items.length} items</p>
                       </div>
                       <div className="text-right">
-                        <p className="font-extrabold text-[#c5a059]">₦{o.totalAmount.toLocaleString()}</p>
-                        <span className={`inline-block text-[9px] font-extrabold uppercase px-2 py-0.5 rounded-full mt-1.5 ${
-                          o.status === "paid" || o.status === "completed" ? "bg-green-950/50 text-green-400 border border-green-900/30" :
-                          o.status === "processing" ? "bg-blue-950/50 text-blue-400 border border-blue-900/30" :
-                          o.status === "cancelled" ? "bg-red-950/50 text-red-400 border border-red-900/30" :
-                          "bg-yellow-950/50 text-yellow-400 border border-yellow-900/30"
+                        <p className="font-bold text-black">₦{o.totalAmount.toLocaleString()}</p>
+                        <span className={`inline-block text-[9px] font-bold uppercase px-2 py-0.5 rounded border mt-1 ${
+                          o.status === "paid" || o.status === "completed" ? "bg-green-50 text-green-700 border-green-200" :
+                          o.status === "processing" ? "bg-blue-50 text-blue-700 border-blue-200" :
+                          o.status === "cancelled" ? "bg-red-50 text-red-700 border-red-200" :
+                          "bg-yellow-50 text-yellow-700 border-yellow-200"
                         }`}>
                           {o.status}
                         </span>
@@ -420,23 +418,23 @@ export default function AdminDashboardClient({
                     </div>
                   ))}
                   {orders.length === 0 && (
-                    <p className="text-center text-xs text-gray-500 py-6">No orders placed yet.</p>
+                    <p className="text-center text-xs text-gray-400 py-6">No orders placed yet.</p>
                   )}
                 </div>
               </div>
 
               {/* Recent Bookings List */}
-              <div className="bg-[#111] border border-white/5 p-6 rounded-2xl space-y-4">
-                <div className="flex justify-between items-center">
-                  <h2 className="text-sm font-black uppercase tracking-wider">Recent Consultations</h2>
-                  <button onClick={() => setActiveTab("consultations")} className="text-xs text-[#c5a059] hover:underline font-bold uppercase tracking-wider">View All</button>
+              <div className="bg-white border border-gray-200 p-6 rounded-2xl space-y-4 smooth-shadow-sm">
+                <div className="flex justify-between items-center pb-2 border-b border-gray-100">
+                  <h2 className="text-xs font-black uppercase tracking-wider text-gray-800">Recent Consultations</h2>
+                  <button onClick={() => setActiveTab("consultations")} className="text-xs text-gray-500 hover:text-black font-bold uppercase tracking-wider">View All</button>
                 </div>
                 <div className="space-y-3">
                   {consultations.slice(0, 5).map((c) => (
-                    <div key={c.id} className="flex justify-between items-center p-3.5 bg-black/40 border border-white/5 rounded-xl text-xs">
+                    <div key={c.id} className="flex justify-between items-center p-3.5 bg-gray-50/50 border border-gray-100 rounded-xl text-xs">
                       <div>
-                        <p className="font-bold text-white">{c.name}</p>
-                        <p className="text-[10px] text-gray-500 mt-0.5">{c.service} • Request Date: {c.date}</p>
+                        <p className="font-bold text-black">{c.name}</p>
+                        <p className="text-[10px] text-gray-400 mt-0.5">{c.service} • Date: {c.date}</p>
                       </div>
                       <span className="text-[10px] text-gray-400 font-medium">
                         {new Date(c.createdAt).toLocaleDateString()}
@@ -444,7 +442,7 @@ export default function AdminDashboardClient({
                     </div>
                   ))}
                   {consultations.length === 0 && (
-                    <p className="text-center text-xs text-gray-500 py-6">No consultation bookings registered.</p>
+                    <p className="text-center text-xs text-gray-400 py-6">No consultation bookings registered.</p>
                   )}
                 </div>
               </div>
@@ -454,29 +452,29 @@ export default function AdminDashboardClient({
 
         {/* Orders Tab */}
         {activeTab === "orders" && (
-          <div className="space-y-6 animate-fade-in">
+          <div className="space-y-6">
             <div>
               <h1 className="text-2xl font-black uppercase tracking-wider">Orders Management</h1>
               <p className="text-xs text-gray-400 mt-1">Review purchase logs, customer measurements, and Paystack transactions</p>
             </div>
 
             {/* Filter and Search Controls */}
-            <div className="flex flex-col sm:flex-row gap-4 bg-[#111] border border-white/5 p-4 rounded-xl">
+            <div className="flex flex-col sm:flex-row gap-4 bg-white border border-gray-200 p-4 rounded-xl smooth-shadow-sm">
               <div className="relative flex-1">
-                <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
+                <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                 <Input
                   placeholder="Search by customer, email, or reference..."
                   value={orderSearch}
                   onChange={(e) => setOrderSearch(e.target.value)}
-                  className="bg-black/50 border-white/10 text-white pl-10 focus:border-[#c5a059]"
+                  className="bg-gray-50 border-gray-200 text-black pl-10 focus:border-black focus:bg-white"
                 />
               </div>
               <div className="flex items-center gap-2">
-                <Filter className="w-4 h-4 text-gray-500 hidden sm:inline" />
+                <Filter className="w-4 h-4 text-gray-400 hidden sm:inline" />
                 <select
                   value={orderFilter}
                   onChange={(e) => setOrderFilter(e.target.value)}
-                  className="bg-black/50 border border-white/10 text-white rounded-lg px-4 py-2.5 text-xs font-bold uppercase tracking-wider outline-none focus:border-[#c5a059]"
+                  className="bg-gray-50 border border-gray-200 text-black rounded-lg px-4 py-2.5 text-xs font-bold uppercase tracking-wider outline-none focus:border-black focus:bg-white"
                 >
                   <option value="all">All Statuses</option>
                   <option value="pending">Pending</option>
@@ -489,11 +487,11 @@ export default function AdminDashboardClient({
             </div>
 
             {/* Orders Table Container */}
-            <div className="bg-black border border-white/10 rounded-xl overflow-hidden">
+            <div className="bg-white border border-gray-200 rounded-xl overflow-hidden smooth-shadow-sm">
               <div className="overflow-x-auto">
                 <table className="w-full text-left border-collapse text-xs">
                   <thead>
-                    <tr className="border-b border-white/10 bg-[#111] uppercase tracking-wider text-gray-400 font-bold">
+                    <tr className="border-b border-gray-200 bg-gray-50 uppercase tracking-wider text-gray-500 font-bold">
                       <th className="p-4">Order ID</th>
                       <th className="p-4">Customer</th>
                       <th className="p-4">Date</th>
@@ -503,33 +501,33 @@ export default function AdminDashboardClient({
                       <th className="p-4 text-right">Actions</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-white/5">
+                  <tbody className="divide-y divide-gray-100">
                     {filteredOrders.map((o) => (
-                      <tr key={o.id} className="hover:bg-white/[0.02] transition-colors">
-                        <td className="p-4 font-mono text-gray-500">{o.id.slice(0, 8)}...</td>
+                      <tr key={o.id} className="hover:bg-gray-50/50 transition-colors">
+                        <td className="p-4 font-mono text-gray-400">{o.id.slice(0, 8)}...</td>
                         <td className="p-4">
-                          <p className="font-bold text-white">{o.name}</p>
-                          <p className="text-[10px] text-gray-500 mt-0.5">{o.email}</p>
+                          <p className="font-bold text-black">{o.name}</p>
+                          <p className="text-[10px] text-gray-400 mt-0.5">{o.email}</p>
                         </td>
-                        <td className="p-4 text-gray-400">{new Date(o.createdAt).toLocaleDateString()}</td>
-                        <td className="p-4 text-gray-300 font-medium">{o.items.length} items</td>
-                        <td className="p-4 font-extrabold text-[#c5a059]">₦{o.totalAmount.toLocaleString()}</td>
+                        <td className="p-4 text-gray-500">{new Date(o.createdAt).toLocaleDateString()}</td>
+                        <td className="p-4 text-gray-600 font-medium">{o.items.length} items</td>
+                        <td className="p-4 font-bold text-black">₦{o.totalAmount.toLocaleString()}</td>
                         <td className="p-4">
                           <select
                             value={o.status}
                             onChange={(e) => handleUpdateOrderStatus(o.id, e.target.value)}
-                            className={`text-[10px] font-extrabold uppercase px-2 py-1 rounded-full outline-none border ${
-                              o.status === "paid" || o.status === "completed" ? "bg-green-950/30 text-green-400 border-green-900/30" :
-                              o.status === "processing" ? "bg-blue-950/30 text-blue-400 border-blue-900/30" :
-                              o.status === "cancelled" ? "bg-red-950/30 text-red-400 border-red-900/30" :
-                              "bg-yellow-950/30 text-yellow-400 border-yellow-900/30"
+                            className={`text-[10px] font-bold uppercase px-2 py-1 rounded outline-none border bg-white ${
+                              o.status === "paid" || o.status === "completed" ? "text-green-700 border-green-200" :
+                              o.status === "processing" ? "text-blue-700 border-blue-200" :
+                              o.status === "cancelled" ? "text-red-700 border-red-200" :
+                              "text-yellow-700 border-yellow-200"
                             }`}
                           >
-                            <option value="pending" className="bg-black text-white">Pending</option>
-                            <option value="paid" className="bg-black text-white">Paid</option>
-                            <option value="processing" className="bg-black text-white">Processing</option>
-                            <option value="completed" className="bg-black text-white">Completed</option>
-                            <option value="cancelled" className="bg-black text-white">Cancelled</option>
+                            <option value="pending" className="text-black">Pending</option>
+                            <option value="paid" className="text-black">Paid</option>
+                            <option value="processing" className="text-black">Processing</option>
+                            <option value="completed" className="text-black">Completed</option>
+                            <option value="cancelled" className="text-black">Cancelled</option>
                           </select>
                         </td>
                         <td className="p-4 text-right space-x-2">
@@ -537,13 +535,13 @@ export default function AdminDashboardClient({
                             variant="outline" 
                             size="sm" 
                             onClick={() => setSelectedOrder(o)}
-                            className="bg-transparent border-white/10 text-white hover:bg-white/5 py-1 px-3"
+                            className="bg-transparent border-gray-200 text-black hover:bg-gray-50 py-1 px-3"
                           >
                             Details
                           </Button>
                           <button 
                             onClick={() => handleDeleteOrder(o.id)}
-                            className="text-red-500 hover:text-red-400 p-1.5 rounded-lg hover:bg-red-500/10 transition-colors inline-block align-middle"
+                            className="text-red-600 hover:text-red-500 p-1.5 rounded-lg hover:bg-red-50 transition-colors inline-block align-middle"
                           >
                             <Trash2 className="w-4 h-4" />
                           </button>
@@ -552,7 +550,7 @@ export default function AdminDashboardClient({
                     ))}
                     {filteredOrders.length === 0 && (
                       <tr>
-                        <td colSpan={7} className="p-8 text-center text-gray-500">
+                        <td colSpan={7} className="p-8 text-center text-gray-400">
                           No matching orders found.
                         </td>
                       </tr>
@@ -566,18 +564,18 @@ export default function AdminDashboardClient({
 
         {/* Consultations Tab */}
         {activeTab === "consultations" && (
-          <div className="space-y-6 animate-fade-in">
+          <div className="space-y-6">
             <div>
               <h1 className="text-2xl font-black uppercase tracking-wider">Bookings & Consultations</h1>
               <p className="text-xs text-gray-400 mt-1">Review size profiles requests and scheduled booking sessions</p>
             </div>
 
             {/* Consultations Table Container */}
-            <div className="bg-black border border-white/10 rounded-xl overflow-hidden">
+            <div className="bg-white border border-gray-200 rounded-xl overflow-hidden smooth-shadow-sm">
               <div className="overflow-x-auto">
                 <table className="w-full text-left border-collapse text-xs">
                   <thead>
-                    <tr className="border-b border-white/10 bg-[#111] uppercase tracking-wider text-gray-400 font-bold">
+                    <tr className="border-b border-gray-200 bg-gray-50 uppercase tracking-wider text-gray-500 font-bold">
                       <th className="p-4">Client</th>
                       <th className="p-4">Service</th>
                       <th className="p-4">Requested Date</th>
@@ -586,23 +584,23 @@ export default function AdminDashboardClient({
                       <th className="p-4 text-right">Actions</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-white/5">
+                  <tbody className="divide-y divide-gray-100">
                     {consultations.map((c) => (
-                      <tr key={c.id} className="hover:bg-white/[0.02] transition-colors">
-                        <td className="p-4 font-bold text-white">{c.name}</td>
-                        <td className="p-4 text-gray-300 font-medium">{c.service}</td>
-                        <td className="p-4 text-gray-400 font-mono">{c.date}</td>
+                      <tr key={c.id} className="hover:bg-gray-50/50 transition-colors">
+                        <td className="p-4 font-bold text-black">{c.name}</td>
+                        <td className="p-4 text-gray-700 font-medium">{c.service}</td>
+                        <td className="p-4 text-gray-500 font-mono">{c.date}</td>
                         <td className="p-4">
-                          <p className="text-gray-300 font-medium">{c.phone}</p>
-                          <p className="text-[10px] text-gray-500 mt-0.5">{c.email}</p>
+                          <p className="text-gray-700 font-medium">{c.phone}</p>
+                          <p className="text-[10px] text-gray-400 mt-0.5">{c.email}</p>
                         </td>
-                        <td className="p-4 max-w-xs truncate text-gray-400" title={c.notes || "None"}>
-                          {c.notes || <span className="italic text-gray-600">No notes provided</span>}
+                        <td className="p-4 max-w-xs truncate text-gray-500" title={c.notes || "None"}>
+                          {c.notes || <span className="italic text-gray-300">No notes provided</span>}
                         </td>
                         <td className="p-4 text-right">
                           <button
                             onClick={() => handleDeleteConsultation(c.id)}
-                            className="px-3 py-1.5 bg-red-950/20 hover:bg-red-950/40 border border-red-900/30 text-red-400 rounded-lg text-[10px] font-bold uppercase tracking-wider transition-all"
+                            className="px-3 py-1.5 border border-gray-200 hover:bg-gray-50 text-gray-700 rounded-lg text-[10px] font-bold uppercase tracking-wider transition-all"
                           >
                             Mark Completed
                           </button>
@@ -611,7 +609,7 @@ export default function AdminDashboardClient({
                     ))}
                     {consultations.length === 0 && (
                       <tr>
-                        <td colSpan={6} className="p-8 text-center text-gray-500">
+                        <td colSpan={6} className="p-8 text-center text-gray-400">
                           No pending consultations bookings.
                         </td>
                       </tr>
@@ -625,7 +623,7 @@ export default function AdminDashboardClient({
 
         {/* Products Tab */}
         {activeTab === "products" && (
-          <div className="space-y-6 animate-fade-in">
+          <div className="space-y-6">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div>
                 <h1 className="text-2xl font-black uppercase tracking-wider">Product Catalog</h1>
@@ -633,7 +631,7 @@ export default function AdminDashboardClient({
               </div>
               <Button 
                 onClick={openAddProductModal} 
-                className="bg-[#c5a059] hover:bg-[#b08e4f] text-black font-bold uppercase tracking-wider text-xs flex items-center gap-2"
+                className="bg-black hover:bg-zinc-800 text-white font-bold uppercase tracking-wider text-xs flex items-center gap-2"
               >
                 <Plus className="w-4 h-4" />
                 <span>Add New Product</span>
@@ -641,22 +639,22 @@ export default function AdminDashboardClient({
             </div>
 
             {/* Filter and Search Controls */}
-            <div className="flex flex-col sm:flex-row gap-4 bg-[#111] border border-white/5 p-4 rounded-xl">
+            <div className="flex flex-col sm:flex-row gap-4 bg-white border border-gray-200 p-4 rounded-xl smooth-shadow-sm">
               <div className="relative flex-1">
-                <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
+                <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                 <Input
                   placeholder="Search by ID, Name, Category..."
                   value={productSearch}
                   onChange={(e) => setProductSearch(e.target.value)}
-                  className="bg-black/50 border-white/10 text-white pl-10 focus:border-[#c5a059]"
+                  className="bg-gray-50 border-gray-200 text-black pl-10 focus:border-black focus:bg-white"
                 />
               </div>
               <div className="flex items-center gap-2">
-                <Filter className="w-4 h-4 text-gray-500 hidden sm:inline" />
+                <Filter className="w-4 h-4 text-gray-400 hidden sm:inline" />
                 <select
                   value={productFilter}
                   onChange={(e) => setProductFilter(e.target.value)}
-                  className="bg-black/50 border border-white/10 text-white rounded-lg px-4 py-2.5 text-xs font-bold uppercase tracking-wider outline-none focus:border-[#c5a059]"
+                  className="bg-gray-50 border border-gray-200 text-black rounded-lg px-4 py-2.5 text-xs font-bold uppercase tracking-wider outline-none focus:border-black focus:bg-white"
                 >
                   <option value="all">All Categories</option>
                   <option value="KAFTAN">Kaftan</option>
@@ -669,11 +667,11 @@ export default function AdminDashboardClient({
             </div>
 
             {/* Products Table Container */}
-            <div className="bg-black border border-white/10 rounded-xl overflow-hidden">
+            <div className="bg-white border border-gray-200 rounded-xl overflow-hidden smooth-shadow-sm">
               <div className="overflow-x-auto">
                 <table className="w-full text-left border-collapse text-xs">
                   <thead>
-                    <tr className="border-b border-white/10 bg-[#111] uppercase tracking-wider text-gray-400 font-bold">
+                    <tr className="border-b border-gray-200 bg-gray-50 uppercase tracking-wider text-gray-500 font-bold">
                       <th className="p-4">Image</th>
                       <th className="p-4">Product ID</th>
                       <th className="p-4">Name</th>
@@ -683,31 +681,31 @@ export default function AdminDashboardClient({
                       <th className="p-4 text-right">Actions</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-white/5">
+                  <tbody className="divide-y divide-gray-100">
                     {filteredProducts.map((p) => (
-                      <tr key={p.id} className="hover:bg-white/[0.02] transition-colors">
+                      <tr key={p.id} className="hover:bg-gray-50/50 transition-colors">
                         <td className="p-4">
                           <img 
                             src={p.image} 
                             alt={p.name} 
-                            className="w-10 h-10 object-cover rounded-lg border border-white/10 bg-zinc-950" 
+                            className="w-10 h-10 object-cover rounded-lg border border-gray-200 bg-gray-50" 
                           />
                         </td>
-                        <td className="p-4 font-mono text-gray-500">{p.id}</td>
-                        <td className="p-4 font-bold text-white">{p.name}</td>
-                        <td className="p-4 font-medium uppercase text-gray-400">{p.category}</td>
-                        <td className="p-4 font-extrabold text-[#c5a059]">₦{p.price.toLocaleString()}</td>
-                        <td className="p-4 font-mono text-gray-500">{p.sizes.join(", ")}</td>
+                        <td className="p-4 font-mono text-gray-400">{p.id}</td>
+                        <td className="p-4 font-bold text-black">{p.name}</td>
+                        <td className="p-4 font-medium uppercase text-gray-500">{p.category}</td>
+                        <td className="p-4 font-bold text-black">₦{p.price.toLocaleString()}</td>
+                        <td className="p-4 font-mono text-gray-400">{p.sizes.join(", ")}</td>
                         <td className="p-4 text-right space-x-2">
                           <button
                             onClick={() => openEditProductModal(p)}
-                            className="p-1.5 bg-zinc-900 border border-white/5 hover:border-[#c5a059]/30 text-gray-400 hover:text-[#c5a059] rounded-lg transition-colors inline-block"
+                            className="p-1.5 bg-white border border-gray-200 hover:border-black text-gray-400 hover:text-black rounded-lg transition-colors inline-block"
                           >
                             <Edit className="w-4 h-4" />
                           </button>
                           <button
                             onClick={() => handleDeleteProduct(p.id)}
-                            className="p-1.5 bg-zinc-900 border border-white/5 hover:border-red-500/30 text-gray-400 hover:text-red-500/80 rounded-lg transition-colors inline-block"
+                            className="p-1.5 bg-white border border-gray-200 hover:border-red-500 text-gray-400 hover:text-red-600 rounded-lg transition-colors inline-block"
                           >
                             <Trash2 className="w-4 h-4" />
                           </button>
@@ -716,7 +714,7 @@ export default function AdminDashboardClient({
                     ))}
                     {filteredProducts.length === 0 && (
                       <tr>
-                        <td colSpan={7} className="p-8 text-center text-gray-500">
+                        <td colSpan={7} className="p-8 text-center text-gray-400">
                           No matching products found in database.
                         </td>
                       </tr>
@@ -731,17 +729,17 @@ export default function AdminDashboardClient({
 
       {/* Order Details Modal Overlay */}
       {selectedOrder && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-sm p-4 overflow-y-auto">
-          <div className="bg-[#111] border border-white/10 w-full max-w-2xl rounded-2xl overflow-hidden smooth-shadow relative my-8">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm p-4 overflow-y-auto">
+          <div className="bg-white border border-gray-200 w-full max-w-2xl rounded-2xl overflow-hidden smooth-shadow relative my-8 text-black">
             {/* Modal Header */}
-            <div className="p-6 border-b border-white/10 flex justify-between items-center bg-black">
+            <div className="p-6 border-b border-gray-200 flex justify-between items-center bg-gray-50">
               <div>
-                <h3 className="text-sm font-black uppercase tracking-wider text-white">Order Details</h3>
-                <p className="text-[10px] font-mono text-gray-500 mt-1">Ref ID: {selectedOrder.id}</p>
+                <h3 className="text-sm font-black uppercase tracking-wider text-black">Order Details</h3>
+                <p className="text-[10px] font-mono text-gray-400 mt-1">Ref ID: {selectedOrder.id}</p>
               </div>
               <button 
                 onClick={() => setSelectedOrder(null)}
-                className="text-gray-500 hover:text-white transition-colors"
+                className="text-gray-400 hover:text-black transition-colors"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -752,35 +750,35 @@ export default function AdminDashboardClient({
               {/* Customer Profile & Shipping */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-4">
-                  <h4 className="font-extrabold uppercase tracking-wide text-gray-400 border-b border-white/5 pb-1">Client Profile</h4>
+                  <h4 className="font-bold uppercase tracking-wider text-gray-400 border-b border-gray-100 pb-1">Client Profile</h4>
                   <div className="space-y-2.5">
                     <div className="flex items-center gap-2">
-                      <User className="w-4 h-4 text-gray-500" />
-                      <span className="font-bold text-white">{selectedOrder.name}</span>
+                      <User className="w-4 h-4 text-gray-400" />
+                      <span className="font-bold text-black">{selectedOrder.name}</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <Mail className="w-4 h-4 text-gray-500" />
-                      <span className="text-gray-300">{selectedOrder.email}</span>
+                      <Mail className="w-4 h-4 text-gray-400" />
+                      <span className="text-gray-600">{selectedOrder.email}</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <Phone className="w-4 h-4 text-gray-500" />
-                      <span className="text-gray-300">{selectedOrder.phone}</span>
+                      <Phone className="w-4 h-4 text-gray-400" />
+                      <span className="text-gray-600">{selectedOrder.phone}</span>
                     </div>
                   </div>
                 </div>
                 <div className="space-y-4">
-                  <h4 className="font-extrabold uppercase tracking-wide text-gray-400 border-b border-white/5 pb-1">Shipping & Checkout</h4>
+                  <h4 className="font-bold uppercase tracking-wider text-gray-400 border-b border-gray-100 pb-1">Shipping & Checkout</h4>
                   <div className="space-y-2.5">
                     <div className="flex items-start gap-2">
-                      <MapPin className="w-4 h-4 text-gray-500 mt-0.5" />
-                      <span className="text-gray-300 leading-relaxed">
+                      <MapPin className="w-4 h-4 text-gray-400 mt-0.5" />
+                      <span className="text-gray-600 leading-relaxed">
                         {selectedOrder.address}, {selectedOrder.city}, {selectedOrder.state}
                       </span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <Info className="w-4 h-4 text-gray-500" />
-                      <span className="text-gray-300 uppercase font-semibold">
-                        {selectedOrder.paymentMethod} Checkout • Ref: <span className="font-mono text-gray-400">{selectedOrder.paymentReference || "N/A"}</span>
+                      <Info className="w-4 h-4 text-gray-400" />
+                      <span className="text-gray-600 uppercase font-semibold">
+                        {selectedOrder.paymentMethod} Checkout • Ref: <span className="font-mono text-gray-500">{selectedOrder.paymentReference || "N/A"}</span>
                       </span>
                     </div>
                   </div>
@@ -789,66 +787,66 @@ export default function AdminDashboardClient({
 
               {/* Sizing & Sizing Parameters reviews */}
               <div className="space-y-3">
-                <h4 className="font-extrabold uppercase tracking-wide text-gray-400 border-b border-white/5 pb-1">Cart Items & Sizing Parameters</h4>
+                <h4 className="font-bold uppercase tracking-wider text-gray-400 border-b border-gray-100 pb-1">Cart Items & Sizing Parameters</h4>
                 <div className="space-y-2.5">
                   {selectedOrder.items.map((item: any, idx: number) => (
-                    <div key={idx} className="flex justify-between items-start bg-black/40 border border-white/5 p-3 rounded-xl">
+                    <div key={idx} className="flex justify-between items-start bg-gray-50 border border-gray-100 p-3 rounded-xl">
                       <div>
-                        <p className="font-bold text-white">{item.name}</p>
+                        <p className="font-bold text-black">{item.name}</p>
                         <p className="text-[10px] text-gray-500 mt-1">
-                          Size Selected: <span className="text-[#c5a059] font-extrabold">{item.size}</span> • Quantity: {item.quantity}
+                          Size Selected: <span className="text-black font-extrabold">{item.size}</span> • Quantity: {item.quantity}
                         </p>
                       </div>
-                      <p className="font-extrabold text-[#c5a059]">₦{item.price.toLocaleString()}</p>
+                      <p className="font-bold text-black">₦{item.price.toLocaleString()}</p>
                     </div>
                   ))}
                 </div>
               </div>
 
               {/* Order pricing summaries */}
-              <div className="bg-black/60 p-4 border border-white/5 rounded-xl space-y-2.5">
+              <div className="bg-gray-50 p-4 border border-gray-100 rounded-xl space-y-2.5">
                 <div className="flex justify-between">
-                  <span className="text-gray-500 font-bold uppercase tracking-wider">Shipping Fee</span>
-                  <span className="font-medium text-white">₦{selectedOrder.shippingFee.toLocaleString()}</span>
+                  <span className="text-gray-400 font-bold uppercase tracking-wider">Shipping Fee</span>
+                  <span className="font-medium text-black">₦{selectedOrder.shippingFee.toLocaleString()}</span>
                 </div>
-                <div className="flex justify-between border-t border-white/5 pt-2.5 text-sm">
+                <div className="flex justify-between border-t border-gray-100 pt-2.5 text-sm">
                   <span className="text-gray-400 font-extrabold uppercase tracking-wider">Total Paid</span>
-                  <span className="font-black text-[#c5a059]">₦{selectedOrder.totalAmount.toLocaleString()}</span>
+                  <span className="font-black text-black">₦{selectedOrder.totalAmount.toLocaleString()}</span>
                 </div>
               </div>
             </div>
 
             {/* Modal Footer Actions */}
-            <div className="p-6 border-t border-white/10 bg-black flex justify-between items-center gap-4">
+            <div className="p-6 border-t border-gray-200 bg-gray-50 flex justify-between items-center gap-4">
               <div className="flex items-center gap-2">
-                <span className="text-[10px] text-gray-500 uppercase font-bold tracking-wider">Order Status:</span>
+                <span className="text-[10px] text-gray-400 uppercase font-bold tracking-wider">Order Status:</span>
                 <select
                   value={selectedOrder.status}
                   onChange={(e) => handleUpdateOrderStatus(selectedOrder.id, e.target.value)}
-                  className={`text-[10px] font-extrabold uppercase px-3 py-1.5 rounded-full outline-none border bg-black/40 ${
-                    selectedOrder.status === "paid" || selectedOrder.status === "completed" ? "bg-green-950/20 text-green-400 border-green-900/30" :
-                    selectedOrder.status === "processing" ? "bg-blue-950/20 text-blue-400 border-blue-900/30" :
-                    selectedOrder.status === "cancelled" ? "bg-red-950/20 text-red-400 border-red-900/30" :
-                    "bg-yellow-950/20 text-yellow-400 border-yellow-900/30"
+                  className={`text-[10px] font-bold uppercase px-3 py-1.5 rounded outline-none border bg-white ${
+                    selectedOrder.status === "paid" || selectedOrder.status === "completed" ? "text-green-700 border-green-200" :
+                    selectedOrder.status === "processing" ? "text-blue-700 border-blue-200" :
+                    selectedOrder.status === "cancelled" ? "text-red-700 border-red-200" :
+                    "text-yellow-700 border-yellow-200"
                   }`}
                 >
-                  <option value="pending" className="bg-black text-white">Pending</option>
-                  <option value="paid" className="bg-black text-white">Paid</option>
-                  <option value="processing" className="bg-black text-white">Processing</option>
-                  <option value="completed" className="bg-black text-white">Completed</option>
-                  <option value="cancelled" className="bg-black text-white">Cancelled</option>
+                  <option value="pending" className="text-black">Pending</option>
+                  <option value="paid" className="text-black">Paid</option>
+                  <option value="processing" className="text-black">Processing</option>
+                  <option value="completed" className="text-black">Completed</option>
+                  <option value="cancelled" className="text-black">Cancelled</option>
                 </select>
               </div>
               <div className="space-x-3">
                 <Button 
                   onClick={() => handleDeleteOrder(selectedOrder.id)}
-                  className="bg-red-950/30 hover:bg-red-950/50 border border-red-900/40 text-red-400 font-bold uppercase tracking-wider text-[10px] py-2 px-4"
+                  className="bg-transparent border border-red-200 hover:bg-red-50 text-red-600 font-bold uppercase tracking-wider text-[10px] py-2 px-4"
                 >
                   Delete Order
                 </Button>
                 <Button 
                   onClick={() => setSelectedOrder(null)}
-                  className="bg-white hover:bg-gray-200 text-black font-bold uppercase tracking-wider text-[10px] py-2 px-4"
+                  className="bg-black hover:bg-zinc-800 text-white font-bold uppercase tracking-wider text-[10px] py-2 px-4"
                 >
                   Close Window
                 </Button>
@@ -860,16 +858,16 @@ export default function AdminDashboardClient({
 
       {/* Add / Edit Product Modal Overlay */}
       {isProductModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-sm p-4 overflow-y-auto">
-          <div className="bg-[#111] border border-white/10 w-full max-w-xl rounded-2xl overflow-hidden smooth-shadow relative my-8">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm p-4 overflow-y-auto">
+          <div className="bg-white border border-gray-200 w-full max-w-xl rounded-2xl overflow-hidden smooth-shadow relative my-8 text-black">
             {/* Modal Header */}
-            <div className="p-6 border-b border-white/10 flex justify-between items-center bg-black">
-              <h3 className="text-sm font-black uppercase tracking-wider text-white">
+            <div className="p-6 border-b border-gray-200 flex justify-between items-center bg-gray-50">
+              <h3 className="text-sm font-black uppercase tracking-wider text-black">
                 {editingProduct ? "Edit Product Properties" : "Register New Custom Wear"}
               </h3>
               <button 
                 onClick={() => setIsProductModalOpen(false)}
-                className="text-gray-500 hover:text-white transition-colors"
+                className="text-gray-400 hover:text-black transition-colors"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -879,29 +877,29 @@ export default function AdminDashboardClient({
             <form onSubmit={handleProductFormSubmit}>
               <div className="p-6 space-y-4 max-h-[65vh] overflow-y-auto text-xs">
                 {formError && (
-                  <div className="bg-red-950/50 border border-red-500/30 text-red-200 text-[10px] font-bold p-3 rounded-lg text-center uppercase tracking-wider">
+                  <div className="bg-red-50 border border-red-200 text-red-700 text-[10px] font-bold p-3 rounded-lg text-center uppercase tracking-wider">
                     {formError}
                   </div>
                 )}
 
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-1">
-                    <label className="text-[10px] uppercase font-bold text-gray-500">Product ID (Unique Key)</label>
+                    <label className="text-[10px] uppercase font-bold text-gray-400">Product ID (Unique Key)</label>
                     <Input
                       placeholder="e.g. kaftan-signature-gold"
                       value={productForm.id}
                       onChange={(e) => setProductForm({ ...productForm, id: e.target.value })}
                       disabled={!!editingProduct}
-                      className="bg-black/50 border-white/10 text-white placeholder-gray-700 focus:border-[#c5a059] disabled:opacity-50"
+                      className="bg-gray-50 border-gray-200 text-black placeholder-gray-400 focus:border-black focus:bg-white disabled:opacity-50"
                       required
                     />
                   </div>
                   <div className="space-y-1">
-                    <label className="text-[10px] uppercase font-bold text-gray-500">Wear Category</label>
+                    <label className="text-[10px] uppercase font-bold text-gray-400">Wear Category</label>
                     <select
                       value={productForm.category}
                       onChange={(e) => setProductForm({ ...productForm, category: e.target.value })}
-                      className="w-full bg-black/50 border border-white/10 text-white rounded-lg px-4 py-2.5 text-xs outline-none focus:border-[#c5a059]"
+                      className="w-full bg-gray-50 border border-gray-200 text-black rounded-lg px-4 py-2.5 text-xs outline-none focus:border-black"
                     >
                       <option value="KAFTAN">Kaftan</option>
                       <option value="AGBADA">Agbada</option>
@@ -914,77 +912,77 @@ export default function AdminDashboardClient({
 
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-1">
-                    <label className="text-[10px] uppercase font-bold text-gray-500">Product Name</label>
+                    <label className="text-[10px] uppercase font-bold text-gray-400">Product Name</label>
                     <Input
                       placeholder="e.g. Signature Gold Kaftan"
                       value={productForm.name}
                       onChange={(e) => setProductForm({ ...productForm, name: e.target.value })}
-                      className="bg-black/50 border-white/10 text-white placeholder-gray-700 focus:border-[#c5a059]"
+                      className="bg-gray-50 border-gray-200 text-black placeholder-gray-400 focus:border-black focus:bg-white"
                       required
                     />
                   </div>
                   <div className="space-y-1">
-                    <label className="text-[10px] uppercase font-bold text-gray-500">Price in Naira (₦)</label>
+                    <label className="text-[10px] uppercase font-bold text-gray-400">Price in Naira (₦)</label>
                     <Input
                       type="number"
                       placeholder="e.g. 150000"
                       value={productForm.price}
                       onChange={(e) => setProductForm({ ...productForm, price: e.target.value })}
-                      className="bg-black/50 border-white/10 text-white placeholder-gray-700 focus:border-[#c5a059]"
+                      className="bg-gray-50 border-gray-200 text-black placeholder-gray-400 focus:border-black focus:bg-white"
                       required
                     />
                   </div>
                 </div>
 
                 <div className="space-y-1">
-                  <label className="text-[10px] uppercase font-bold text-gray-500">Thumbnail Image URL</label>
+                  <label className="text-[10px] uppercase font-bold text-gray-400">Thumbnail Image URL</label>
                   <Input
                     placeholder="e.g. /images/products/kaftan-1.jpg"
                     value={productForm.image}
                     onChange={(e) => setProductForm({ ...productForm, image: e.target.value })}
-                    className="bg-black/50 border-white/10 text-white placeholder-gray-700 focus:border-[#c5a059]"
+                    className="bg-gray-50 border-gray-200 text-black placeholder-gray-400 focus:border-black focus:bg-white"
                     required
                   />
                 </div>
 
                 <div className="space-y-1">
-                  <label className="text-[10px] uppercase font-bold text-gray-500">Product Description</label>
+                  <label className="text-[10px] uppercase font-bold text-gray-400">Product Description</label>
                   <textarea
                     placeholder="Provide a luxurious and rich overview description for the wear..."
                     value={productForm.description}
                     onChange={(e) => setProductForm({ ...productForm, description: e.target.value })}
-                    className="w-full h-20 bg-black/50 border border-white/10 text-white rounded-lg p-3 text-xs outline-none focus:border-[#c5a059] resize-none"
+                    className="w-full h-20 bg-gray-50 border border-gray-200 text-black rounded-lg p-3 text-xs outline-none focus:border-black focus:bg-white resize-none"
                     required
                   />
                 </div>
 
                 <div className="space-y-1">
-                  <label className="text-[10px] uppercase font-bold text-gray-500">Sizing Options (Comma separated)</label>
+                  <label className="text-[10px] uppercase font-bold text-gray-400">Sizing Options (Comma separated)</label>
                   <Input
                     placeholder="e.g. S, M, L, XL, XXL"
                     value={productForm.sizesInput}
                     onChange={(e) => setProductForm({ ...productForm, sizesInput: e.target.value })}
-                    className="bg-black/50 border-white/10 text-white placeholder-gray-700 focus:border-[#c5a059]"
+                    className="bg-gray-50 border-gray-200 text-black placeholder-gray-400 focus:border-black focus:bg-white"
                   />
                 </div>
 
                 <div className="space-y-1">
-                  <label className="text-[10px] uppercase font-bold text-gray-500">Key Features / Detail Bullet Points (One per line)</label>
+                  <label className="text-[10px] uppercase font-bold text-gray-400">Key Features / Detail Bullet Points (One per line)</label>
                   <textarea
                     placeholder="e.g. Premium wool fabric&#10;Handcrafted gold stitching&#10;Includes matching trousers"
                     value={productForm.detailsInput}
                     onChange={(e) => setProductForm({ ...productForm, detailsInput: e.target.value })}
-                    className="w-full h-20 bg-black/50 border border-white/10 text-white rounded-lg p-3 text-xs outline-none focus:border-[#c5a059] resize-none"
+                    className="w-full h-20 bg-gray-50 border border-gray-200 text-black rounded-lg p-3 text-xs outline-none focus:border-black focus:bg-white resize-none"
                   />
                 </div>
 
                 <div className="space-y-1">
-                  <label className="text-[10px] uppercase font-bold text-gray-500">Additional Catalog Image URLs (One per line)</label>
+                  <label className="text-[10px] uppercase font-bold text-gray-400">Additional Catalog Image URLs (One per line)</label>
                   <textarea
                     placeholder="e.g. /images/products/kaftan-detail-1.jpg&#10;/images/products/kaftan-detail-2.jpg"
                     value={productForm.imagesInput}
                     onChange={(e) => setProductForm({ ...productForm, imagesInput: e.target.value })}
-                    className="w-full h-20 bg-black/50 border border-white/10 text-white rounded-lg p-3 text-xs outline-none focus:border-[#c5a059] resize-none"
+                    className="w-full h-20 bg-gray-50 border border-gray-200 text-black rounded-lg p-3 text-xs outline-none focus:border-black focus:bg-white resize-none"
                   />
                 </div>
 
@@ -994,26 +992,26 @@ export default function AdminDashboardClient({
                     id="isNew"
                     checked={productForm.isNew}
                     onChange={(e) => setProductForm({ ...productForm, isNew: e.target.checked })}
-                    className="rounded border-white/10 accent-[#c5a059] w-4 h-4 cursor-pointer"
+                    className="rounded border-gray-300 accent-black w-4 h-4 cursor-pointer"
                   />
-                  <label htmlFor="isNew" className="text-xs text-gray-300 font-bold uppercase tracking-wider cursor-pointer">Tag as New Arrival</label>
+                  <label htmlFor="isNew" className="text-xs text-gray-700 font-bold uppercase tracking-wider cursor-pointer">Tag as New Arrival</label>
                 </div>
               </div>
 
               {/* Modal Footer Actions */}
-              <div className="p-6 border-t border-white/10 bg-black flex justify-end gap-3">
+              <div className="p-6 border-t border-gray-200 bg-gray-50 flex justify-end gap-3">
                 <Button
                   type="button"
                   variant="outline"
                   onClick={() => setIsProductModalOpen(false)}
-                  className="bg-transparent border-white/10 text-white hover:bg-white/5 font-bold uppercase tracking-wider text-[10px] py-2 px-4"
+                  className="bg-transparent border border-gray-200 text-gray-600 hover:bg-gray-100 font-bold uppercase tracking-wider text-[10px] py-2 px-4"
                 >
                   Cancel
                 </Button>
                 <Button
                   type="submit"
                   disabled={formLoading}
-                  className="bg-[#c5a059] hover:bg-[#b08e4f] text-black font-bold uppercase tracking-wider text-[10px] py-2 px-4"
+                  className="bg-black hover:bg-zinc-800 text-white font-bold uppercase tracking-wider text-[10px] py-2 px-4"
                 >
                   {formLoading ? "Saving wear data..." : (editingProduct ? "Save Changes" : "Register Product")}
                 </Button>
