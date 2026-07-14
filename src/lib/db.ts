@@ -1,6 +1,12 @@
 import { PrismaClient } from '@prisma/client';
 import { PrismaPg } from '@prisma/adapter-pg';
 import { Pool } from 'pg';
+import dns from 'dns';
+
+// Force Node to prioritize IPv4 address resolution for localhost on Windows
+if (typeof dns.setDefaultResultOrder === 'function') {
+  dns.setDefaultResultOrder('ipv4first');
+}
 
 // Cache connection objects on global in development to prevent hot-reload connection leaks
 const globalForDb = global as unknown as {
@@ -22,8 +28,11 @@ function getDirectConnectionString(): string {
       if (apiKey) {
         const decoded = JSON.parse(Buffer.from(apiKey, 'base64').toString('utf-8'));
         if (decoded.databaseUrl) {
-          // Replace sslenable=false with sslmode=disable for pg driver compliance
-          return decoded.databaseUrl.replace('sslenable=false', 'sslmode=disable');
+          // Replace localhost with 127.0.0.1 to bypass Windows IPv6 resolution issues,
+          // and template1 with postgres to connect to the correct database where tables exist.
+          return decoded.databaseUrl
+            .replace('localhost:51214', '127.0.0.1:51214')
+            .replace('/template1', '/postgres');
         }
       }
     } catch (e) {
@@ -38,8 +47,8 @@ const connectionString = getDirectConnectionString();
 // Retrieve or create singleton pg Pool, adapter and prisma client
 export const pool = globalForDb.pool || new Pool({ 
   connectionString,
-  max: 2,                  // Allow slightly more connections for concurrent developer requests
-  idleTimeoutMillis: 30000, // Keep connection open for 30s to enable reuse and avoid handshake churn
+  max: 1,                  // Limit to 1 connection to prevent exceeding postgres proxy limit of 10
+  idleTimeoutMillis: 1,    // Close idle connections immediately to prevent stale socket reuse
   connectionTimeoutMillis: 5000 // Reject hung connections after 5 seconds
 });
 

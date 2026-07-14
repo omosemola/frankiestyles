@@ -3,7 +3,7 @@
 import { prisma } from "@/lib/db";
 import { Product } from "@/lib/products";
 
-async function queryWithRetry<T>(fn: () => Promise<T>, retries = 5, delay = 1000): Promise<T> {
+export async function queryWithRetry<T>(fn: () => Promise<T>, retries = 5, delay = 1000): Promise<T> {
   let lastError: any;
   for (let i = 0; i < retries; i++) {
     try {
@@ -79,3 +79,82 @@ export async function getProductById(id: string): Promise<Product | null> {
     return null;
   }
 }
+
+export interface ProductInput {
+  id: string;
+  name: string;
+  price: number;
+  category: string;
+  image: string;
+  isNew: boolean;
+  description: string;
+  details: string[];
+  images: string[];
+  sizes: string[];
+}
+
+export async function createProductAction(input: ProductInput) {
+  try {
+    const product = await queryWithRetry(() =>
+      prisma.product.create({
+        data: {
+          id: input.id,
+          name: input.name,
+          price: input.price,
+          category: input.category,
+          image: input.image,
+          isNew: input.isNew,
+          description: input.description,
+          details: input.details,
+          images: input.images,
+          sizes: input.sizes,
+        },
+      })
+    );
+    return { success: true, product };
+  } catch (error) {
+    console.error("Failed to create product:", error);
+    return { success: false, error: "Failed to create product in database." };
+  }
+}
+
+export async function updateProductAction(id: string, input: ProductInput) {
+  try {
+    const product = await queryWithRetry(() =>
+      prisma.product.update({
+        where: { id },
+        data: {
+          id: input.id, // allow renaming ID
+          name: input.name,
+          price: input.price,
+          category: input.category,
+          image: input.image,
+          isNew: input.isNew,
+          description: input.description,
+          details: input.details,
+          images: input.images,
+          sizes: input.sizes,
+        },
+      })
+    );
+    return { success: true, product };
+  } catch (error) {
+    console.error(`Failed to update product ${id}:`, error);
+    return { success: false, error: "Failed to update product in database." };
+  }
+}
+
+export async function deleteProductAction(id: string) {
+  try {
+    await queryWithRetry(() =>
+      prisma.product.delete({
+        where: { id },
+      })
+    );
+    return { success: true };
+  } catch (error) {
+    console.error(`Failed to delete product ${id}:`, error);
+    return { success: false, error: "Failed to delete product from database." };
+  }
+}
+
