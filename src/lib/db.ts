@@ -2,6 +2,13 @@ import { PrismaClient } from '@prisma/client';
 import { PrismaPg } from '@prisma/adapter-pg';
 import { Pool } from 'pg';
 
+// Cache connection objects on global in development to prevent hot-reload connection leaks
+const globalForDb = global as unknown as {
+  pool: Pool | undefined;
+  adapter: PrismaPg | undefined;
+  prisma: PrismaClient | undefined;
+};
+
 function getDirectConnectionString(): string {
   const url = process.env.DATABASE_URL;
   if (!url) {
@@ -28,24 +35,25 @@ function getDirectConnectionString(): string {
 
 const connectionString = getDirectConnectionString();
 
-// Optimize connection pool for Next.js worker processes and concurrent SSG builds
-const pool = new Pool({ 
+// Retrieve or create singleton pg Pool, adapter and prisma client
+export const pool = globalForDb.pool || new Pool({ 
   connectionString,
-  max: 1,                  // Limit to 1 connection per worker to prevent exceeding postgres proxy limit of 10
+  max: 2,                  // Allow slightly more connections for concurrent developer requests
   idleTimeoutMillis: 30000, // Keep connection open for 30s to enable reuse and avoid handshake churn
   connectionTimeoutMillis: 5000 // Reject hung connections after 5 seconds
 });
 
-const adapter = new PrismaPg(pool);
+export const adapter = globalForDb.adapter || new PrismaPg(pool);
 
-const globalForPrisma = global as unknown as { prisma: PrismaClient };
+export const prisma = globalForDb.prisma || new PrismaClient({
+  adapter,
+  log: ['query'],
+});
 
-export const prisma =
-  globalForPrisma.prisma ||
-  new PrismaClient({
-    adapter,
-    log: ['query'],
-  });
+if (process.env.NODE_ENV !== 'production') {
+  globalForDb.pool = pool;
+  globalForDb.adapter = adapter;
+  globalForDb.prisma = prisma;
+}
 
-if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma;
 export { PrismaPg, Pool };
