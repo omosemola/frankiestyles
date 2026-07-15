@@ -740,5 +740,33 @@ export const DUMMY_PRODUCTS: Product[] = [
       "XXXL (Chest 50-52\")",
       "Custom Measure"
     ]
+  },
+  {
+    id: "27",
+    name: "Prestige White Textured Kaftan Set",
+    price: 220000,
+    category: "Kaftans",
+    image: "/images/product-27-front.png",
+    isNew: true,
+    description: "Make a statement in this Prestige White Textured Kaftan set, meticulously tailored from premium waffle-textured cotton fabric. Designed with a clean round neck, short sleeves, and matching tailored trousers.",
+    details: [
+      "Two-piece premium textured Kaftan set",
+      "100% premium soft, breathable waffle-textured cotton",
+      "Minimalist round neck with front placket detailing",
+      "Includes tailored comfort-fit trousers",
+      "Dry clean or delicate hand wash recommended"
+    ],
+    images: [
+      "/images/product-27-front.png",
+      "/images/product-27-back.png"
+    ],
+    sizes: [
+      "M (Chest 38-40\")",
+      "L (Chest 41-43\")",
+      "XL (Chest 44-46\")",
+      "XXL (Chest 47-49\")",
+      "XXXL (Chest 50-52\")",
+      "Custom Measure"
+    ]
   }
 ];
