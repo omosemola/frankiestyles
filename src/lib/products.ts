@@ -512,5 +512,34 @@ export const DUMMY_PRODUCTS: Product[] = [
       "XXXL (Chest 50-52\")",
       "Custom Measure"
     ]
+  },
+  {
+    id: "15",
+    name: "Mint Green Textured Kaftan Set",
+    price: 220000,
+    category: "Kaftans",
+    image: "/images/product-15-front.png",
+    isNew: true,
+    description: "Step out in refined style with this mint green textured Kaftan. Expertly tailored from waffle-textured premium fabric, it features a clean round neck, short-placket front closure, a single chest pocket with a gold brand plate, and matching trousers.",
+    details: [
+      "Two-piece premium Kaftan set",
+      "Premium waffle-textured cotton-crepe blend fabric",
+      "Round neckline with clean buttonless placket design",
+      "Single chest pocket with signature gold accent bar",
+      "Includes tailored comfort trousers and back logo emblem stitching",
+      "Dry clean recommended"
+    ],
+    images: [
+      "/images/product-15-front.png",
+      "/images/product-15-back.png"
+    ],
+    sizes: [
+      "M (Chest 38-40\")",
+      "L (Chest 41-43\")",
+      "XL (Chest 44-46\")",
+      "XXL (Chest 47-49\")",
+      "XXXL (Chest 50-52\")",
+      "Custom Measure"
+    ]
   }
 ];
