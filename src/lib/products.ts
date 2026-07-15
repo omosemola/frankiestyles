@@ -796,5 +796,33 @@ export const DUMMY_PRODUCTS: Product[] = [
       "XXXL (Chest 50-52\")",
       "Custom Measure"
     ]
+  },
+  {
+    id: "29",
+    name: "Prestige Pearl White Jalabiya Set",
+    price: 250000,
+    category: "Jalabiya",
+    image: "/images/product-29-front.png",
+    isNew: true,
+    description: "Experience majestic luxury in this Pearl White Jalabiya Set. Meticulously tailored from premium flowy fabric, featuring a clean buttoned placket and classic styling. Includes a matching red and white checkered shemagh headscarf and black egual.",
+    details: [
+      "Premium full-length Jalabiya robe",
+      "Soft, breathable flowy fabric",
+      "Minimalist buttoned front placket design",
+      "Includes classic checkered shemagh headscarf and black egual",
+      "Dry clean only"
+    ],
+    images: [
+      "/images/product-29-front.png",
+      "/images/product-29-back.png"
+    ],
+    sizes: [
+      "M (Chest 38-40\")",
+      "L (Chest 41-43\")",
+      "XL (Chest 44-46\")",
+      "XXL (Chest 47-49\")",
+      "XXXL (Chest 50-52\")",
+      "Custom Measure"
+    ]
   }
 ];
