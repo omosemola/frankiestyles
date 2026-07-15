@@ -570,5 +570,34 @@ export const DUMMY_PRODUCTS: Product[] = [
       "XXXL (Chest 50-52\")",
       "Custom Measure"
     ]
+  },
+  {
+    id: "20",
+    name: "Crimson Red Textured Kaftan Set",
+    price: 220000,
+    category: "Kaftans",
+    image: "/images/product-20-front.png",
+    isNew: true,
+    description: "Exude modern elegance in this crimson red textured Kaftan. Masterfully tailored from premium checkered-textured fabric, it features a clean round neck, short-placket front closure, a single chest pocket with a gold brand plate, and matching trousers.",
+    details: [
+      "Two-piece premium Kaftan set",
+      "Premium checkered-textured cotton-crepe blend fabric",
+      "Round neckline with clean buttonless placket design",
+      "Single chest pocket with signature gold accent bar",
+      "Includes tailored comfort trousers and back logo emblem stitching",
+      "Dry clean recommended"
+    ],
+    images: [
+      "/images/product-20-front.png",
+      "/images/product-20-back.png"
+    ],
+    sizes: [
+      "M (Chest 38-40\")",
+      "L (Chest 41-43\")",
+      "XL (Chest 44-46\")",
+      "XXL (Chest 47-49\")",
+      "XXXL (Chest 50-52\")",
+      "Custom Measure"
+    ]
   }
 ];
