@@ -684,5 +684,33 @@ export const DUMMY_PRODUCTS: Product[] = [
       "XXXL (Chest 50-52\")",
       "Custom Measure"
     ]
+  },
+  {
+    id: "25",
+    name: "Premium Pink Dry Lace Set",
+    price: 390000,
+    category: "DRY LACE",
+    image: "/images/product-25-front.png",
+    isNew: true,
+    description: "An elegant pink dry lace Kaftan set, meticulously hand-tailored from premium dry lace fabric. Features a clean round neckline, button-up front closure, and tailored trousers.",
+    details: [
+      "Two-piece luxury dry lace Kaftan set",
+      "Premium open-weave dry lace fabric",
+      "Round neck collar with front button layout",
+      "Includes custom-fit trousers and matching lining fabric",
+      "Dry clean only"
+    ],
+    images: [
+      "/images/product-25-front.png",
+      "/images/product-25-back.png"
+    ],
+    sizes: [
+      "M (Chest 38-40\")",
+      "L (Chest 41-43\")",
+      "XL (Chest 44-46\")",
+      "XXL (Chest 47-49\")",
+      "XXXL (Chest 50-52\")",
+      "Custom Measure"
+    ]
   }
 ];
