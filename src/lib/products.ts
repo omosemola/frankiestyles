@@ -101,7 +101,7 @@ export const DUMMY_PRODUCTS: Product[] = [
     id: "4",
     name: "Prestige Black Dry Lace Kaftan Set",
     price: 390000,
-    category: "Kaftans",
+    category: "DRY LACE",
     image: "/images/product-4-front.png",
     isNew: true,
     description: "Make a statement in this prestige black dry lace Kaftan. Artfully tailored from premium dry lace fabric, it features a structured semi-translucent layout, matching buba under-shirt, and tailored trousers.",
