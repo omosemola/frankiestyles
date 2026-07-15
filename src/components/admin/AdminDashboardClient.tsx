@@ -702,7 +702,7 @@ export default function AdminDashboardClient({
                   <option value="Agbadas">Agbadas</option>
                   <option value="ISI AGU">Isi Agu</option>
                   <option value="Jalabiya">Jalabiya</option>
-                  <option value="Two Pieces">Two Pieces</option>
+                  <option value="READY TO WEAR">Ready To Wear</option>
                 </select>
               </div>
             </div>
@@ -1012,7 +1012,7 @@ export default function AdminDashboardClient({
                       <option value="Agbadas">Agbadas</option>
                       <option value="ISI AGU">Isi Agu</option>
                       <option value="Jalabiya">Jalabiya</option>
-                      <option value="Two Pieces">Two Pieces</option>
+                      <option value="READY TO WEAR">Ready To Wear</option>
                     </select>
                   </div>
                 </div>

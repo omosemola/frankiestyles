@@ -211,7 +211,7 @@ export const DUMMY_PRODUCTS: Product[] = [
     id: "8",
     name: "Grey Premium Linen Short Set",
     price: 120000,
-    category: "Two Pieces",
+    category: "READY TO WEAR",
     image: "/images/product-8-front.png",
     description: "Experience relaxed luxury in this premium grey linen two-piece short set. Expertly crafted from lightweight, breathable pure linen, featuring a short-sleeve button-down shirt and matching tailored shorts.",
     details: [
@@ -347,7 +347,7 @@ export const DUMMY_PRODUCTS: Product[] = [
     id: "13",
     name: "Prestige Oatmeal Linen Set",
     price: 165000,
-    category: "Two Pieces",
+    category: "READY TO WEAR",
     image: "/images/product-13-front.png",
     description: "Relax in absolute distinction. This Prestige Oatmeal Linen Set features a premium short-sleeve button-up shirt and matching tailored trousers. Handcrafted from luxury, breathable linen for unmatched comfort.",
     details: [
@@ -703,6 +703,34 @@ export const DUMMY_PRODUCTS: Product[] = [
     images: [
       "/images/product-25-front.png",
       "/images/product-25-back.png"
+    ],
+    sizes: [
+      "M (Chest 38-40\")",
+      "L (Chest 41-43\")",
+      "XL (Chest 44-46\")",
+      "XXL (Chest 47-49\")",
+      "XXXL (Chest 50-52\")",
+      "Custom Measure"
+    ]
+  },
+  {
+    id: "26",
+    name: "Premium Abstract Wave Linen Set",
+    price: 165000,
+    category: "READY TO WEAR",
+    image: "/images/product-26-front.png",
+    isNew: true,
+    description: "A distinct, luxury cream/white short-sleeve button-down shirt and shorts set. Handcrafted from premium linen and detailed with a gorgeous purple and blue abstract wave embroidery across the front.",
+    details: [
+      "Two-piece premium linen set with short trousers",
+      "100% premium lightweight, breathable Italian linen",
+      "Unique custom wave pattern embroidery in blue and purple",
+      "Comfortable tailored shorts with drawstring waist",
+      "Dry clean or delicate hand wash recommended"
+    ],
+    images: [
+      "/images/product-26-front.png",
+      "/images/product-26-back.png"
     ],
     sizes: [
       "M (Chest 38-40\")",

@@ -43,9 +43,9 @@ const CATEGORIES: CategoryCard[] = [
     description: "Majestic full-length traditional robes with rich artisan embroidery and shemagh details."
   },
   {
-    name: "Two Pieces",
+    name: "READY TO WEAR",
     image: "/images/product-8-front.png",
-    href: "/shop?category=Two+Pieces",
+    href: "/shop?category=READY+TO+WEAR",
     description: "Coordinated two-piece linen and structured sets designed for sleek, modern leisure."
   }
 ];

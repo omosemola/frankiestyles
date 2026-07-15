@@ -181,7 +181,7 @@ export default function ContactPage() {
                            <option>Bespoke Agbada Set</option>
                            <option>ISI AGU traditional attire</option>
                            <option>Bespoke Jalabiya Set</option>
-                           <option>Bespoke Two Pieces</option>
+                           <option>Bespoke Ready To Wear</option>
                         </select>
                       </div>
                     </div>
