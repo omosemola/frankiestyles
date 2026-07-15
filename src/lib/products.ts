@@ -768,5 +768,33 @@ export const DUMMY_PRODUCTS: Product[] = [
       "XXXL (Chest 50-52\")",
       "Custom Measure"
     ]
+  },
+  {
+    id: "28",
+    name: "Prestige Pearl White Senator Suit",
+    price: 165000,
+    category: "Kaftans",
+    image: "/images/product-28-front.png",
+    isNew: true,
+    description: "Step out in pure elegance with the Prestige Pearl White Senator Suit. Cleanly tailored from premium, structured wool-blend fabric, it features three-quarter sleeves, a hidden button placket, chest pocket accent, and tailored trousers.",
+    details: [
+      "Two-piece premium Senator suit set",
+      "High-grade, comfortable structured wool-blend fabric",
+      "Minimalist hidden button-down neck placket with pocket detailing",
+      "Includes tailored comfort-fit trousers",
+      "Dry clean only"
+    ],
+    images: [
+      "/images/product-28-front.png",
+      "/images/product-28-back.png"
+    ],
+    sizes: [
+      "M (Chest 38-40\")",
+      "L (Chest 41-43\")",
+      "XL (Chest 44-46\")",
+      "XXL (Chest 47-49\")",
+      "XXXL (Chest 50-52\")",
+      "Custom Measure"
+    ]
   }
 ];
