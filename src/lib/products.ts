@@ -156,7 +156,7 @@ export const DUMMY_PRODUCTS: Product[] = [
     id: "6",
     name: "Prestige Olive Dry Lace Kaftan Set",
     price: 390000,
-    category: "Kaftans",
+    category: "DRY LACE",
     image: "/images/product-6-front.png",
     isNew: true,
     description: "Make a statement in this prestige olive green dry lace Kaftan. Artfully tailored from premium dry lace fabric, it features a structured semi-translucent layout, matching buba under-shirt, and tailored trousers.",
@@ -184,7 +184,7 @@ export const DUMMY_PRODUCTS: Product[] = [
     id: "7",
     name: "Prestige Purple Dry Lace Kaftan Set",
     price: 390000,
-    category: "Kaftans",
+    category: "DRY LACE",
     image: "/images/product-7-front.png",
     description: "Make a statement in this prestige purple dry lace Kaftan. Artfully tailored from premium dry lace fabric, it features a structured semi-translucent layout, matching buba under-shirt, and tailored trousers.",
     details: [
@@ -238,7 +238,7 @@ export const DUMMY_PRODUCTS: Product[] = [
     id: "9",
     name: "Prestige White Dry Lace Kaftan Set",
     price: 390000,
-    category: "Kaftans",
+    category: "DRY LACE",
     image: "/images/product-9-front.png",
     description: "Make a statement in this prestige white dry lace Kaftan. Artfully tailored from premium dry lace fabric, it features a structured semi-translucent layout, matching buba under-shirt, and tailored trousers.",
     details: [
@@ -460,12 +460,12 @@ export const DUMMY_PRODUCTS: Product[] = [
     id: "22",
     name: "Luxury Isiagu Deer Motif Set",
     price: 220000,
-    category: "ISI AGWU",
+    category: "ISI AGU",
     image: "/images/product-22-front.png",
     isNew: true,
     description: "Honor heritage with this exceptional Ivory and Red Isiagu set. Designed with a custom deer motif print, matching trousers, and a traditional red chieftaincy cap with an authentic feather. Absolute prestige for traditional ceremonies.",
     details: [
-      "Complete traditional Isi Agwu heritage set",
+      "Complete traditional Isi Agu heritage set",
       "Premium soft-brushed heritage cotton fabric",
       "Vibrant custom deer-head pattern print",
       "Includes dark brown trousers and red chieftaincy cap with feather",
@@ -619,6 +619,62 @@ export const DUMMY_PRODUCTS: Product[] = [
     images: [
       "/images/product-21-front.png",
       "/images/product-21-back.png"
+    ],
+    sizes: [
+      "M (Chest 38-40\")",
+      "L (Chest 41-43\")",
+      "XL (Chest 44-46\")",
+      "XXL (Chest 47-49\")",
+      "XXXL (Chest 50-52\")",
+      "Custom Measure"
+    ]
+  },
+  {
+    id: "23",
+    name: "Premium Cream Dry Lace Set",
+    price: 390000,
+    category: "DRY LACE",
+    image: "/images/product-23-front.png",
+    isNew: true,
+    description: "An exceptional cream/beige dry lace Kaftan set, meticulously hand-tailored from premium dry lace fabric. Features a clean round neckline, button-up front closure, and tailored trousers.",
+    details: [
+      "Two-piece luxury dry lace Kaftan set",
+      "Premium open-weave dry lace fabric",
+      "Round neck collar with front button layout",
+      "Includes custom-fit trousers and matching lining fabric",
+      "Dry clean only"
+    ],
+    images: [
+      "/images/product-23-front.png",
+      "/images/product-23-back.png"
+    ],
+    sizes: [
+      "M (Chest 38-40\")",
+      "L (Chest 41-43\")",
+      "XL (Chest 44-46\")",
+      "XXL (Chest 47-49\")",
+      "XXXL (Chest 50-52\")",
+      "Custom Measure"
+    ]
+  },
+  {
+    id: "24",
+    name: "Premium Wine Dry Lace Set",
+    price: 390000,
+    category: "DRY LACE",
+    image: "/images/product-24-front.png",
+    isNew: true,
+    description: "An exquisite wine red dry lace Kaftan set, meticulously hand-tailored from premium dry lace fabric. Features a clean round neckline, button-up front closure, and tailored trousers.",
+    details: [
+      "Two-piece luxury dry lace Kaftan set",
+      "Premium open-weave dry lace fabric",
+      "Round neck collar with front button layout",
+      "Includes custom-fit trousers and matching lining fabric",
+      "Dry clean only"
+    ],
+    images: [
+      "/images/product-24-front.png",
+      "/images/product-24-back.png"
     ],
     sizes: [
       "M (Chest 38-40\")",

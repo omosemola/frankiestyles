@@ -179,11 +179,12 @@ export function ContactSection() {
                           onChange={e => setFormData({ ...formData, service: e.target.value })}
                           className="w-full h-11 px-4 rounded-lg border border-transparent bg-white text-xs font-semibold uppercase tracking-wider hover:border-black focus:outline-none focus:border-black transition-colors"
                         >
-                          <option>Bespoke Kaftan</option>
-                          <option>Bespoke Agbada Set</option>
-                          <option>ISI AGWU traditional attire</option>
-                          <option>Bespoke Jalabiya Set</option>
-                          <option>Bespoke Two Pieces</option>
+                           <option>Bespoke Kaftan</option>
+                           <option>Bespoke Dry Lace Set</option>
+                           <option>Bespoke Agbada Set</option>
+                           <option>ISI AGU traditional attire</option>
+                           <option>Bespoke Jalabiya Set</option>
+                           <option>Bespoke Two Pieces</option>
                         </select>
                       </div>
                     </div>

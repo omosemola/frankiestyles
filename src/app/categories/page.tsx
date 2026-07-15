@@ -19,16 +19,22 @@ const CATEGORIES: CategoryCard[] = [
     description: "Intricately embroidered loose robes and sharp two-piece suits designed for comfortable prestige."
   },
   {
+    name: "DRY LACE",
+    image: "/images/product-23-front.png",
+    href: "/shop?category=DRY+LACE",
+    description: "Ornate and intricate traditional sets crafted from premium dry lace fabric, designed for high-end celebrations."
+  },
+  {
     name: "Agbadas",
     image: "/images/kaftans-banner.jpg",
     href: "/shop?category=Agbadas",
     description: "Grand 3-piece traditional robes reserved for ceremonies and royal entries."
   },
   {
-    name: "ISI AGWU",
+    name: "ISI AGU",
     image: "/images/product-22-front.png",
-    href: "/shop?category=ISI+AGWU",
-    description: "Traditional Isiagu heritage garments celebrating Isi Agwu cultural royalty and prestige."
+    href: "/shop?category=ISI+AGU",
+    description: "Traditional Isiagu heritage garments celebrating Isi Agu cultural royalty and prestige."
   },
   {
     name: "Jalabiya",

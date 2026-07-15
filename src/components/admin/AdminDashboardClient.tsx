@@ -698,8 +698,9 @@ export default function AdminDashboardClient({
                 >
                   <option value="all">All Categories</option>
                   <option value="Kaftans">Kaftans</option>
+                  <option value="DRY LACE">Dry Lace</option>
                   <option value="Agbadas">Agbadas</option>
-                  <option value="ISI AGWU">Isi Agwu</option>
+                  <option value="ISI AGU">Isi Agu</option>
                   <option value="Jalabiya">Jalabiya</option>
                   <option value="Two Pieces">Two Pieces</option>
                 </select>
@@ -1007,8 +1008,9 @@ export default function AdminDashboardClient({
                       className="w-full bg-gray-50 border border-gray-200 text-black rounded-lg px-4 py-2.5 text-xs outline-none focus:border-black"
                     >
                       <option value="Kaftans">Kaftans</option>
+                      <option value="DRY LACE">Dry Lace</option>
                       <option value="Agbadas">Agbadas</option>
-                      <option value="ISI AGWU">Isi Agwu</option>
+                      <option value="ISI AGU">Isi Agu</option>
                       <option value="Jalabiya">Jalabiya</option>
                       <option value="Two Pieces">Two Pieces</option>
                     </select>
