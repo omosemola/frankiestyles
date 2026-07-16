@@ -10,6 +10,7 @@ import { Button } from '@/components/ui/Button';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { MeasurementModal } from '@/components/shop/MeasurementModal';
+import { BespokeSizingGuide } from '@/components/shop/BespokeSizingGuide';
 
 interface ProductDetailClientProps {
   product: Product;
@@ -23,7 +24,8 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
   const { addItem, setIsOpen } = useCartStore();
   const { toggleItem, hasItem } = useWishlistStore();
   const [mounted, setMounted] = useState(false);
-  // Sizing Modal States
+  
+  // Custom Sizing States
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalTab, setModalTab] = useState<'standard' | 'custom'>('standard');
   const [customMeasurements, setCustomMeasurements] = useState<{
@@ -35,6 +37,17 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
     topLength: string;
   } | null>(null);
 
+  // Inline Bespoke Form States
+  const [inlineMeasurements, setInlineMeasurements] = useState({
+    chest: '',
+    shoulder: '',
+    sleeve: '',
+    waist: '',
+    trouserLength: '',
+    topLength: '',
+  });
+  const [formError, setFormError] = useState<string | null>(null);
+
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -44,15 +57,34 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
   const handleAddToCart = () => {
     setIsAdding(true);
     
-    // Add item to Zustand cart store
-    addItem({
-      id: product.id,
-      name: product.name,
-      price: product.price,
-      image: product.image,
-      category: product.category,
-      size: selectedSize,
-    });
+    if (selectedSize === "Custom Measure") {
+      const { chest, shoulder, sleeve, waist, trouserLength, topLength } = inlineMeasurements;
+      if (!chest || !shoulder || !sleeve || !waist || !trouserLength || !topLength) {
+        setFormError("Please fill in all custom measurements to customize your bespoke fit.");
+        setIsAdding(false);
+        return;
+      }
+      setFormError(null);
+      const sizeString = `Custom (C:${chest}" S:${shoulder}" Sl:${sleeve}" W:${waist}" TL:${trouserLength}" L:${topLength}")`;
+      
+      addItem({
+        id: product.id,
+        name: product.name,
+        price: product.price,
+        image: product.image,
+        category: product.category,
+        size: sizeString,
+      });
+    } else {
+      addItem({
+        id: product.id,
+        name: product.name,
+        price: product.price,
+        image: product.image,
+        category: product.category,
+        size: selectedSize,
+      });
+    }
 
     // Simulate luxury tactile feedback delay, then open CartDrawer
     setTimeout(() => {
@@ -60,6 +92,7 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
       setIsOpen(true);
     }, 800);
   };
+
 
   return (
     <div className="container mx-auto px-6 pt-40 pb-32 relative">
@@ -154,11 +187,11 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
                       key={size}
                       onClick={() => {
                         if (size === "Custom Measure") {
-                          setModalTab('custom');
-                          setIsModalOpen(true);
+                          setSelectedSize("Custom Measure");
                         } else {
                           setSelectedSize(size);
                           setCustomMeasurements(null);
+                          setFormError(null);
                         }
                       }}
                       className={cn(
@@ -173,29 +206,63 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
                   );
                 })}
               </div>
-              
-              {/* Custom Sizing Fit Summary */}
-              {customMeasurements && selectedSize.startsWith("Custom") ? (
-                <div className="bg-gray-50 border border-gray-150 p-4 rounded-xl text-left mt-4 flex justify-between items-center">
-                  <div className="space-y-1">
-                    <p className="text-[10px] font-bold uppercase tracking-wider text-gray-400">Custom Applied Fit</p>
-                    <p className="text-xs font-semibold text-[#0a0a0a] leading-relaxed">
-                      Chest: {customMeasurements.chest}" • Shoulder: {customMeasurements.shoulder}" • Sleeve: {customMeasurements.sleeve}" • Waist: {customMeasurements.waist}" • Trouser: {customMeasurements.trouserLength}" • Top: {customMeasurements.topLength}"
+
+              {/* Inline Custom Measurements Form */}
+              {selectedSize === "Custom Measure" && (
+                <div className="border border-gray-150 rounded-2xl p-6 bg-gray-50/30 space-y-6 mt-6">
+                  <div>
+                    <h3 className="text-xs font-bold uppercase tracking-widest text-black">Bespoke Fit Configuration</h3>
+                    <p className="text-[10px] text-gray-400 mt-1 uppercase tracking-wider">
+                      Please enter your measurements in inches below.
                     </p>
                   </div>
-                  <button
-                    onClick={() => { setModalTab('custom'); setIsModalOpen(true); }}
-                    className="text-[10px] font-bold uppercase tracking-widest text-[#0a0a0a] hover:underline underline-offset-4 flex-shrink-0 ml-4"
-                  >
-                    Edit Fit
-                  </button>
+                  
+                  <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                    {[
+                      { label: 'Chest', key: 'chest' },
+                      { label: 'Shoulder', key: 'shoulder' },
+                      { label: 'Sleeve', key: 'sleeve' },
+                      { label: 'Waist', key: 'waist' },
+                      { label: 'Trouser Length', key: 'trouserLength' },
+                      { label: 'Top Length', key: 'topLength' }
+                    ].map((field) => (
+                      <div key={field.key} className="space-y-1">
+                        <label className="block text-[10px] font-bold uppercase tracking-wider text-gray-400">
+                          {field.label}
+                        </label>
+                        <div className="relative">
+                          <input
+                            type="number"
+                            step="0.5"
+                            min="0"
+                            placeholder="e.g. 40"
+                            value={inlineMeasurements[field.key as keyof typeof inlineMeasurements]}
+                            onChange={(e) => {
+                              setInlineMeasurements({
+                                ...inlineMeasurements,
+                                [field.key]: e.target.value
+                              });
+                              if (formError) setFormError(null);
+                            }}
+                            className="w-full h-11 bg-white border border-gray-200 text-black text-xs font-semibold px-3 rounded-lg outline-none focus:border-black transition-all pr-8"
+                          />
+                          <span className="absolute right-3 top-1/2 -translate-y-1/2 text-[10px] font-bold text-gray-400">in</span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  <BespokeSizingGuide />
+
+                  {formError && (
+                    <div className="p-3 bg-red-50 border border-red-100 rounded-lg text-xs font-medium text-red-600">
+                      {formError}
+                    </div>
+                  )}
                 </div>
-              ) : selectedSize === "Custom Measure" ? (
-                <p className="text-xs text-amber-600 font-medium mt-2">
-                  *Our team will contact you for custom shoulder, chest, and height measurements.
-                </p>
-              ) : null}
+              )}
             </div>
+
 
             {/* Add to Cart CTA & Wishlist */}
             <div className="flex gap-4 items-center flex-grow">
