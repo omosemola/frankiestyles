@@ -32,9 +32,9 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
     chest: string;
     shoulder: string;
     sleeve: string;
-    waist: string;
-    trouserLength: string;
-    topLength: string;
+    waist?: string;
+    trouserLength?: string;
+    topLength?: string;
   } | null>(null);
 
   // Inline Bespoke Form States
