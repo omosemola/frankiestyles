@@ -291,3 +291,145 @@ export async function sendOrderEmailsAction(order: {
     return { success: false, error };
   }
 }
+
+export async function sendPaymentConfirmationEmailAction(order: {
+  name: string;
+  email: string;
+  paymentReference: string;
+  totalAmount: number;
+  shippingFee: number;
+  items: any[];
+}) {
+  const transporter = getTransporter();
+  if (!transporter) return { success: false, error: "Transporter not configured" };
+
+  let itemsHtml = '';
+  order.items.forEach(item => {
+    const customSizeDetails = parseCustomSize(item.size);
+    let sizeDetailsHtml = '';
+    
+    if (customSizeDetails) {
+      sizeDetailsHtml = `
+        <div style="margin-top: 4px; padding: 6px 10px; background-color: #f9f9f9; border-left: 2px solid #b89047; font-size: 11px; color: #555; border-radius: 4px;">
+          <strong>Bespoke Dimensions:</strong><br/>
+          ${customSizeDetails.map(m => `${m.label}: ${m.value}`).join(' | ')}
+        </div>
+      `;
+    } else {
+      sizeDetailsHtml = `<span style="font-size: 11px; color: #777;">Size: <strong>${item.size}</strong></span>`;
+    }
+
+    itemsHtml += `
+      <tr style="border-bottom: 1px solid #eee;">
+        <td style="padding: 12px 0; vertical-align: top;">
+          <span style="font-weight: 600; color: #0a0a0a; font-size: 14px;">${item.name}</span><br/>
+          ${sizeDetailsHtml}
+        </td>
+        <td style="padding: 12px 0; text-align: center; vertical-align: top; color: #555; font-size: 14px;">x${item.quantity}</td>
+        <td style="padding: 12px 0; text-align: right; vertical-align: top; font-weight: 600; color: #0a0a0a; font-size: 14px;">₦${(item.price * item.quantity).toLocaleString()}</td>
+      </tr>
+    `;
+  });
+
+  const baseStyle = `
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #333333;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #fafafa;
+  `;
+
+  const headerLogoHtml = `
+    <div style="background-color: #0a0a0a; padding: 30px 20px; text-align: center; border-bottom: 4px solid #b89047;">
+      <h1 style="color: #ffffff; font-family: 'Bodoni MT', 'Didot', 'Playfair Display', serif; font-weight: 300; letter-spacing: 6px; margin: 0; font-size: 24px; text-transform: uppercase;">
+        Frankie <span style="color: #b89047; font-weight: 400;">Styles</span>
+      </h1>
+      <p style="color: #888888; font-size: 9px; text-transform: uppercase; letter-spacing: 4px; margin: 5px 0 0 0; font-weight: 600;">
+        ATELIER • NATIVE LUXURY
+      </p>
+    </div>
+  `;
+
+  const confirmationHtml = `
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="utf-8">
+      <title>Payment Confirmed - Frankie Styles</title>
+    </head>
+    <body style="${baseStyle}">
+      <div style="max-width: 600px; margin: 30px auto; background-color: #ffffff; border: 1px solid #e5e5e5; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
+        ${headerLogoHtml}
+        
+        <div style="padding: 40px 30px;">
+          <h2 style="font-size: 18px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #2e7d32; margin-top: 0; margin-bottom: 20px; display: flex; align-items: center; gap: 8px;">
+            ✓ Payment Confirmed
+          </h2>
+          
+          <p style="font-size: 14px; color: #555; margin-bottom: 24px;">
+            Dear ${order.name},<br/><br/>
+            We are pleased to inform you that your payment of <strong>₦${order.totalAmount.toLocaleString()}</strong> for order <strong>${order.paymentReference}</strong> has been successfully confirmed.
+          </p>
+
+          <div style="background-color: #f4faf4; border: 1px solid #dceddc; padding: 20px; border-radius: 8px; margin-bottom: 30px; text-align: left;">
+            <h4 style="color: #2e7d32; margin: 0 0 8px 0; font-size: 13px; text-transform: uppercase; letter-spacing: 1px;">Production Status: Active</h4>
+            <p style="font-size: 12.5px; color: #555; margin: 0; line-height: 1.5;">
+              Our master tailors have begun crafting your bespoke native wear according to your measurements. We will notify you via email/WhatsApp once your garments are completed and ready for dispatch.
+            </p>
+          </div>
+
+          <h3 style="font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; border-bottom: 1px solid #0a0a0a; padding-bottom: 8px; margin-bottom: 15px; color: #0a0a0a;">Order Receipt</h3>
+          <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+            <thead>
+              <tr style="border-bottom: 1px solid #eee; font-size: 11px; text-transform: uppercase; color: #999; letter-spacing: 1px;">
+                <th style="padding-bottom: 8px; text-align: left;">Item</th>
+                <th style="padding-bottom: 8px; text-align: center; width: 60px;">Qty</th>
+                <th style="padding-bottom: 8px; text-align: right; width: 100px;">Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${itemsHtml}
+            </tbody>
+          </table>
+
+          <table style="width: 100%; margin-top: 10px; font-size: 13px; border-collapse: collapse; color: #555;">
+            <tr>
+              <td style="padding: 4px 0; text-align: left;">Subtotal</td>
+              <td style="padding: 4px 0; text-align: right; font-weight: 500;">₦${(order.totalAmount - order.shippingFee).toLocaleString()}</td>
+            </tr>
+            <tr>
+              <td style="padding: 4px 0; text-align: left;">Shipping</td>
+              <td style="padding: 4px 0; text-align: right; font-weight: 500;">${order.shippingFee === 0 ? "FREE" : `₦${order.shippingFee.toLocaleString()}`}</td>
+            </tr>
+            <tr style="border-top: 1px solid #eee;">
+              <td style="padding: 12px 0 0 0; text-align: left; font-size: 15px; font-weight: 700; color: #0a0a0a;">Total Paid</td>
+              <td style="padding: 12px 0 0 0; text-align: right; font-size: 15px; font-weight: 700; color: #2e7d32;">₦${order.totalAmount.toLocaleString()}</td>
+            </tr>
+          </table>
+        </div>
+
+        <div style="background-color: #f7f7f7; padding: 25px 20px; text-align: center; border-top: 1px solid #eee; font-size: 11px; color: #888;">
+          <p style="margin: 0 0 10px 0; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #444;">Frankie Styles Atelier</p>
+          <p style="margin: 0 0 5px 0;">Lekki Phase 1, Lagos, Nigeria</p>
+          <p style="margin: 0;">Need help? Email us at <a href="mailto:Frankiestyles4u@gmail.com" style="color: #b89047; text-decoration: none;">Frankiestyles4u@gmail.com</a> or WhatsApp <a href="https://wa.me/2348066913548" style="color: #b89047; text-decoration: none;">+234 806 691 3548</a></p>
+        </div>
+      </div>
+    </body>
+    </html>
+  `;
+
+  try {
+    await transporter.sendMail({
+      from: `"Frankie Styles Atelier" <${process.env.EMAIL_USER}>`,
+      to: order.email,
+      subject: `Payment Confirmed - Order ${order.paymentReference}`,
+      html: confirmationHtml
+    });
+    console.log(`✉️ Payment confirmation email dispatched successfully to ${order.email} for order ${order.paymentReference}`);
+    return { success: true };
+  } catch (error) {
+    console.error("❌ Nodemailer failed to send payment confirmation email:", error);
+    return { success: false, error };
+  }
+}
