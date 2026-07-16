@@ -291,7 +291,7 @@ export const DUMMY_PRODUCTS: Product[] = [
   {
     id: "11",
     name: "Cream Prestige Jalabiya Set",
-    price: 250000,
+    price: 90000,
     category: "Jalabiya",
     image: "/images/product-11-front.png",
     isNew: true,
@@ -800,7 +800,7 @@ export const DUMMY_PRODUCTS: Product[] = [
   {
     id: "29",
     name: "Prestige Pearl White Jalabiya Set",
-    price: 250000,
+    price: 90000,
     category: "Jalabiya",
     image: "/images/product-29-front.png",
     isNew: true,
@@ -828,7 +828,7 @@ export const DUMMY_PRODUCTS: Product[] = [
   {
     id: "30",
     name: "Royal Blue Prestige Jalabiya Set",
-    price: 250000,
+    price: 90000,
     category: "Jalabiya",
     image: "/images/product-30-front.png",
     isNew: true,
@@ -941,7 +941,7 @@ export const DUMMY_PRODUCTS: Product[] = [
   {
     id: "34",
     name: "Prestige Caramel Brown Jalabiya Set",
-    price: 250000,
+    price: 90000,
     category: "Jalabiya",
     image: "/images/product-34-front.png",
     isNew: true,

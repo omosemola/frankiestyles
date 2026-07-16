@@ -56,16 +56,23 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
 
   const handleAddToCart = () => {
     setIsAdding(true);
+    const isJalabiya = product.category === "Jalabiya";
     
     if (selectedSize === "Custom Measure") {
       const { chest, shoulder, sleeve, waist, trouserLength, topLength } = inlineMeasurements;
-      if (!chest || !shoulder || !sleeve || !waist || !trouserLength || !topLength) {
+      const hasRequired = isJalabiya 
+        ? (chest && shoulder && sleeve)
+        : (chest && shoulder && sleeve && waist && trouserLength && topLength);
+        
+      if (!hasRequired) {
         setFormError("Please fill in all custom measurements to customize your bespoke fit.");
         setIsAdding(false);
         return;
       }
       setFormError(null);
-      const sizeString = `Custom (C:${chest}" S:${shoulder}" Sl:${sleeve}" W:${waist}" TL:${trouserLength}" L:${topLength}")`;
+      const sizeString = isJalabiya 
+        ? `Custom (C:${chest}" S:${shoulder}" Sl:${sleeve}")`
+        : `Custom (C:${chest}" S:${shoulder}" Sl:${sleeve}" W:${waist}" TL:${trouserLength}" L:${topLength}")`;
       
       addItem({
         id: product.id,
@@ -218,14 +225,21 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
                   </div>
                   
                   <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                    {[
-                      { label: 'Chest', key: 'chest' },
-                      { label: 'Shoulder', key: 'shoulder' },
-                      { label: 'Sleeve', key: 'sleeve' },
-                      { label: 'Waist', key: 'waist' },
-                      { label: 'Trouser Length', key: 'trouserLength' },
-                      { label: 'Top Length', key: 'topLength' }
-                    ].map((field) => (
+                    {(product.category === "Jalabiya"
+                      ? [
+                          { label: 'Chest', key: 'chest' },
+                          { label: 'Shoulder', key: 'shoulder' },
+                          { label: 'Sleeve', key: 'sleeve' }
+                        ]
+                      : [
+                          { label: 'Chest', key: 'chest' },
+                          { label: 'Shoulder', key: 'shoulder' },
+                          { label: 'Sleeve', key: 'sleeve' },
+                          { label: 'Waist', key: 'waist' },
+                          { label: 'Trouser Length', key: 'trouserLength' },
+                          { label: 'Top Length', key: 'topLength' }
+                        ]
+                    ).map((field) => (
                       <div key={field.key} className="space-y-1">
                         <label className="block text-[10px] font-bold uppercase tracking-wider text-gray-400">
                           {field.label}
