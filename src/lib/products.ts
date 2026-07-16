@@ -909,7 +909,92 @@ export const DUMMY_PRODUCTS: Product[] = [
       "XXXL (Chest 50-52\")",
       "Custom Measure"
     ]
+  },
+  {
+    id: "33",
+    name: "Prestige White Eyelet Senator Suit",
+    price: 390000,
+    category: "DRY LACE",
+    image: "/images/product-33-front.png",
+    isNew: true,
+    description: "Elevate your look in this Prestige White Eyelet Kaftan set. Artfully tailored from premium eyelet/dry lace patterned fabric, it features a clean round neck collar, single chest pocket with gold brand plate, and matching tailored trousers.",
+    details: [
+      "Two-piece luxury eyelet dry lace Kaftan set",
+      "Premium open-weave eyelet structured fabric",
+      "Round neck collar with front button layout",
+      "Includes tailored trousers and matching white under-lining fabric",
+      "Dry clean only"
+    ],
+    images: [
+      "/images/product-33-front.png",
+      "/images/product-33-back.png"
+    ],
+    sizes: [
+      "M (Chest 38-40\")",
+      "L (Chest 41-43\")",
+      "XL (Chest 44-46\")",
+      "XXL (Chest 47-49\")",
+      "XXXL (Chest 50-52\")",
+      "Custom Measure"
+    ]
+  },
+  {
+    id: "34",
+    name: "Prestige Caramel Brown Jalabiya Set",
+    price: 250000,
+    category: "Jalabiya",
+    image: "/images/product-34-front.png",
+    isNew: true,
+    description: "Experience majestic luxury in this Prestige Caramel Brown Jalabiya Set. Meticulously tailored from premium flowy fabric, featuring detailed V-shaped gold/silver embroidery on the chest and a matching hanging tassel ornament.",
+    details: [
+      "Premium full-length Jalabiya robe",
+      "Soft, breathable flowy fabric",
+      "Detailed V-shaped silver and gold chest embroidery",
+      "Includes matching hanging tassel ornament",
+      "Dry clean only"
+    ],
+    images: [
+      "/images/product-34-front.png",
+      "/images/product-34-back.png"
+    ],
+    sizes: [
+      "M (Chest 38-40\")",
+      "L (Chest 41-43\")",
+      "XL (Chest 44-46\")",
+      "XXL (Chest 47-49\")",
+      "XXXL (Chest 50-52\")",
+      "Custom Measure"
+    ]
+  },
+  {
+    id: "35",
+    name: "Prestige Sky Blue Dry Lace Set",
+    price: 390000,
+    category: "DRY LACE",
+    image: "/images/product-35-front.png",
+    isNew: true,
+    description: "Make a statement in this Prestige Sky Blue dry lace Kaftan. Artfully tailored from premium dry lace fabric, it features a structured semi-translucent layout, matching buba under-shirt, and tailored trousers.",
+    details: [
+      "Two-piece luxury dry lace Kaftan set",
+      "Semi-translucent premium dry lace fabric",
+      "Round neck collar with front button layout",
+      "Includes tailored trousers and matching sky blue under-lining fabric",
+      "Dry clean only"
+    ],
+    images: [
+      "/images/product-35-front.png",
+      "/images/product-35-back.png"
+    ],
+    sizes: [
+      "M (Chest 38-40\")",
+      "L (Chest 41-43\")",
+      "XL (Chest 44-46\")",
+      "XXL (Chest 47-49\")",
+      "XXXL (Chest 50-52\")",
+      "Custom Measure"
+    ]
   }
 ];
+
 
 
