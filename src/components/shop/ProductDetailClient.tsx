@@ -61,7 +61,7 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
     if (selectedSize === "Custom Measure") {
       const { chest, shoulder, sleeve, waist, trouserLength, topLength } = inlineMeasurements;
       const hasRequired = isJalabiya 
-        ? (chest && shoulder && sleeve)
+        ? (chest && shoulder && sleeve && topLength)
         : (chest && shoulder && sleeve && waist && trouserLength && topLength);
         
       if (!hasRequired) {
@@ -71,7 +71,7 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
       }
       setFormError(null);
       const sizeString = isJalabiya 
-        ? `Custom (C:${chest}" S:${shoulder}" Sl:${sleeve}")`
+        ? `Custom (C:${chest}" S:${shoulder}" Sl:${sleeve}" L:${topLength}")`
         : `Custom (C:${chest}" S:${shoulder}" Sl:${sleeve}" W:${waist}" TL:${trouserLength}" L:${topLength}")`;
       
       addItem({
@@ -229,7 +229,8 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
                       ? [
                           { label: 'Chest', key: 'chest' },
                           { label: 'Shoulder', key: 'shoulder' },
-                          { label: 'Sleeve', key: 'sleeve' }
+                          { label: 'Sleeve', key: 'sleeve' },
+                          { label: 'Length', key: 'topLength' }
                         ]
                       : [
                           { label: 'Chest', key: 'chest' },

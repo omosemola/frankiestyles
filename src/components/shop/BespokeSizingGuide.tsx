@@ -51,7 +51,17 @@ export function BespokeSizingGuide({ category }: BespokeSizingGuideProps) {
   const [activeStep, setActiveStep] = useState<number | null>(null);
 
   const steps = category === "Jalabiya"
-    ? GUIDE_STEPS.filter(step => ["Chest Circumference", "Shoulder Width", "Sleeve Length"].includes(step.name))
+    ? GUIDE_STEPS
+        .filter(step => ["Chest Circumference", "Shoulder Width", "Sleeve Length", "Top/Shirt Length"].includes(step.name))
+        .map(step => step.name === "Top/Shirt Length" 
+          ? {
+              ...step,
+              name: "Length",
+              instruction: "Measure from the base of your neck (highest point of the shoulder) down the front to your ankles or desired robe hemline.",
+              tip: "A standard Jalabiya robe should reach just above the ankles."
+            }
+          : step
+        )
     : GUIDE_STEPS;
 
   return (

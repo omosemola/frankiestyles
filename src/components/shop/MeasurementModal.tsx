@@ -59,7 +59,8 @@ export function MeasurementModal({ isOpen, onClose, initialTab = 'standard', cat
       chest,
       shoulder,
       sleeve,
-      ...(isJalabiya ? {} : { waist, trouserLength, topLength })
+      topLength,
+      ...(isJalabiya ? {} : { waist, trouserLength })
     });
     onClose();
   };
@@ -92,9 +93,13 @@ export function MeasurementModal({ isOpen, onClose, initialTab = 'standard', cat
       tip: "We recommend measuring while wearing shoes for the perfect drape."
     },
     topLength: {
-      title: "Top / Buba Length",
-      desc: "Measure from the base of your neck (highest shoulder point) straight down your chest to your mid-thigh or knee level, depending on style.",
-      tip: "A standard Kaftan falls just above the knees."
+      title: isJalabiya ? "Jalabiya Length" : "Top / Buba Length",
+      desc: isJalabiya 
+        ? "Measure from the base of your neck (highest shoulder point) straight down your chest to your ankles or desired robe hemline."
+        : "Measure from the base of your neck (highest shoulder point) straight down your chest to your mid-thigh or knee level, depending on style.",
+      tip: isJalabiya
+        ? "A standard Jalabiya robe should reach just above the ankles."
+        : "A standard Kaftan falls just above the knees."
     }
   };
 
@@ -307,22 +312,22 @@ export function MeasurementModal({ isOpen, onClose, initialTab = 'standard', cat
                         />
                       </div>
                     )}
-                    {/* Top Length */}
-                    {!isJalabiya && (
-                      <div className="space-y-2">
-                        <label className="text-[10px] font-bold uppercase tracking-wider text-gray-400">Top / Shirt Length</label>
-                        <Input
-                          type="number"
-                          min="25"
-                          max="60"
-                          required={!isJalabiya}
-                          value={topLength}
-                          onChange={(e) => setTopLength(e.target.value)}
-                          onFocus={() => setFocusedField('topLength')}
-                          className="bg-gray-50 border-transparent focus:border-black focus:bg-white h-12"
-                        />
-                      </div>
-                    )}
+                    {/* Top Length / Gown Length */}
+                    <div className="space-y-2">
+                      <label className="text-[10px] font-bold uppercase tracking-wider text-gray-400">
+                        {isJalabiya ? "Length" : "Top / Shirt Length"}
+                      </label>
+                      <Input
+                        type="number"
+                        min={isJalabiya ? "45" : "25"}
+                        max={isJalabiya ? "70" : "60"}
+                        required
+                        value={topLength}
+                        onChange={(e) => setTopLength(e.target.value)}
+                        onFocus={() => setFocusedField('topLength')}
+                        className="bg-gray-50 border-transparent focus:border-black focus:bg-white h-12"
+                      />
+                    </div>
                   </div>
 
                   <Button
