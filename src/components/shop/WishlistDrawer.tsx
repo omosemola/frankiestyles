@@ -4,17 +4,23 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X, Heart, Trash2, ArrowRight } from 'lucide-react';
 import { useWishlistStore } from '@/store/useWishlistStore';
 import { Button } from '@/components/ui/Button';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 
 export function WishlistDrawer() {
   const { items, isOpen, setIsOpen, removeItem } = useWishlistStore();
   const router = useRouter();
+  const pathname = usePathname();
   const [mounted, setMounted] = useState(false);
 
   // Prevent hydration mismatch
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  // Close drawer on page navigation
+  useEffect(() => {
+    setIsOpen(false);
+  }, [pathname, setIsOpen]);
 
   if (!mounted) return null;
 

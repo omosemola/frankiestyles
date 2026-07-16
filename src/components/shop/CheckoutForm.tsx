@@ -43,6 +43,12 @@ export function CheckoutForm() {
     };
   }, []);
 
+  useEffect(() => {
+    if (mounted && items.length === 0) {
+      router.replace('/shop');
+    }
+  }, [mounted, items.length, router]);
+
   const subtotal = getTotalPrice();
   const shipping = subtotal > 150000 ? 0 : 5000; // Free shipping over 150k Naira
   const total = subtotal + shipping;
