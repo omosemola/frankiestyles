@@ -86,3 +86,7 @@ export async function deleteOrderAction(id: string) {
     return { success: false, error: "Failed to delete order." };
   }
 }
+
+export async function getPaystackPublicKeyAction() {
+  return process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY || "";
+}

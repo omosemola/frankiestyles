@@ -7,7 +7,7 @@ import { Input } from '@/components/ui/Input';
 import { ShoppingBag, ArrowLeft, ShieldCheck, CreditCard, MessageCircle } from 'lucide-react';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
-import { createOrderAction } from '@/actions/orders';
+import { createOrderAction, getPaystackPublicKeyAction } from '@/actions/orders';
 
 const NIGERIAN_STATES = [
   "Lagos", "Abuja (FCT)", "Abia", "Adamawa", "Akwa Ibom", "Anambra", "Bauchi", "Bayelsa", 
@@ -31,8 +31,16 @@ export function CheckoutForm() {
   const [state, setState] = useState('Lagos');
   const [paymentMethod, setPaymentMethod] = useState<'paystack' | 'whatsapp'>('paystack');
 
+  const [paystackKey, setPaystackKey] = useState('');
+
   useEffect(() => {
     setMounted(true);
+
+    // Fetch dynamic Paystack public key from server action to prevent build-time bundling issues
+    getPaystackPublicKeyAction().then((key) => {
+      setPaystackKey(key);
+    });
+
     // Inject Paystack inline popup script dynamically to bypass server-rendering warnings
     const script = document.createElement("script");
     script.src = "https://js.paystack.co/v1/inline.js";
@@ -144,7 +152,7 @@ Please confirm my order and contact me regarding fabric/measurement details. Tha
   };
 
   const handlePaystackCheckout = () => {
-    const publicKey = process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY;
+    const publicKey = paystackKey || process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY;
     if (!publicKey) {
       alert("Paystack Public Key is missing. Check your environment settings.");
       return;
