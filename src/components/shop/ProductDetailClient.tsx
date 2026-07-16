@@ -266,7 +266,7 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
                     ))}
                   </div>
 
-                  <BespokeSizingGuide />
+                  <BespokeSizingGuide category={product.category} />
 
                   {formError && (
                     <div className="p-3 bg-red-50 border border-red-100 rounded-lg text-xs font-medium text-red-600">
@@ -335,9 +335,13 @@ export function ProductDetailClient({ product }: ProductDetailClientProps) {
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         initialTab={modalTab}
+        category={product.category}
         onApplyCustom={(measurements) => {
           setCustomMeasurements(measurements);
-          const sizeString = `Custom (C:${measurements.chest}" S:${measurements.shoulder}" Sl:${measurements.sleeve}" W:${measurements.waist}" TL:${measurements.trouserLength}" L:${measurements.topLength}")`;
+          const isJalabiya = product.category === "Jalabiya";
+          const sizeString = isJalabiya
+            ? `Custom (C:${measurements.chest}" S:${measurements.shoulder}" Sl:${measurements.sleeve}")`
+            : `Custom (C:${measurements.chest}" S:${measurements.shoulder}" Sl:${measurements.sleeve}" W:${measurements.waist}" TL:${measurements.trouserLength}" L:${measurements.topLength}")`;
           setSelectedSize(sizeString);
         }}
       />

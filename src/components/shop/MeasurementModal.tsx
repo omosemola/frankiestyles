@@ -10,19 +10,22 @@ interface MeasurementModalProps {
   isOpen: boolean;
   onClose: () => void;
   initialTab?: 'standard' | 'custom';
+  category?: string;
   onApplyCustom: (measurements: {
     chest: string;
     shoulder: string;
     sleeve: string;
-    waist: string;
-    trouserLength: string;
-    topLength: string;
+    waist?: string;
+    trouserLength?: string;
+    topLength?: string;
   }) => void;
 }
 
-export function MeasurementModal({ isOpen, onClose, initialTab = 'standard', onApplyCustom }: MeasurementModalProps) {
+export function MeasurementModal({ isOpen, onClose, initialTab = 'standard', category, onApplyCustom }: MeasurementModalProps) {
   const [activeTab, setActiveTab] = useState<'standard' | 'custom'>(initialTab);
   const [focusedField, setFocusedField] = useState<string>('chest');
+
+  const isJalabiya = category === "Jalabiya";
 
   // Custom Sizing Inputs
   const [chest, setChest] = useState('40');
@@ -56,9 +59,7 @@ export function MeasurementModal({ isOpen, onClose, initialTab = 'standard', onA
       chest,
       shoulder,
       sleeve,
-      waist,
-      trouserLength,
-      topLength
+      ...(isJalabiya ? {} : { waist, trouserLength, topLength })
     });
     onClose();
   };
@@ -174,7 +175,7 @@ export function MeasurementModal({ isOpen, onClose, initialTab = 'standard', onA
                         <th className="py-4 px-6">Size Tag</th>
                         <th className="py-4 px-6">Chest (in)</th>
                         <th className="py-4 px-6">Shoulder (in)</th>
-                        <th className="py-4 px-6">Trouser Waist (in)</th>
+                        {!isJalabiya && <th className="py-4 px-6">Trouser Waist (in)</th>}
                         <th className="py-4 px-6">Height Fit</th>
                       </tr>
                     </thead>
@@ -183,35 +184,35 @@ export function MeasurementModal({ isOpen, onClose, initialTab = 'standard', onA
                         <td className="py-4 px-6 font-bold">M</td>
                         <td className="py-4 px-6">38 – 40"</td>
                         <td className="py-4 px-6">17.5 – 18.0"</td>
-                        <td className="py-4 px-6">30 – 32"</td>
+                        {!isJalabiya && <td className="py-4 px-6">30 – 32"</td>}
                         <td className="py-4 px-6">5'6" – 5'8"</td>
                       </tr>
                       <tr className="hover:bg-gray-50/50">
                         <td className="py-4 px-6 font-bold">L</td>
                         <td className="py-4 px-6">41 – 43"</td>
                         <td className="py-4 px-6">18.0 – 18.5"</td>
-                        <td className="py-4 px-6">33 – 35"</td>
+                        {!isJalabiya && <td className="py-4 px-6">33 – 35"</td>}
                         <td className="py-4 px-6">5'8" – 5'10"</td>
                       </tr>
                       <tr className="hover:bg-gray-50/50">
                         <td className="py-4 px-6 font-bold">XL</td>
                         <td className="py-4 px-6">44 – 46"</td>
                         <td className="py-4 px-6">18.5 – 19.0"</td>
-                        <td className="py-4 px-6">36 – 38"</td>
+                        {!isJalabiya && <td className="py-4 px-6">36 – 38"</td>}
                         <td className="py-4 px-6">5'10" – 6'0"</td>
                       </tr>
                       <tr className="hover:bg-gray-50/50">
                         <td className="py-4 px-6 font-bold">XXL</td>
                         <td className="py-4 px-6">47 – 49"</td>
                         <td className="py-4 px-6">19.0 – 20.0"</td>
-                        <td className="py-4 px-6">39 – 41"</td>
+                        {!isJalabiya && <td className="py-4 px-6">39 – 41"</td>}
                         <td className="py-4 px-6">6'0" – 6'2"</td>
                       </tr>
                       <tr className="hover:bg-gray-50/50">
                         <td className="py-4 px-6 font-bold">XXXL</td>
                         <td className="py-4 px-6">50 – 52"</td>
                         <td className="py-4 px-6">20.0 – 21.0"</td>
-                        <td className="py-4 px-6">42 – 44"</td>
+                        {!isJalabiya && <td className="py-4 px-6">42 – 44"</td>}
                         <td className="py-4 px-6">6'2"+</td>
                       </tr>
                     </tbody>
@@ -275,47 +276,53 @@ export function MeasurementModal({ isOpen, onClose, initialTab = 'standard', onA
                       />
                     </div>
                     {/* Waist Field */}
-                    <div className="space-y-2">
-                      <label className="text-[10px] font-bold uppercase tracking-wider text-gray-400">Trouser Waist</label>
-                      <Input
-                        type="number"
-                        min="24"
-                        max="70"
-                        required
-                        value={waist}
-                        onChange={(e) => setWaist(e.target.value)}
-                        onFocus={() => setFocusedField('waist')}
-                        className="bg-gray-50 border-transparent focus:border-black focus:bg-white h-12"
-                      />
-                    </div>
+                    {!isJalabiya && (
+                      <div className="space-y-2">
+                        <label className="text-[10px] font-bold uppercase tracking-wider text-gray-400">Trouser Waist</label>
+                        <Input
+                          type="number"
+                          min="24"
+                          max="70"
+                          required={!isJalabiya}
+                          value={waist}
+                          onChange={(e) => setWaist(e.target.value)}
+                          onFocus={() => setFocusedField('waist')}
+                          className="bg-gray-50 border-transparent focus:border-black focus:bg-white h-12"
+                        />
+                      </div>
+                    )}
                     {/* Trouser Length */}
-                    <div className="space-y-2">
-                      <label className="text-[10px] font-bold uppercase tracking-wider text-gray-400">Trouser Length</label>
-                      <Input
-                        type="number"
-                        min="30"
-                        max="60"
-                        required
-                        value={trouserLength}
-                        onChange={(e) => setTrouserLength(e.target.value)}
-                        onFocus={() => setFocusedField('trouserLength')}
-                        className="bg-gray-50 border-transparent focus:border-black focus:bg-white h-12"
-                      />
-                    </div>
+                    {!isJalabiya && (
+                      <div className="space-y-2">
+                        <label className="text-[10px] font-bold uppercase tracking-wider text-gray-400">Trouser Length</label>
+                        <Input
+                          type="number"
+                          min="30"
+                          max="60"
+                          required={!isJalabiya}
+                          value={trouserLength}
+                          onChange={(e) => setTrouserLength(e.target.value)}
+                          onFocus={() => setFocusedField('trouserLength')}
+                          className="bg-gray-50 border-transparent focus:border-black focus:bg-white h-12"
+                        />
+                      </div>
+                    )}
                     {/* Top Length */}
-                    <div className="space-y-2">
-                      <label className="text-[10px] font-bold uppercase tracking-wider text-gray-400">Top / Shirt Length</label>
-                      <Input
-                        type="number"
-                        min="25"
-                        max="60"
-                        required
-                        value={topLength}
-                        onChange={(e) => setTopLength(e.target.value)}
-                        onFocus={() => setFocusedField('topLength')}
-                        className="bg-gray-50 border-transparent focus:border-black focus:bg-white h-12"
-                      />
-                    </div>
+                    {!isJalabiya && (
+                      <div className="space-y-2">
+                        <label className="text-[10px] font-bold uppercase tracking-wider text-gray-400">Top / Shirt Length</label>
+                        <Input
+                          type="number"
+                          min="25"
+                          max="60"
+                          required={!isJalabiya}
+                          value={topLength}
+                          onChange={(e) => setTopLength(e.target.value)}
+                          onFocus={() => setFocusedField('topLength')}
+                          className="bg-gray-50 border-transparent focus:border-black focus:bg-white h-12"
+                        />
+                      </div>
+                    )}
                   </div>
 
                   <Button

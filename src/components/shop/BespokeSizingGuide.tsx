@@ -42,9 +42,17 @@ const GUIDE_STEPS: GuideStep[] = [
   }
 ];
 
-export function BespokeSizingGuide() {
+interface BespokeSizingGuideProps {
+  category?: string;
+}
+
+export function BespokeSizingGuide({ category }: BespokeSizingGuideProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [activeStep, setActiveStep] = useState<number | null>(null);
+
+  const steps = category === "Jalabiya"
+    ? GUIDE_STEPS.filter(step => ["Chest Circumference", "Shoulder Width", "Sleeve Length"].includes(step.name))
+    : GUIDE_STEPS;
 
   return (
     <div className="border border-gray-150 rounded-xl bg-gray-50/50 overflow-hidden transition-all duration-300">
@@ -72,7 +80,7 @@ export function BespokeSizingGuide() {
                 Follow these guidelines to record accurate measurements in inches:
               </p>
               <div className="space-y-2">
-                {GUIDE_STEPS.map((step, idx) => {
+                {steps.map((step, idx) => {
                   const isActive = activeStep === idx;
                   return (
                     <div 
