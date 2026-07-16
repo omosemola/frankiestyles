@@ -993,8 +993,38 @@ export const DUMMY_PRODUCTS: Product[] = [
       "XXXL (Chest 50-52\")",
       "Custom Measure"
     ]
+  },
+  {
+    id: "36",
+    name: "Prestige Dark Grey Senator Suit",
+    price: 165000,
+    category: "Kaftans",
+    image: "/images/product-36-front.png",
+    isNew: true,
+    description: "Command respect and style with this Prestige Dark Grey Senator Suit. Tailored to perfection from premium, structured wool-blend fabric, it features long sleeves, a clean buttonless placket design, a custom chest pocket accent with a gold crest pen ornament, and matching tailored trousers.",
+    details: [
+      "Two-piece premium Senator suit set",
+      "High-grade structured wool-blend fabric",
+      "Modern round neckline with clean buttonless placket design",
+      "Single chest pocket with signature gold brand ornament detailing",
+      "Includes tailored comfort-fit trousers",
+      "Dry clean only"
+    ],
+    images: [
+      "/images/product-36-front.png",
+      "/images/product-36-back.png"
+    ],
+    sizes: [
+      "M (Chest 38-40\")",
+      "L (Chest 41-43\")",
+      "XL (Chest 44-46\")",
+      "XXL (Chest 47-49\")",
+      "XXXL (Chest 50-52\")",
+      "Custom Measure"
+    ]
   }
 ];
+
 
 
 
