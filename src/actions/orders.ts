@@ -37,6 +37,29 @@ export async function createOrderAction(input: OrderInput) {
         },
       })
     );
+
+    // Send confirmation email notifications in background (don't block client response)
+    import('@/lib/email').then(({ sendOrderEmailsAction }) => {
+      sendOrderEmailsAction({
+        id: order.id,
+        name: order.name,
+        email: order.email,
+        phone: order.phone,
+        address: order.address,
+        city: order.city,
+        state: order.state,
+        paymentMethod: order.paymentMethod,
+        paymentReference: order.paymentReference,
+        totalAmount: order.totalAmount,
+        shippingFee: order.shippingFee,
+        items: order.items as any[]
+      }).catch(err => {
+        console.error("Background order email dispatch failed:", err);
+      });
+    }).catch(err => {
+      console.error("Failed to import email utilities for background dispatch:", err);
+    });
+
     return { success: true, id: order.id };
   } catch (error) {
     console.error("Failed to create order record:", error);
@@ -88,5 +111,6 @@ export async function deleteOrderAction(id: string) {
 }
 
 export async function getPaystackPublicKeyAction() {
+  console.log("SERVER ACTION: process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY =", process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY);
   return process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY || "";
 }
