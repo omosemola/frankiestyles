@@ -852,6 +852,64 @@ export const DUMMY_PRODUCTS: Product[] = [
       "XXXL (Chest 50-52\")",
       "Custom Measure"
     ]
+  },
+  {
+    id: "31",
+    name: "Sage Green Prestige Senator Suit",
+    price: 165000,
+    category: "Kaftans",
+    image: "/images/product-31-front.png",
+    isNew: true,
+    description: "Step out in refined sophistication with this Sage Green Prestige Senator Suit. Cleanly tailored from premium structured wool-blend fabric, it features elbow-length sleeves, a clean buttoned placket, signature gold accent plate, and matching tailored trousers. Includes a matching traditional cap.",
+    details: [
+      "Complete 2-piece traditional Senator suit with custom Cap",
+      "Premium structured wool-blend fabric",
+      "Modern round collar with custom button details and gold brand plate",
+      "Includes tailored comfort-fit trousers and matching cap",
+      "Dry clean recommended"
+    ],
+    images: [
+      "/images/product-31-front.png",
+      "/images/product-31-back.png"
+    ],
+    sizes: [
+      "M (Chest 38-40\")",
+      "L (Chest 41-43\")",
+      "XL (Chest 44-46\")",
+      "XXL (Chest 47-49\")",
+      "XXXL (Chest 50-52\")",
+      "Custom Measure"
+    ]
+  },
+  {
+    id: "32",
+    name: "Brown Textured Senator Suit",
+    price: 165000,
+    category: "Kaftans",
+    image: "/images/product-32-front.png",
+    isNew: true,
+    description: "Make a statement in this Brown Textured Senator Suit. Handcrafted from luxury checkered-textured fabric, it features a minimalist round neck design, double side pocket details with signature gold branding accent, and tailored trousers.",
+    details: [
+      "Two-piece premium Senator suit set",
+      "High-grade checkered-textured cotton-crepe blend fabric",
+      "Round neckline with hidden placket design",
+      "Front double side pockets with signature gold accent bar",
+      "Includes custom comfort-fit tailored trousers",
+      "Dry clean only"
+    ],
+    images: [
+      "/images/product-32-front.png",
+      "/images/product-32-back.png"
+    ],
+    sizes: [
+      "M (Chest 38-40\")",
+      "L (Chest 41-43\")",
+      "XL (Chest 44-46\")",
+      "XXL (Chest 47-49\")",
+      "XXXL (Chest 50-52\")",
+      "Custom Measure"
+    ]
   }
 ];
+
 
