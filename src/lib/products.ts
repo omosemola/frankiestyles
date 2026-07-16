@@ -824,5 +824,34 @@ export const DUMMY_PRODUCTS: Product[] = [
       "XXXL (Chest 50-52\")",
       "Custom Measure"
     ]
+  },
+  {
+    id: "30",
+    name: "Royal Blue Prestige Jalabiya Set",
+    price: 250000,
+    category: "Jalabiya",
+    image: "/images/product-30-front.png",
+    isNew: true,
+    description: "Experience majestic elegance in this Royal Blue Jalabiya Set. Masterfully tailored from premium flowy fabric, featuring detailed V-shaped silver and gold embroidery on the chest and a matching hanging tassel ornament.",
+    details: [
+      "Premium full-length Jalabiya robe",
+      "Soft, breathable flowy fabric",
+      "Detailed V-shaped silver and gold chest embroidery",
+      "Includes matching hanging tassel ornament",
+      "Dry clean only"
+    ],
+    images: [
+      "/images/product-30-front.png",
+      "/images/product-30-back.png"
+    ],
+    sizes: [
+      "M (Chest 38-40\")",
+      "L (Chest 41-43\")",
+      "XL (Chest 44-46\")",
+      "XXL (Chest 47-49\")",
+      "XXXL (Chest 50-52\")",
+      "Custom Measure"
+    ]
   }
 ];
+
