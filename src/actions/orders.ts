@@ -90,23 +90,22 @@ export async function updateOrderStatusAction(id: string, status: string) {
       })
     );
 
-    // Send payment confirmation email notification in background if marked as paid
-    if (status === 'paid') {
-      import('@/lib/email').then(({ sendPaymentConfirmationEmailAction }) => {
-        sendPaymentConfirmationEmailAction({
-          name: updated.name,
-          email: updated.email,
-          paymentReference: updated.paymentReference,
-          totalAmount: updated.totalAmount,
-          shippingFee: updated.shippingFee,
-          items: updated.items as any[]
-        }).catch(err => {
-          console.error("Background payment confirmation email dispatch failed:", err);
-        });
+    // Send status update email notification in background
+    import('@/lib/email').then(({ sendOrderStatusUpdateEmailAction }) => {
+      sendOrderStatusUpdateEmailAction({
+        name: updated.name,
+        email: updated.email,
+        paymentReference: updated.paymentReference,
+        totalAmount: updated.totalAmount,
+        shippingFee: updated.shippingFee,
+        items: updated.items as any[],
+        status: updated.status
       }).catch(err => {
-        console.error("Failed to import email utilities for payment confirmation:", err);
+        console.error(`Background ${updated.status} status email dispatch failed:`, err);
       });
-    }
+    }).catch(err => {
+      console.error("Failed to import email utilities for status update:", err);
+    });
 
     return { success: true, order: JSON.parse(JSON.stringify(updated)) };
   } catch (error) {

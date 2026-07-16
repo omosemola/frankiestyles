@@ -247,7 +247,7 @@ export default function AdminDashboardClient({
   };
 
   // Calculations for Overview Tab
-  const paidOrders = orders.filter(o => o.status === "paid" || o.status === "completed" || o.status === "processing");
+  const paidOrders = orders.filter(o => o.status === "paid" || o.status === "delivered");
   const totalRevenue = paidOrders.reduce((sum, o) => sum + o.totalAmount, 0);
   const pendingBookings = consultations.length;
 
@@ -447,8 +447,7 @@ export default function AdminDashboardClient({
                       <div className="text-right">
                         <p className="font-bold text-black">₦{o.totalAmount.toLocaleString()}</p>
                         <span className={`inline-block text-[9px] font-bold uppercase px-2 py-0.5 rounded border mt-1 ${
-                          o.status === "paid" || o.status === "completed" ? "bg-green-50 text-green-700 border-green-200" :
-                          o.status === "processing" ? "bg-blue-50 text-blue-700 border-blue-200" :
+                          o.status === "paid" || o.status === "delivered" ? "bg-green-50 text-green-700 border-green-200" :
                           o.status === "cancelled" ? "bg-red-50 text-red-700 border-red-200" :
                           "bg-yellow-50 text-yellow-700 border-yellow-200"
                         }`}>
@@ -519,8 +518,7 @@ export default function AdminDashboardClient({
                   <option value="all">All Statuses</option>
                   <option value="pending">Pending</option>
                   <option value="paid">Paid</option>
-                  <option value="processing">Processing</option>
-                  <option value="completed">Completed</option>
+                  <option value="delivered">Delivered</option>
                   <option value="cancelled">Cancelled</option>
                 </select>
               </div>
@@ -557,16 +555,14 @@ export default function AdminDashboardClient({
                             value={o.status}
                             onChange={(e) => handleUpdateOrderStatus(o.id, e.target.value)}
                             className={`text-[10px] font-bold uppercase px-2 py-1 rounded outline-none border bg-white ${
-                              o.status === "paid" || o.status === "completed" ? "text-green-700 border-green-200" :
-                              o.status === "processing" ? "text-blue-700 border-blue-200" :
+                              o.status === "paid" || o.status === "delivered" ? "text-green-700 border-green-200" :
                               o.status === "cancelled" ? "text-red-700 border-red-200" :
                               "text-yellow-700 border-yellow-200"
                             }`}
                           >
                             <option value="pending" className="text-black">Pending</option>
                             <option value="paid" className="text-black">Paid</option>
-                            <option value="processing" className="text-black">Processing</option>
-                            <option value="completed" className="text-black">Completed</option>
+                            <option value="delivered" className="text-black">Delivered</option>
                             <option value="cancelled" className="text-black">Cancelled</option>
                           </select>
                         </td>
@@ -930,16 +926,14 @@ export default function AdminDashboardClient({
                   value={selectedOrder.status}
                   onChange={(e) => handleUpdateOrderStatus(selectedOrder.id, e.target.value)}
                   className={`text-[10px] font-bold uppercase px-3 py-1.5 rounded outline-none border bg-white ${
-                    selectedOrder.status === "paid" || selectedOrder.status === "completed" ? "text-green-700 border-green-200" :
-                    selectedOrder.status === "processing" ? "text-blue-700 border-blue-200" :
+                    selectedOrder.status === "paid" || selectedOrder.status === "delivered" ? "text-green-700 border-green-200" :
                     selectedOrder.status === "cancelled" ? "text-red-700 border-red-200" :
                     "text-yellow-700 border-yellow-200"
                   }`}
                 >
                   <option value="pending" className="text-black">Pending</option>
                   <option value="paid" className="text-black">Paid</option>
-                  <option value="processing" className="text-black">Processing</option>
-                  <option value="completed" className="text-black">Completed</option>
+                  <option value="delivered" className="text-black">Delivered</option>
                   <option value="cancelled" className="text-black">Cancelled</option>
                 </select>
               </div>
