@@ -10,10 +10,10 @@ import { cn } from '@/lib/utils';
 import { createOrderAction, getPaystackPublicKeyAction } from '@/actions/orders';
 
 const NIGERIAN_STATES = [
-  "Lagos", "Abuja (FCT)", "Abia", "Adamawa", "Akwa Ibom", "Anambra", "Bauchi", "Bayelsa", 
-  "Benue", "Borno", "Cross River", "Delta", "Ebonyi", "Edo", "Ekiti", "Enugu", "Gombe", 
-  "Imo", "Jigawa", "Kaduna", "Kano", "Katsina", "Kebbi", "Kogi", "Kwara", "Nasarawa", 
-  "Niger", "Ogun", "Ondo", "Osun", "Oyo", "Plateau", "Rivers", "Sokoto", "Taraba", 
+  "Lagos", "Abuja (FCT)", "Abia", "Adamawa", "Akwa Ibom", "Anambra", "Bauchi", "Bayelsa",
+  "Benue", "Borno", "Cross River", "Delta", "Ebonyi", "Edo", "Ekiti", "Enugu", "Gombe",
+  "Imo", "Jigawa", "Kaduna", "Kano", "Katsina", "Kebbi", "Kogi", "Kwara", "Nasarawa",
+  "Niger", "Ogun", "Ondo", "Osun", "Oyo", "Plateau", "Rivers", "Sokoto", "Taraba",
   "Yobe", "Zamfara"
 ];
 
@@ -123,7 +123,7 @@ export function CheckoutForm() {
     const orderItemsText = items
       .map((item) => `• ${item.name} (Size: ${item.size}) x ${item.quantity} - ₦${(item.price * item.quantity).toLocaleString()}`)
       .join('\n');
-      
+
     const message = `*FRANKIE STYLES - NEW ORDER*
 ---------------------------------------
 *Client Details:*
@@ -142,17 +142,17 @@ Please confirm my order and contact me regarding fabric/measurement details. Tha
 
     // Clear cart
     clearCart();
-    
+
     // Open WhatsApp in a new window/tab
     const whatsappUrl = `https://wa.me/2348066913548?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
-    
+
     // Redirect to checkout success page
     router.push(`/checkout/success?reference=${referenceCode}`);
   };
 
   const handlePaystackCheckout = () => {
-    const publicKey = paystackKey || process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY;
+    const publicKey = paystackKey || process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY || "pk_test_34703e3aee8319d178b1c984104e195a1d656970";
     if (!publicKey) {
       alert("Paystack Public Key is missing. Check your environment settings.");
       return;
@@ -185,10 +185,10 @@ Please confirm my order and contact me regarding fabric/measurement details. Tha
             }
           ]
         },
-        callback: function(response: any) {
+        callback: function (response: any) {
           handlePaystackSuccessAction(response.reference);
         },
-        onClose: function() {
+        onClose: function () {
           handlePaystackCloseAction();
         }
       });
@@ -220,7 +220,7 @@ Please confirm my order and contact me regarding fabric/measurement details. Tha
         <ShoppingBag className="w-16 h-16 text-gray-300 animate-bounce" />
         <h1 className="text-3xl font-bold uppercase tracking-widest font-bodoni">Your Cart is Empty</h1>
         <p className="text-gray-500 max-w-sm text-sm">Add some custom native wears to your cart before proceeding to checkout.</p>
-        <Link 
+        <Link
           href="/shop"
           className="mt-4 px-6 py-3 bg-[#0a0a0a] text-white hover:bg-black/90 rounded-lg uppercase tracking-wider font-semibold text-xs inline-block transition-colors duration-300"
         >
@@ -232,11 +232,11 @@ Please confirm my order and contact me regarding fabric/measurement details. Tha
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-      
+
       {/* Shipping Form Panel */}
       <div className="lg:col-span-7 bg-white p-8 rounded-2xl smooth-shadow">
         <h2 className="text-2xl font-bold uppercase tracking-wider mb-6 font-bodoni border-b border-gray-100 pb-4">Checkout Details</h2>
-        
+
         {/* Payment Method Selector */}
         <div className="grid grid-cols-2 gap-4 mb-8">
           <button
@@ -278,10 +278,10 @@ Please confirm my order and contact me regarding fabric/measurement details. Tha
         <form onSubmit={handleCheckoutSubmit} className="space-y-6">
           <div className="space-y-2">
             <label className="text-xs font-bold uppercase tracking-wider text-gray-400">Full Name</label>
-            <Input 
-              type="text" 
-              required 
-              placeholder="E.g., Omosemola Frankie" 
+            <Input
+              type="text"
+              required
+              placeholder="E.g., Frankie"
               value={name}
               onChange={e => setName(e.target.value)}
               className="bg-[#f8f8f8] border-transparent focus:border-black h-12"
@@ -291,10 +291,10 @@ Please confirm my order and contact me regarding fabric/measurement details. Tha
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-2">
               <label className="text-xs font-bold uppercase tracking-wider text-gray-400">Email Address</label>
-              <Input 
-                type="email" 
-                required 
-                placeholder="E.g., frankie@example.com" 
+              <Input
+                type="email"
+                required
+                placeholder="E.g., frankie@example.com"
                 value={email}
                 onChange={e => setEmail(e.target.value)}
                 className="bg-[#f8f8f8] border-transparent focus:border-black h-12"
@@ -302,10 +302,10 @@ Please confirm my order and contact me regarding fabric/measurement details. Tha
             </div>
             <div className="space-y-2">
               <label className="text-xs font-bold uppercase tracking-wider text-gray-400">Phone Number (WhatsApp Active)</label>
-              <Input 
-                type="tel" 
-                required 
-                placeholder="E.g., 08066913548" 
+              <Input
+                type="tel"
+                required
+                placeholder="E.g., 08012345678"
                 value={phone}
                 onChange={e => setPhone(e.target.value)}
                 className="bg-[#f8f8f8] border-transparent focus:border-black h-12"
@@ -315,10 +315,10 @@ Please confirm my order and contact me regarding fabric/measurement details. Tha
 
           <div className="space-y-2">
             <label className="text-xs font-bold uppercase tracking-wider text-gray-400">Street Address</label>
-            <Input 
-              type="text" 
-              required 
-              placeholder="E.g., 12b Admiralty Way, Apartment 3" 
+            <Input
+              type="text"
+              required
+              placeholder="E.g., 12b Admiralty Way, Apartment 3"
               value={address}
               onChange={e => setAddress(e.target.value)}
               className="bg-[#f8f8f8] border-transparent focus:border-black h-12"
@@ -328,10 +328,10 @@ Please confirm my order and contact me regarding fabric/measurement details. Tha
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-2">
               <label className="text-xs font-bold uppercase tracking-wider text-gray-400">City / Area</label>
-              <Input 
-                type="text" 
-                required 
-                placeholder="E.g., Lekki Phase 1" 
+              <Input
+                type="text"
+                required
+                placeholder="E.g., Lekki Phase 1"
                 value={city}
                 onChange={e => setCity(e.target.value)}
                 className="bg-[#f8f8f8] border-transparent focus:border-black h-12"
@@ -339,7 +339,7 @@ Please confirm my order and contact me regarding fabric/measurement details. Tha
             </div>
             <div className="space-y-2 flex flex-col">
               <label className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-2">State</label>
-              <select 
+              <select
                 value={state}
                 onChange={e => setState(e.target.value)}
                 className="w-full h-12 px-4 rounded-lg border border-transparent bg-[#f8f8f8] text-sm font-semibold uppercase tracking-wider hover:border-black focus:outline-none focus:border-black transition-colors"
@@ -381,7 +381,7 @@ Please confirm my order and contact me regarding fabric/measurement details. Tha
       <div className="lg:col-span-5 space-y-6">
         <div className="bg-white p-8 rounded-2xl smooth-shadow space-y-6">
           <h3 className="text-lg font-bold uppercase tracking-wider font-bodoni border-b border-gray-100 pb-4">Order Summary</h3>
-          
+
           <div className="space-y-4 max-h-[350px] overflow-y-auto pr-2">
             {items.map((item) => (
               <div key={`${item.id}-${item.size}`} className="flex justify-between items-center gap-4 py-2">
