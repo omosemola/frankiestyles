@@ -37,7 +37,8 @@ import {
   Mail, 
   Phone, 
   MapPin, 
-  Info 
+  Info,
+  Printer
 } from "lucide-react";
 
 interface AdminDashboardClientProps {
@@ -897,94 +898,136 @@ export default function AdminDashboardClient({
       {/* Order Details Modal Overlay */}
       {selectedOrder && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm p-4 overflow-y-auto">
+          {/* Print specific CSS rules */}
+          <style dangerouslySetInnerHTML={{ __html: `
+            @media print {
+              body * {
+                visibility: hidden !important;
+              }
+              #print-invoice-area, #print-invoice-area * {
+                visibility: visible !important;
+              }
+              #print-invoice-area {
+                position: absolute !important;
+                left: 0 !important;
+                top: 0 !important;
+                width: 100% !important;
+                padding: 10px !important;
+                background: white !important;
+                color: black !important;
+              }
+              .no-print {
+                display: none !important;
+              }
+              /* Clean borders and shadow resets for clean printing */
+              #print-invoice-area div, #print-invoice-area table, #print-invoice-area td {
+                border-color: #ddd !important;
+                background-color: transparent !important;
+                box-shadow: none !important;
+              }
+            }
+          `}} />
+
           <div className="bg-white border border-gray-200 w-full max-w-2xl rounded-2xl overflow-hidden smooth-shadow relative my-8 text-black">
-            {/* Modal Header */}
-            <div className="p-6 border-b border-gray-200 flex justify-between items-center bg-gray-50">
-              <div>
-                <h3 className="text-sm font-black uppercase tracking-wider text-black">Order Details</h3>
-                <p className="text-[10px] font-mono text-gray-400 mt-1">Ref ID: {selectedOrder.id}</p>
-              </div>
-              <button 
-                onClick={() => setSelectedOrder(null)}
-                className="text-gray-400 hover:text-black transition-colors"
-              >
-                <X className="w-5 h-5" />
-              </button>
-            </div>
-
-            {/* Modal Content */}
-            <div className="p-6 space-y-6 max-h-[70vh] overflow-y-auto text-xs">
-              {/* Customer Profile & Shipping */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="space-y-4">
-                  <h4 className="font-bold uppercase tracking-wider text-gray-400 border-b border-gray-100 pb-1">Client Profile</h4>
-                  <div className="space-y-2.5">
-                    <div className="flex items-center gap-2">
-                      <User className="w-4 h-4 text-gray-400" />
-                      <span className="font-bold text-black">{selectedOrder.name}</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Mail className="w-4 h-4 text-gray-400" />
-                      <span className="text-gray-600">{selectedOrder.email}</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Phone className="w-4 h-4 text-gray-400" />
-                      <span className="text-gray-600">{selectedOrder.phone}</span>
-                    </div>
-                  </div>
-                </div>
-                <div className="space-y-4">
-                  <h4 className="font-bold uppercase tracking-wider text-gray-400 border-b border-gray-100 pb-1">Shipping & Checkout</h4>
-                  <div className="space-y-2.5">
-                    <div className="flex items-start gap-2">
-                      <MapPin className="w-4 h-4 text-gray-400 mt-0.5" />
-                      <span className="text-gray-600 leading-relaxed">
-                        {selectedOrder.address}, {selectedOrder.city}, {selectedOrder.state}
-                      </span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Info className="w-4 h-4 text-gray-400" />
-                      <span className="text-gray-600 uppercase font-semibold">
-                        {selectedOrder.paymentMethod} Checkout • Ref: <span className="font-mono text-gray-500">{selectedOrder.paymentReference || "N/A"}</span>
-                      </span>
-                    </div>
-                  </div>
-                </div>
+            <div id="print-invoice-area" className="bg-white">
+              {/* Luxury Print Brand Header */}
+              <div className="hidden print:block border-b-2 border-black pb-4 mb-6">
+                <h1 className="text-xl font-black tracking-widest uppercase text-black">
+                  FRANKIE <span className="text-gray-500 font-medium">STYLES</span>
+                </h1>
+                <p className="text-[9px] uppercase tracking-widest text-gray-400 font-bold">
+                  ATELIER • NATIVE LUXURY • ORDER INVOICE
+                </p>
               </div>
 
-              {/* Sizing & Sizing Parameters reviews */}
-              <div className="space-y-3">
-                <h4 className="font-bold uppercase tracking-wider text-gray-400 border-b border-gray-100 pb-1">Cart Items & Sizing Parameters</h4>
-                <div className="space-y-2.5">
-                  {selectedOrder.items.map((item: any, idx: number) => (
-                    <div key={idx} className="flex justify-between items-start bg-gray-50 border border-gray-100 p-3 rounded-xl">
-                      <div>
-                        <p className="font-bold text-black">{item.name}</p>
-                        <p className="text-[10px] text-gray-500 mt-1">
-                          Size Selected: <span className="text-black font-extrabold">{item.size}</span> • Quantity: {item.quantity}
-                        </p>
+              {/* Modal Header */}
+              <div className="p-6 border-b border-gray-200 flex justify-between items-center bg-gray-50">
+                <div>
+                  <h3 className="text-sm font-black uppercase tracking-wider text-black">Order Details</h3>
+                  <p className="text-[10px] font-mono text-gray-400 mt-1">Ref ID: {selectedOrder.id}</p>
+                </div>
+                <button 
+                  onClick={() => setSelectedOrder(null)}
+                  className="text-gray-400 hover:text-black transition-colors no-print"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+
+              {/* Modal Content */}
+              <div className="p-6 space-y-6 max-h-[70vh] overflow-y-auto text-xs print:max-h-none print:overflow-visible">
+                {/* Customer Profile & Shipping */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="space-y-4">
+                    <h4 className="font-bold uppercase tracking-wider text-gray-400 border-b border-gray-100 pb-1">Client Profile</h4>
+                    <div className="space-y-2.5">
+                      <div className="flex items-center gap-2">
+                        <User className="w-4 h-4 text-gray-400" />
+                        <span className="font-bold text-black">{selectedOrder.name}</span>
                       </div>
-                      <p className="font-bold text-black">₦{item.price.toLocaleString()}</p>
+                      <div className="flex items-center gap-2">
+                        <Mail className="w-4 h-4 text-gray-400" />
+                        <span className="text-gray-600">{selectedOrder.email}</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Phone className="w-4 h-4 text-gray-400" />
+                        <span className="text-gray-600">{selectedOrder.phone}</span>
+                      </div>
                     </div>
-                  ))}
+                  </div>
+                  <div className="space-y-4">
+                    <h4 className="font-bold uppercase tracking-wider text-gray-400 border-b border-gray-100 pb-1">Shipping & Checkout</h4>
+                    <div className="space-y-2.5">
+                      <div className="flex items-start gap-2">
+                        <MapPin className="w-4 h-4 text-gray-400 mt-0.5" />
+                        <span className="text-gray-600 leading-relaxed">
+                          {selectedOrder.address}, {selectedOrder.city}, {selectedOrder.state}
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Info className="w-4 h-4 text-gray-400" />
+                        <span className="text-gray-600 uppercase font-semibold">
+                          {selectedOrder.paymentMethod} Checkout • Ref: <span className="font-mono text-gray-500">{selectedOrder.paymentReference || "N/A"}</span>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
 
-              {/* Order pricing summaries */}
-              <div className="bg-gray-50 p-4 border border-gray-100 rounded-xl space-y-2.5">
-                <div className="flex justify-between">
-                  <span className="text-gray-400 font-bold uppercase tracking-wider">Shipping Fee</span>
-                  <span className="font-medium text-black">₦{selectedOrder.shippingFee.toLocaleString()}</span>
+                {/* Sizing & Sizing Parameters reviews */}
+                <div className="space-y-3">
+                  <h4 className="font-bold uppercase tracking-wider text-gray-400 border-b border-gray-100 pb-1">Cart Items & Sizing Parameters</h4>
+                  <div className="space-y-2.5">
+                    {selectedOrder.items.map((item: any, idx: number) => (
+                      <div key={idx} className="flex justify-between items-start bg-gray-50 border border-gray-100 p-3 rounded-xl print:border-zinc-200">
+                        <div>
+                          <p className="font-bold text-black">{item.name}</p>
+                          <p className="text-[10px] text-gray-500 mt-1">
+                            Size Selected: <span className="text-black font-extrabold">{item.size}</span> • Quantity: {item.quantity}
+                          </p>
+                        </div>
+                        <p className="font-bold text-black">₦{item.price.toLocaleString()}</p>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-                <div className="flex justify-between border-t border-gray-100 pt-2.5 text-sm">
-                  <span className="text-gray-400 font-extrabold uppercase tracking-wider">Total Paid</span>
-                  <span className="font-black text-black">₦{selectedOrder.totalAmount.toLocaleString()}</span>
+
+                {/* Order pricing summaries */}
+                <div className="bg-gray-50 p-4 border border-gray-100 rounded-xl space-y-2.5 print:border-zinc-200">
+                  <div className="flex justify-between">
+                    <span className="text-gray-400 font-bold uppercase tracking-wider">Shipping Fee</span>
+                    <span className="font-medium text-black">₦{selectedOrder.shippingFee.toLocaleString()}</span>
+                  </div>
+                  <div className="flex justify-between border-t border-gray-100 pt-2.5 text-sm">
+                    <span className="text-gray-400 font-extrabold uppercase tracking-wider">Total Paid</span>
+                    <span className="font-black text-black">₦{selectedOrder.totalAmount.toLocaleString()}</span>
+                  </div>
                 </div>
               </div>
             </div>
 
             {/* Modal Footer Actions */}
-            <div className="p-6 border-t border-gray-200 bg-gray-50 flex justify-between items-center gap-4">
+            <div className="p-6 border-t border-gray-200 bg-gray-50 flex justify-between items-center gap-4 no-print">
               <div className="flex items-center gap-2">
                 <span className="text-[10px] text-gray-400 uppercase font-bold tracking-wider">Order Status:</span>
                 <select
@@ -1008,6 +1051,13 @@ export default function AdminDashboardClient({
                   className="bg-transparent border border-red-200 hover:bg-red-50 text-red-600 font-bold uppercase tracking-wider text-[10px] py-2 px-4"
                 >
                   Delete Order
+                </Button>
+                <Button 
+                  onClick={() => window.print()}
+                  className="bg-zinc-100 hover:bg-zinc-200 text-zinc-800 border border-zinc-200 font-bold uppercase tracking-wider text-[10px] py-2 px-4 inline-flex items-center gap-1.5"
+                >
+                  <Printer className="w-3.5 h-3.5" />
+                  <span>Print Invoice</span>
                 </Button>
                 <Button 
                   onClick={() => setSelectedOrder(null)}

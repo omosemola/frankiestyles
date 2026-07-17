@@ -64,5 +64,33 @@ export default async function ProductPage({ params }: ProductPageProps) {
     notFound();
   }
 
-  return <ProductDetailClient product={product} />;
+  const schemaOrJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": product.name,
+    "image": [product.image, ...(product.images || [])],
+    "description": product.description,
+    "sku": product.id,
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "NGN",
+      "price": product.price,
+      "itemCondition": "https://schema.org/NewCondition",
+      "availability": "https://schema.org/InStock",
+      "seller": {
+        "@type": "Organization",
+        "name": "Frankie Styles"
+      }
+    }
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaOrJsonLd) }}
+      />
+      <ProductDetailClient product={product} />
+    </>
+  );
 }
