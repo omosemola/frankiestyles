@@ -28,6 +28,11 @@ export const metadata: Metadata = {
     template: "%s | Frankie Styles"
   },
   description: "Experience the epitome of luxury native fashion with Frankie Styles. Handcrafted Kaftans, Agbadas, and Two-Piece sets tailored to perfection.",
+  icons: {
+    icon: "/icon.png",
+    shortcut: "/icon.png",
+    apple: "/icon.png",
+  },
   openGraph: {
     title: "Frankie Styles | Premium Luxury Bespoke Fashion",
     description: "Experience the epitome of luxury native fashion with Frankie Styles. Handcrafted Kaftans, Agbadas, and Two-Piece sets tailored to perfection.",
