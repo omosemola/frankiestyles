@@ -52,7 +52,7 @@ export function Navbar() {
       >
         <div className="w-full relative pointer-events-auto">
           {/* Container for navigation items and right toolbar icons */}
-          <div className="container mx-auto px-6 md:px-10 lg:px-16 py-4 md:py-0 flex items-center justify-between relative my-2 md:mt-3 md:mb-8 lg:mt-3 lg:mb-10">
+          <div className="container mx-auto px-6 md:px-10 lg:px-16 py-4 md:py-2.5 flex items-center justify-between relative my-2 md:mt-3 md:mb-8 lg:mt-3 lg:mb-10">
             {/* Logo: In normal flow on mobile, absolute positioned on desktop */}
             <div className="md:absolute md:left-10 lg:left-16 top-1/2 md:-translate-y-1/2 flex items-center z-10">
               <Link href="/" className="flex items-center">
@@ -61,7 +61,7 @@ export function Navbar() {
                   src="/images/logo.png"
                   alt="Frankie Styles Logo"
                   className={cn(
-                    "h-28 md:h-36 lg:h-40 w-auto object-contain transition-all duration-[1000ms]",
+                    "h-28 md:h-28 lg:h-32 w-auto object-contain transition-all duration-[1000ms]",
                     isDarkTheme ? "invert brightness-0" : ""
                   )}
                 />
