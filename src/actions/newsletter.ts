@@ -2,6 +2,7 @@
 
 import { prisma } from "@/lib/db";
 import { queryWithRetry } from "./products";
+import { checkAdminAuthAction } from "./admin";
 
 // Helper to validate email format
 function isValidEmail(email: string): boolean {
@@ -62,5 +63,43 @@ export async function deleteSubscriberAction(id: string) {
   } catch (error) {
     console.error(`Failed to delete subscriber ${id}:`, error);
     return { success: false, error: "Failed to delete subscriber." };
+  }
+}
+
+export async function broadcastNewsletterAction(payload: { subject: string; content: string }) {
+  const isAdmin = await checkAdminAuthAction();
+  if (!isAdmin) {
+    return { success: false, error: "Unauthorized access." };
+  }
+
+  const { subject, content } = payload;
+  if (!subject.trim() || !content.trim()) {
+    return { success: false, error: "Subject and content are required." };
+  }
+
+  try {
+    const subscribers = await queryWithRetry(() =>
+      prisma.subscriber.findMany({
+        select: { email: true },
+      })
+    );
+
+    if (subscribers.length === 0) {
+      return { success: false, error: "No subscribers found to broadcast to." };
+    }
+
+    const emailList = subscribers.map(s => s.email);
+
+    const { sendNewsletterBroadcastAction } = await import("@/lib/email");
+    const result = await sendNewsletterBroadcastAction(subject, content, emailList);
+
+    if (result.success) {
+      return { success: true, count: emailList.length };
+    } else {
+      return { success: false, error: "Failed to dispatch newsletter emails." };
+    }
+  } catch (error) {
+    console.error("Failed to broadcast newsletter campaign:", error);
+    return { success: false, error: "Broadcast error. Please check system mail configurations." };
   }
 }

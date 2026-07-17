@@ -26,6 +26,23 @@ export async function createConsultationAction(input: ConsultationInput) {
         },
       })
     );
+
+    // Send consultation alerts in background
+    import('@/lib/email').then(({ sendConsultationEmailsAction }) => {
+      sendConsultationEmailsAction({
+        name: consultation.name,
+        email: consultation.email,
+        phone: consultation.phone,
+        service: consultation.service,
+        date: consultation.date,
+        notes: consultation.notes
+      }).catch(err => {
+        console.error("Background consultation email dispatch failed:", err);
+      });
+    }).catch(err => {
+      console.error("Failed to import email utilities for consultation:", err);
+    });
+
     return { success: true, id: consultation.id };
   } catch (error) {
     console.error("Failed to create consultation record:", error);

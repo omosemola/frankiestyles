@@ -666,3 +666,219 @@ export async function sendOrderStatusUpdateEmailAction(order: {
   }
   return { success: true };
 }
+
+export async function sendConsultationEmailsAction(consultation: {
+  name: string;
+  email: string;
+  phone: string;
+  service: string;
+  date: string;
+  notes?: string | null;
+}) {
+  const transporter = getTransporter();
+  if (!transporter) return { success: false, error: "Transporter not configured" };
+
+  const baseStyle = `
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #333333;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #fafafa;
+  `;
+
+  const headerLogoHtml = `
+    <div style="background-color: #0a0a0a; padding: 30px 20px; text-align: center; border-bottom: 4px solid #b89047;">
+      <h1 style="color: #ffffff; font-family: 'Bodoni MT', 'Didot', 'Playfair Display', serif; font-weight: 300; letter-spacing: 6px; margin: 0; font-size: 24px; text-transform: uppercase;">
+        Frankie <span style="color: #b89047; font-weight: 400;">Styles</span>
+      </h1>
+      <p style="color: #888888; font-size: 9px; text-transform: uppercase; letter-spacing: 4px; margin: 5px 0 0 0; font-weight: 600;">
+        ATELIER • NATIVE LUXURY
+      </p>
+    </div>
+  `;
+
+  const shopperHtml = `
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="utf-8">
+      <title>Consultation Requested - Frankie Styles</title>
+    </head>
+    <body style="${baseStyle}">
+      <div style="max-width: 600px; margin: 30px auto; background-color: #ffffff; border: 1px solid #e5e5e5; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
+        ${headerLogoHtml}
+        
+        <div style="padding: 40px 30px;">
+          <h2 style="font-size: 18px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #b89047; margin-top: 0; margin-bottom: 20px;">
+            ✦ Private Consultation Request
+          </h2>
+          
+          <p style="font-size: 14px; color: #555; margin-bottom: 24px;">
+            Dear ${consultation.name},<br/><br/>
+            Thank you for requesting a private styling consultation at Frankie Styles. We are excited to assist you in designing and crafting your bespoke native wear.
+          </p>
+
+          <div style="background-color: #fcfcfc; border: 1px solid #eee; padding: 20px; border-radius: 8px; margin-bottom: 30px; text-align: left;">
+            <h4 style="color: #0a0a0a; margin: 0 0 12px 0; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid #eee; padding-bottom: 6px;">Requested Details</h4>
+            <p style="font-size: 13px; color: #444; margin: 0 0 8px 0;">
+              <strong>Bespoke Service:</strong> ${consultation.service}
+            </p>
+            <p style="font-size: 13px; color: #444; margin: 0 0 8px 0;">
+              <strong>Preferred Date:</strong> ${consultation.date}
+            </p>
+            <p style="font-size: 13px; color: #444; margin: 0 0 8px 0;">
+              <strong>Phone Number:</strong> ${consultation.phone}
+            </p>
+            ${consultation.notes ? `
+              <p style="font-size: 13px; color: #444; margin: 8px 0 0 0; padding-top: 8px; border-top: 1px dashed #eee;">
+                <strong>Special Notes:</strong><br/>
+                <span style="color: #666; font-style: italic;">${consultation.notes}</span>
+              </p>
+            ` : ''}
+          </div>
+
+          <p style="font-size: 13px; color: #666; line-height: 1.6; margin-bottom: 0;">
+            A representative from our Lekki atelier will contact you via phone or WhatsApp within the next 24 hours to confirm your booking, discuss fabric options, and align on timeslots.
+          </p>
+        </div>
+
+        <div style="background-color: #f7f7f7; padding: 25px 20px; text-align: center; border-top: 1px solid #eee; font-size: 11px; color: #888;">
+          <p style="margin: 0 0 10px 0; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #444;">Frankie Styles Atelier</p>
+          <p style="margin: 0 0 5px 0;">12b Admiralty Way, Lekki Phase 1, Lagos, Nigeria</p>
+          <p style="margin: 0;">Need help? Email us at <a href="mailto:Frankiestyles4u@gmail.com" style="color: #b89047; text-decoration: none;">Frankiestyles4u@gmail.com</a> or WhatsApp <a href="https://wa.me/2348066913548" style="color: #b89047; text-decoration: none;">+234 806 691 3548</a></p>
+        </div>
+      </div>
+    </body>
+    </html>
+  `;
+
+  const adminHtml = `
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="utf-8">
+      <title>New Consultation Booking Request - Frankie Styles</title>
+    </head>
+    <body style="${baseStyle}">
+      <div style="max-width: 600px; margin: 30px auto; background-color: #ffffff; border: 1px solid #e5e5e5; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
+        ${headerLogoHtml}
+        
+        <div style="padding: 40px 30px;">
+          <h2 style="font-size: 18px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #b89047; margin-top: 0; margin-bottom: 20px;">
+            New Booking Request
+          </h2>
+          
+          <p style="font-size: 14px; color: #555; margin-bottom: 24px;">
+            A new private styling consultation has been requested via the website:
+          </p>
+
+          <div style="background-color: #fcfcfc; border: 1px solid #eee; padding: 20px; border-radius: 8px; text-align: left;">
+            <p style="font-size: 13px; color: #444; margin: 0 0 8px 0;"><strong>Client Name:</strong> ${consultation.name}</p>
+            <p style="font-size: 13px; color: #444; margin: 0 0 8px 0;"><strong>Email:</strong> ${consultation.email}</p>
+            <p style="font-size: 13px; color: #444; margin: 0 0 8px 0;"><strong>Phone (WhatsApp):</strong> ${consultation.phone}</p>
+            <p style="font-size: 13px; color: #444; margin: 0 0 8px 0;"><strong>Requested Date:</strong> ${consultation.date}</p>
+            <p style="font-size: 13px; color: #444; margin: 0 0 8px 0;"><strong>Service Selected:</strong> ${consultation.service}</p>
+            <p style="font-size: 13px; color: #444; margin: 8px 0 0 0; padding-top: 8px; border-top: 1px dashed #eee;">
+              <strong>Special Notes:</strong><br/>
+              <span style="color: #666;">${consultation.notes || 'None'}</span>
+            </p>
+          </div>
+        </div>
+
+        <div style="background-color: #f7f7f7; padding: 25px 20px; text-align: center; border-top: 1px solid #eee; font-size: 11px; color: #888;">
+          <p style="margin: 0; font-weight: 600; text-transform: uppercase;">Frankie Styles Control Panel</p>
+        </div>
+      </div>
+    </body>
+    </html>
+  `;
+
+  try {
+    await transporter.sendMail({
+      from: `"Frankie Styles Atelier" <${process.env.EMAIL_USER}>`,
+      to: consultation.email,
+      subject: `Consultation Requested - ${consultation.service}`,
+      html: shopperHtml
+    });
+
+    await transporter.sendMail({
+      from: `"Frankie Styles System" <${process.env.EMAIL_USER}>`,
+      to: process.env.EMAIL_USER || "Frankiestyles4u@gmail.com",
+      subject: `[Booking Request] ${consultation.name} - ${consultation.service}`,
+      html: adminHtml
+    });
+
+    console.log(`✉️ Consultation booking confirmation emails sent for ${consultation.email}`);
+    return { success: true };
+  } catch (error) {
+    console.error("❌ Nodemailer failed to send consultation booking emails:", error);
+    return { success: false, error };
+  }
+}
+
+export async function sendNewsletterBroadcastAction(subject: string, htmlBody: string, subscriberEmails: string[]) {
+  const transporter = getTransporter();
+  if (!transporter) return { success: false, error: "Transporter not configured" };
+
+  const baseStyle = `
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #333333;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #fafafa;
+  `;
+
+  const headerLogoHtml = `
+    <div style="background-color: #0a0a0a; padding: 30px 20px; text-align: center; border-bottom: 4px solid #b89047;">
+      <h1 style="color: #ffffff; font-family: 'Bodoni MT', 'Didot', 'Playfair Display', serif; font-weight: 300; letter-spacing: 6px; margin: 0; font-size: 24px; text-transform: uppercase;">
+        Frankie <span style="color: #b89047; font-weight: 400;">Styles</span>
+      </h1>
+      <p style="color: #888888; font-size: 9px; text-transform: uppercase; letter-spacing: 4px; margin: 5px 0 0 0; font-weight: 600;">
+        ATELIER • NATIVE LUXURY
+      </p>
+    </div>
+  `;
+
+  const newsletterHtml = `
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="utf-8">
+      <title>${subject}</title>
+    </head>
+    <body style="${baseStyle}">
+      <div style="max-width: 600px; margin: 30px auto; background-color: #ffffff; border: 1px solid #e5e5e5; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
+        ${headerLogoHtml}
+        
+        <div style="padding: 40px 30px;">
+          ${htmlBody}
+        </div>
+
+        <div style="background-color: #f7f7f7; padding: 25px 20px; text-align: center; border-top: 1px solid #eee; font-size: 11px; color: #888;">
+          <p style="margin: 0 0 10px 0; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #444;">Frankie Styles Atelier</p>
+          <p style="margin: 0 0 5px 0;">12b Admiralty Way, Lekki Phase 1, Lagos, Nigeria</p>
+          <p style="margin: 0 0 15px 0;">Need help? Email us at <a href="mailto:Frankiestyles4u@gmail.com" style="color: #b89047; text-decoration: none;">Frankiestyles4u@gmail.com</a> or WhatsApp <a href="https://wa.me/2348066913548" style="color: #b89047; text-decoration: none;">+234 806 691 3548</a></p>
+          <p style="margin: 0; color: #aaa; font-size: 10px;">You are receiving this because you subscribed to the Frankie Styles mailing list.</p>
+        </div>
+      </div>
+    </body>
+    </html>
+  `;
+
+  try {
+    await transporter.sendMail({
+      from: `"Frankie Styles Atelier" <${process.env.EMAIL_USER}>`,
+      to: process.env.EMAIL_USER || "Frankiestyles4u@gmail.com",
+      bcc: subscriberEmails,
+      subject: subject,
+      html: newsletterHtml
+    });
+    console.log(`✉️ Newsletter campaign broadcasted successfully to ${subscriberEmails.length} subscribers`);
+    return { success: true };
+  } catch (error) {
+    console.error("❌ Nodemailer failed to send newsletter campaign:", error);
+    return { success: false, error };
+  }
+}

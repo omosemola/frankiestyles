@@ -14,7 +14,7 @@ import {
   updateProductAction, 
   deleteProductAction 
 } from "@/actions/products";
-import { deleteSubscriberAction } from "@/actions/newsletter";
+import { deleteSubscriberAction, broadcastNewsletterAction } from "@/actions/newsletter";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { 
@@ -89,6 +89,16 @@ export default function AdminDashboardClient({
   });
   const [formError, setFormError] = useState<string | null>(null);
   const [formLoading, setFormLoading] = useState(false);
+
+  // Form states for Newsletter Broadcast Modal
+  const [isBroadcastModalOpen, setIsBroadcastModalOpen] = useState(false);
+  const [broadcastForm, setBroadcastForm] = useState({
+    subject: "",
+    content: "",
+  });
+  const [broadcastError, setBroadcastError] = useState<string | null>(null);
+  const [broadcastSuccess, setBroadcastSuccess] = useState<string | null>(null);
+  const [broadcastLoading, setBroadcastLoading] = useState(false);
 
   // Global Actions
   const handleLogout = async () => {
@@ -243,6 +253,40 @@ export default function AdminDashboardClient({
       if (res.success) {
         setProducts(products.filter(p => p.id !== productId));
       }
+    }
+  };
+
+  const handleBroadcastSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setBroadcastLoading(true);
+    setBroadcastError(null);
+    setBroadcastSuccess(null);
+
+    if (!broadcastForm.subject.trim() || !broadcastForm.content.trim()) {
+      setBroadcastError("Subject and content are required.");
+      setBroadcastLoading(false);
+      return;
+    }
+
+    try {
+      const res = await broadcastNewsletterAction({
+        subject: broadcastForm.subject.trim(),
+        content: broadcastForm.content.trim(),
+      });
+      if (res.success) {
+        setBroadcastSuccess(`Campaign broadcasted successfully to ${res.count} subscribers!`);
+        setBroadcastForm({ subject: "", content: "" });
+        setTimeout(() => {
+          setIsBroadcastModalOpen(false);
+          setBroadcastSuccess(null);
+        }, 3000);
+      } else {
+        setBroadcastError(res.error || "Failed to broadcast newsletter.");
+      }
+    } catch (err) {
+      setBroadcastError("An unexpected error occurred during dispatch.");
+    } finally {
+      setBroadcastLoading(false);
     }
   };
 
@@ -766,9 +810,23 @@ export default function AdminDashboardClient({
         {/* Subscribers Tab */}
         {activeTab === "subscribers" && (
           <div className="space-y-6 animate-fade-in">
-            <div>
-              <h1 className="text-2xl font-black uppercase tracking-wider">Newsletter Subscribers</h1>
-              <p className="text-xs text-gray-400 mt-1">Review registered client emails and download newsletter subscriber lists</p>
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div>
+                <h1 className="text-2xl font-black uppercase tracking-wider">Newsletter Subscribers</h1>
+                <p className="text-xs text-gray-400 mt-1">Review registered client emails and download newsletter subscriber lists</p>
+              </div>
+              <Button 
+                onClick={() => {
+                  setBroadcastForm({ subject: "", content: "" });
+                  setBroadcastError(null);
+                  setBroadcastSuccess(null);
+                  setIsBroadcastModalOpen(true);
+                }}
+                className="bg-black hover:bg-zinc-800 text-white font-bold uppercase tracking-wider text-xs flex items-center gap-2"
+              >
+                <Mail className="w-4 h-4" />
+                <span>Send Broadcast</span>
+              </Button>
             </div>
 
             {/* Filter and Search Controls */}
@@ -1115,6 +1173,87 @@ export default function AdminDashboardClient({
                   className="bg-black hover:bg-zinc-800 text-white font-bold uppercase tracking-wider text-[10px] py-2 px-4"
                 >
                   {formLoading ? "Saving wear data..." : (editingProduct ? "Save Changes" : "Register Product")}
+                </Button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* Newsletter Broadcast Modal Overlay */}
+      {isBroadcastModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm p-4 overflow-y-auto">
+          <div className="bg-white border border-gray-200 w-full max-w-xl rounded-2xl overflow-hidden smooth-shadow relative my-8 text-black">
+            {/* Modal Header */}
+            <div className="p-6 border-b border-gray-200 flex justify-between items-center bg-gray-50">
+              <h3 className="text-sm font-black uppercase tracking-wider text-black flex items-center gap-2">
+                <Mail className="w-4 h-4 text-gray-500" />
+                <span>Broadcast Campaign to Subscribers</span>
+              </h3>
+              <button 
+                onClick={() => setIsBroadcastModalOpen(false)}
+                className="text-gray-400 hover:text-black transition-colors"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* Form */}
+            <form onSubmit={handleBroadcastSubmit}>
+              <div className="p-6 space-y-4 max-h-[65vh] overflow-y-auto text-xs">
+                {broadcastError && (
+                  <div className="bg-red-50 border border-red-200 text-red-700 text-[10px] font-bold p-3 rounded-lg text-center uppercase tracking-wider">
+                    {broadcastError}
+                  </div>
+                )}
+                {broadcastSuccess && (
+                  <div className="bg-green-50 border border-green-200 text-green-700 text-[10px] font-bold p-3 rounded-lg text-center uppercase tracking-wider">
+                    {broadcastSuccess}
+                  </div>
+                )}
+
+                <div className="space-y-1">
+                  <label className="text-[10px] uppercase font-bold text-gray-400">Email Subject</label>
+                  <Input
+                    placeholder="e.g. Exclusive Preview: The New Royal Senator Collection"
+                    value={broadcastForm.subject}
+                    onChange={(e) => setBroadcastForm({ ...broadcastForm, subject: e.target.value })}
+                    className="bg-gray-50 border-gray-200 text-black placeholder-gray-400 focus:border-black focus:bg-white"
+                    required
+                  />
+                </div>
+
+                <div className="space-y-1">
+                  <label className="text-[10px] uppercase font-bold text-gray-400">Newsletter HTML / Body Content</label>
+                  <textarea
+                    placeholder="Enter the body of your newsletter campaign. HTML formatting is supported..."
+                    value={broadcastForm.content}
+                    onChange={(e) => setBroadcastForm({ ...broadcastForm, content: e.target.value })}
+                    className="w-full h-64 bg-gray-50 border border-gray-200 text-black rounded-lg p-3 text-xs outline-none focus:border-black focus:bg-white resize-none font-mono"
+                    required
+                  />
+                  <p className="text-[10px] text-gray-400 mt-1">
+                    *Tip: Use HTML layout tags like &lt;p&gt;, &lt;strong&gt;, &lt;h2&gt;, &lt;a href="..."&gt; to style your links and layout elements beautifully.
+                  </p>
+                </div>
+              </div>
+
+              {/* Modal Footer Actions */}
+              <div className="p-6 border-t border-gray-200 bg-gray-50 flex justify-end gap-3">
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={() => setIsBroadcastModalOpen(false)}
+                  className="bg-transparent border border-gray-200 text-gray-600 hover:bg-gray-100 font-bold uppercase tracking-wider text-[10px] py-2 px-4"
+                >
+                  Cancel
+                </Button>
+                <Button
+                  type="submit"
+                  disabled={broadcastLoading}
+                  className="bg-black hover:bg-zinc-800 text-white font-bold uppercase tracking-wider text-[10px] py-2 px-4"
+                >
+                  {broadcastLoading ? "Dispatching emails..." : "Broadcast Newsletter"}
                 </Button>
               </div>
             </form>
