@@ -600,35 +600,7 @@ export const DUMMY_PRODUCTS: Product[] = [
       "Custom Measure"
     ]
   },
-  {
-    id: "21",
-    name: "Mint Green Luxury Kaftan Set",
-    price: 220000,
-    category: "Kaftans",
-    image: "/images/product-21-front.png",
-    isNew: true,
-    description: "Elevate your look in this mint green luxury Kaftan. Tailored with care from premium waffle-textured fabric, it offers a clean round neck, short-placket front closure, a single chest pocket with a gold brand plate, and matching trousers.",
-    details: [
-      "Two-piece premium Kaftan set",
-      "Premium waffle-textured cotton-crepe blend fabric",
-      "Round neckline with clean buttonless placket design",
-      "Single chest pocket with signature gold accent bar",
-      "Includes tailored comfort trousers and back logo emblem stitching",
-      "Dry clean recommended"
-    ],
-    images: [
-      "/images/product-21-front.png",
-      "/images/product-21-back.png"
-    ],
-    sizes: [
-      "M (Chest 38-40\")",
-      "L (Chest 41-43\")",
-      "XL (Chest 44-46\")",
-      "XXL (Chest 47-49\")",
-      "XXXL (Chest 50-52\")",
-      "Custom Measure"
-    ]
-  },
+
   {
     id: "23",
     name: "Premium Cream Dry Lace Set",
@@ -995,11 +967,11 @@ export const DUMMY_PRODUCTS: Product[] = [
     ]
   },
   {
-    id: "36",
+    id: "21",
     name: "Prestige Dark Grey Senator Suit",
     price: 165000,
     category: "Kaftans",
-    image: "/images/product-36-front.png",
+    image: "/images/product-21-front.png",
     isNew: true,
     description: "Command respect and style with this Prestige Dark Grey Senator Suit. Tailored to perfection from premium, structured wool-blend fabric, it features long sleeves, a clean buttonless placket design, a custom chest pocket accent with a gold crest pen ornament, and matching tailored trousers.",
     details: [
@@ -1011,8 +983,8 @@ export const DUMMY_PRODUCTS: Product[] = [
       "Dry clean only"
     ],
     images: [
-      "/images/product-36-front.png",
-      "/images/product-36-back.png"
+      "/images/product-21-front.png",
+      "/images/product-21-back.png"
     ],
     sizes: [
       "M (Chest 38-40\")",
