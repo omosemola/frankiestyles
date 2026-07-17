@@ -52,7 +52,7 @@ export function Navbar() {
       >
         <div className="w-full relative pointer-events-auto">
           {/* Container for navigation items and right toolbar icons */}
-          <div className="container mx-auto px-6 md:px-10 lg:px-16 py-4 md:py-6 lg:py-8 flex items-center justify-between relative my-2 md:my-8 lg:my-10">
+          <div className="container mx-auto px-6 md:px-10 lg:px-16 py-0 flex items-center justify-between relative my-2 md:my-8 lg:my-10">
             {/* Logo: In normal flow on mobile, absolute positioned on desktop */}
             <div className="md:absolute md:left-10 lg:left-16 top-1/2 md:-translate-y-1/2 flex items-center z-10">
               <Link href="/" className="flex items-center">
