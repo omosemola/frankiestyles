@@ -897,3 +897,90 @@ export async function sendNewsletterBroadcastAction(subject: string, htmlBody: s
     return { success: false, error: lastError ? lastError.message : "Failed to dispatch newsletter emails." };
   }
 }
+
+export async function sendNewsletterWelcomeEmailAction(email: string) {
+  const transporter = getTransporter();
+  if (!transporter) return { success: false, error: "Transporter not configured" };
+
+  const baseStyle = `
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #333333;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #fafafa;
+  `;
+
+  const headerLogoHtml = `
+    <div style="background-color: #0a0a0a; padding: 30px 20px; text-align: center; border-bottom: 4px solid #b89047;">
+      <h1 style="color: #ffffff; font-family: 'Bodoni MT', 'Didot', 'Playfair Display', serif; font-weight: 300; letter-spacing: 6px; margin: 0; font-size: 24px; text-transform: uppercase;">
+        Frankie <span style="color: #b89047; font-weight: 400;">Styles</span>
+      </h1>
+      <p style="color: #888888; font-size: 9px; text-transform: uppercase; letter-spacing: 4px; margin: 5px 0 0 0; font-weight: 600;">
+        ATELIER • NATIVE LUXURY
+      </p>
+    </div>
+  `;
+
+  const welcomeHtml = `
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="utf-8">
+      <title>Welcome to Frankie Styles</title>
+    </head>
+    <body style="${baseStyle}">
+      <div style="max-width: 600px; margin: 30px auto; background-color: #ffffff; border: 1px solid #e5e5e5; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
+        ${headerLogoHtml}
+        
+        <div style="padding: 40px 30px; text-align: center;">
+          <h2 style="font-size: 20px; font-weight: 300; text-transform: uppercase; letter-spacing: 2px; color: #0a0a0a; margin-top: 0; margin-bottom: 10px;">
+            Welcome to the Circle
+          </h2>
+          <div style="width: 40px; height: 1px; background-color: #b89047; margin: 0 auto 25px auto;"></div>
+          
+          <p style="font-size: 14px; color: #555; line-height: 1.7; margin-bottom: 30px; text-align: left;">
+            Thank you for subscribing to the Frankie Styles mailing list. You are now part of an exclusive circle of gentlemen who appreciate the fine art of bespoke native wear.
+          </p>
+
+          <p style="font-size: 14px; color: #555; line-height: 1.7; margin-bottom: 30px; text-align: left;">
+            As a subscriber, you will receive exclusive updates about:
+          </p>
+          <ul style="padding-left: 20px; margin: 10px 0 30px 0; text-align: left; list-style-type: square; color: #b89047; font-size: 14px;">
+            <li style="margin-bottom: 8px;"><span style="color: #555;">Private preview alerts for new collections</span></li>
+            <li style="margin-bottom: 8px;"><span style="color: #555;">VIP booking availability at our Lekki showroom</span></li>
+            <li style="margin-bottom: 8px;"><span style="color: #555;">Style tips, traditional garment care, and tailoring insights</span></li>
+          </ul>
+
+          <div style="margin: 35px 0;">
+            <a href="https://frankiestyles.com/shop" style="background-color: #0a0a0a; color: #ffffff; text-decoration: none; padding: 15px 35px; font-size: 11px; font-weight: bold; text-transform: uppercase; letter-spacing: 2px; border-radius: 4px; display: inline-block;">
+              Browse the Catalog
+            </a>
+          </div>
+        </div>
+
+        <div style="background-color: #f7f7f7; padding: 25px 20px; text-align: center; border-top: 1px solid #eee; font-size: 11px; color: #888;">
+          <p style="margin: 0 0 10px 0; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #444;">Frankie Styles Atelier</p>
+          <p style="margin: 0 0 5px 0;">12b Admiralty Way, Lekki Phase 1, Lagos, Nigeria</p>
+          <p style="margin: 0 0 15px 0;">Need help? Email us at <a href="mailto:frankiestyles4u@gmail.com" style="color: #b89047; text-decoration: none;">frankiestyles4u@gmail.com</a> or WhatsApp <a href="https://wa.me/2348066913548" style="color: #b89047; text-decoration: none;">+234 806 691 3548</a></p>
+          <p style="margin: 0; color: #aaa; font-size: 10px;">You are receiving this because you subscribed to the Frankie Styles mailing list.</p>
+        </div>
+      </div>
+    </body>
+    </html>
+  `;
+
+  try {
+    await transporter.sendMail({
+      from: `"Frankie Styles Atelier" <${process.env.EMAIL_USER}>`,
+      to: email,
+      subject: "Welcome to Frankie Styles Atelier",
+      html: welcomeHtml
+    });
+    console.log(`✉️ Newsletter welcome email sent to ${email}`);
+    return { success: true };
+  } catch (error) {
+    console.error(`❌ Nodemailer failed to send welcome email to ${email}:`, error);
+    return { success: false, error };
+  }
+}

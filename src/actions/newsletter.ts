@@ -27,6 +27,16 @@ export async function subscribeToNewsletterAction(email: string) {
         data: { email: cleanEmail },
       })
     );
+
+    // Asynchronously dispatch welcome email in the background
+    import("@/lib/email").then(({ sendNewsletterWelcomeEmailAction }) => {
+      sendNewsletterWelcomeEmailAction(cleanEmail).catch(err => {
+        console.error("Background welcome email dispatch error:", err);
+      });
+    }).catch(err => {
+      console.error("Dynamic import of email action failure:", err);
+    });
+
     return { success: true, message: "Thank you for subscribing to Frankie Styles!" };
   } catch (error: any) {
     // Gracefully handle duplicate email registration (Prisma P2002 unique constraint)
