@@ -68,10 +68,7 @@ export function Navbar() {
               </Link>
             </div>
 
-            {/* Left side empty spacer (balances the layout for centering the nav menu on desktop) */}
-            <div className="w-44 md:w-48 lg:w-56 hidden md:block flex-shrink-0" />
-
-            <nav className="hidden md:flex items-center space-x-8">
+            <nav className="hidden md:flex items-center space-x-8 md:absolute md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2">
               {navLinks.map((item) => (
                 <Link key={item.name} href={item.href} className="text-sm font-semibold hover:opacity-70 transition-opacity tracking-wide uppercase">
                   {item.name}
@@ -79,7 +76,7 @@ export function Navbar() {
               ))}
             </nav>
 
-            <div className="flex items-center space-x-6 z-10">
+            <div className="flex items-center space-x-6 z-10 ml-auto">
               <button
                 aria-label="Wishlist"
                 onClick={() => setWishlistOpen(true)}
