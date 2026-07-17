@@ -61,7 +61,7 @@ export function Navbar() {
                   src="/images/logo.png"
                   alt="Frankie Styles Logo"
                   className={cn(
-                    "h-20 md:h-32 lg:h-36 w-auto object-contain transition-all duration-[1000ms]",
+                    "h-24 md:h-36 lg:h-40 w-auto object-contain transition-all duration-[1000ms]",
                     isDarkTheme ? "invert brightness-0" : ""
                   )}
                 />
@@ -138,7 +138,7 @@ export function Navbar() {
                 <img
                   src="/images/logo.png"
                   alt="Frankie Styles Logo"
-                  className="h-20 w-auto object-contain invert brightness-0"
+                  className="h-24 w-auto object-contain invert brightness-0"
                 />
               </Link>
               <button
