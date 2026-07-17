@@ -106,8 +106,8 @@ export function ContactSection() {
                   <Mail className="w-5 h-5 text-gray-400 flex-shrink-0 mt-0.5" />
                   <div>
                     <h4 className="text-xs font-bold uppercase tracking-wider text-gray-400">Email Relations</h4>
-                    <a href="mailto:Frankiestyles4u@gmail.com" className="text-sm font-medium mt-1 hover:underline text-black">
-                      Frankiestyles4u@gmail.com
+                    <a href="mailto:frankiestyles4u@gmail.com" className="text-sm font-medium mt-1 hover:underline text-black">
+                      frankiestyles4u@gmail.com
                     </a>
                   </div>
                 </div>

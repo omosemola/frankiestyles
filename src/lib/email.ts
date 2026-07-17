@@ -184,7 +184,7 @@ export async function sendOrderEmailsAction(order: {
         <div style="background-color: #f7f7f7; padding: 25px 20px; text-align: center; border-top: 1px solid #eee; font-size: 11px; color: #888;">
           <p style="margin: 0 0 10px 0; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #444;">Frankie Styles Atelier</p>
           <p style="margin: 0 0 5px 0;">Lekki Phase 1, Lagos, Nigeria</p>
-          <p style="margin: 0;">Need help? Email us at <a href="mailto:Frankiestyles4u@gmail.com" style="color: #b89047; text-decoration: none;">Frankiestyles4u@gmail.com</a> or WhatsApp <a href="https://wa.me/2348066913548" style="color: #b89047; text-decoration: none;">+234 806 691 3548</a></p>
+          <p style="margin: 0;">Need help? Email us at <a href="mailto:frankiestyles4u@gmail.com" style="color: #b89047; text-decoration: none;">frankiestyles4u@gmail.com</a> or WhatsApp <a href="https://wa.me/2348066913548" style="color: #b89047; text-decoration: none;">+234 806 691 3548</a></p>
         </div>
       </div>
     </body>
@@ -412,7 +412,7 @@ export async function sendPaymentConfirmationEmailAction(order: {
         <div style="background-color: #f7f7f7; padding: 25px 20px; text-align: center; border-top: 1px solid #eee; font-size: 11px; color: #888;">
           <p style="margin: 0 0 10px 0; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #444;">Frankie Styles Atelier</p>
           <p style="margin: 0 0 5px 0;">Lekki Phase 1, Lagos, Nigeria</p>
-          <p style="margin: 0;">Need help? Email us at <a href="mailto:Frankiestyles4u@gmail.com" style="color: #b89047; text-decoration: none;">Frankiestyles4u@gmail.com</a> or WhatsApp <a href="https://wa.me/2348066913548" style="color: #b89047; text-decoration: none;">+234 806 691 3548</a></p>
+          <p style="margin: 0;">Need help? Email us at <a href="mailto:frankiestyles4u@gmail.com" style="color: #b89047; text-decoration: none;">frankiestyles4u@gmail.com</a> or WhatsApp <a href="https://wa.me/2348066913548" style="color: #b89047; text-decoration: none;">+234 806 691 3548</a></p>
         </div>
       </div>
     </body>
@@ -539,7 +539,7 @@ export async function sendOrderDeliveredEmailAction(order: {
         <div style="background-color: #f7f7f7; padding: 25px 20px; text-align: center; border-top: 1px solid #eee; font-size: 11px; color: #888;">
           <p style="margin: 0 0 10px 0; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #444;">Frankie Styles Atelier</p>
           <p style="margin: 0 0 5px 0;">Lekki Phase 1, Lagos, Nigeria</p>
-          <p style="margin: 0;">Need help? Email us at <a href="mailto:Frankiestyles4u@gmail.com" style="color: #b89047; text-decoration: none;">Frankiestyles4u@gmail.com</a> or WhatsApp <a href="https://wa.me/2348066913548" style="color: #b89047; text-decoration: none;">+234 806 691 3548</a></p>
+          <p style="margin: 0;">Need help? Email us at <a href="mailto:frankiestyles4u@gmail.com" style="color: #b89047; text-decoration: none;">frankiestyles4u@gmail.com</a> or WhatsApp <a href="https://wa.me/2348066913548" style="color: #b89047; text-decoration: none;">+234 806 691 3548</a></p>
         </div>
       </div>
     </body>
@@ -624,7 +624,7 @@ export async function sendOrderCancelledEmailAction(order: {
         <div style="background-color: #f7f7f7; padding: 25px 20px; text-align: center; border-top: 1px solid #eee; font-size: 11px; color: #888;">
           <p style="margin: 0 0 10px 0; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #444;">Frankie Styles Atelier</p>
           <p style="margin: 0 0 5px 0;">Lekki Phase 1, Lagos, Nigeria</p>
-          <p style="margin: 0;">Need help? Email us at <a href="mailto:Frankiestyles4u@gmail.com" style="color: #b89047; text-decoration: none;">Frankiestyles4u@gmail.com</a> or WhatsApp <a href="https://wa.me/2348066913548" style="color: #b89047; text-decoration: none;">+234 806 691 3548</a></p>
+          <p style="margin: 0;">Need help? Email us at <a href="mailto:frankiestyles4u@gmail.com" style="color: #b89047; text-decoration: none;">frankiestyles4u@gmail.com</a> or WhatsApp <a href="https://wa.me/2348066913548" style="color: #b89047; text-decoration: none;">+234 806 691 3548</a></p>
         </div>
       </div>
     </body>
@@ -746,7 +746,7 @@ export async function sendConsultationEmailsAction(consultation: {
         <div style="background-color: #f7f7f7; padding: 25px 20px; text-align: center; border-top: 1px solid #eee; font-size: 11px; color: #888;">
           <p style="margin: 0 0 10px 0; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #444;">Frankie Styles Atelier</p>
           <p style="margin: 0 0 5px 0;">12b Admiralty Way, Lekki Phase 1, Lagos, Nigeria</p>
-          <p style="margin: 0;">Need help? Email us at <a href="mailto:Frankiestyles4u@gmail.com" style="color: #b89047; text-decoration: none;">Frankiestyles4u@gmail.com</a> or WhatsApp <a href="https://wa.me/2348066913548" style="color: #b89047; text-decoration: none;">+234 806 691 3548</a></p>
+          <p style="margin: 0;">Need help? Email us at <a href="mailto:frankiestyles4u@gmail.com" style="color: #b89047; text-decoration: none;">frankiestyles4u@gmail.com</a> or WhatsApp <a href="https://wa.me/2348066913548" style="color: #b89047; text-decoration: none;">+234 806 691 3548</a></p>
         </div>
       </div>
     </body>
@@ -804,7 +804,7 @@ export async function sendConsultationEmailsAction(consultation: {
 
     await transporter.sendMail({
       from: `"Frankie Styles System" <${process.env.EMAIL_USER}>`,
-      to: process.env.EMAIL_USER || "Frankiestyles4u@gmail.com",
+      to: process.env.EMAIL_USER || "frankiestyles4u@gmail.com",
       subject: `[Booking Request] ${consultation.name} - ${consultation.service}`,
       html: adminHtml
     });
@@ -864,7 +864,7 @@ export async function sendNewsletterBroadcastAction(subject: string, htmlBody: s
           <div style="background-color: #f7f7f7; padding: 25px 20px; text-align: center; border-top: 1px solid #eee; font-size: 11px; color: #888;">
             <p style="margin: 0 0 10px 0; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #444;">Frankie Styles Atelier</p>
             <p style="margin: 0 0 5px 0;">12b Admiralty Way, Lekki Phase 1, Lagos, Nigeria</p>
-            <p style="margin: 0 0 15px 0;">Need help? Email us at <a href="mailto:Frankiestyles4u@gmail.com" style="color: #b89047; text-decoration: none;">Frankiestyles4u@gmail.com</a> or WhatsApp <a href="https://wa.me/2348066913548" style="color: #b89047; text-decoration: none;">+234 806 691 3548</a></p>
+            <p style="margin: 0 0 15px 0;">Need help? Email us at <a href="mailto:frankiestyles4u@gmail.com" style="color: #b89047; text-decoration: none;">frankiestyles4u@gmail.com</a> or WhatsApp <a href="https://wa.me/2348066913548" style="color: #b89047; text-decoration: none;">+234 806 691 3548</a></p>
             <p style="margin: 0; color: #aaa; font-size: 10px;">You are receiving this because you subscribed to the Frankie Styles mailing list.</p>
           </div>
         </div>

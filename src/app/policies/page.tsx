@@ -46,7 +46,7 @@ const TABS = [
           </p>
           <h4 className="font-bold text-[#0a0a0a] mt-4 uppercase text-xs tracking-wider">Complimentary Alterations</h4>
           <p>
-            We offer <strong>complimentary fitting adjustments</strong> within <strong>14 days</strong> of receiving your garment. If your kaftan, senator, or agbada requires micro-alterations (sleeve length, chest adjustments, or pant cuffing), please contact us at <a href="mailto:Frankiestyles4u@gmail.com" className="font-bold text-black underline">Frankiestyles4u@gmail.com</a> to arrange a fitting session in our Lekki studio or to ship the item back.
+            We offer <strong>complimentary fitting adjustments</strong> within <strong>14 days</strong> of receiving your garment. If your kaftan, senator, or agbada requires micro-alterations (sleeve length, chest adjustments, or pant cuffing), please contact us at <a href="mailto:frankiestyles4u@gmail.com" className="font-bold text-black underline">frankiestyles4u@gmail.com</a> to arrange a fitting session in our Lekki studio or to ship the item back.
           </p>
           <h4 className="font-bold text-[#0a0a0a] mt-4 uppercase text-xs tracking-wider">Return & Cancellation Policy</h4>
           <p>
