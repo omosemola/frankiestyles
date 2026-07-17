@@ -52,7 +52,7 @@ export function Navbar() {
       >
         <div className="w-full relative pointer-events-auto">
           {/* Container for navigation items and right toolbar icons */}
-          <div className="container mx-auto pl-0 pr-6 py-3 md:py-5 lg:py-6 flex items-center justify-between relative my-2 md:my-6 lg:my-8">
+          <div className="container mx-auto pl-4 pr-6 md:px-8 lg:px-12 py-3 md:py-3 lg:py-4 flex items-center justify-between relative my-2 md:my-3 lg:my-6">
             {/* Logo: In normal flow on mobile, absolute positioned on desktop */}
             <div className="md:absolute md:left-0 top-1/2 md:-translate-y-1/2 flex items-center z-10">
               <Link href="/" className="flex items-center">
@@ -61,7 +61,7 @@ export function Navbar() {
                   src="/images/logo.png"
                   alt="Frankie Styles Logo"
                   className={cn(
-                    "h-28 md:h-44 w-auto object-contain transition-all duration-[1000ms]",
+                    "h-28 md:h-32 lg:h-44 w-auto object-contain transition-all duration-[1000ms]",
                     isDarkTheme ? "invert brightness-0" : ""
                   )}
                 />
@@ -69,7 +69,7 @@ export function Navbar() {
             </div>
 
             {/* Left side empty spacer (balances the layout for centering the nav menu on desktop) */}
-            <div className="w-48 hidden md:block flex-shrink-0" />
+            <div className="w-36 lg:w-48 hidden md:block flex-shrink-0" />
 
             <nav className="hidden md:flex items-center space-x-8">
               {navLinks.map((item) => (
