@@ -94,9 +94,9 @@ export async function broadcastNewsletterAction(payload: { subject: string; cont
     const result = await sendNewsletterBroadcastAction(subject, content, emailList);
 
     if (result.success) {
-      return { success: true, count: emailList.length };
+      return { success: true, count: result.count };
     } else {
-      return { success: false, error: "Failed to dispatch newsletter emails." };
+      return { success: false, error: result.error || "Failed to dispatch newsletter emails." };
     }
   } catch (error) {
     console.error("Failed to broadcast newsletter campaign:", error);

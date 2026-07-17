@@ -841,44 +841,59 @@ export async function sendNewsletterBroadcastAction(subject: string, htmlBody: s
     </div>
   `;
 
-  const newsletterHtml = `
-    <!DOCTYPE html>
-    <html>
-    <head>
-      <meta charset="utf-8">
-      <title>${subject}</title>
-    </head>
-    <body style="${baseStyle}">
-      <div style="max-width: 600px; margin: 30px auto; background-color: #ffffff; border: 1px solid #e5e5e5; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
-        ${headerLogoHtml}
-        
-        <div style="padding: 40px 30px;">
-          ${htmlBody}
-        </div>
+  let successCount = 0;
+  let failCount = 0;
+  let lastError: any = null;
 
-        <div style="background-color: #f7f7f7; padding: 25px 20px; text-align: center; border-top: 1px solid #eee; font-size: 11px; color: #888;">
-          <p style="margin: 0 0 10px 0; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #444;">Frankie Styles Atelier</p>
-          <p style="margin: 0 0 5px 0;">12b Admiralty Way, Lekki Phase 1, Lagos, Nigeria</p>
-          <p style="margin: 0 0 15px 0;">Need help? Email us at <a href="mailto:Frankiestyles4u@gmail.com" style="color: #b89047; text-decoration: none;">Frankiestyles4u@gmail.com</a> or WhatsApp <a href="https://wa.me/2348066913548" style="color: #b89047; text-decoration: none;">+234 806 691 3548</a></p>
-          <p style="margin: 0; color: #aaa; font-size: 10px;">You are receiving this because you subscribed to the Frankie Styles mailing list.</p>
-        </div>
-      </div>
-    </body>
-    </html>
-  `;
+  const sendPromises = subscriberEmails.map(async (email) => {
+    const newsletterHtml = `
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <meta charset="utf-8">
+        <title>${subject}</title>
+      </head>
+      <body style="${baseStyle}">
+        <div style="max-width: 600px; margin: 30px auto; background-color: #ffffff; border: 1px solid #e5e5e5; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
+          ${headerLogoHtml}
+          
+          <div style="padding: 40px 30px;">
+            ${htmlBody}
+          </div>
 
-  try {
-    await transporter.sendMail({
-      from: `"Frankie Styles Atelier" <${process.env.EMAIL_USER}>`,
-      to: process.env.EMAIL_USER || "Frankiestyles4u@gmail.com",
-      bcc: subscriberEmails,
-      subject: subject,
-      html: newsletterHtml
-    });
-    console.log(`✉️ Newsletter campaign broadcasted successfully to ${subscriberEmails.length} subscribers`);
-    return { success: true };
-  } catch (error) {
-    console.error("❌ Nodemailer failed to send newsletter campaign:", error);
-    return { success: false, error };
+          <div style="background-color: #f7f7f7; padding: 25px 20px; text-align: center; border-top: 1px solid #eee; font-size: 11px; color: #888;">
+            <p style="margin: 0 0 10px 0; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #444;">Frankie Styles Atelier</p>
+            <p style="margin: 0 0 5px 0;">12b Admiralty Way, Lekki Phase 1, Lagos, Nigeria</p>
+            <p style="margin: 0 0 15px 0;">Need help? Email us at <a href="mailto:Frankiestyles4u@gmail.com" style="color: #b89047; text-decoration: none;">Frankiestyles4u@gmail.com</a> or WhatsApp <a href="https://wa.me/2348066913548" style="color: #b89047; text-decoration: none;">+234 806 691 3548</a></p>
+            <p style="margin: 0; color: #aaa; font-size: 10px;">You are receiving this because you subscribed to the Frankie Styles mailing list.</p>
+          </div>
+        </div>
+      </body>
+      </html>
+    `;
+
+    try {
+      await transporter.sendMail({
+        from: `"Frankie Styles Atelier" <${process.env.EMAIL_USER}>`,
+        to: email,
+        subject: subject,
+        html: newsletterHtml
+      });
+      successCount++;
+    } catch (err) {
+      failCount++;
+      lastError = err;
+      console.error(`❌ Failed to send newsletter to ${email}:`, err);
+    }
+  });
+
+  await Promise.allSettled(sendPromises);
+
+  console.log(`✉️ Newsletter campaign broadcasted. Success: ${successCount}, Failed: ${failCount}`);
+
+  if (successCount > 0) {
+    return { success: true, count: successCount };
+  } else {
+    return { success: false, error: lastError ? lastError.message : "Failed to dispatch newsletter emails." };
   }
 }
