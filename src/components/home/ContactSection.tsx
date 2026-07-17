@@ -27,6 +27,21 @@ export function ContactSection() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  const todayStr = new Date().toISOString().split('T')[0];
+
+  const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const selectedDate = e.target.value;
+    if (selectedDate) {
+      const day = new Date(selectedDate).getDay();
+      if (day === 0) {
+        alert("Our Lekki showroom is closed on Sundays. Please select a Monday to Saturday slot for your consultation.");
+        setFormData({ ...formData, date: '' });
+        return;
+      }
+    }
+    setFormData({ ...formData, date: selectedDate });
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -194,8 +209,9 @@ export function ContactSection() {
                       <Input 
                         type="date" 
                         required 
+                        min={todayStr}
                         value={formData.date}
-                        onChange={e => setFormData({ ...formData, date: e.target.value })}
+                        onChange={handleDateChange}
                         className="bg-white border-transparent focus:border-black h-11"
                       />
                     </div>
