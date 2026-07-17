@@ -305,13 +305,22 @@ export default function AdminDashboardClient({
     return matchesSearch && matchesStatus;
   });
 
-  const filteredProducts = products.filter(p => {
-    const matchesSearch = p.name.toLowerCase().includes(productSearch.toLowerCase()) || 
-                          p.id.toLowerCase().includes(productSearch.toLowerCase()) ||
-                          p.description.toLowerCase().includes(productSearch.toLowerCase());
-    const matchesCategory = productFilter === "all" || p.category === productFilter;
-    return matchesSearch && matchesCategory;
-  });
+  const filteredProducts = products
+    .filter(p => {
+      const matchesSearch = p.name.toLowerCase().includes(productSearch.toLowerCase()) || 
+                            p.id.toLowerCase().includes(productSearch.toLowerCase()) ||
+                            p.description.toLowerCase().includes(productSearch.toLowerCase());
+      const matchesCategory = productFilter === "all" || p.category === productFilter;
+      return matchesSearch && matchesCategory;
+    })
+    .sort((a, b) => {
+      const idA = parseInt(a.id, 10);
+      const idB = parseInt(b.id, 10);
+      if (isNaN(idA) || isNaN(idB)) {
+        return a.id.localeCompare(b.id);
+      }
+      return idA - idB;
+    });
 
   return (
     <div className="min-h-screen bg-[#fafafa] text-black flex flex-col md:flex-row font-sans">
@@ -758,7 +767,6 @@ export default function AdminDashboardClient({
                       <th className="p-4">Name</th>
                       <th className="p-4">Category</th>
                       <th className="p-4">Price</th>
-                      <th className="p-4">Sizes</th>
                       <th className="p-4 text-right">Actions</th>
                     </tr>
                   </thead>
@@ -776,7 +784,6 @@ export default function AdminDashboardClient({
                         <td className="p-4 font-bold text-black">{p.name}</td>
                         <td className="p-4 font-medium uppercase text-gray-500">{p.category}</td>
                         <td className="p-4 font-bold text-black">₦{p.price.toLocaleString()}</td>
-                        <td className="p-4 font-mono text-gray-400">{p.sizes.join(", ")}</td>
                         <td className="p-4 text-right space-x-2">
                           <button
                             onClick={() => openEditProductModal(p)}
@@ -795,7 +802,7 @@ export default function AdminDashboardClient({
                     ))}
                     {filteredProducts.length === 0 && (
                       <tr>
-                        <td colSpan={7} className="p-8 text-center text-gray-400">
+                        <td colSpan={6} className="p-8 text-center text-gray-400">
                           No matching products found in database.
                         </td>
                       </tr>
