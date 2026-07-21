@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     description: "Experience the epitome of luxury native fashion with Frankie Styles. Handcrafted Kaftans, Agbadas, and Two-Piece sets tailored to perfection.",
     images: ["/images/logo.png"],
   },
-  metadataBase: new URL("https://frankiestyles.com"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://frankiestyles.netlify.app"),
 };
 
 export default function RootLayout({
