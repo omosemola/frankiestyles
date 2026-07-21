@@ -2,6 +2,7 @@
 
 import { prisma } from "@/lib/db";
 import { queryWithRetry } from "./products";
+import { checkAdminAuthAction } from "./admin";
 
 export interface ConsultationInput {
   name: string;
@@ -51,6 +52,9 @@ export async function createConsultationAction(input: ConsultationInput) {
 }
 
 export async function getAdminConsultations() {
+  const isAdmin = await checkAdminAuthAction();
+  if (!isAdmin) return { success: false, error: "Unauthorized" };
+
   try {
     const consultations = await queryWithRetry(() =>
       prisma.consultation.findMany({
@@ -65,6 +69,9 @@ export async function getAdminConsultations() {
 }
 
 export async function deleteConsultationAction(id: string) {
+  const isAdmin = await checkAdminAuthAction();
+  if (!isAdmin) return { success: false, error: "Unauthorized" };
+
   try {
     await queryWithRetry(() =>
       prisma.consultation.delete({

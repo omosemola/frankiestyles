@@ -2,6 +2,8 @@
 
 import { prisma } from "@/lib/db";
 import { queryWithRetry } from "./products";
+import { checkAdminAuthAction } from "./admin";
+import { logAdminAction } from "./audit";
 
 export interface OrderInput {
   name: string;
@@ -68,6 +70,9 @@ export async function createOrderAction(input: OrderInput) {
 }
 
 export async function getAdminOrders() {
+  const isAdmin = await checkAdminAuthAction();
+  if (!isAdmin) return { success: false, error: "Unauthorized" };
+
   try {
     const orders = await queryWithRetry(() =>
       prisma.order.findMany({
@@ -82,6 +87,9 @@ export async function getAdminOrders() {
 }
 
 export async function updateOrderStatusAction(id: string, status: string) {
+  const isAdmin = await checkAdminAuthAction();
+  if (!isAdmin) return { success: false, error: "Unauthorized" };
+
   try {
     const updated = await queryWithRetry(() =>
       prisma.order.update({
@@ -107,6 +115,8 @@ export async function updateOrderStatusAction(id: string, status: string) {
       console.error("Failed to import email utilities for status update:", err);
     });
 
+    await logAdminAction("ORDER_STATUS_CHANGE", `Order ID: ${id} status updated to ${status}.`);
+
     return { success: true, order: JSON.parse(JSON.stringify(updated)) };
   } catch (error) {
     console.error(`Failed to update order status for ${id}:`, error);
@@ -115,12 +125,16 @@ export async function updateOrderStatusAction(id: string, status: string) {
 }
 
 export async function deleteOrderAction(id: string) {
+  const isAdmin = await checkAdminAuthAction();
+  if (!isAdmin) return { success: false, error: "Unauthorized" };
+
   try {
     await queryWithRetry(() =>
       prisma.order.delete({
         where: { id },
       })
     );
+    await logAdminAction("ORDER_DELETE", `Deleted order ID: ${id}`);
     return { success: true };
   } catch (error) {
     console.error(`Failed to delete order ${id}:`, error);

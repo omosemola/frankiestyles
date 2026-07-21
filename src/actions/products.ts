@@ -2,6 +2,8 @@
 
 import { prisma } from "@/lib/db";
 import { Product } from "@/lib/products";
+import { checkAdminAuthAction } from "./admin";
+import { logAdminAction } from "./audit";
 
 export async function queryWithRetry<T>(fn: () => Promise<T>, retries = 5, delay = 1000): Promise<T> {
   let lastError: any;
@@ -94,6 +96,9 @@ export interface ProductInput {
 }
 
 export async function createProductAction(input: ProductInput) {
+  const isAdmin = await checkAdminAuthAction();
+  if (!isAdmin) return { success: false, error: "Unauthorized" };
+
   try {
     const product = await queryWithRetry(() =>
       prisma.product.create({
@@ -111,6 +116,7 @@ export async function createProductAction(input: ProductInput) {
         },
       })
     );
+    await logAdminAction("PRODUCT_CREATE", `Created product ${input.name} (ID: ${input.id}) with price ${input.price}`);
     return { success: true, product };
   } catch (error) {
     console.error("Failed to create product:", error);
@@ -119,7 +125,11 @@ export async function createProductAction(input: ProductInput) {
 }
 
 export async function updateProductAction(id: string, input: ProductInput) {
+  const isAdmin = await checkAdminAuthAction();
+  if (!isAdmin) return { success: false, error: "Unauthorized" };
+
   try {
+    const oldProduct = await getProductById(id);
     const product = await queryWithRetry(() =>
       prisma.product.update({
         where: { id },
@@ -137,6 +147,13 @@ export async function updateProductAction(id: string, input: ProductInput) {
         },
       })
     );
+    let details = `Updated product ${input.name} (ID: ${id}).`;
+    if (oldProduct && oldProduct.price !== input.price) {
+      details += ` Price changed from ${oldProduct.price} to ${input.price}.`;
+      await logAdminAction("PRICE_CHANGE", details);
+    } else {
+      await logAdminAction("PRODUCT_UPDATE", details);
+    }
     return { success: true, product };
   } catch (error) {
     console.error(`Failed to update product ${id}:`, error);
@@ -145,12 +162,16 @@ export async function updateProductAction(id: string, input: ProductInput) {
 }
 
 export async function deleteProductAction(id: string) {
+  const isAdmin = await checkAdminAuthAction();
+  if (!isAdmin) return { success: false, error: "Unauthorized" };
+
   try {
     await queryWithRetry(() =>
       prisma.product.delete({
         where: { id },
       })
     );
+    await logAdminAction("PRODUCT_DELETE", `Deleted product ID: ${id}`);
     return { success: true };
   } catch (error) {
     console.error(`Failed to delete product ${id}:`, error);

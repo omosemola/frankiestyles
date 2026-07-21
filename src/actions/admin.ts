@@ -1,6 +1,7 @@
 "use server";
 
 import { cookies } from "next/headers";
+import { logAdminAction } from "./audit";
 
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || "frankieadmin";
 const SESSION_COOKIE_NAME = "frankie_admin_session";
@@ -16,6 +17,7 @@ export async function verifyAdminPasswordAction(password: string): Promise<{ suc
         maxAge: 60 * 60 * 24, // 24 hours
         path: "/",
       });
+      await logAdminAction("ADMIN_LOGIN", "Admin logged in successfully via passcode");
       return { success: true };
     }
     return { success: false, error: "Invalid password" };
@@ -40,6 +42,7 @@ export async function logoutAdminAction(): Promise<void> {
   try {
     const cookieStore = await cookies();
     cookieStore.delete(SESSION_COOKIE_NAME);
+    await logAdminAction("ADMIN_LOGOUT", "Admin logged out");
   } catch (error) {
     console.error("Admin logout error:", error);
   }

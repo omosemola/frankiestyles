@@ -49,6 +49,9 @@ export async function subscribeToNewsletterAction(email: string) {
 }
 
 export async function getAdminSubscribers() {
+  const isAdmin = await checkAdminAuthAction();
+  if (!isAdmin) return { success: false, error: "Unauthorized" };
+
   try {
     const subscribers = await queryWithRetry(() =>
       prisma.subscriber.findMany({
@@ -63,6 +66,9 @@ export async function getAdminSubscribers() {
 }
 
 export async function deleteSubscriberAction(id: string) {
+  const isAdmin = await checkAdminAuthAction();
+  if (!isAdmin) return { success: false, error: "Unauthorized" };
+
   try {
     await queryWithRetry(() =>
       prisma.subscriber.delete({
