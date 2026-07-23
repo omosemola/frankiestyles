@@ -994,6 +994,64 @@ export const DUMMY_PRODUCTS: Product[] = [
       "XXXL (Chest 50-52\")",
       "Custom Measure"
     ]
+  },
+  {
+    id: "36",
+    name: "Prestige Charcoal & Indigo Batik Senator Suit",
+    price: 175000,
+    category: "Kaftans",
+    image: "/images/product-36-front.png",
+    isNew: true,
+    description: "Elevate your wardrobe with this Prestige Charcoal Grey Senator Suit, featuring an eye-catching indigo blue batik center panel. Expertly tailored from high-grade structured fabric with 3/4 sleeves, clean crew neckline, and matching tailored trousers.",
+    details: [
+      "Two-piece premium Senator suit set",
+      "High-grade structured charcoal grey fabric",
+      "Signature indigo blue batik patterned front center strip",
+      "Modern 3/4 length sleeves & clean round neck design",
+      "Includes tailored comfort-fit trousers",
+      "Dry clean only"
+    ],
+    images: [
+      "/images/product-36-front.png",
+      "/images/product-36-back.png"
+    ],
+    sizes: [
+      "M (Chest 38-40\")",
+      "L (Chest 41-43\")",
+      "XL (Chest 44-46\")",
+      "XXL (Chest 47-49\")",
+      "XXXL (Chest 50-52\")",
+      "Custom Measure"
+    ]
+  },
+  {
+    id: "37",
+    name: "Prestige Sky Blue Textured Senator Suit",
+    price: 180000,
+    category: "Kaftans",
+    image: "/images/product-37-front.png",
+    isNew: true,
+    description: "Command attention in this Prestige Sky Blue Textured Senator Suit. Crafted from luxury textured fabric with subtle shimmering detail, it features short relaxed sleeves, clean front placket, matching tailored trousers, and traditional elegance.",
+    details: [
+      "Two-piece luxury Senator suit set",
+      "Premium sky blue textured fabric with subtle shimmer detail",
+      "Modern round neckline with hidden front placket",
+      "Short sleeves with tailored comfort fit",
+      "Includes matching tailored trousers",
+      "Dry clean only"
+    ],
+    images: [
+      "/images/product-37-front.png",
+      "/images/product-37-back.png"
+    ],
+    sizes: [
+      "M (Chest 38-40\")",
+      "L (Chest 41-43\")",
+      "XL (Chest 44-46\")",
+      "XXL (Chest 47-49\")",
+      "XXXL (Chest 50-52\")",
+      "Custom Measure"
+    ]
   }
 ];
 
