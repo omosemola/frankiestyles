@@ -1223,6 +1223,63 @@ export const DUMMY_PRODUCTS: Product[] = [
       "XXXL (Chest 50-52\")",
       "Custom Measure"
     ]
+  },
+  {
+    id: "44",
+    name: "Prestige Sage Olive Striped Linen Set",
+    price: 185000,
+    category: "Two-Piece Sets",
+    image: "/images/product-44-front.png",
+    isNew: true,
+    description: "Redefine subtle sophistication in this Prestige Sage Olive Striped Linen Set. Crafted from premium breathable linen featuring sage green & white vertical stripes, custom embroidered FS chest logo, paired with crisp white fedora hat and tailored white linen trousers.",
+    details: [
+      "Two-piece luxury resort linen suit set",
+      "High-grade sage olive green & white striped linen fabric",
+      "Custom embroidered FS crest monogram on chest",
+      "Button-down collar with long buttoned cuffs",
+      "Includes relaxed tailored white linen trousers",
+      "Dry clean only"
+    ],
+    images: [
+      "/images/product-44-front.png",
+      "/images/product-44-back.png"
+    ],
+    sizes: [
+      "M (Chest 38-40\")",
+      "L (Chest 41-43\")",
+      "XL (Chest 44-46\")",
+      "XXL (Chest 47-49\")",
+      "XXXL (Chest 50-52\")",
+      "Custom Measure"
+    ]
+  },
+  {
+    id: "45",
+    name: "Prestige Magenta & Ivory Zigzag Adire Kaftan Set",
+    price: 195000,
+    category: "Kaftans",
+    image: "/images/product-45-front.png",
+    isNew: true,
+    description: "Exude bold royalty in this Prestige Magenta & Ivory Zigzag Adire Kaftan Set. Tailored from premium batik-printed fabric displaying a striking magenta pink and white geometric chevron/zigzag motif, short relaxed sleeves, matching trousers, and a coordinating fila cap.",
+    details: [
+      "Complete luxury 3-piece Adire Kaftan set",
+      "Premium magenta pink & ivory white batik-printed fabric",
+      "Short relaxed sleeves with round neck button placket",
+      "Includes matching tailored trousers and traditional fila cap",
+      "Dry clean only"
+    ],
+    images: [
+      "/images/product-45-front.png",
+      "/images/product-45-back.png"
+    ],
+    sizes: [
+      "M (Chest 38-40\")",
+      "L (Chest 41-43\")",
+      "XL (Chest 44-46\")",
+      "XXL (Chest 47-49\")",
+      "XXXL (Chest 50-52\")",
+      "Custom Measure"
+    ]
   }
 ];
 
