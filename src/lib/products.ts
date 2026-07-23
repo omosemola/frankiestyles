@@ -1166,6 +1166,63 @@ export const DUMMY_PRODUCTS: Product[] = [
       "XXXL (Chest 50-52\")",
       "Custom Measure"
     ]
+  },
+  {
+    id: "42",
+    name: "Prestige Midnight Black Batik Senator Suit",
+    price: 175000,
+    category: "Kaftans",
+    image: "/images/product-42-front.png",
+    isNew: true,
+    description: "Command regal presence in this Prestige Midnight Black Batik Senator Suit. Crafted from rich black structured fabric, it features a bold white geometric batik center panel, 3/4 relaxed sleeves, clean round neck layout, and matching black tailored trousers.",
+    details: [
+      "Two-piece luxury Senator suit set",
+      "Rich structured midnight black fabric",
+      "Signature white batik patterned front panel",
+      "Modern 3/4 length sleeves with clean neckline",
+      "Includes tailored comfort-fit trousers",
+      "Dry clean only"
+    ],
+    images: [
+      "/images/product-42-front.png",
+      "/images/product-42-back.png"
+    ],
+    sizes: [
+      "M (Chest 38-40\")",
+      "L (Chest 41-43\")",
+      "XL (Chest 44-46\")",
+      "XXL (Chest 47-49\")",
+      "XXXL (Chest 50-52\")",
+      "Custom Measure"
+    ]
+  },
+  {
+    id: "43",
+    name: "Prestige Cream & Yellow Adire Kaftan Set",
+    price: 190000,
+    category: "Kaftans",
+    image: "/images/product-43-front.png",
+    isNew: true,
+    description: "Express vibrant heritage with this Prestige Cream & Yellow Adire Kaftan Set. Featuring a crisp off-white short-sleeved Kaftan tunic with gold button accents, paired with statement yellow and white batik tie-dye trousers and matching fila headwrap.",
+    details: [
+      "Complete luxury 3-piece Kaftan & Adire set",
+      "Crisp off-white Kaftan tunic with chest pocket & gold buttons",
+      "Vibrant yellow & white batik tie-dye trousers",
+      "Includes matching yellow batik fila cap",
+      "Dry clean only"
+    ],
+    images: [
+      "/images/product-43-front.png",
+      "/images/product-43-back.png"
+    ],
+    sizes: [
+      "M (Chest 38-40\")",
+      "L (Chest 41-43\")",
+      "XL (Chest 44-46\")",
+      "XXL (Chest 47-49\")",
+      "XXXL (Chest 50-52\")",
+      "Custom Measure"
+    ]
   }
 ];
 
