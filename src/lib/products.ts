@@ -1109,6 +1109,63 @@ export const DUMMY_PRODUCTS: Product[] = [
       "XXXL (Chest 50-52\")",
       "Custom Measure"
     ]
+  },
+  {
+    id: "40",
+    name: "Prestige Pristine White Speckled Senator Suit",
+    price: 175000,
+    category: "Kaftans",
+    image: "/images/product-40-front.png",
+    isNew: true,
+    description: "Step out in pure refinement with this Prestige Pristine White Speckled Senator Suit. Crafted from high-grade white fabric infused with subtle dark pin-dot texture, featuring a tailored round-neck short-sleeved tunic, matching tailored trousers, and a coordinating white cap.",
+    details: [
+      "Complete luxury 3-piece Senator suit set",
+      "High-grade white fabric with fine pin-dot speckled texture",
+      "Modern round neckline with hidden placket",
+      "Includes matching tailored trousers and white cap",
+      "Dry clean only"
+    ],
+    images: [
+      "/images/product-40-front.png",
+      "/images/product-40-back.png"
+    ],
+    sizes: [
+      "M (Chest 38-40\")",
+      "L (Chest 41-43\")",
+      "XL (Chest 44-46\")",
+      "XXL (Chest 47-49\")",
+      "XXXL (Chest 50-52\")",
+      "Custom Measure"
+    ]
+  },
+  {
+    id: "41",
+    name: "Prestige Sunshine Yellow Striped Linen Set",
+    price: 185000,
+    category: "Two-Piece Sets",
+    image: "/images/product-41-front.png",
+    isNew: true,
+    description: "Embrace effortless resort luxury with this Prestige Sunshine Yellow Striped Linen Set. Masterfully cut from lightweight breathable linen in vibrant yellow and white vertical stripes, featuring long buttoned sleeves, embroidered FS crest monogram, and matching white linen trousers.",
+    details: [
+      "Two-piece luxury resort linen suit set",
+      "Premium breathable yellow and white striped linen fabric",
+      "Custom embroidered FS crest monogram on chest",
+      "Button-down collar and long sleeves",
+      "Includes relaxed tailored white linen trousers",
+      "Dry clean only"
+    ],
+    images: [
+      "/images/product-41-front.png",
+      "/images/product-41-back.png"
+    ],
+    sizes: [
+      "M (Chest 38-40\")",
+      "L (Chest 41-43\")",
+      "XL (Chest 44-46\")",
+      "XXL (Chest 47-49\")",
+      "XXXL (Chest 50-52\")",
+      "Custom Measure"
+    ]
   }
 ];
 
