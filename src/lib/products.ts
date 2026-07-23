@@ -1280,6 +1280,62 @@ export const DUMMY_PRODUCTS: Product[] = [
       "XXXL (Chest 50-52\")",
       "Custom Measure"
     ]
+  },
+  {
+    id: "46",
+    name: "Prestige Wine Burgundy & Patterned Adire Kaftan Set",
+    price: 190000,
+    category: "Kaftans",
+    image: "/images/product-46-front.png",
+    isNew: true,
+    description: "Embrace opulent tradition with this Prestige Wine Burgundy & Patterned Adire Kaftan Set. Featuring a rich wine red short-sleeved Kaftan tunic with a chest pocket and button placket, paired with statement burgundy and dusty pink batik Adire trousers and a matching fila cap.",
+    details: [
+      "Complete luxury 3-piece Kaftan & Adire set",
+      "Rich wine burgundy Kaftan tunic with button placket",
+      "Statement burgundy & dusty pink batik Adire trousers",
+      "Includes matching Adire fila cap",
+      "Dry clean only"
+    ],
+    images: [
+      "/images/product-46-front.png",
+      "/images/product-46-back.png"
+    ],
+    sizes: [
+      "M (Chest 38-40\")",
+      "L (Chest 41-43\")",
+      "XL (Chest 44-46\")",
+      "XXL (Chest 47-49\")",
+      "XXXL (Chest 50-52\")",
+      "Custom Measure"
+    ]
+  },
+  {
+    id: "47",
+    name: "Prestige Ivory & Black Leaf Adire Kaftan Set",
+    price: 190000,
+    category: "Kaftans",
+    image: "/images/product-47-front.png",
+    isNew: true,
+    description: "Stand out in timeless elegance with this Prestige Ivory & Black Leaf Adire Kaftan Set. Tailored from a pristine off-white Kaftan tunic with gold button accents, paired with striking black and white botanical leaf-motif Adire trousers and a matching leaf-print fila cap.",
+    details: [
+      "Complete luxury 3-piece Kaftan & Adire set",
+      "Pristine off-white Kaftan tunic with gold button accents",
+      "Tailored black & white leaf-motif batik Adire trousers",
+      "Includes matching leaf-print Adire fila cap",
+      "Dry clean only"
+    ],
+    images: [
+      "/images/product-47-front.png",
+      "/images/product-47-back.png"
+    ],
+    sizes: [
+      "M (Chest 38-40\")",
+      "L (Chest 41-43\")",
+      "XL (Chest 44-46\")",
+      "XXL (Chest 47-49\")",
+      "XXXL (Chest 50-52\")",
+      "Custom Measure"
+    ]
   }
 ];
 
