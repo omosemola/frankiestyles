@@ -1084,14 +1084,14 @@ export const DUMMY_PRODUCTS: Product[] = [
   },
   {
     id: "39",
-    name: "Prestige Royal Indigo Adire Kaftan Set",
+    name: "Prestige Royal Indigo Kaftan Set",
     price: 195000,
     category: "Kaftans",
     image: "/images/product-39-front.png",
     isNew: true,
-    description: "Make a striking statement in this Prestige Royal Indigo Adire Kaftan Set. Tailored from authentic indigo batik-printed fabric featuring bold white geometric motifs, it includes a short-sleeved Kaftan tunic, matching tailored trousers, and a coordinating traditional fila cap.",
+    description: "Make a striking statement in this Prestige Royal Indigo Kaftan Set. Tailored from authentic indigo batik-printed fabric featuring bold white geometric motifs, it includes a short-sleeved Kaftan tunic, matching tailored trousers, and a coordinating traditional fila cap.",
     details: [
-      "Complete luxury 3-piece Adire Kaftan set",
+      "Complete luxury 3-piece Kaftan set",
       "Authentic royal blue & white batik-printed fabric",
       "Short relaxed sleeves with round neckline and silver button accents",
       "Includes matching tailored trousers and traditional fila cap",
