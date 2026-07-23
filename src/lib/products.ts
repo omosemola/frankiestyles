@@ -1336,6 +1336,62 @@ export const DUMMY_PRODUCTS: Product[] = [
       "XXXL (Chest 50-52\")",
       "Custom Measure"
     ]
+  },
+  {
+    id: "48",
+    name: "Prestige Terracotta Resort Linen Set",
+    price: 185000,
+    category: "Two-Piece Sets",
+    image: "/images/product-48-front.png",
+    isNew: true,
+    description: "Exude warm elegance in this Prestige Terracotta Resort Linen Set. Masterfully tailored from breathable linen in a rich dusty terracotta rose shade, featuring a button-down collar shirt with gold FS embroidery, a brown leather-trimmed fedora hat, and tailored white linen trousers.",
+    details: [
+      "Two-piece luxury resort linen suit set",
+      "High-grade dusty terracotta rose linen fabric",
+      "Gold embroidered FS crest monogram on chest",
+      "Paired with white linen trousers and brown leather-trimmed fedora",
+      "Dry clean only"
+    ],
+    images: [
+      "/images/product-48-front.png",
+      "/images/product-48-back.png"
+    ],
+    sizes: [
+      "M (Chest 38-40\")",
+      "L (Chest 41-43\")",
+      "XL (Chest 44-46\")",
+      "XXL (Chest 47-49\")",
+      "XXXL (Chest 50-52\")",
+      "Custom Measure"
+    ]
+  },
+  {
+    id: "49",
+    name: "Prestige Ivory Knit Polo & Black Trousers Set",
+    price: 175000,
+    category: "Two-Piece Sets",
+    image: "/images/product-49-front.png",
+    isNew: true,
+    description: "Elevate your smart casual wardrobe with this Prestige Ivory Knit Polo Set. Cut from luxurious textured knit fabric with contrasting black collar and cuff accents, gold FS crest embroidery, paired with a white fedora hat and structured black trousers.",
+    details: [
+      "Two-piece luxury smart-casual ensemble",
+      "Premium textured knit ivory polo with black trim accents",
+      "Gold embroidered FS crest monogram on chest",
+      "Paired with custom tailored black trousers & white fedora",
+      "Dry clean only"
+    ],
+    images: [
+      "/images/product-49-front.png",
+      "/images/product-49-back.png"
+    ],
+    sizes: [
+      "M (Chest 38-40\")",
+      "L (Chest 41-43\")",
+      "XL (Chest 44-46\")",
+      "XXL (Chest 47-49\")",
+      "XXXL (Chest 50-52\")",
+      "Custom Measure"
+    ]
   }
 ];
 
