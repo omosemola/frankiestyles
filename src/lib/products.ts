@@ -1052,6 +1052,63 @@ export const DUMMY_PRODUCTS: Product[] = [
       "XXXL (Chest 50-52\")",
       "Custom Measure"
     ]
+  },
+  {
+    id: "38",
+    name: "Prestige Coral Peach Senator Suit",
+    price: 170000,
+    category: "Kaftans",
+    image: "/images/product-38-front.png",
+    isNew: true,
+    description: "Exude modern charm in this Prestige Coral Peach Senator Suit. Tailored from soft, high-grade structured fabric, featuring a sleek round neck with a hidden placket, signature chest pocket detail with gold branding, 3/4 sleeves, and matching tailored trousers.",
+    details: [
+      "Two-piece luxury Senator suit set",
+      "High-grade structured coral peach fabric",
+      "Modern round neckline with hidden placket layout",
+      "Custom chest pocket detailing with signature gold accent",
+      "Includes tailored comfort-fit trousers",
+      "Dry clean only"
+    ],
+    images: [
+      "/images/product-38-front.png",
+      "/images/product-38-back.png"
+    ],
+    sizes: [
+      "M (Chest 38-40\")",
+      "L (Chest 41-43\")",
+      "XL (Chest 44-46\")",
+      "XXL (Chest 47-49\")",
+      "XXXL (Chest 50-52\")",
+      "Custom Measure"
+    ]
+  },
+  {
+    id: "39",
+    name: "Prestige Royal Indigo Adire Kaftan Set",
+    price: 195000,
+    category: "Kaftans",
+    image: "/images/product-39-front.png",
+    isNew: true,
+    description: "Make a striking statement in this Prestige Royal Indigo Adire Kaftan Set. Tailored from authentic indigo batik-printed fabric featuring bold white geometric motifs, it includes a short-sleeved Kaftan tunic, matching tailored trousers, and a coordinating traditional fila cap.",
+    details: [
+      "Complete luxury 3-piece Adire Kaftan set",
+      "Authentic royal blue & white batik-printed fabric",
+      "Short relaxed sleeves with round neckline and silver button accents",
+      "Includes matching tailored trousers and traditional fila cap",
+      "Dry clean only"
+    ],
+    images: [
+      "/images/product-39-front.png",
+      "/images/product-39-back.png"
+    ],
+    sizes: [
+      "M (Chest 38-40\")",
+      "L (Chest 41-43\")",
+      "XL (Chest 44-46\")",
+      "XXL (Chest 47-49\")",
+      "XXXL (Chest 50-52\")",
+      "Custom Measure"
+    ]
   }
 ];
 
